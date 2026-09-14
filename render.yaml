@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dota-spell-letter-hunt
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22

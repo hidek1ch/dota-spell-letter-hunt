@@ -1,0 +1,18 @@
+{
+  "name": "dota-spell-letter-hunt",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Multiplayer Dota 2 Spell Letter Hunt",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check game-core.js && node --check public/app.js && node test/game-core.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
+  }
+}

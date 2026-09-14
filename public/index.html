@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0f131b">
+  <title>Dota 2 Spell Letter Hunt</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">DOTA 2 PARTY GAME</div>
+        <h1>⚔️ Spell Letter Hunt</h1>
+      </div>
+      <div class="connection-pill" id="connectionPill"><span class="dot"></span><span id="connectionText">Подключение…</span></div>
+    </header>
+
+    <section id="homeView" class="view">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <span class="tag">Онлайн-комнаты</span>
+          <h2>Один объясняет. Остальные угадывают по очереди.</h2>
+          <p>Секретную способность и буквы видит только хост. Игроки видят таймер, очередь и счёт — но не ответ.</p>
+          <div class="feature-row">
+            <span>⏱ 5 минут</span><span>🖼 Иконки</span><span>🎲 Без частых повторов</span><span>👥 До 8 игроков</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <section class="panel">
+          <div class="panel-title"><span class="panel-icon">👑</span><div><h3>Создать комнату</h3><p>Ты будешь хостом и объясняющим.</p></div></div>
+          <label>Твоё имя
+            <input id="hostName" maxlength="24" placeholder="Например: Ауе">
+          </label>
+          <button id="createRoomBtn" class="btn primary wide">Создать комнату</button>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title"><span class="panel-icon">🎧</span><div><h3>Войти в комнату</h3><p>Для тех, кто будет угадывать.</p></div></div>
+          <label>Код комнаты
+            <input id="joinCode" maxlength="5" class="code-input" placeholder="ABCDE" autocomplete="off">
+          </label>
+          <label>Твоё имя
+            <input id="playerName" maxlength="24" placeholder="Имя игрока">
+          </label>
+          <button id="joinRoomBtn" class="btn secondary wide">Войти</button>
+        </section>
+      </div>
+
+      <div class="registry-line" id="registryLine">База способностей загружается…</div>
+    </section>
+
+    <section id="roomView" class="view hidden">
+      <div class="room-head panel">
+        <div>
+          <div class="eyebrow">КОМНАТА</div>
+          <div class="room-code-row"><strong id="roomCode">—</strong><button class="icon-btn" id="copyInviteBtn" title="Скопировать ссылку">🔗</button></div>
+          <div class="muted" id="roleText">—</div>
+        </div>
+        <div class="room-meta">
+          <span class="chip" id="registryChip">База: —</span>
+          <span class="chip" id="phaseChip">Лобби</span>
+        </div>
+      </div>
+
+      <section class="panel status-panel">
+        <div class="turn-label" id="turnLabel">Ждём игроков</div>
+        <div class="timer" id="timer">05:00</div>
+        <div class="progress"><div id="timerBar" class="progress-bar"></div></div>
+        <div class="event-text" id="eventText">Комната готова</div>
+      </section>
+
+      <section id="hostSecretPanel" class="panel secret-panel hidden">
+        <div class="secret-top">
+          <div>
+            <div class="eyebrow">ТОЛЬКО ДЛЯ ХОСТА</div>
+            <h3>Загаданная способность</h3>
+          </div>
+          <span class="private-badge">🔒 Игроки этого не видят</span>
+        </div>
+        <div id="secretPlaceholder" class="secret-placeholder">Запусти матч — здесь появится способность.</div>
+        <div id="secretContent" class="secret-content hidden">
+          <img id="abilityIcon" class="ability-icon" alt="Иконка способности">
+          <div class="ability-copy">
+            <div id="abilityName" class="ability-name">—</div>
+            <div id="abilityHero" class="ability-hero">—</div>
+            <div id="abilityBadges" class="badges"></div>
+          </div>
+        </div>
+        <div id="lettersWrap" class="letters-wrap hidden">
+          <div class="letters-label">ОБЪЯСНЯЙ СЛОВАМИ НА ЭТИ БУКВЫ</div>
+          <div id="letters" class="letters"></div>
+        </div>
+      </section>
+
+      <section id="playerMessagePanel" class="panel player-message hidden">
+        <div class="big-icon">🎧</div>
+        <h3 id="playerMessageTitle">Слушай объяснение</h3>
+        <p id="playerMessageText">Название и иконка способности скрыты.</p>
+      </section>
+
+      <section class="panel">
+        <div class="section-head"><div><div class="eyebrow">СЧЁТ</div><h3>Игроки</h3></div><span id="playerCount" class="chip">0 игроков</span></div>
+        <div id="scoreboard" class="scoreboard"></div>
+        <div id="emptyPlayers" class="empty-state">Пока никого нет. Отправь друзьям код комнаты.</div>
+      </section>
+
+      <section id="hostControls" class="panel hidden">
+        <div class="section-head"><div><div class="eyebrow">УПРАВЛЕНИЕ</div><h3>Панель хоста</h3></div></div>
+        <div id="lobbyControls">
+          <button id="startGameBtn" class="btn primary wide">▶ Начать матч</button>
+        </div>
+        <div id="gameControls" class="button-grid hidden">
+          <button id="correctBtn" class="btn success">✓ Угадал +1</button>
+          <button id="skipBtn" class="btn secondary">↪ Пропустить</button>
+          <button id="pauseBtn" class="btn secondary">⏸ Пауза</button>
+          <button id="finishBtn" class="btn danger">🏁 Завершить матч</button>
+        </div>
+        <div id="finishedControls" class="hidden">
+          <button id="backLobbyBtn" class="btn primary wide">↻ Новый матч</button>
+        </div>
+      </section>
+
+      <section id="settingsPanel" class="panel hidden">
+        <div class="section-head">
+          <div><div class="eyebrow">НАСТРОЙКИ</div><h3>Буквы</h3></div>
+          <span class="chip">Меняются до старта</span>
+        </div>
+        <p class="muted">Я поставил удобный стартовый набор. Спорные буквы можно включать или выключать прямо здесь — точный финальный набор потом решим вместе.</p>
+        <div id="letterPicker" class="letter-picker"></div>
+        <div class="settings-actions">
+          <button id="easyLettersBtn" class="btn secondary small">Игровой набор</button>
+          <button id="allLettersBtn" class="btn secondary small">Все буквы</button>
+          <button id="saveSettingsBtn" class="btn primary small">Сохранить</button>
+        </div>
+        <div class="future-box">
+          <strong>Зарезервировано на следующий этап:</strong>
+          <span>🔥 персональные серии и бонусы/штрафы</span>
+          <span>✨ особенные раунды</span>
+        </div>
+      </section>
+
+      <button id="leaveBtn" class="text-btn">← Выйти из комнаты</button>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

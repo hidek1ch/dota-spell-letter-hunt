@@ -7,7 +7,7 @@
 <style>
 :root{color-scheme:dark;font-family:Inter,Arial,sans-serif;background:#0b1118;color:#f7f8fb}
 *{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(circle at 15% 0%,rgba(62,91,126,.28),transparent 35%),radial-gradient(circle at 85% 20%,rgba(244,180,26,.1),transparent 30%),#0b1118}
-button,input{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
+button,input{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.profilePanel{border-color:#39495f}.profileHead{display:flex;gap:14px;align-items:center}.profileMain{flex:1;min-width:0}.profileName{font-size:24px;font-weight:1000;overflow:hidden;text-overflow:ellipsis}.profileAvatar,.profileFallback{width:68px;height:68px;flex:0 0 68px;border-radius:50%;object-fit:cover;border:3px solid #f4b41a;background:#18212d}.profileFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.profileStats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.profileStat{padding:10px 8px;border:1px solid #2d394b;border-radius:12px;background:#111923;text-align:center}.profileStat b{display:block;font-size:20px;color:#f4b41a}.profileStat small{color:#8f9daf}.profileAchievementsTitle{margin:16px 0 8px;font-weight:900}.achievementGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.achievement{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #2d394b;border-radius:12px;background:#111923}.achievement.locked{opacity:.4;filter:grayscale(1)}.achievementIcon{font-size:24px;line-height:1}.achievementText b{display:block}.achievementText small{display:block;color:#8f9daf;margin-top:2px;line-height:1.25}.achievement.new{border-color:#f4b41a;box-shadow:0 0 0 2px rgba(244,180,26,.12)}@media(max-width:700px){.profileHead{align-items:flex-start}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr}.profileAvatar,.profileFallback{width:58px;height:58px;flex-basis:58px}}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
 @media(max-width:720px){.wrap{width:min(100% - 20px,980px);padding-top:14px}.grid{grid-template-columns:1fr}.top,.roomhead{align-items:flex-start}.roomhead{flex-direction:column}.secret{align-items:flex-start}.icon{width:82px;height:82px}.brand{line-height:1.05}}
 </style>
 </head>
@@ -15,7 +15,7 @@ button,input{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;p
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="eyebrow">DOTA 2 · ONLINE PARTY GAME · v1.6</div>
+      <div class="eyebrow">DOTA 2 · ONLINE PARTY GAME · v1.7</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
     <div id="conn" class="status">Готово</div>
@@ -27,6 +27,21 @@ button,input{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;p
       <h1>Один объясняет. Остальные угадывают.</h1>
       <p class="muted">Способность, иконку и буквы видит только хост. Игроки видят таймер, очередь и счёт.</p>
       <div class="chiprow"><span class="chip">⏱ 3 минуты</span><span class="chip">🏁 Победа: 15 очков</span><span class="chip">🎲 Без повторов до конца колоды</span><span class="chip">👥 До 8 игроков</span></div>
+    </div>
+
+    <div id="profilePanel" class="panel profilePanel">
+      <div class="profileHead">
+        <div id="profileAvatarWrap"></div>
+        <div class="profileMain">
+          <div class="eyebrow">ЛОКАЛЬНЫЙ ПРОФИЛЬ</div>
+          <div id="profileName" class="profileName">Новый игрок</div>
+          <div id="profileNote" class="muted small">Ник и аватарка сохранятся в этом браузере.</div>
+        </div>
+        <div id="profileAchievementCount" class="chip">🏅 0 / 10</div>
+      </div>
+      <div id="profileStats" class="profileStats"></div>
+      <div class="profileAchievementsTitle">Достижения</div>
+      <div id="profileAchievements" class="achievementGrid"></div>
     </div>
 
     <div class="grid">
@@ -149,6 +164,19 @@ const WS='wss://'+PROJECT+'.supabase.co/realtime/v1/websocket?apikey='+encodeURI
 const ALL='АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШ'.split('');
 const STEAM='https://cdn.cloudflare.steamstatic.com';
 const WIN_SCORE=15;
+const PROFILE_KEY='dota_spell_hunt_profile_v1';
+const ACHIEVEMENTS=[
+ {id:'streak3',icon:'🔥',title:'Разогрев',desc:'Сделать стрик 3 подряд'},
+ {id:'streak5',icon:'⚡',title:'На волне',desc:'Сделать стрик 5 подряд'},
+ {id:'streak10',icon:'☄️',title:'Не остановить',desc:'Сделать стрик 10 подряд'},
+ {id:'firstWin',icon:'🏆',title:'Первая победа',desc:'Выиграть свой первый матч'},
+ {id:'comeback',icon:'🔄',title:'Камбэк',desc:'Побывать последним и всё равно победить'},
+ {id:'cleanWin',icon:'✨',title:'Чистая игра',desc:'Победить без единого пропуска'},
+ {id:'noPenaltyWin',icon:'🛡️',title:'Без штрафов',desc:'Победить без штрафных очков'},
+ {id:'photoFinish',icon:'📸',title:'Фотофиниш',desc:'Победить, когда соперник отстал не больше чем на 1 очко'},
+ {id:'games10',icon:'🎮',title:'Завсегдатай',desc:'Сыграть 10 матчей'},
+ {id:'wins10',icon:'👑',title:'Чемпион',desc:'Выиграть 10 матчей'}
+];
 const SESSION_KEY='spell_hunt_session_v2';
 const SESSION_TTL=24*60*60*1000;
 
@@ -158,6 +186,8 @@ let ws=null, topic=null, joinRef=null, ref=1, heartbeat=null, reconnectTimer=nul
 let state=null, secret=null;
 let chatByPlayer={}, myChat=[], selectedChatPlayer=null, chatUnread={};
 let selectedAvatar='';
+let profile=null;
+let lastAchievementFlash=[];
 
 const $=id=>document.getElementById(id);
 function clean(v){return String(v||'').trim().replace(/\s+/g,' ').slice(0,24)}
@@ -221,7 +251,144 @@ function normalizeState(s){
  });
  if(!Number.isInteger(s.active)||s.active<0)s.active=0;
  if(!['lobby','playing','paused','finished'].includes(s.phase))s.phase='lobby';
+ if(typeof s.matchId!=='string')s.matchId=null;
+ s.players.forEach(p=>{if(typeof p.wasLast!=='boolean')p.wasLast=false});
  return s;
+}
+function defaultProfile(){
+ return{
+   version:1,
+   displayName:'',
+   avatar:'',
+   stats:{games:0,wins:0,bestStreak:0,totalScore:0,totalSkips:0,totalPenalties:0},
+   achievements:{},
+   countedMatches:[]
+ };
+}
+function loadProfile(){
+ let p=defaultProfile();
+ try{
+   const raw=localStorage.getItem(PROFILE_KEY);
+   if(raw){
+     const x=JSON.parse(raw)||{};
+     p.displayName=clean(x.displayName||'');
+     p.avatar=safeAvatar(x.avatar);
+     p.stats=Object.assign(p.stats,x.stats&&typeof x.stats==='object'?x.stats:{});
+     p.achievements=x.achievements&&typeof x.achievements==='object'?x.achievements:{};
+     p.countedMatches=Array.isArray(x.countedMatches)?x.countedMatches.filter(Boolean).slice(-60):[];
+   }
+ }catch(e){}
+ ['games','wins','bestStreak','totalScore','totalSkips','totalPenalties'].forEach(k=>{
+   p.stats[k]=Math.max(0,Number(p.stats[k])||0);
+ });
+ profile=p;
+ selectedAvatar=safeAvatar(p.avatar);
+ if(p.displayName){
+   $('playerName').value=p.displayName;
+   $('hostName').value=p.displayName;
+ }
+ renderSavedAvatarSelection();
+ renderProfile();
+ return p;
+}
+function saveProfile(){
+ if(!profile)profile=defaultProfile();
+ try{localStorage.setItem(PROFILE_KEY,JSON.stringify(profile))}catch(e){}
+ renderProfile();
+}
+function saveProfileIdentity(displayName,avatar){
+ if(!profile)profile=defaultProfile();
+ const n=clean(displayName);
+ if(n)profile.displayName=n;
+ if(avatar!==undefined)profile.avatar=safeAvatar(avatar);
+ saveProfile();
+}
+function renderSavedAvatarSelection(){
+ if(!$('avatarChoices'))return;
+ document.querySelectorAll('.avatarChoice').forEach((b,i)=>b.classList.toggle('on',!!selectedAvatar&&selectedAvatar===BUILTIN_AVATARS[i]));
+ if(selectedAvatar){
+   const builtIn=BUILTIN_AVATARS.includes(selectedAvatar);
+   $('avatarHint').textContent=builtIn?'Сохранённая встроенная аватарка выбрана ✓':'Сохранённая своя аватарка выбрана ✓';
+ }else{
+   $('avatarHint').textContent='Если ничего не выбрать, будет первая буква ника.';
+ }
+}
+function renderProfile(){
+ if(!profile||!$('profilePanel'))return;
+ const wrap=$('profileAvatarWrap');wrap.innerHTML='';
+ wrap.appendChild(avatarElement({name:profile.displayName||'?',avatar:profile.avatar},'profileAvatar','profileFallback'));
+ $('profileName').textContent=profile.displayName||'Новый игрок';
+ $('profileNote').textContent=profile.displayName?'Профиль сохранён в этом браузере.':'Ник и аватарка сохранятся после первого входа.';
+ const s=profile.stats;
+ $('profileStats').innerHTML=[
+   ['Матчи',s.games],['Победы',s.wins],['Лучший стрик',s.bestStreak],['Очки всего',s.totalScore],['Штрафы',s.totalPenalties]
+ ].map(([label,value])=>'<div class="profileStat"><b>'+Number(value||0)+'</b><small>'+label+'</small></div>').join('');
+ const unlocked=ACHIEVEMENTS.filter(a=>profile.achievements[a.id]);
+ $('profileAchievementCount').textContent='🏅 '+unlocked.length+' / '+ACHIEVEMENTS.length;
+ const box=$('profileAchievements');box.innerHTML='';
+ ACHIEVEMENTS.forEach(a=>{
+   const open=!!profile.achievements[a.id];
+   const d=document.createElement('div');
+   d.className='achievement '+(open?'':'locked')+(lastAchievementFlash.includes(a.id)?' new':'');
+   const icon=document.createElement('div');icon.className='achievementIcon';icon.textContent=open?a.icon:'🔒';
+   const tx=document.createElement('div');tx.className='achievementText';
+   const b=document.createElement('b');b.textContent=a.title;
+   const sm=document.createElement('small');sm.textContent=a.desc;
+   tx.append(b,sm);d.append(icon,tx);box.appendChild(d);
+ });
+}
+function unlockAchievement(id,newOnes){
+ if(!profile)return;
+ if(!profile.achievements[id]){
+   profile.achievements[id]=Date.now();
+   if(Array.isArray(newOnes))newOnes.push(id);
+ }
+}
+function updateLastPlaceFlags(){
+ if(!state||!Array.isArray(state.players)||state.players.length<2)return;
+ const scores=state.players.map(p=>Number(p.score)||0);
+ const min=Math.min(...scores),max=Math.max(...scores);
+ if(min===max)return;
+ state.players.forEach(p=>{if((Number(p.score)||0)===min)p.wasLast=true});
+}
+function processFinishedMatchForProfile(){
+ if(role!=='player'||!state||state.phase!=='finished'||!state.matchId||!profile)return;
+ if(profile.countedMatches.includes(state.matchId))return;
+ const me=state.players.find(p=>p.id===clientId);if(!me)return;
+ const ranked=rankedPlayers(),place=ranked.findIndex(p=>p.id===clientId);
+ if(place<0)return;
+ const won=place===0;
+ const runner=ranked[1]||null;
+ profile.countedMatches.push(state.matchId);
+ profile.countedMatches=profile.countedMatches.slice(-60);
+ profile.displayName=clean(me.name)||profile.displayName;
+ profile.avatar=safeAvatar(me.avatar)||profile.avatar;
+ profile.stats.games+=1;
+ if(won)profile.stats.wins+=1;
+ profile.stats.bestStreak=Math.max(profile.stats.bestStreak,Number(me.bestStreak)||0);
+ profile.stats.totalScore+=Math.max(0,Number(me.score)||0);
+ profile.stats.totalSkips+=Math.max(0,Number(me.skips)||0);
+ profile.stats.totalPenalties+=Math.max(0,Number(me.penalties)||0);
+
+ const fresh=[];
+ if(Number(me.bestStreak)>=3)unlockAchievement('streak3',fresh);
+ if(Number(me.bestStreak)>=5)unlockAchievement('streak5',fresh);
+ if(Number(me.bestStreak)>=10)unlockAchievement('streak10',fresh);
+ if(won)unlockAchievement('firstWin',fresh);
+ if(won&&me.wasLast)unlockAchievement('comeback',fresh);
+ if(won&&Number(me.skips)===0)unlockAchievement('cleanWin',fresh);
+ if(won&&Number(me.penalties)===0)unlockAchievement('noPenaltyWin',fresh);
+ if(won&&runner&&((Number(me.score)||0)-(Number(runner.score)||0)<=1))unlockAchievement('photoFinish',fresh);
+ if(profile.stats.games>=10)unlockAchievement('games10',fresh);
+ if(profile.stats.wins>=10)unlockAchievement('wins10',fresh);
+
+ lastAchievementFlash=fresh;
+ saveProfile();
+ if(fresh.length){
+   const names=fresh.map(id=>(ACHIEVEMENTS.find(a=>a.id===id)||{}).title).filter(Boolean);
+   toast('🏅 Новое достижение: '+names.join(', '));
+   setTimeout(()=>{lastAchievementFlash=[];renderProfile()},5000);
+ }
 }
 function saveSession(){
  if(!role||!code||!name)return;
@@ -296,6 +463,7 @@ function render(){
  }
  renderFinal();
  renderChat();
+ processFinishedMatchForProfile();
  saveSession();
 }
 function rankedPlayers(){
@@ -461,6 +629,7 @@ function adjustScore(id,delta){
  const player=state.players.find(p=>p.id===id);if(!player)return;
  const old=Number(player.score)||0;
  player.score=old+delta;
+ updateLastPlaceFlags();
  state.event='✏️ Хост изменил счёт '+player.name+': '+old+' → '+player.score;
  if(checkVictory(player))return;
  sendState();render();
@@ -476,6 +645,7 @@ function setExactScore(id){
  if(!Number.isSafeInteger(next)||next<-999||next>999)return toast('Допустимый счёт: от -999 до 999');
  const old=Number(player.score)||0;
  player.score=next;
+ updateLastPlaceFlags();
  state.event='✏️ Хост изменил счёт '+player.name+': '+old+' → '+player.score;
  if(checkVictory(player))return;
  sendState();render();
@@ -530,7 +700,7 @@ function onBroadcast(ev,p){
    if(ev==='join_request'&&state){
      const incoming=clean(p.name)||'Игрок';
      if(p.id&&!state.players.some(x=>x.id===p.id)&&state.players.length<8){
-       state.players.push({id:p.id,name:incoming,avatar:safeAvatar(p.avatar),score:0,streak:0,bestStreak:0,skips:0,penalties:0});
+       state.players.push({id:p.id,name:incoming,avatar:safeAvatar(p.avatar),score:0,streak:0,bestStreak:0,skips:0,penalties:0,wasLast:false});
        state.event=incoming+' вошёл в комнату';sendState();render();
      }
    }
@@ -579,9 +749,10 @@ function next(correct){
    p.streak++;
    p.bestStreak=Math.max(Number(p.bestStreak)||0,p.streak);
    let gained=1;
-   if(p.streak%3===0)gained+=2;
+   if(p.streak%3===0)gained+=1;
    p.score+=gained;
-   state.event=gained>1?'🔥 Серия '+p.streak+'! +'+gained+' очка (включая +2 бонус)':'Угадали! +1 очко';
+   updateLastPlaceFlags();
+   state.event=gained>1?'🔥 Серия '+p.streak+'! +'+gained+' очка (включая +1 бонус)':'Угадали! +1 очко';
    if(checkVictory(p))return;
  }else{
    p.skips++;
@@ -594,6 +765,7 @@ function next(correct){
      const left=Math.max(0,state.freeSkips-p.skips);
      state.event='↪ Бесплатный пропуск · осталось '+left;
    }
+   updateLastPlaceFlags();
  }
  state.active=(state.active+1)%state.players.length;state.phase='playing';state.ends=Date.now()+180000;
  const ability=drawAbility();if(ability)secret={ability,letters:drawLetters()};
@@ -605,10 +777,10 @@ function initAvatarPicker(){
  BUILTIN_AVATARS.forEach((src,i)=>{
    const b=document.createElement('button');b.type='button';b.className='avatarChoice';b.title=i<3?'Кот':i<6?'Собака':'Пейзаж';
    const img=document.createElement('img');img.src=src;img.alt=b.title;b.appendChild(img);
-   b.onclick=()=>{selectedAvatar=src;document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('avatarHint').textContent='Выбрана встроенная аватарка.'};
+   b.onclick=()=>{selectedAvatar=src;document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('avatarHint').textContent='Выбрана встроенная аватарка.';if(profile){profile.avatar=selectedAvatar;saveProfile()}};
    box.appendChild(b);
  });
- $('clearAvatar').onclick=()=>{selectedAvatar='';document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));$('avatarHint').textContent='Без аватарки — покажем первую букву ника.'};
+ $('clearAvatar').onclick=()=>{selectedAvatar='';document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));$('avatarHint').textContent='Без аватарки — покажем первую букву ника.';if(profile){profile.avatar='';saveProfile()}};
  $('avatarUpload').addEventListener('change',async e=>{
    const file=e.target.files&&e.target.files[0];if(!file)return;
    if(!file.type.startsWith('image/'))return toast('Выбери изображение');
@@ -617,6 +789,7 @@ function initAvatarPicker(){
      selectedAvatar=await compressAvatar(file);
      document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));
      $('avatarHint').textContent='Своя аватарка готова ✓';
+     if(profile){profile.avatar=selectedAvatar;saveProfile()}
    }catch(err){toast('Не получилось обработать картинку')}
  });
 }
@@ -673,24 +846,26 @@ async function loadRegistry(){
  }
 }
 
-$('create').onclick=()=>{clearNotice();const n=clean($('hostName').value);if(!n)return notice('Введи имя хоста.');clearSession();role='host';name=n;code=randomCode();clientId=crypto.randomUUID();hostId=crypto.randomUUID();state=newState();secret=null;deck=[];lastHero=null;chatByPlayer={};myChat=[];selectedChatPlayer=null;chatUnread={};saveSession();connect();showRoom()};
-$('join').onclick=()=>{clearNotice();const n=clean($('playerName').value),c=String($('joinCode').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);if(!n)return notice('Введи имя игрока.');if(c.length!==5)return notice('Код комнаты должен состоять из 5 символов.');clearSession();role='player';name=n;code=c;clientId=crypto.randomUUID();hostId=null;state=null;secret=null;selectedAvatar=safeAvatar(selectedAvatar);chatByPlayer={};myChat=[];selectedChatPlayer=null;chatUnread={};saveSession();connect();showRoom()};
+$('create').onclick=()=>{clearNotice();const n=clean($('hostName').value);if(!n)return notice('Введи имя хоста.');saveProfileIdentity(n,selectedAvatar);clearSession();role='host';name=n;code=randomCode();clientId=crypto.randomUUID();hostId=crypto.randomUUID();state=newState();secret=null;deck=[];lastHero=null;chatByPlayer={};myChat=[];selectedChatPlayer=null;chatUnread={};saveSession();connect();showRoom()};
+$('join').onclick=()=>{clearNotice();const n=clean($('playerName').value),c=String($('joinCode').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);if(!n)return notice('Введи имя игрока.');if(c.length!==5)return notice('Код комнаты должен состоять из 5 символов.');saveProfileIdentity(n,selectedAvatar);clearSession();role='player';name=n;code=c;clientId=crypto.randomUUID();hostId=null;state=null;secret=null;selectedAvatar=safeAvatar(selectedAvatar);chatByPlayer={};myChat=[];selectedChatPlayer=null;chatUnread={};saveSession();connect();showRoom()};
 $('copy').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('room',code);try{await navigator.clipboard.writeText(u.toString());toast('Ссылка скопирована')}catch(e){toast('Код комнаты: '+code)}};
-$('start').onclick=()=>{if(!state.players.length)return toast('Нужен хотя бы один игрок');if(!registry.length)return toast('База способностей ещё загружается');state=normalizeState(state);state.phase='playing';state.active=0;state.ends=Date.now()+180000;state.paused=180;state.event='Матч начался';state.winnerId=null;state.winByScore=false;state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.penalties=0});const ability=drawAbility();if(ability)secret={ability,letters:drawLetters()};sendState();render()};
+$('start').onclick=()=>{if(!state.players.length)return toast('Нужен хотя бы один игрок');if(!registry.length)return toast('База способностей ещё загружается');state=normalizeState(state);state.phase='playing';state.active=0;state.ends=Date.now()+180000;state.paused=180;state.event='Матч начался';state.winnerId=null;state.winByScore=false;state.matchId=crypto.randomUUID();state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.penalties=0;p.wasLast=false});const ability=drawAbility();if(ability)secret={ability,letters:drawLetters()};sendState();render()};
 $('correct').onclick=()=>{if(state&&state.phase==='playing')next(true)};
 $('skip').onclick=()=>{if(state&&state.phase==='playing')next(false)};
 $('pause').onclick=()=>{if(!state)return;if(state.phase==='playing'){state.paused=Math.ceil(remaining());state.ends=null;state.phase='paused';state.event='Пауза'}else if(state.phase==='paused'){state.ends=Date.now()+state.paused*1000;state.phase='playing';state.event='Продолжаем'}sendState();render()};
 $('finish').onclick=()=>{if(!state)return;const leader=rankedPlayers()[0];state.phase='finished';state.ends=null;state.winnerId=leader?leader.id:null;state.winByScore=false;state.event='Матч завершён';sendState();render()};
-$('newMatch').onclick=()=>{if(!state)return;state.phase='lobby';state.active=0;state.ends=null;state.paused=180;state.event='Комната готова';state.winnerId=null;state.winByScore=false;state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.penalties=0});secret=null;sendState();render()};
+$('newMatch').onclick=()=>{if(!state)return;state.phase='lobby';state.active=0;state.ends=null;state.paused=180;state.event='Комната готова';state.winnerId=null;state.winByScore=false;state.matchId=null;state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.penalties=0;p.wasLast=false});secret=null;sendState();render()};
 $('leave').onclick=()=>{disconnect();clearSession();location.href=location.pathname};
 setInterval(()=>{const r=remaining();$('timer').textContent=fmt(r);$('bar').style.width=(Math.min(180,r)/180*100)+'%';if(role==='host'&&state&&state.phase==='playing'&&r<=0)next(false)},250);
 $('chatSend').onclick=sendChat;
 $('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat()}});
+$('playerName').addEventListener('change',()=>{const n=clean($('playerName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
+$('hostName').addEventListener('change',()=>{const n=clean($('hostName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
 
 const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
 if(params.get('kicked')==='1')notice('Хост удалил тебя из комнаты.');
-initAvatarPicker();initPicker();initPenaltySettings();loadRegistry();setConn('Готово');
+initAvatarPicker();loadProfile();initPicker();initPenaltySettings();loadRegistry();setConn('Готово');
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 })();
 </script>

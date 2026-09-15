@@ -394,10 +394,10 @@ const DIFFICULTIES={
  insane:{key:'insane',name:'Безумие',turn:30,win:30,cursedChance:0.70,noRepeats:true,streakBonus:false,insaneSkipPenalty:true,icon:'🔴'}
 };
 const ROLE_LABELS={Carry:'Керри',Support:'Саппорт',Nuker:'Нюкер',Disabler:'Контроль',Jungler:'Лес',Durable:'Танк',Escape:'Эскейп',Pusher:'Пушер',Initiator:'Инициатор'};
-const RANKED_TEST_VERSION='1.9-ranked-test-0.1';
+const RANKED_TEST_VERSION='1.9-ranked-test-0.4';
 const RANKED_CLUE_RELEASE='0.4.1';
 
-const RANKED_SLANG_RELEASE='0.1';
+const RANKED_SLANG_RELEASE='0.3';
 const RANKED_DOTA_RU_SLANG=[
  ['STUN','ability','стан','CONTROL',82,4],['SLOW','ability','слоу','SLOW',70,4],['ROOT','ability','рут','CONTROL',82,4],['SILENCE','ability','сайленс','CONTROL',84,4],['DISARM','ability','дизарм','CONTROL',82,4],['TAUNT','ability','агр','CONTROL',78,4],['HEX','ability','хекс','CONTROL',92,4],['BREAK','ability','брейк','CONTROL',84,4],['LEASH','ability','лиш','CONTROL',82,4],['KNOCKBACK','ability','нокбэк','DISPLACEMENT',78,4],['KNOCKUP','ability','подброс','DISPLACEMENT',76,4],['PULL','ability','пулл','DISPLACEMENT',80,4],
  ['DISPEL','ability','диспел','MODIFIER',86,4],['DISPEL','ability','пурж','MODIFIER',88,4],['DEBUFF','ability','дебафф','MODIFIER',82,4],['BUFF','ability','бафф','MODIFIER',82,4],['HEAL','ability','хил','SURVIVAL',84,4],['BARRIER','ability','щит','SURVIVAL',78,4],['MAGIC_RESIST','ability','магрезист','SURVIVAL',82,4],['IMMUNITY','ability','иммун','SURVIVAL',86,4],['LIFESTEAL','ability','лайфстил','SURVIVAL',84,4],
@@ -409,14 +409,144 @@ const RANKED_DOTA_RU_SLANG=[
  ['CRIT','ability','крит','DAMAGE',88,4],['CLEAVE','ability','клив','ATTACK_MECHANIC',84,4],['SPLASH','ability','сплэш','ATTACK_MECHANIC',82,4],['BASH','ability','баш','ATTACK_MECHANIC',88,4],['PROC','ability','прок','ATTACK_MECHANIC',78,4],['PASSIVE','ability','пассивка','PASSIVE_PROPERTY',86,4],['AURA','ability','аура','CASTING',80,4],['PROJECTILE','ability','проджектайл','CASTING',76,3],
  ['DAMAGE_OVER_TIME','ability','дот','DAMAGE',82,4],['BURST','ability','берст','DAMAGE',76,3],['PHYSICAL_DAMAGE','ability','физика','DAMAGE',76,3],['ARMOR_REDUCTION','ability','минусброня','DEFENSE',86,4],['SPELL_AMP','ability','спелламп','DEFENSE',78,3],['STATUS_RESIST','ability','статусрезист','DEFENSE',78,3],['REFLECT_SPELL','ability','рефлект','INTERACTION',84,4],['SPELL_STEAL','ability','стил','INTERACTION',88,4],['SPELL_COPY','ability','копия','INTERACTION',80,4],['TRUE_SIGHT','ability','трусайт','DETECTION_INTERACTION',86,4],['DETECTION','ability','детект','DETECTION_INTERACTION',82,4],['GOLD','ability','голда','ECONOMY',74,3],['EXPERIENCE','ability','экспа','ECONOMY',74,3],
  ['HERO_CARRY','hero','керри','HERO_ROLE',84,3],['HERO_SUPPORT','hero','саппорт','HERO_ROLE',84,3],['HERO_NUKER','hero','нюкер','HERO_ROLE',80,3],['HERO_DISABLER','hero','дизейблер','HERO_ROLE',82,3],['HERO_INITIATOR','hero','инициатор','HERO_ROLE',82,3],['HERO_ESCAPE','hero','эскейп','HERO_ROLE',76,3],['HERO_PUSHER','hero','пушер','HERO_ROLE',80,3],['HERO_DURABLE','hero','танк','HERO_ROLE',72,2],['HERO_MELEE','hero','мили','HERO_ATTACK',80,3],['HERO_RANGED','hero','ренж','HERO_ATTACK',80,3],['HERO_STRENGTH','hero','силовик','HERO_ATTRIBUTE',78,3],['HERO_AGILITY','hero','агильщик','HERO_ATTRIBUTE',80,3],['HERO_INTELLIGENCE','hero','интовик','HERO_ATTRIBUTE',80,3],['HERO_UNIVERSAL','hero','универсал','HERO_ATTRIBUTE',80,3],['HERO_CORE','hero','кор','HERO_ARCHETYPE',80,3],['HERO_UTILITY','hero','утилити','HERO_ARCHETYPE',72,2],['HERO_FRONTLINER','hero','фронтлайн','HERO_ARCHETYPE',74,2],['HERO_BACKLINE','hero','бэклайн','HERO_ARCHETYPE',74,2],['HERO_MOBILE','hero','мобильный','HERO_ARCHETYPE',68,2],['HERO_SIEGE','hero','пуш','HERO_ARCHETYPE',76,3],['HERO_CONTROL','hero','контроль','HERO_ARCHETYPE',72,2],['HERO_CASTER','hero','кастер','HERO_ARCHETYPE',76,3],['HERO_BRAWLER','hero','файтер','HERO_ARCHETYPE',74,2],['HERO_FLEX','hero','флекс','HERO_ARCHETYPE',70,2]
+,
+ ['STUN','ability','станчик','CONTROL',80,4],['SILENCE','ability','сало','CONTROL',86,4],['ROOT','ability','корни','CONTROL',76,3],['DISARM','ability','без атак','CONTROL',74,3],['TAUNT','ability','агрится','CONTROL',72,3],
+ ['DISPEL','ability','снять бафф','MODIFIER',76,3],['HEAL','ability','хилка','SURVIVAL',88,4],['BARRIER','ability','сейв','SURVIVAL',74,3],['INVULNERABLE','ability','неуяз','SURVIVAL',86,4],['EVASION','ability','миссы','SURVIVAL',82,4],['ARMOR','ability','армор','DEFENSE',80,4],['ARMOR_REDUCTION','ability','минус армор','DEFENSE',88,4],['DAMAGE_REDUCTION','ability','резист','DEFENSE',74,3],
+ ['MANA_BURN','ability','жжет ману','MANA',78,3],['MANA_STEAL','ability','манадрейн','MANA',88,4],['MANA_REGEN','ability','манареген','MANA',80,4],['MANA_RESTORE','ability','заливает ману','MANA',76,3],
+ ['ATTACK_SPEED','ability','ас','SPEED',78,4],['MOVE_SPEED','ability','мс','SPEED',78,4],['CAST_RANGE','ability','кастренж','CASTING',78,4],['ATTACK_RANGE','ability','атакренж','ATTACK_MECHANIC',76,3],
+ ['AREA','ability','аое','TARGETING',90,4],['SINGLE_TARGET','ability','синглтаргет','TARGETING',78,4],['GLOBAL','ability','глобал','TARGETING',86,4],['CHANNEL','ability','ченнел','CASTING',88,4],['COOLDOWN','ability','кд','CASTING',88,4],['CAST_TIME','ability','каст','CASTING',72,3],
+ ['BLINK','ability','блинк','MOBILITY',92,4],['DASH','ability','рывок','MOBILITY',76,3],['TELEPORT','ability','тп','POSITIONING',88,4],['FORCED_MOVE','ability','форс','POSITIONING',72,3],
+ ['SUMMON','ability','саммоны','SUMMONS',84,4],['ILLUSION','ability','иллюзии','SUMMONS',86,4],['INVISIBILITY','ability','инвиз','VISION_STEALTH',94,4],['TRUE_SIGHT','ability','трусайт','DETECTION_INTERACTION',90,4],
+ ['WARD','ability','вардик','OBJECT_SUMMON',82,4],['TRAP','ability','трап','OBJECT_SUMMON',82,4],['MINE','ability','минка','OBJECT_SUMMON',78,3],
+ ['CRIT','ability','криты','DAMAGE',90,4],['CLEAVE','ability','клив','ATTACK_MECHANIC',90,4],['BASH','ability','баш','ATTACK_MECHANIC',92,4],['PROC','ability','прок','ATTACK_MECHANIC',82,4],['PASSIVE','ability','пассивка','PASSIVE_PROPERTY',92,4],['AURA','ability','аура','MODIFIER',84,4],
+ ['DAMAGE_OVER_TIME','ability','дот','DAMAGE',88,4],['BURST','ability','нюк','DAMAGE',80,3],['PHYSICAL_DAMAGE','ability','физика','DAMAGE',82,4],['MAGICAL_DAMAGE','ability','магия','DAMAGE',76,3],['PURE_DAMAGE','ability','пьюр','DAMAGE',84,4],['SPELL_AMP','ability','амп','DEFENSE',76,3],['REFLECT_SPELL','ability','рефлект','INTERACTION',88,4],['SPELL_STEAL','ability','стил','INTERACTION',92,4],
+ ['HERO_CARRY','hero','поз1','HERO_POSITION',78,3],['HERO_SUPPORT','hero','сап','HERO_ROLE',80,3],['HERO_INITIATOR','hero','иниш','HERO_ROLE',76,3],['HERO_DURABLE','hero','танчит','HERO_ROLE',70,2],['HERO_RANGED','hero','ренжевик','HERO_ATTACK',76,3],['HERO_MELEE','hero','милишник','HERO_ATTACK',76,3]
 ].map(([concept_id,scope,word,semantic_family,specificity,forced_level])=>({concept_id,scope,word,stem:'',semantic_family,specificity,forced_level,language:'ru',manual_decision:'SLANG',manual_merge_key:'',requires_review:0,dota_slang:true}));
 const RANKED_RU_HERO_ALIASES={
- 'Shadow Fiend':['сф','финд'], 'Nature\'s Prophet':['фурион','фура'], 'Queen of Pain':['квоп'], 'Outworld Destroyer':['од'], 'Keeper of the Light':['котл'], 'Wraith King':['вк'], 'Faceless Void':['войд','фв'], 'Spirit Breaker':['бара'], 'Anti-Mage':['ам'], 'Phantom Assassin':['па'], 'Phantom Lancer':['пл'], 'Templar Assassin':['та'], 'Dragon Knight':['дк'], 'Chaos Knight':['цк'], 'Crystal Maiden':['цм','кристалка'], 'Drow Ranger':['дровка','тракса'], 'Windranger':['вр'], 'Necrophos':['некр'], 'Lifestealer':['гуля','найкс'], 'Doom':['дум'], 'Pudge':['пудж'], 'Invoker':['инвокер'], 'Tidehunter':['тайд'], 'Earthshaker':['шейкер'], 'Storm Spirit':['шторм'], 'Ember Spirit':['эмбер'], 'Death Prophet':['дп'], 'Legion Commander':['лк'], 'Monkey King':['мк'], 'Bounty Hunter':['бх'], 'Ancient Apparition':['аа'], 'Dark Seer':['дс'], 'Shadow Shaman':['раста','шаман'], 'Sand King':['ск'], 'Clockwerk':['клок'], 'Timbersaw':['тимбер'], 'Bristleback':['бристл'], 'Bloodseeker':['бс'], 'Gyrocopter':['гиро'], 'Morphling':['морф'], 'Terrorblade':['тб'], 'Viper':['вайпер'], 'Rubick':['рубик'], 'Io':['висп'], 'Magnus':['магнус'], 'Enigma':['энигма'], 'Techies':['течис'], 'Sniper':['снайпер']
+ 'Shadow Fiend':['сф','финд'], 'Sven':['свен'], 'Nature\'s Prophet':['фурион','фура'], 'Queen of Pain':['квоп'], 'Outworld Destroyer':['од'], 'Keeper of the Light':['котл'], 'Wraith King':['вк'], 'Faceless Void':['войд','фв'], 'Spirit Breaker':['бара'], 'Anti-Mage':['ам'], 'Phantom Assassin':['па'], 'Phantom Lancer':['пл'], 'Templar Assassin':['та'], 'Dragon Knight':['дк'], 'Chaos Knight':['цк'], 'Crystal Maiden':['цм','кристалка'], 'Drow Ranger':['дровка','тракса'], 'Windranger':['вр'], 'Necrophos':['некр'], 'Lifestealer':['гуля','найкс'], 'Doom':['дум'], 'Pudge':['пудж'], 'Invoker':['инвокер'], 'Tidehunter':['тайд'], 'Earthshaker':['шейкер'], 'Storm Spirit':['шторм'], 'Ember Spirit':['эмбер'], 'Death Prophet':['дп'], 'Legion Commander':['лк'], 'Monkey King':['мк'], 'Bounty Hunter':['бх'], 'Ancient Apparition':['аа'], 'Dark Seer':['дс'], 'Shadow Shaman':['раста','шаман'], 'Sand King':['ск'], 'Clockwerk':['клок'], 'Timbersaw':['тимбер'], 'Bristleback':['бристл'], 'Bloodseeker':['бс'], 'Gyrocopter':['гиро'], 'Morphling':['морф'], 'Terrorblade':['тб'], 'Viper':['вайпер'], 'Rubick':['рубик'], 'Io':['висп'], 'Magnus':['магнус'], 'Enigma':['энигма'], 'Techies':['течис'], 'Sniper':['снайпер'], 'Lion':['лион'], 'Sven':['свен'], 'Shadow Fiend':['сф','финд'], 'Axe':['акс'], 'Juggernaut':['джагер','джаг'], 'Puck':['пак'], 'Dazzle':['даззл'], 'Undying':['андед','андаинг'], 'Lich':['лич'], 'Disruptor':['дизраптор'], 'Tusk':['таск'], 'Phoenix':['феникс'], 'Mars':['марс'], 'Medusa':['медуза'], 'Weaver':['вивер'], 'Slark':['сларк'], 'Riki':['рики'], 'Ursa':['урса'], 'Razor':['разор'], 'Jakiro':['джакиро'], 'Venomancer':['веник','веном'], 'Pugna':['пугна'], 'Alchemist':['алхимик','алхим'], 'Kunkka':['кунка']
 };
 const RANKED_RU_ABILITY_ALIASES={
- 'Hex':['хекс'], 'Requiem of Souls':['реквием'], 'Mana Drain':['мана дрейн','дрейн'], 'Finger of Death':['фингер'], 'Meat Hook':['хук'], 'Dismember':['дисмембер'], 'Black Hole':['блэкхол','бх'], 'Ravage':['равейдж'], 'Chronosphere':['хроно','хроносфера'], 'Omnislash':['омни','омнислэш'], 'Duel':['дуэль'], 'Laguna Blade':['лагуна'], 'Sun Strike':['санстрайк'], 'Echo Slam':['эхо','эхослэм'], 'Chain Frost':['чейнфрост'], 'Spell Steal':['стил'], 'Ball Lightning':['болл'], "Berserker's Call":['колл'], 'Hookshot':['хукшот'], 'Supernova':['яйцо','супернова'], 'Dream Coil':['койл'], 'Sonic Wave':['соник'], 'Sunder':['сандер'], 'Walrus Punch':['панч'], 'Death Ward':['дезвард'], 'Shallow Grave':['грейв'], 'Tombstone':['томба'], 'Arena of Blood':['арена'], 'Ghostship':['гостшип']
+ 'Hex':['хекс'], 'Requiem of Souls':['реквием'], 'Great Cleave':['клив','грейт клив','греат клив','грейт клиф'], 'Mana Drain':['мана дрейн','дрейн'], 'Finger of Death':['фингер'], 'Meat Hook':['хук'], 'Dismember':['дисмембер'], 'Black Hole':['блэкхол','бх'], 'Ravage':['равейдж'], 'Chronosphere':['хроно','хроносфера'], 'Omnislash':['омни','омнислэш'], 'Duel':['дуэль'], 'Laguna Blade':['лагуна'], 'Sun Strike':['санстрайк'], 'Echo Slam':['эхо','эхослэм'], 'Chain Frost':['чейнфрост'], 'Spell Steal':['стил'], 'Ball Lightning':['болл'], "Berserker's Call":['колл'], 'Hookshot':['хукшот'], 'Supernova':['яйцо','супернова'], 'Dream Coil':['койл'], 'Sonic Wave':['соник'], 'Sunder':['сандер'], 'Walrus Punch':['панч'], 'Death Ward':['дезвард'], 'Shallow Grave':['грейв'], 'Tombstone':['томба'], 'Arena of Blood':['арена'], 'Ghostship':['гостшип'], 'Storm Hammer':['молот','шторм хаммер'], "God's Strength":['годс','годс стрэнгс'], 'Warcry':['варкрай'], 'Shadowraze':['рейз','рейзы'], 'Necromastery':['некромастери'], 'Presence of the Dark Lord':['презенс'], 'Earth Spike':['спайк'], 'Counter Helix':['хеликс','крутилка'], 'Culling Blade':['куллинг'], 'Blade Fury':['блейд фьюри','крутилка'], 'Healing Ward':['хилинг вард','хил вард'], 'Time Walk':['тайм волк'], 'Static Storm':['статик шторм'], 'Ice Path':['айс пас','айс пат'], 'Macropyre':['макропайр'], 'Track':['трек'], 'Time Lapse':['тайм лапс'], 'Eclipse':['эклипс'], 'Stone Gaze':['стоун гейз'], 'Viper Strike':['вайпер страйк'], 'Poison Nova':['пойзон нова'], "Reaper's Scythe":['коса','рипер сайс'], 'Life Drain':['лайф дрейн'], 'Exorcism':['экзорцизм'], 'Reverse Polarity':['рп'], 'Chemical Rage':['кемикал рейдж'], 'Enrage':['энрейдж'], 'Eye of the Storm':['ай оф зе шторм']
 };
 const RANKED_RU_DIRECT_STOPWORDS=new Set(['оф','зе','энд','ин','ту','фор','а']);
+const RANKED_ABILITY_SPECIFIC_RU={
+ 'Great Cleave':[
+  ['А','атака',2,'ability','GC_ATTACK','ATTACK_MECHANIC'],
+  ['У','урон',2,'ability','GC_DAMAGE','DAMAGE'],
+  ['П','пассивка',3,'ability','GC_PASSIVE','PASSIVE_PROPERTY'],
+  ['Ф','физика',3,'ability','GC_PHYSICAL','DAMAGE'],
+  ['К','клив',4,'ability','GC_CLEAVE','ATTACK_MECHANIC'],
+  ['С','Свен',5,'hero','GC_SVEN','DIRECT_HERO_NAME'],
+  ['Г','грейт клив',5,'ability','GC_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Hex':[
+  ['К','контроль',2,'ability','HEX_CONTROL','CONTROL'],
+  ['П','превращение',3,'ability','HEX_TRANSFORM','CONTROL'],
+  ['Х','хекс',5,'ability','HEX_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Mana Drain':[
+  ['М','мана',2,'ability','MD_MANA','MANA'],
+  ['К','канал',3,'ability','MD_CHANNEL','CASTING'],
+  ['Д','дрейн',4,'ability','MD_DRAIN','INTERACTION'],
+  ['М','мана дрейн',5,'ability','MD_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Requiem of Souls':[
+  ['Д','души',2,'ability','REQ_SOULS','ELEMENTAL_THEME'],
+  ['С','СФ',4,'hero','REQ_SF','DIRECT_HERO_NAME'],
+  ['Ф','Финд',4,'hero','REQ_FIEND','DIRECT_HERO_NAME'],
+  ['Р','реквием',5,'ability','REQ_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Storm Hammer':[
+  ['М','молот',4,'ability','SVEN_HAMMER','ATTACK_MECHANIC'],['С','стан',4,'ability','SVEN_STUN','CONTROL'],['С','Свен',4,'hero','SVEN_HERO','DIRECT_HERO_NAME'],['Ш','шторм хаммер',5,'ability','SVEN_HAMMER_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ "God's Strength":[
+  ['С','сила',3,'ability','SVEN_GODS_POWER','MODIFIER'],['У','ульт',4,'ability','SVEN_GODS_ULT','DOTA_ROLE'],['С','Свен',4,'hero','SVEN_GODS_HERO','DIRECT_HERO_NAME'],['Г','годс',5,'ability','SVEN_GODS_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Warcry':[
+  ['Б','бафф',3,'ability','SVEN_WAR_BUFF','MODIFIER'],['Б','броня',3,'ability','SVEN_WAR_ARMOR','DEFENSE'],['М','мувспид',4,'ability','SVEN_WAR_MS','SPEED'],['В','варкрай',5,'ability','SVEN_WAR_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Shadowraze':[
+  ['У','урон',2,'ability','SF_RAZE_DAMAGE','DAMAGE'],['А','аое',3,'ability','SF_RAZE_AOE','TARGETING'],['С','СФ',4,'hero','SF_RAZE_HERO','DIRECT_HERO_NAME'],['Р','рейз',5,'ability','SF_RAZE_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Necromastery':[
+  ['П','пассивка',3,'ability','SF_NECRO_PASSIVE','PASSIVE_PROPERTY'],['Д','души',4,'ability','SF_NECRO_SOULS','ELEMENTAL_THEME'],['С','СФ',4,'hero','SF_NECRO_HERO','DIRECT_HERO_NAME'],['Н','некромастери',5,'ability','SF_NECRO_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Presence of the Dark Lord':[
+  ['А','аура',3,'ability','SF_PRES_AURA','MODIFIER'],['Б','броня',3,'ability','SF_PRES_ARMOR','DEFENSE'],['С','СФ',4,'hero','SF_PRES_HERO','DIRECT_HERO_NAME'],['П','презенс',5,'ability','SF_PRES_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Earth Spike':[
+  ['К','контроль',2,'ability','LION_SPIKE_CONTROL','CONTROL'],['С','стан',4,'ability','LION_SPIKE_STUN','CONTROL'],['Л','Лион',4,'hero','LION_SPIKE_HERO','DIRECT_HERO_NAME'],['С','спайк',5,'ability','LION_SPIKE_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Finger of Death':[
+  ['Н','нюк',3,'ability','LION_FINGER_NUKE','DAMAGE'],['У','ульт',4,'ability','LION_FINGER_ULT','DOTA_ROLE'],['Л','Лион',4,'hero','LION_FINGER_HERO','DIRECT_HERO_NAME'],['Ф','фингер',5,'ability','LION_FINGER_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Meat Hook':[
+  ['П','пулл',3,'ability','PUDGE_HOOK_PULL','DISPLACEMENT'],['К','крюк',4,'ability','PUDGE_HOOK_HOOK','ATTACK_MECHANIC'],['П','Пудж',4,'hero','PUDGE_HOOK_HERO','DIRECT_HERO_NAME'],['Х','хук',5,'ability','PUDGE_HOOK_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Dismember':[
+  ['К','канал',3,'ability','PUDGE_DIS_CHANNEL','CASTING'],['С','стан',4,'ability','PUDGE_DIS_STUN','CONTROL'],['П','Пудж',4,'hero','PUDGE_DIS_HERO','DIRECT_HERO_NAME'],['Д','дисмембер',5,'ability','PUDGE_DIS_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ "Berserker's Call":[
+  ['К','контроль',2,'ability','AXE_CALL_CONTROL','CONTROL'],['А','агр',4,'ability','AXE_CALL_AGR','CONTROL'],['А','Акс',4,'hero','AXE_CALL_HERO','DIRECT_HERO_NAME'],['К','колл',5,'ability','AXE_CALL_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Counter Helix':[
+  ['П','пассивка',3,'ability','AXE_HELIX_PASSIVE','PASSIVE_PROPERTY'],['К','крутилка',4,'ability','AXE_HELIX_SPIN','ATTACK_MECHANIC'],['А','Акс',4,'hero','AXE_HELIX_HERO','DIRECT_HERO_NAME'],['Х','хеликс',5,'ability','AXE_HELIX_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Culling Blade':[
+  ['Д','добивание',3,'ability','AXE_CULL_EXEC','DAMAGE'],['У','ульт',4,'ability','AXE_CULL_ULT','DOTA_ROLE'],['А','Акс',4,'hero','AXE_CULL_HERO','DIRECT_HERO_NAME'],['К','куллинг',5,'ability','AXE_CULL_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Blade Fury':[
+  ['М','магия',2,'ability','JUG_FURY_MAGIC','DAMAGE'],['К','крутилка',4,'ability','JUG_FURY_SPIN','ATTACK_MECHANIC'],['Д','Джагер',4,'hero','JUG_FURY_HERO','DIRECT_HERO_NAME'],['Б','блейд фьюри',5,'ability','JUG_FURY_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Healing Ward':[
+  ['Х','хилка',3,'ability','JUG_WARD_HEAL','SURVIVAL'],['В','вард',4,'ability','JUG_WARD_WARD','OBJECT_SUMMON'],['Д','Джагер',4,'hero','JUG_WARD_HERO','DIRECT_HERO_NAME'],['Х','хил вард',5,'ability','JUG_WARD_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Omnislash':[
+  ['У','ульт',4,'ability','JUG_OMNI_ULT','DOTA_ROLE'],['Д','Джагер',4,'hero','JUG_OMNI_HERO','DIRECT_HERO_NAME'],['О','омни',5,'ability','JUG_OMNI_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Chronosphere':[
+  ['К','купол',4,'ability','VOID_CHRONO_DOME','CONTROL'],['У','ульт',4,'ability','VOID_CHRONO_ULT','DOTA_ROLE'],['В','Войд',4,'hero','VOID_CHRONO_HERO','DIRECT_HERO_NAME'],['Х','хроно',5,'ability','VOID_CHRONO_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Ravage':[
+  ['А','аое',3,'ability','TIDE_RAV_AOE','TARGETING'],['С','стан',4,'ability','TIDE_RAV_STUN','CONTROL'],['У','ульт',4,'ability','TIDE_RAV_ULT','DOTA_ROLE'],['Р','равейдж',5,'ability','TIDE_RAV_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Black Hole':[
+  ['А','аое',3,'ability','ENIGMA_BH_AOE','TARGETING'],['Ч','ченнел',4,'ability','ENIGMA_BH_CHANNEL','CASTING'],['У','ульт',4,'ability','ENIGMA_BH_ULT','DOTA_ROLE'],['Б','бх',5,'ability','ENIGMA_BH_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Duel':[
+  ['У','ульт',4,'ability','LC_DUEL_ULT','DOTA_ROLE'],['Л','ЛК',4,'hero','LC_DUEL_HERO','DIRECT_HERO_NAME'],['Д','дуэль',5,'ability','LC_DUEL_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Arena of Blood':[
+  ['С','стенка',3,'ability','MARS_ARENA_WALL','CONTROL'],['У','ульт',4,'ability','MARS_ARENA_ULT','DOTA_ROLE'],['М','Марс',4,'hero','MARS_ARENA_HERO','DIRECT_HERO_NAME'],['А','арена',5,'ability','MARS_ARENA_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Laguna Blade':[
+  ['Н','нюк',3,'ability','LINA_LAGUNA_NUKE','DAMAGE'],['У','ульт',4,'ability','LINA_LAGUNA_ULT','DOTA_ROLE'],['Л','Лина',4,'hero','LINA_LAGUNA_HERO','DIRECT_HERO_NAME'],['Л','лагуна',5,'ability','LINA_LAGUNA_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Sonic Wave':[
+  ['Н','нюк',3,'ability','QOP_SONIC_NUKE','DAMAGE'],['У','ульт',4,'ability','QOP_SONIC_ULT','DOTA_ROLE'],['К','Квопа',4,'hero','QOP_SONIC_HERO','DIRECT_HERO_NAME'],['С','соник',5,'ability','QOP_SONIC_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Sunder':[
+  ['Х','хп',3,'ability','TB_SUNDER_HP','SURVIVAL'],['О','обмен',4,'ability','TB_SUNDER_SWAP','INTERACTION'],['Т','ТБ',4,'hero','TB_SUNDER_HERO','DIRECT_HERO_NAME'],['С','сандер',5,'ability','TB_SUNDER_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Death Ward':[
+  ['В','вард',4,'ability','WD_WARD_WARD','OBJECT_SUMMON'],['У','ульт',4,'ability','WD_WARD_ULT','DOTA_ROLE'],['Д','дезвард',5,'ability','WD_WARD_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Shallow Grave':[
+  ['С','сейв',4,'ability','DAZZLE_GRAVE_SAVE','SURVIVAL'],['Д','Даззл',4,'hero','DAZZLE_GRAVE_HERO','DIRECT_HERO_NAME'],['Г','грейв',5,'ability','DAZZLE_GRAVE_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Tombstone':[
+  ['З','зомби',4,'ability','UNDY_TOMB_ZOMBIE','SUMMONS'],['А','Андаинг',4,'hero','UNDY_TOMB_HERO','DIRECT_HERO_NAME'],['Т','томба',5,'ability','UNDY_TOMB_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Spell Steal':[
+  ['К','кража',3,'ability','RUBICK_STEAL_THEFT','INTERACTION'],['С','стил',5,'ability','RUBICK_STEAL_DIRECT','DIRECT_ABILITY_NAME'],['Р','Рубик',4,'hero','RUBICK_STEAL_HERO','DIRECT_HERO_NAME']
+ ],
+ 'Ball Lightning':[
+  ['М','мобильность',2,'ability','STORM_BALL_MOB','MOBILITY'],['М','мана',3,'ability','STORM_BALL_MANA','MANA'],['Ш','Шторм',4,'hero','STORM_BALL_HERO','DIRECT_HERO_NAME'],['Б','болл',5,'ability','STORM_BALL_DIRECT','DIRECT_ABILITY_NAME']
+ ],
+ 'Supernova':[
+  ['У','ульт',4,'ability','PHX_NOVA_ULT','DOTA_ROLE'],['Я','яйцо',5,'ability','PHX_NOVA_EGG','DIRECT_ABILITY_NAME'],['Ф','Феникс',4,'hero','PHX_NOVA_HERO','DIRECT_HERO_NAME']
+ ]
+};
 
 const RANKED_LEVEL_SECONDS=20;
 const RANKED_REVEAL_SECONDS=5;
@@ -1794,26 +1924,40 @@ function rankedRuDirectValues(a,scope){
  const name=scope==='hero'?a.hero:a.name,trans=rankedTranslitRu(name),vals=[trans],aliases=(scope==='hero'?RANKED_RU_HERO_ALIASES:RANKED_RU_ABILITY_ALIASES)[name]||[];vals.push(...aliases);rankedNameTokens(trans).forEach(x=>{if(!RANKED_RU_DIRECT_STOPWORDS.has(x)&&x.length>=2)vals.push(x)});return vals
 }
 function rankedDirectRows(a,lang,scope){
- const name=scope==='hero'?a.hero:a.name,allowed=new Set(RANKED_ALPHABETS[lang]||[]),rows=[],seen=new Set();const values=lang==='ru'?rankedRuDirectValues(a,scope):[name,...rankedNameTokens(name)];values.forEach((w,i)=>{w=String(w||'').trim();if(!w)return;const letter=rankedWordLetter(w,lang),n=rankedNorm(w);if(!allowed.has(letter)||seen.has(n))return;seen.add(n);rows.push({word:w,stem:n.replace(/ /g,''),concept_id:(scope==='hero'?'HERO':'ABILITY')+(i===0?'_EXACT_NAME':'_NAME_TOKEN'),semantic_family:scope==='hero'?'DIRECT_HERO_NAME':'DIRECT_ABILITY_NAME',scope,specificity:100,confidence:1,level:5,directness:i===0?'EXACT_NAME':'NAME_TOKEN',manual_merge_key:'',dota_slang:lang==='ru'})});return rows
+ const name=scope==='hero'?a.hero:a.name,allowed=new Set(RANKED_ALPHABETS[lang]||[]),rows=[],seen=new Set(),family=scope==='hero'?'DIRECT_HERO_NAME':'DIRECT_ABILITY_NAME',mergeKey='DIRECT|'+scope+'|'+rankedNorm(name);let entries=[];
+ if(lang==='ru'){
+   const trans=rankedTranslitRu(name),aliases=((scope==='hero'?RANKED_RU_HERO_ALIASES:RANKED_RU_ABILITY_ALIASES)[name]||[]);
+   entries.push({word:trans,level:5,directness:'EXACT_NAME',slang:false});
+   aliases.forEach(w=>entries.push({word:w,level:scope==='hero'?4:5,directness:'NAME_TOKEN',slang:true}));
+   rankedNameTokens(trans).forEach(w=>{if(!RANKED_RU_DIRECT_STOPWORDS.has(w)&&w.length>=2)entries.push({word:w,level:5,directness:'NAME_TOKEN',slang:true})});
+ }else entries=[{word:name,level:5,directness:'EXACT_NAME',slang:false},...rankedNameTokens(name).map(w=>({word:w,level:5,directness:'NAME_TOKEN',slang:false}))];
+ entries.forEach(e=>{let w=String(e.word||'').trim();if(!w)return;const letter=rankedWordLetter(w,lang),n=rankedNorm(w);if(!allowed.has(letter)||seen.has(n))return;seen.add(n);rows.push({word:w,stem:n.replace(/ /g,''),concept_id:(scope==='hero'?'HERO':'ABILITY')+'_DIRECT_NAME',semantic_family:family,scope,specificity:e.level===5?100:88,confidence:1,level:e.level,directness:e.directness,manual_merge_key:mergeKey,dota_slang:lang==='ru'&&!!e.slang})});return rows
 }
 function rankedHeroPositionRows(a,lang){
  if(lang!=='ru')return[];const roles=new Set(a&&a.roles||[]),rows=[],push=(word,id,level,conf=.76)=>rows.push({word,stem:rankedNorm(word).replace(/ /g,''),concept_id:id,semantic_family:'HERO_POSITION',scope:'hero',specificity:58,confidence:conf,level,directness:'INDIRECT',manual_merge_key:'',dota_slang:true});if(roles.has('Carry'))push('первая','HERO_POSITION_1',3,.80);if(roles.has('Initiator')&&roles.has('Durable')&&!roles.has('Carry'))push('тройка','HERO_POSITION_3',3,.82);if(roles.has('Support')&&(roles.has('Disabler')||roles.has('Initiator')))push('четверка','HERO_POSITION_4',3,.72);if(roles.has('Support')&&!roles.has('Carry')&&!roles.has('Initiator'))push('пятерка','HERO_POSITION_5',3,.70);return rows
 }
+function rankedAbilitySpecificRows(a,lang,scope){
+ if(lang!=='ru'||!a||!a.name)return[];const pack=RANKED_ABILITY_SPECIFIC_RU[a.name]||[],allowed=new Set(RANKED_ALPHABETS.ru||[]);return pack.filter(x=>x[3]===scope&&allowed.has(x[0])).map(x=>{const directFamily=x[5]==='DIRECT_HERO_NAME'||x[5]==='DIRECT_ABILITY_NAME',mergeKey=directFamily?('DIRECT|'+x[3]+'|'+rankedNorm(x[3]==='hero'?a.hero:a.name)):'';return{word:x[1],stem:rankedNorm(x[1]).replace(/ /g,''),concept_id:'ABILITY_SPECIFIC_'+x[4],semantic_family:x[5],scope:x[3],specificity:x[2]>=5?100:x[2]===4?88:x[2]===3?68:38,confidence:1,level:x[2],directness:directFamily?(x[3]==='hero'?'EXACT_NAME':'NAME_TOKEN'):'INDIRECT',manual_merge_key:mergeKey,requires_review:0,dota_slang:true,ability_specific:true}})
+}
 function rankedEntityRows(a,lang,scope){
  const scores=scope==='hero'?rankedHeroConcepts(a):rankedAbilityConcepts(a),allowed=new Set(RANKED_ALPHABETS[lang]||[]),best=new Map(),display=scope==='hero'?a.hero:a.name,displayShown=lang==='ru'?rankedTranslitRu(display):display,nameNorm=rankedNorm(displayShown),nameToks=new Set(rankedNameTokens(displayShown));
- scores.forEach((conf,cid)=>{const rows=RANKED_LEX_INDEX.get(lang+'|'+scope+'|'+cid)||[];rows.forEach(src=>{const word=String(src.word||'').trim();if(!word)return;const letter=rankedWordLetter(word,lang);if(!allowed.has(letter))return;const nw=rankedNorm(word);let forced=Number(src.forced_level)||0,directness='INDIRECT';if(nw===nameNorm){forced=5;directness='EXACT_NAME'}else if(nameToks.has(nw)){forced=5;directness='NAME_TOKEN'}const row={word,stem:src.stem||nw.replace(/ /g,''),concept_id:cid,semantic_family:src.semantic_family||RANKED_FAMILY_BY_CONCEPT[cid]||cid,scope,specificity:Number(src.specificity||RANKED_CONCEPT_BY_ID.get(cid)?.specificity||50),confidence:conf,level:rankedScoreToLevel(src.specificity,conf,forced),directness,manual_merge_key:src.manual_merge_key||'',requires_review:Number(src.requires_review||0),dota_slang:!!src.dota_slang};const key=letter+'|'+row.stem;const prev=best.get(key);if(!prev||row.confidence>prev.confidence||(row.confidence===prev.confidence&&row.specificity>prev.specificity))best.set(key,row)})});return [...best.values(),...rankedDirectRows(a,lang,scope),...(scope==='hero'?rankedHeroPositionRows(a,lang):[])]
+ scores.forEach((conf,cid)=>{const rows=RANKED_LEX_INDEX.get(lang+'|'+scope+'|'+cid)||[];rows.forEach(src=>{const word=String(src.word||'').trim();if(!word)return;const letter=rankedWordLetter(word,lang);if(!allowed.has(letter))return;const nw=rankedNorm(word);let forced=Number(src.forced_level)||0,directness='INDIRECT';if(nw===nameNorm){forced=5;directness='EXACT_NAME'}else if(nameToks.has(nw)){forced=5;directness='NAME_TOKEN'}const row={word,stem:src.stem||nw.replace(/ /g,''),concept_id:cid,semantic_family:src.semantic_family||RANKED_FAMILY_BY_CONCEPT[cid]||cid,scope,specificity:Number(src.specificity||RANKED_CONCEPT_BY_ID.get(cid)?.specificity||50),confidence:conf,level:rankedScoreToLevel(src.specificity,conf,forced),directness,manual_merge_key:src.manual_merge_key||'',requires_review:Number(src.requires_review||0),dota_slang:!!src.dota_slang};const key=letter+'|'+row.stem;const prev=best.get(key);if(!prev||row.confidence>prev.confidence||(row.confidence===prev.confidence&&row.specificity>prev.specificity))best.set(key,row)})});return [...best.values(),...rankedAbilitySpecificRows(a,lang,scope),...rankedDirectRows(a,lang,scope),...(scope==='hero'?rankedHeroPositionRows(a,lang):[])]
 }
 function rankedLoadHistory(){try{const x=JSON.parse(localStorage.getItem(RANKED_HISTORY_KEY)||'[]');return Array.isArray(x)?x.slice(-180):[]}catch(e){return []}}
 function rankedSaveHistoryEntry(entry){try{const h=rankedLoadHistory();h.push(entry);localStorage.setItem(RANKED_HISTORY_KEY,JSON.stringify(h.slice(-180)))}catch(e){}}
 function rankedFreshnessPenalty(r,history){let p=0;for(const e of history.slice(-60)){(e.words||[]).includes(rankedNorm(r.word))&&(p+=5);(e.stems||[]).includes(r.stem)&&(p+=4);(e.concepts||[]).includes(r.concept_id)&&(p+=3);(e.families||[]).includes(r.semantic_family)&&(p+=1)}return p}
+function rankedRouteEaseScore(route){
+ let score=0,strong=0;for(const r of route){if(r.dota_slang)score+=r.level>=4?2.6:1.1;if(r.ability_specific)score+=1.8;if(r.directness&&r.directness!=='INDIRECT')score+=r.level>=4?3.2:1.5;if(r.level>=4&&(r.dota_slang||r.ability_specific||(r.directness&&r.directness!=='INDIRECT')))strong++}
+ if(strong===0)score-=10;else score+=strong*1.6;return score
+}
 function rankedPickRoute(rows,history){
- const by={1:[],2:[],3:[],4:[],5:[]};rows.forEach(r=>{if(r.level>=1&&r.level<=5)by[r.level].push(r)});const rules=RANKED_POLICY.route_rules||{};if([1,2,3,4,5].some(l=>!by[l].length))return rankedFallbackRoute(rows,history);let best=null;for(let attempt=0;attempt<260;attempt++){const usedC=new Set(),usedM=new Set(),usedS=new Set(),fam={},route=[];let h=0,a=0,ok=true;for(let l=1;l<=5;l++){const remain=5-l;let cand=shuffle(by[l]).filter(r=>!usedC.has(r.concept_id)&&!usedS.has(r.stem||rankedNorm(r.word))&&(!r.manual_merge_key||!usedM.has(r.manual_merge_key))&&(fam[r.semantic_family]||0)<2);cand=cand.filter(r=>{const hero=r.scope==='hero';if(hero&&h>=3)return false;if(hero&&a+remain<2)return false;return true});if(!cand.length){ok=false;break}cand.sort((x,y)=>((y.dota_slang?1:0)-(x.dota_slang?1:0))||(rankedFreshnessPenalty(x,history)-rankedFreshnessPenalty(y,history))||((y.confidence||0)-(x.confidence||0))||(Math.random()-.5));const top=cand.slice(0,Math.min(5,cand.length)),r=top[Math.floor(Math.random()*top.length)];route.push({...r,level:l});usedC.add(r.concept_id);usedS.add(r.stem||rankedNorm(r.word));if(r.manual_merge_key)usedM.add(r.manual_merge_key);fam[r.semantic_family]=(fam[r.semantic_family]||0)+1;if(r.scope==='hero')h++;else a++}if(!ok||a<2||h>3)continue;const score=route.reduce((s,r)=>s+(r.confidence||.5)*2+(r.dota_slang?1.8:0)-rankedFreshnessPenalty(r,history),0)+Math.random()*.1;if(!best||score>best.score)best={route,score,mode:'strict'}}return best||rankedFallbackRoute(rows,history)
+ const by={1:[],2:[],3:[],4:[],5:[]};rows.forEach(r=>{if(r.level>=1&&r.level<=5)by[r.level].push(r)});const rules=RANKED_POLICY.route_rules||{};if([1,2,3,4,5].some(l=>!by[l].length))return rankedFallbackRoute(rows,history);let best=null;for(let attempt=0;attempt<260;attempt++){const usedC=new Set(),usedM=new Set(),usedS=new Set(),fam={},route=[];let h=0,a=0,ok=true;for(let l=1;l<=5;l++){const remain=5-l;let cand=shuffle(by[l]).filter(r=>!usedC.has(r.concept_id)&&!usedS.has(r.stem||rankedNorm(r.word))&&(!r.manual_merge_key||!usedM.has(r.manual_merge_key))&&(fam[r.semantic_family]||0)<2);cand=cand.filter(r=>{const hero=r.scope==='hero';if(hero&&h>=3)return false;if(hero&&a+remain<2)return false;return true});if(!cand.length){ok=false;break}cand.sort((x,y)=>((y.dota_slang?1:0)-(x.dota_slang?1:0))||(rankedFreshnessPenalty(x,history)-rankedFreshnessPenalty(y,history))||((y.confidence||0)-(x.confidence||0))||(Math.random()-.5));const top=cand.slice(0,Math.min(5,cand.length)),r=top[Math.floor(Math.random()*top.length)];route.push({...r,level:l});usedC.add(r.concept_id);usedS.add(r.stem||rankedNorm(r.word));if(r.manual_merge_key)usedM.add(r.manual_merge_key);fam[r.semantic_family]=(fam[r.semantic_family]||0)+1;if(r.scope==='hero')h++;else a++}if(!ok||a<2||h>3)continue;const score=route.reduce((s,r)=>s+(r.confidence||.5)*2+(r.dota_slang?2.4:0)+(r.ability_specific?1.5:0)-rankedFreshnessPenalty(r,history),0)+rankedRouteEaseScore(route)+Math.random()*.1;if(!best||score>best.score)best={route,score,mode:'strict'}}return best||rankedFallbackRoute(rows,history)
 }
 function rankedFallbackRoute(rows,history){
  let pool=rows.filter(r=>r.directness==='INDIRECT'||r.level===5);if(pool.length<5)return null;pool=shuffle(pool).sort((x,y)=>((y.dota_slang?1:0)-(x.dota_slang?1:0))||((x.specificity+(1-x.confidence)*12)-(y.specificity+(1-y.confidence)*12))||(rankedFreshnessPenalty(x,history)-rankedFreshnessPenalty(y,history)));const picked=[],concepts=new Set(),merges=new Set(),stems=new Set(),fam={};let hero=0,ability=0;for(const r of pool){const stem=r.stem||rankedNorm(r.word);if(concepts.has(r.concept_id)||stems.has(stem)||(r.manual_merge_key&&merges.has(r.manual_merge_key))||(fam[r.semantic_family]||0)>=2)continue;const slotsAfter=5-(picked.length+1);if(r.scope==='hero'&&(hero>=3||ability+slotsAfter<2))continue;picked.push(r);concepts.add(r.concept_id);stems.add(stem);if(r.manual_merge_key)merges.add(r.manual_merge_key);fam[r.semantic_family]=(fam[r.semantic_family]||0)+1;if(r.scope==='hero')hero++;else ability++;if(picked.length===5)break}if(picked.length<5||ability<2||hero>3)return null;picked.sort((x,y)=>(x.specificity+(1-x.confidence)*12)-(y.specificity+(1-y.confidence)*12));picked.forEach((r,i)=>r.level=i+1);return{route:picked,score:-25,mode:'fallback'}
 }
 function rankedCompileRound(){
- const lang=gameLanguage(),history=rankedLoadHistory(),recentAbilities=new Set(history.slice(-18).map(x=>x.abilityId)),order=shuffle(registry.map((_,i)=>i)).sort((i,j)=>(recentAbilities.has(registry[i].id)?1:0)-(recentAbilities.has(registry[j].id)?1:0));for(const idx of order.slice(0,Math.min(order.length,140))){const ability=registry[idx],rows=[...rankedEntityRows(ability,lang,'ability'),...rankedEntityRows(ability,lang,'hero')],letters=[...new Set(rows.map(r=>rankedWordLetter(r.word,lang)))].filter(x=>(RANKED_ALPHABETS[lang]||[]).includes(x));const routes=[];for(const letter of shuffle(letters)){const lr=rows.filter(r=>rankedWordLetter(r.word,lang)===letter);if(new Set(lr.map(r=>r.concept_id)).size<5)continue;const rr=rankedPickRoute(lr,history);if(rr)routes.push({letter,...rr});if(routes.length>=8)break}if(routes.length<3)continue;let chosen=null;for(let tries=0;tries<40;tries++){const sample=shuffle(routes).slice(0,3);const concepts=sample.flatMap(x=>x.route.map(r=>r.concept_id)),dup=concepts.length-new Set(concepts).size,score=sample.reduce((s,x)=>s+x.score,0)-dup*8+Math.random();if(!chosen||score>chosen.score)chosen={score,lines:sample}}if(chosen)return{ability,language:lang,lines:chosen.lines,routeMode:chosen.lines.some(x=>x.mode==='fallback')?'fallback':'strict'}}return null
+ const lang=gameLanguage(),history=rankedLoadHistory(),recentAbilities=new Set(history.slice(-18).map(x=>x.abilityId)),order=shuffle(registry.map((_,i)=>i)).sort((i,j)=>(recentAbilities.has(registry[i].id)?1:0)-(recentAbilities.has(registry[j].id)?1:0));for(const idx of order.slice(0,Math.min(order.length,140))){const ability=registry[idx],rows=[...rankedEntityRows(ability,lang,'ability'),...rankedEntityRows(ability,lang,'hero')],letters=[...new Set(rows.map(r=>rankedWordLetter(r.word,lang)))].filter(x=>(RANKED_ALPHABETS[lang]||[]).includes(x));const routes=[];for(const letter of shuffle(letters)){const lr=rows.filter(r=>rankedWordLetter(r.word,lang)===letter);if(new Set(lr.map(r=>r.concept_id)).size<5)continue;const rr=rankedPickRoute(lr,history);if(rr)routes.push({letter,...rr});if(routes.length>=8)break}if(routes.length<3)continue;let chosen=null;for(let tries=0;tries<40;tries++){const sample=shuffle(routes).slice(0,3);const concepts=sample.flatMap(x=>x.route.map(r=>r.concept_id)),dup=concepts.length-new Set(concepts).size,ease=sample.reduce((s,x)=>s+rankedRouteEaseScore(x.route),0),score=sample.reduce((s,x)=>s+x.score,0)+ease*1.4-dup*8+Math.random();if(!chosen||score>chosen.score)chosen={score,lines:sample}}if(chosen)return{ability,language:lang,lines:chosen.lines,routeMode:chosen.lines.some(x=>x.mode==='fallback')?'fallback':'strict'}}return null
 }
 function rankedPublicClues(level){return (rankedSecret&&rankedSecret.lines||[]).map(x=>({letter:x.letter,word:(x.route.find(r=>r.level===level)||{}).word||'—'}))}
 function rankedResetPlayerRound(p){p.rankedAttempts=0;p.rankedAttemptedLevel=0;p.rankedSolved=false;p.rankedHeroSolved=false;p.rankedSolveLevel=0;p.rankedSolveAttempts=0;p.rankedSolveTimeMs=0}

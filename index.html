@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://cdn.jsdelivr.net wss://ibbxoxxhtyuoljnhneab.supabase.co; img-src 'self' data: blob: https://cdn.cloudflare.steamstatic.com; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; media-src 'none'; worker-src 'none'">
 <title>Dota 2 Spell Letter Hunt</title>
 <style>
 :root{color-scheme:dark;font-family:Inter,Arial,sans-serif;background:#0b1118;color:#f7f8fb}
 *{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(circle at 15% 0%,rgba(62,91,126,.28),transparent 35%),radial-gradient(circle at 85% 20%,rgba(244,180,26,.1),transparent 30%),#0b1118}
-button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.soundNotice{margin-top:13px;padding:10px 12px;border:1px solid #3a4b61;border-radius:12px;background:#111923;color:#aeb9c8;font-size:13px;line-height:1.35}.roomActions{display:flex;gap:8px;flex-wrap:wrap}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus,select:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}.difficultyPreview,.difficultyRoomInfo{margin-top:10px;padding:11px 12px;border:1px solid #35445a;border-radius:12px;background:#111923;color:#cbd5e2;line-height:1.35}.difficultyPreview b,.difficultyRoomInfo b{color:#f4b41a}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.roundBanner{width:fit-content;margin:0 auto 10px;padding:9px 15px;border-radius:999px;font-weight:1000;letter-spacing:.06em;border:1px solid #46566e}.roundBanner.cursed{color:#f0c3ff;border-color:#8246a0;background:rgba(88,35,111,.28);box-shadow:0 0 28px rgba(152,72,190,.14)}.roundBanner.lucky{color:#ffe79a;border-color:#9c7b1f;background:rgba(117,91,22,.28);box-shadow:0 0 28px rgba(244,180,26,.12)}.secretRoundInfo{margin:12px 0 2px;padding:10px 12px;border-radius:12px;font-weight:900}.secretRoundInfo.cursed{border:1px solid #8246a0;background:rgba(88,35,111,.23);color:#f0c3ff}.secretRoundInfo.lucky{border:1px solid #9c7b1f;background:rgba(117,91,22,.23);color:#ffe79a}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.hostGear{width:42px;height:42px;border:1px solid #4a596f;border-radius:11px;background:#202b39;color:#fff;cursor:pointer;font-size:19px}.hostGear:hover{border-color:#f4b41a;background:#2a3646}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.profilePanel{border-color:#39495f}.profileHead{display:flex;gap:14px;align-items:center}.profileMain{flex:1;min-width:0}.profileName{font-size:24px;font-weight:1000;overflow:hidden;text-overflow:ellipsis}.profileAvatar,.profileFallback{width:68px;height:68px;flex:0 0 68px;border-radius:50%;object-fit:cover;border:3px solid #f4b41a;background:#18212d}.profileFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.profileStats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.profileStat{padding:10px 8px;border:1px solid #2d394b;border-radius:12px;background:#111923;text-align:center}.profileStat b{display:block;font-size:20px;color:#f4b41a}.profileStat small{color:#8f9daf}.profileAchievementsTitle{margin:16px 0 8px;font-weight:900}.achievementGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.achievement{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #2d394b;border-radius:12px;background:#111923}.achievement.locked{opacity:.4;filter:grayscale(1)}.achievementIcon{font-size:24px;line-height:1}.achievementText b{display:block}.achievementText small{display:block;color:#8f9daf;margin-top:2px;line-height:1.25}.achievement.new{border-color:#f4b41a;box-shadow:0 0 0 2px rgba(244,180,26,.12)}@media(max-width:700px){.profileHead{align-items:flex-start}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr}.profileAvatar,.profileFallback{width:58px;height:58px;flex-basis:58px}}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.libraryPanel{border-color:#39495f}.libraryProgress{height:10px;border-radius:999px;background:#273243;overflow:hidden;margin:14px 0}.libraryProgressBar{height:100%;width:0;background:#f4b41a;transition:width .25s}.libraryFilters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.libraryGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px;max-height:620px;overflow:auto;padding-right:3px}.abilityCard{border:1px solid #35445a;border-radius:14px;background:#111923;padding:10px;min-width:0}.abilityCard.locked{opacity:.42;filter:grayscale(1)}.abilityCard img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#0b1017}.abilityCardName{font-weight:900;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.abilityCardMeta{color:#8f9daf;font-size:11px;line-height:1.3;margin-top:3px}.abilityCardBadge{margin-top:7px;font-size:11px;font-weight:900;color:#7df1a4}.publicMessages{height:190px}.guessControls{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;padding:10px;border:1px solid #35445a;border-radius:12px;background:#111923}.guessControls.pending{border-color:#705a22}.difficultyBadge.easy{color:#8ef0ac;border-color:#38764d}.difficultyBadge.classic{color:#ffe07a;border-color:#7b6425}.difficultyBadge.insane{color:#ff9da8;border-color:#8a3541}@media(max-width:700px){.libraryFilters{grid-template-columns:1fr}.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:520px}}.adminOverlay{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(3,7,12,.72);backdrop-filter:blur(5px)}.adminModal{width:min(520px,100%);max-height:90vh;overflow:auto;padding:20px;border:1px solid #46566e;border-radius:20px;background:linear-gradient(145deg,#1a2431,#0f161f);box-shadow:0 28px 80px rgba(0,0,0,.55)}.adminTop{display:flex;justify-content:space-between;gap:12px;align-items:center}.adminName{font-size:25px;font-weight:1000}.adminClose{padding:9px 12px}.adminScoreBox{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:18px;padding:13px;border:1px solid #303d50;border-radius:14px;background:#111923}.adminScoreCenter{text-align:center;min-width:100px}.adminScore{font-size:34px;font-weight:1000;color:#f4b41a}.adminExact{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.adminActionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.adminActionGrid .danger{grid-column:1/-1}.adminAvatarImg,.adminAvatarFallback{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #f4b41a;background:#18212d}.adminAvatarFallback{display:grid;place-items:center;font-size:24px;font-weight:1000;color:#f4b41a}@media(max-width:560px){.adminScoreBox{grid-template-columns:1fr 1fr}.adminScoreCenter{grid-column:1/-1;grid-row:1}.adminActionGrid{grid-template-columns:1fr}.adminActionGrid .danger{grid-column:auto}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.attemptBtn.on{border:1px solid #f4b41a;background:#5a4613;color:#ffe89c}.attemptBtn:disabled{opacity:.55;cursor:not-allowed}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
+button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.topTools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.langSelect{width:auto;min-width:128px;padding:9px 11px;border-radius:999px;border:1px solid #46566e;background:#18212d;color:#d7dfea;font-weight:800}.soundNotice{margin-top:13px;padding:10px 12px;border:1px solid #3a4b61;border-radius:12px;background:#111923;color:#aeb9c8;font-size:13px;line-height:1.35}.roomActions{display:flex;gap:8px;flex-wrap:wrap}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus,select:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}.difficultyPreview,.difficultyRoomInfo{margin-top:10px;padding:11px 12px;border:1px solid #35445a;border-radius:12px;background:#111923;color:#cbd5e2;line-height:1.35}.difficultyPreview b,.difficultyRoomInfo b{color:#f4b41a}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.roundBanner{width:fit-content;margin:0 auto 10px;padding:9px 15px;border-radius:999px;font-weight:1000;letter-spacing:.06em;border:1px solid #46566e}.roundBanner.cursed{color:#f0c3ff;border-color:#8246a0;background:rgba(88,35,111,.28);box-shadow:0 0 28px rgba(152,72,190,.14)}.roundBanner.lucky{color:#ffe79a;border-color:#9c7b1f;background:rgba(117,91,22,.28);box-shadow:0 0 28px rgba(244,180,26,.12)}.secretRoundInfo{margin:12px 0 2px;padding:10px 12px;border-radius:12px;font-weight:900}.secretRoundInfo.cursed{border:1px solid #8246a0;background:rgba(88,35,111,.23);color:#f0c3ff}.secretRoundInfo.lucky{border:1px solid #9c7b1f;background:rgba(117,91,22,.23);color:#ffe79a}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.hostGear{width:42px;height:42px;border:1px solid #4a596f;border-radius:11px;background:#202b39;color:#fff;cursor:pointer;font-size:19px}.hostGear:hover{border-color:#f4b41a;background:#2a3646}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.profilePanel{border-color:#39495f}.profileHead{display:flex;gap:14px;align-items:center}.profileMain{flex:1;min-width:0}.profileName{font-size:24px;font-weight:1000;overflow:hidden;text-overflow:ellipsis}.profileAvatar,.profileFallback{width:68px;height:68px;flex:0 0 68px;border-radius:50%;object-fit:cover;border:3px solid #f4b41a;background:#18212d}.profileFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.profileStats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.profileStat{padding:10px 8px;border:1px solid #2d394b;border-radius:12px;background:#111923;text-align:center}.profileStat b{display:block;font-size:20px;color:#f4b41a}.profileStat small{color:#8f9daf}.profileAchievementsTitle{margin:16px 0 8px;font-weight:900}.achievementGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.achievement{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #2d394b;border-radius:12px;background:#111923}.achievement.locked{opacity:.4;filter:grayscale(1)}.achievementIcon{font-size:24px;line-height:1}.achievementText b{display:block}.achievementText small{display:block;color:#8f9daf;margin-top:2px;line-height:1.25}.achievement.new{border-color:#f4b41a;box-shadow:0 0 0 2px rgba(244,180,26,.12)}@media(max-width:700px){.profileHead{align-items:flex-start}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr}.profileAvatar,.profileFallback{width:58px;height:58px;flex-basis:58px}}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.libraryPanel{border-color:#39495f}.libraryProgress{height:10px;border-radius:999px;background:#273243;overflow:hidden;margin:14px 0}.libraryProgressBar{height:100%;width:0;background:#f4b41a;transition:width .25s}.libraryFilters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.libraryGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px;max-height:620px;overflow:auto;padding-right:3px}.abilityCard{border:1px solid #35445a;border-radius:14px;background:#111923;padding:10px;min-width:0}.abilityCard.locked{opacity:.42;filter:grayscale(1)}.abilityCard img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#0b1017}.abilityCardName{font-weight:900;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.abilityCardMeta{color:#8f9daf;font-size:11px;line-height:1.3;margin-top:3px}.abilityCardBadge{margin-top:7px;font-size:11px;font-weight:900;color:#7df1a4}.publicMessages{height:190px}.guessControls{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;padding:10px;border:1px solid #35445a;border-radius:12px;background:#111923}.guessControls.pending{border-color:#705a22}.difficultyBadge.easy{color:#8ef0ac;border-color:#38764d}.difficultyBadge.classic{color:#ffe07a;border-color:#7b6425}.difficultyBadge.insane{color:#ff9da8;border-color:#8a3541}@media(max-width:700px){.libraryFilters{grid-template-columns:1fr}.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:520px}}.adminOverlay{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(3,7,12,.72);backdrop-filter:blur(5px)}.adminModal{width:min(520px,100%);max-height:90vh;overflow:auto;padding:20px;border:1px solid #46566e;border-radius:20px;background:linear-gradient(145deg,#1a2431,#0f161f);box-shadow:0 28px 80px rgba(0,0,0,.55)}.adminTop{display:flex;justify-content:space-between;gap:12px;align-items:center}.adminName{font-size:25px;font-weight:1000}.adminClose{padding:9px 12px}.adminScoreBox{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:18px;padding:13px;border:1px solid #303d50;border-radius:14px;background:#111923}.adminScoreCenter{text-align:center;min-width:100px}.adminScore{font-size:34px;font-weight:1000;color:#f4b41a}.adminExact{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.adminActionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.adminActionGrid .danger{grid-column:1/-1}.adminAvatarImg,.adminAvatarFallback{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #f4b41a;background:#18212d}.adminAvatarFallback{display:grid;place-items:center;font-size:24px;font-weight:1000;color:#f4b41a}@media(max-width:560px){.adminScoreBox{grid-template-columns:1fr 1fr}.adminScoreCenter{grid-column:1/-1;grid-row:1}.adminActionGrid{grid-template-columns:1fr}.adminActionGrid .danger{grid-column:auto}}.chatHub{border-color:#405169}.chatHubTop{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}.chatModeTabs{display:flex;gap:7px;flex-wrap:wrap}.chatModeTab{border:1px solid #46566e;border-radius:999px;padding:9px 12px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:900}.chatModeTab.on{border-color:#f4b41a;color:#f4b41a;background:#2a2518}.chatSafety{margin:10px 0 14px;padding:10px 12px;border:1px solid #365b4a;border-radius:12px;background:rgba(33,122,73,.12);color:#bfe9ce;font-size:12px;line-height:1.35}.chatModePanel{margin-top:8px}.readyBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #3f6851;color:#7df1a4;font-size:10px;font-weight:900}.mutedBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #6c4b4f;color:#ffb2b9;font-size:10px;font-weight:900}.messageBlocked{border-color:#7a3b45!important}.chatComposer input:disabled{opacity:.55}.chatComposer button:disabled{opacity:.55;cursor:not-allowed}@media(max-width:720px){.chatHubTop{flex-direction:column}.chatModeTabs{width:100%}.chatModeTab{flex:1}.topTools{width:100%;justify-content:space-between}.langSelect{flex:1}}.compactBtn{padding:9px 11px}.accessibilityPanel{border-color:#526279}.accessGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.accessOption{margin:0;padding:12px;border:1px solid #35445a;border-radius:12px;background:#111923;display:flex;gap:9px;align-items:center}.accessOption input[type="checkbox"]{width:auto}.volumeOption{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto}.volumeOption input{padding:0}.a11y-large{font-size:18px}.a11y-large .small{font-size:14px}.a11y-contrast{background:#000!important;color:#fff}.a11y-contrast .panel,.a11y-contrast .score,.a11y-contrast .chatMessages,.a11y-contrast .abilityCard{border-color:#75849b;background:#080b0f}.reduce-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.revealPanel{text-align:center;border-color:#5e6f88;background:radial-gradient(circle at 50% 0%,rgba(112,239,152,.1),transparent 46%),linear-gradient(145deg,#1a2431,#0f161f)}.revealBody{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:12px;text-align:left}.revealIcon{width:92px;height:92px;border-radius:14px;object-fit:cover;background:#0b1017;border:1px solid #45566d}.revealAbility{font-size:28px;font-weight:1000;color:#70ef98}.revealResult{margin-top:8px;font-weight:900}.settingsExtras{display:grid;grid-template-columns:220px 1fr;gap:14px;margin:12px 0 4px}.presetBox{min-width:0}.presetRow{display:flex;gap:8px;margin-top:7px}.presetRow .select,.presetRow input{min-width:0}.spectatorList{display:flex;flex-direction:column;gap:8px}.spectatorCard{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.connectionBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid #3f6851;color:#7df1a4}.connectionBadge.offline{border-color:#8a5f2f;color:#ffc26a}.connectionBadge.expired{border-color:#7a3b45;color:#ff9da8}.recordGrid,.awardGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.recordCard,.awardCard{padding:12px;border:1px solid #35445a;border-radius:14px;background:#111923}.recordIcon,.awardIcon{font-size:28px}.recordValue,.awardValue{font-size:18px;font-weight:1000;color:#f4b41a;margin-top:6px}.recordLabel,.awardLabel{font-size:11px;color:#8f9daf;margin-top:3px}.spectatorTools{display:flex;gap:6px}.spectatorTools button{padding:7px 9px}@media(max-width:700px){.accessGrid,.settingsExtras{grid-template-columns:1fr}.recordGrid,.awardGrid{grid-template-columns:repeat(2,1fr)}.revealBody{align-items:flex-start}.presetRow{flex-wrap:wrap}.presetRow .select,.presetRow input{flex:1 1 180px}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.attemptBtn.on{border:1px solid #f4b41a;background:#5a4613;color:#ffe89c}.attemptBtn:disabled{opacity:.55;cursor:not-allowed}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
 @media(max-width:720px){.wrap{width:min(100% - 20px,980px);padding-top:14px}.grid{grid-template-columns:1fr}.top,.roomhead{align-items:flex-start}.roomhead{flex-direction:column}.secret{align-items:flex-start}.icon{width:82px;height:82px}.brand{line-height:1.05}}
 </style>
 </head>
@@ -18,7 +20,20 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       <div class="eyebrow">DOTA 2 · ONLINE PARTY GAME · v1.9</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
-    <div id="conn" class="status">Готово</div>
+    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">🇷🇺 Русский</option><option value="en">🇬🇧 English</option></select><button id="a11yToggle" class="btn secondary compactBtn">♿ Удобство</button><div id="conn" class="status">Готово</div></div>
+  </div>
+
+  <div id="a11yPanel" class="panel accessibilityPanel hidden">
+    <div class="row" style="justify-content:space-between;align-items:flex-start">
+      <div><div class="eyebrow">♿ ДОСТУПНОСТЬ</div><h2 style="margin:5px 0">Настройки удобства</h2><div class="muted small">Эти настройки сохраняются только на этом устройстве.</div></div>
+      <button id="a11yClose" class="btn secondary">Закрыть</button>
+    </div>
+    <div class="accessGrid">
+      <label class="accessOption"><input id="a11yLargeText" type="checkbox"> <span>Увеличенный текст</span></label>
+      <label class="accessOption"><input id="a11yContrast" type="checkbox"> <span>Высокий контраст</span></label>
+      <label class="accessOption"><input id="a11yReduceMotion" type="checkbox"> <span>Меньше анимаций</span></label>
+      <div class="accessOption volumeOption"><span>Громкость тиканья</span><input id="a11yVolume" type="range" min="0" max="100" step="5" value="45"><b id="a11yVolumeValue">45%</b></div>
+    </div>
   </div>
 
   <section id="home">
@@ -86,6 +101,12 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
         <h2>🎧 Войти в комнату</h2>
         <label>Код комнаты</label>
         <input id="joinCode" maxlength="5" placeholder="ABCDE">
+        <label for="joinMode">Как войти</label>
+        <select id="joinMode" class="select">
+          <option value="player">🎮 Игрок</option>
+          <option value="spectator">👁 Зритель</option>
+        </select>
+        <div class="muted small" style="margin-top:6px">Зритель видит матч и общий чат, но не участвует в очереди и не получает очки.</div>
         <label>Твоё имя</label>
         <input id="playerName" maxlength="24" placeholder="Имя игрока">
         <label>Аватарка <span class="muted small">(необязательно)</span></label>
@@ -95,7 +116,7 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
           <input id="avatarUpload" class="hidden" type="file" accept="image/*">
           <button id="clearAvatar" type="button" class="btn secondary">Без аватарки</button>
         </div>
-        <div id="avatarHint" class="muted small">Если ничего не выбрать, будет первая буква ника.</div>
+        <div id="avatarHint" class="muted small">Если ничего не выбрать, будет первая буква ника.</div><div class="muted small avatarSafetyNote">🛡️ Для безопасности свои фото пока хранятся только в твоём локальном профиле и не отправляются другим участникам; в комнате вместо них будет буква ника. Встроенные аватарки видны всем.</div>
         <button id="join" class="btn secondary wide">Войти</button>
       </div>
     </div>
@@ -118,6 +139,23 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       <div id="event" class="muted" style="margin-top:10px">Комната готова</div>
     </div>
 
+    <div id="revealPanel" class="panel revealPanel hidden">
+      <div class="eyebrow">🔎 РАСКРЫТИЕ РАУНДА</div>
+      <div class="revealBody">
+        <img id="revealIcon" class="revealIcon" alt="">
+        <div>
+          <div id="revealAbility" class="revealAbility">—</div>
+          <div id="revealHero" class="muted"></div>
+          <div id="revealResult" class="revealResult"></div>
+          <div id="revealNext" class="muted small"></div>
+        </div>
+      </div>
+      <div class="row" style="justify-content:space-between;margin-top:12px">
+        <div id="revealCountdown" class="chip">3с</div>
+        <button id="skipReveal" class="btn secondary hidden">⏭ Следующий ход сейчас</button>
+      </div>
+    </div>
+
     <div id="finalPanel" class="panel finalPanel hidden">
       <div class="eyebrow">🏆 ФИНАЛ МАТЧА</div>
       <h2 id="finalTitle">Победитель</h2>
@@ -125,6 +163,8 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       <div id="podium" class="podium"></div>
       <h3 style="margin-top:22px">Итоговая таблица</h3>
       <div id="finalTable" class="finalTable"></div>
+      <h3 style="margin-top:22px">Награды матча</h3>
+      <div id="finalAwards" class="awardGrid"></div>
     </div>
 
     <div id="hostSecret" class="panel hidden">
@@ -140,47 +180,73 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       </div>
     </div>
 
-    <div id="playerListen" class="panel center hidden"><div style="font-size:46px">🎧</div><h2>Слушай объяснение</h2><p class="muted">Название, иконка способности и буквы скрыты.</p></div>
+    <div id="playerListen" class="panel center hidden"><div id="listenIcon" style="font-size:46px">🎧</div><h2 id="listenTitle">Слушай объяснение</h2><p id="listenText" class="muted">Название, иконка способности и буквы скрыты.</p><button id="readyToggle" class="btn secondary hidden">○ Я не готов</button></div>
 
     <div class="panel"><div class="row" style="justify-content:space-between"><h2>Игроки</h2><span id="count" class="chip">0 игроков</span></div><div id="scores"></div><div id="empty" class="center muted">Пока никого нет. Отправь другу код комнаты.</div></div>
 
-    <div id="publicChatPanel" class="panel">
-      <div class="row" style="justify-content:space-between;align-items:flex-start">
-        <div>
-          <h2 style="margin-bottom:4px">🌐 Общий чат комнаты</h2>
-          <div class="muted small">Работает до, во время и после матча. Здесь могут общаться все участники.</div>
-        </div>
-        <span class="chip">все участники</span>
-      </div>
-      <div id="publicMessages" class="chatMessages publicMessages"><div class="chatEmpty">Сообщений пока нет.</div></div>
-      <div class="chatComposer">
-        <input id="publicInput" maxlength="180" placeholder="Написать всем…">
-        <button id="publicSend" class="btn primary">Отправить</button>
-      </div>
+    <div id="spectatorPanel" class="panel hidden">
+      <div class="row" style="justify-content:space-between"><h2>👁 Зрители</h2><span id="spectatorCount" class="chip">0</span></div>
+      <div id="spectatorList" class="spectatorList"></div>
     </div>
 
-    <div id="chatPanel" class="panel hidden">
-      <div class="row" style="justify-content:space-between;align-items:flex-start">
+    <div id="recordsPanel" class="panel recordsPanel">
+      <div class="row" style="justify-content:space-between"><div><div class="eyebrow">🏅 РЕКОРДЫ КОМНАТЫ</div><h2 style="margin:5px 0">Лучшее за эту комнату</h2></div><span class="chip">сохраняются до выхода хоста</span></div>
+      <div id="recordsGrid" class="recordGrid"></div>
+    </div>
+
+    <div id="chatHub" class="panel chatHub">
+      <div class="chatHubTop">
         <div>
-          <h2 id="chatTitle" style="margin-bottom:4px">Личный чат</h2>
-          <div id="chatStatus" class="muted small"></div>
+          <div class="eyebrow">ЧАТ КОМНАТЫ</div>
+          <h2 style="margin:4px 0">Общение и игровые догадки</h2>
+          <div id="chatPhaseInfo" class="muted small"></div>
         </div>
-        <span class="chip">💬 чат с хостом</span>
-      </div>
-      <div id="chatTabs" class="chatTabs hidden"></div>
-      <div id="chatMessages" class="chatMessages"><div class="chatEmpty">Сообщений пока нет.</div></div>
-      <div id="privateGuessControls" class="guessControls hidden">
-        <span id="privateGuessState" class="muted small"></span>
-        <div class="controls">
-          <button id="guessCorrect" class="btn success">✅ Верно · +1</button>
-          <button id="guessWrong" class="btn danger">❌ Неверно · закрыть попытку</button>
+        <div class="chatModeTabs">
+          <button id="chatPublicTab" class="chatModeTab on">🌐 Общий <span id="publicUnreadBadge" class="unread hidden">0</span></button>
+          <button id="chatPrivateTab" class="chatModeTab">🔒 Личный <span id="privateUnreadBadge" class="unread hidden">0</span></button>
         </div>
       </div>
-      <div class="chatComposer">
-        <input id="chatInput" maxlength="180" placeholder="Напиши сообщение хосту…">
-        <button id="chatSend" class="btn primary">Отправить</button>
+      <div class="chatSafety">🛡️ Автомодерация включена: сообщения с оскорблениями, сексуальным контентом, опасными предложениями и внешними ссылками блокируются. Хост может заглушить или удалить игрока.</div>
+
+      <div id="publicChatPanel" class="chatModePanel">
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <div>
+            <h3 style="margin-bottom:4px">🌐 Общий чат</h3>
+            <div class="muted small">Свободное общение до, во время и после матча.</div>
+          </div>
+          <span class="chip">все участники</span>
+        </div>
+        <div id="publicMessages" class="chatMessages publicMessages"><div class="chatEmpty">Сообщений пока нет.</div></div>
+        <div class="chatComposer">
+          <input id="publicInput" maxlength="180" placeholder="Написать всем…" autocomplete="off">
+          <button id="publicSend" class="btn primary">Отправить</button>
+        </div>
+        <div id="publicChatHint" class="chatHint">Enter — отправить · ссылки и запрещённый контент блокируются</div>
       </div>
-      <div id="chatHint" class="chatHint"></div>
+
+      <div id="chatPanel" class="chatModePanel hidden">
+        <div class="row" style="justify-content:space-between;align-items:flex-start">
+          <div>
+            <h3 id="chatTitle" style="margin-bottom:4px">Личный чат</h3>
+            <div id="chatStatus" class="muted small"></div>
+          </div>
+          <span class="chip">💬 хост ↔ игрок</span>
+        </div>
+        <div id="chatTabs" class="chatTabs hidden"></div>
+        <div id="chatMessages" class="chatMessages"><div class="chatEmpty">Сообщений пока нет.</div></div>
+        <div id="privateGuessControls" class="guessControls hidden">
+          <span id="privateGuessState" class="muted small"></span>
+          <div class="controls">
+            <button id="guessCorrect" class="btn success">✅ Верно · +1</button>
+            <button id="guessWrong" class="btn danger">❌ Неверно · закрыть попытку</button>
+          </div>
+        </div>
+        <div class="chatComposer">
+          <input id="chatInput" maxlength="180" placeholder="Напиши сообщение хосту…" autocomplete="off">
+          <button id="chatSend" class="btn primary">Отправить</button>
+        </div>
+        <div id="chatHint" class="chatHint"></div>
+      </div>
     </div>
 
     <div id="hostControls" class="panel hidden">
@@ -193,6 +259,21 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
     <div id="settings" class="panel hidden">
       <h2>Настройки матча</h2>
       <div id="roomDifficultyInfo" class="difficultyRoomInfo"></div>
+      <div class="settingsExtras">
+        <div>
+          <label for="revealSeconds">Показ правильной способности между ходами</label>
+          <select id="revealSeconds" class="select">
+            <option value="0">Выключено</option>
+            <option value="3" selected>3 секунды</option>
+            <option value="5">5 секунд</option>
+          </select>
+        </div>
+        <div class="presetBox">
+          <label>Пресеты правил</label>
+          <div class="presetRow"><select id="presetSelect" class="select"><option value="">— сохранённые пресеты —</option></select><button id="presetLoad" class="btn secondary">Загрузить</button></div>
+          <div class="presetRow"><input id="presetName" maxlength="24" placeholder="Название пресета"><button id="presetSave" class="btn secondary">Сохранить</button><button id="presetDelete" class="btn danger">Удалить</button></div>
+        </div>
+      </div>
       <div class="settinggrid">
         <div>
           <h3 style="margin-bottom:6px">Буквы</h3>
@@ -210,7 +291,10 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
         <b>Особые раунды:</b> шанс начинается с 7%. После обычного раунда шанс следующего особого умножается на 1,2, максимум 90%. После особого — снова 7%. Соотношение проклятых/удачливых зависит от сложности.<br><br>
         <b>Бонусы времени:</b> ответ за первые 30 секунд = +15 секунд на следующий ход. Первая попытка = ещё +10 секунд, а для врождённой способности = +20 вместо +10. Максимум +35 секунд.<br><br>
         <b>Личные игровые догадки:</b> пока отвечает другой игрок, у тебя есть одна попытка написать хосту героя/способность. После сообщения хост отмечает «верно» или «неверно»; до следующего хода повторная попытка закрыта. Общий чат при этом остаётся доступен.<br><br>
-        <b>Звук:</b> на последних 20 секундах хода включается тихое тиканье, чтобы игрок успел поторопиться. Оно отключается отдельной кнопкой в шапке комнаты.
+        <b>Звук:</b> на последних 20 секундах хода включается тихое тиканье, чтобы игрок успел поторопиться. Оно отключается отдельной кнопкой в шапке комнаты.<br><br>
+        <b>Безопасность чата:</b> ссылки и запрещённый контент блокируются автоматически. Частый спам ограничивается. Хост может заглушить чат конкретного игрока или удалить его из комнаты.<br><br>
+        <b>Раскрытие раунда:</b> хост может включить короткий экран на 3 или 5 секунд, где всем показывается правильная способность перед следующим ходом.<br><br>
+        <b>Переподключение:</b> если игрок временно пропал из сети, его место и очки сохраняются. При обрыве активного игрока матч автоматически ставится на паузу и продолжится после возврата.
       </div>
     </div>
     <button id="leave" class="btn secondary">← Выйти из комнаты</button>
@@ -246,6 +330,7 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
         <div class="adminActionGrid">
           <button id="adminAddTime" class="btn secondary">⏱ +15 секунд</button>
           <button id="adminSkip" class="btn secondary">↪ Засчитать пропуск</button>
+          <button id="adminMute" class="btn secondary">🔇 Заглушить чат</button>
           <button id="adminKick" class="btn danger">🚫 Кикнуть игрока</button>
         </div>
         <div class="muted small" style="margin-top:10px">Если игрок сейчас ходит, +15 секунд добавятся к текущему таймеру. Иначе — к его следующему ходу.</div>
@@ -262,9 +347,9 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
 const PROJECT='ibbxoxxhtyuoljnhneab';
 const KEY='sb_publishable_3vmNCU7McTjpKzwzrnxyWQ_0DuwAcCZ';
 const WS='wss://'+PROJECT+'.supabase.co/realtime/v1/websocket?apikey='+encodeURIComponent(KEY)+'&vsn=1.0.0';
-const ALL='АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШ'.split('');
+const ALPHABETS={ru:'АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШ'.split(''),en:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')};
+const ALL=ALPHABETS.ru;
 const STEAM='https://cdn.cloudflare.steamstatic.com';
-const WIN_SCORE=15;
 const DIFFICULTIES={
  easy:{key:'easy',name:'Простой',turn:300,win:10,cursedChance:0.30,noRepeats:false,streakBonus:true,insaneSkipPenalty:false,icon:'🟢'},
  classic:{key:'classic',name:'Классика',turn:180,win:15,cursedChance:0.50,noRepeats:false,streakBonus:true,insaneSkipPenalty:false,icon:'🟡'},
@@ -274,40 +359,116 @@ const ROLE_LABELS={Carry:'Керри',Support:'Саппорт',Nuker:'Нюкер
 const SPECIAL_START=0.07;
 const SPECIAL_GROWTH=1.2;
 const SPECIAL_CAP=0.90;
-const BASE_TURN_SECONDS=180;
 const FAST_WINDOW_SECONDS=30;
 const FAST_BONUS_SECONDS=15;
 const FIRST_TRY_BONUS_SECONDS=10;
 const INNATE_FIRST_TRY_BONUS_SECONDS=20;
 const PROFILE_KEY='dota_spell_hunt_profile_v1';
 const TICK_SOUND_KEY='dota_spell_hunt_tick_sound_v1';
+const ACCESS_KEY='dota_spell_hunt_access_v1';
+const PRESETS_KEY='dota_spell_hunt_presets_v1';
+const RECONNECT_OFFLINE_MS=35000;
+const RECONNECT_RESERVE_MS=120000;
+const LANGUAGE_KEY='dota_spell_hunt_language_v1';
+const CHAT_COOLDOWN_MS=700;
+const CHAT_WINDOW_MS=10000;
+const CHAT_WINDOW_MAX=6;
 const ACHIEVEMENTS=[
- {id:'streak3',icon:'🔥',title:'Разогрев',desc:'Сделать стрик 3 подряд'},
- {id:'streak5',icon:'⚡',title:'На волне',desc:'Сделать стрик 5 подряд'},
- {id:'streak10',icon:'☄️',title:'Не остановить',desc:'Сделать стрик 10 подряд'},
- {id:'firstWin',icon:'🏆',title:'Первая победа',desc:'Выиграть свой первый матч'},
- {id:'comeback',icon:'🔄',title:'Камбэк',desc:'Побывать последним и всё равно победить'},
- {id:'cleanWin',icon:'✨',title:'Чистая игра',desc:'Победить без единого пропуска'},
- {id:'noPenaltyWin',icon:'🛡️',title:'Без штрафов',desc:'Победить без штрафных очков'},
- {id:'photoFinish',icon:'📸',title:'Фотофиниш',desc:'Победить, когда соперник отстал не больше чем на 1 очко'},
- {id:'games10',icon:'🎮',title:'Завсегдатай',desc:'Сыграть 10 матчей'},
- {id:'wins10',icon:'👑',title:'Чемпион',desc:'Выиграть 10 матчей'}
+ {id:'streak3',icon:'🔥',title:'Разогрев',titleEn:'Warm-up',desc:'Сделать стрик 3 подряд',descEn:'Get 3 correct answers in a row'},
+ {id:'streak5',icon:'⚡',title:'На волне',titleEn:'On a roll',desc:'Сделать стрик 5 подряд',descEn:'Get 5 correct answers in a row'},
+ {id:'streak10',icon:'☄️',title:'Не остановить',titleEn:'Unstoppable',desc:'Сделать стрик 10 подряд',descEn:'Get 10 correct answers in a row'},
+ {id:'firstWin',icon:'🏆',title:'Первая победа',titleEn:'First win',desc:'Выиграть свой первый матч',descEn:'Win your first match'},
+ {id:'comeback',icon:'🔄',title:'Камбэк',titleEn:'Comeback',desc:'Побывать последним и всё равно победить',descEn:'Be in last place and still win'},
+ {id:'cleanWin',icon:'✨',title:'Чистая игра',titleEn:'Clean game',desc:'Победить без единого пропуска',descEn:'Win without using a skip'},
+ {id:'noPenaltyWin',icon:'🛡️',title:'Без штрафов',titleEn:'No penalties',desc:'Победить без штрафных очков',descEn:'Win without penalty points'},
+ {id:'photoFinish',icon:'📸',title:'Фотофиниш',titleEn:'Photo finish',desc:'Победить, когда соперник отстал не больше чем на 1 очко',descEn:'Win by no more than 1 point'},
+ {id:'games10',icon:'🎮',title:'Завсегдатай',titleEn:'Regular',desc:'Сыграть 10 матчей',descEn:'Play 10 matches'},
+ {id:'wins10',icon:'👑',title:'Чемпион',titleEn:'Champion',desc:'Выиграть 10 матчей',descEn:'Win 10 matches'}
 ];
 const SESSION_KEY='spell_hunt_session_v2';
 const SESSION_TTL=24*60*60*1000;
 
 let registry=[], deck=[], lastHero=null;
 let role=null, code=null, name=null, clientId=crypto.randomUUID(), hostId=null;
-let ws=null, topic=null, joinRef=null, ref=1, heartbeat=null, reconnectTimer=null;
+let ws=null, topic=null, joinRef=null, ref=1, heartbeat=null, reconnectTimer=null, presenceTimer=null, connectionSweepTimer=null;
 let state=null, secret=null;
 let chatByPlayer={}, myChat=[], selectedChatPlayer=null, chatUnread={}, pendingChatByPlayer={}, publicChat=[];
 let selectedAvatar='';
 let profile=null;
 let adminPlayerId=null;
+let currentLang=(new URLSearchParams(location.search).get('lang')||localStorage.getItem(LANGUAGE_KEY)||'ru').toLowerCase()==='en'?'en':'ru';
+let chatMode='public',publicUnread=0,privateUnread=0,lastChatSentAt=0,chatSendTimes=[],incomingChatTimes={};
 let soundEnabled=localStorage.getItem(TICK_SOUND_KEY)!=='0',audioCtx=null,lastTickSecond=null;
+let accessibility={largeText:false,highContrast:false,reduceMotion:false,tickVolume:45},presets={};
 let lastAchievementFlash=[];
 
 const $=id=>document.getElementById(id);
+function ui(ru,en){return currentLang==='en'?en:ru}
+function langLocale(){return currentLang==='en'?'en-US':'ru-RU'}
+function difficultyName(d){return currentLang==='en'?({easy:'Easy',classic:'Classic',insane:'Insane'}[d.key]||d.name):d.name}
+function roleLabel(r){return currentLang==='en'?r:(ROLE_LABELS[r]||r)}
+function achievementTitle(a){return currentLang==='en'?(a.titleEn||a.title):a.title}
+function achievementDesc(a){return currentLang==='en'?(a.descEn||a.desc):a.desc}
+const STATIC_EN=new Map([
+ ['Готово','Ready'],['Онлайн-комнаты','Online rooms'],['Один объясняет. Остальные угадывают.','One explains. Everyone else guesses.'],['Способность, иконку и буквы видит только хост. Игроки видят таймер, очередь и счёт.','Only the host sees the ability, icon and letters. Players see the timer, turn order and score.'],['🎚 3 сложности','🎚 3 difficulties'],['🏆 Победа по очкам','🏆 Score victory'],['🎭 Особые раунды','🎭 Special rounds'],['📚 Библиотека способностей','📚 Ability library'],['👥 До 8 игроков','👥 Up to 8 players'],['🔊 В последние 20 секунд хода звучит тихое синтезированное тиканье. Оно создаётся самим браузером, без аудиофайлов, и его можно отключить в комнате.','🔊 A quiet synthesized tick plays during the final 20 seconds. It is generated by the browser, uses no audio file, and can be disabled in the room.'],['ЛОКАЛЬНЫЙ ПРОФИЛЬ','LOCAL PROFILE'],['Новый игрок','New player'],['Ник и аватарка сохранятся в этом браузере.','Your name and avatar are saved in this browser.'],['Достижения','Achievements'],['📚 Открыть библиотеку способностей','📚 Open ability library'],['КОЛЛЕКЦИЯ','COLLECTION'],['Библиотека способностей','Ability library'],['Загрузка базы…','Loading database…'],['Закрыть','Close'],['Герой','Hero'],['Все герои','All heroes'],['Роль','Role'],['Все роли','All roles'],['👑 Создать комнату','👑 Create room'],['Твоё имя','Your name'],['Сложность','Difficulty'],['Создать комнату','Create room'],['🎧 Войти в комнату','🎧 Join room'],['Код комнаты','Room code'],['Имя игрока','Player name'],['Аватарка','Avatar'],['(необязательно)','(optional)'],['📷 Загрузить свою','📷 Upload yours'],['Без аватарки','No avatar'],['Если ничего не выбрать, будет первая буква ника.','If you choose nothing, the first letter of your nickname will be used.'],['🛡️ Для безопасности свои фото пока хранятся только в твоём локальном профиле и не отправляются другим участникам; в комнате вместо них будет буква ника. Встроенные аватарки видны всем.','🛡️ For safety, custom photos are currently kept only in your local profile and are not sent to other participants; rooms show your nickname initial instead. Built-in avatars are visible to everyone.'],['Войти','Join'],['База способностей загружается…','Loading ability database…'],['КОМНАТА','ROOM'],['Классика','Classic'],['Лобби','Lobby'],['🔊 20с: ВКЛ','🔊 20s: ON'],['🔇 20с: ВЫКЛ','🔇 20s: OFF'],['🔗 Скопировать приглашение','🔗 Copy invite'],['Ждём игроков','Waiting for players'],['Комната готова','Room ready'],['🏆 ФИНАЛ МАТЧА','🏆 MATCH FINALS'],['Победитель','Winner'],['Итоговая таблица','Final standings'],['🔒 ТОЛЬКО ДЛЯ ХОСТА','🔒 HOST ONLY'],['Запусти матч — здесь появится способность.','Start the match — the ability will appear here.'],['Объясняй словами на эти буквы:','Explain using words starting with these letters:'],['Слушай объяснение','Listen to the explanation'],['Название, иконка способности и буквы скрыты.','The ability name, icon and letters are hidden.'],['○ Я не готов','○ Not ready'],['Игроки','Players'],['Пока никого нет. Отправь другу код комнаты.','Nobody is here yet. Send a friend the room code.'],['ЧАТ КОМНАТЫ','ROOM CHAT'],['Общение и игровые догадки','Chat and game guesses'],['🌐 Общий','🌐 General'],['🔒 Личный','🔒 Private'],['🛡️ Автомодерация включена: сообщения с оскорблениями, сексуальным контентом, опасными предложениями и внешними ссылками блокируются. Хост может заглушить или удалить игрока.','🛡️ Auto-moderation is on: abusive language, sexual content, unsafe solicitations and external links are blocked. The host can mute or remove a player.'],['🌐 Общий чат','🌐 General chat'],['Свободное общение до, во время и после матча.','Free chat before, during and after the match.'],['все участники','all participants'],['Сообщений пока нет.','No messages yet.'],['Отправить','Send'],['Enter — отправить · ссылки и запрещённый контент блокируются','Enter — send · links and prohibited content are blocked'],['Личный чат','Private chat'],['💬 хост ↔ игрок','💬 host ↔ player'],['✅ Верно · +1','✅ Correct · +1'],['❌ Неверно · закрыть попытку','❌ Wrong · close attempt'],['Управление хоста','Host controls'],['▶ Начать матч','▶ Start match'],['🎯 С первой попытки: НЕТ','🎯 First try: NO'],['✓ Угадал +1','✓ Correct +1'],['↪ Пропустить','↪ Skip'],['⏸ Пауза','⏸ Pause'],['🏁 Завершить','🏁 Finish'],['🔁 Рематч','🔁 Rematch'],['⚙️ В лобби','⚙️ Back to lobby'],['Настройки матча','Match settings'],['Буквы','Letters'],['До начала матча выбери буквы. Минимум 3.','Choose letters before the match. Minimum 3.'],['Бесплатных пропусков','Free skips'],['← Выйти из комнаты','← Leave room'],['УПРАВЛЕНИЕ ИГРОКОМ','PLAYER MANAGEMENT'],['Игрок','Player'],['−1 очко','−1 point'],['Текущий счёт','Current score'],['+1 очко','+1 point'],['Применить','Apply'],['⏱ +15 секунд','⏱ +15 seconds'],['↪ Засчитать пропуск','↪ Count as skip'],['🔇 Заглушить чат','🔇 Mute chat'],['🚫 Кикнуть игрока','🚫 Kick player'],['Если игрок сейчас ходит, +15 секунд добавятся к текущему таймеру. Иначе — к его следующему ходу.','If this player is active, +15 seconds are added now. Otherwise they are added to the next turn.'],['🟢 Простой — 5:00 · до 10 очков','🟢 Easy — 5:00 · to 10 points'],['🟡 Классика — 3:00 · до 15 очков','🟡 Classic — 3:00 · to 15 points'],['🔴 Безумие — 0:30 · до 30 очков','🔴 Insane — 0:30 · to 30 points'],['Базовые правила:','Core rules:'],['Особые раунды:','Special rounds:'],['Бонусы времени:','Time bonuses:'],['Личные игровые догадки:','Private game guesses:'],['Звук:','Sound:'],['Безопасность чата:','Chat safety:'],[' правильный ответ = +1 очко и +1 к серии. На Простом и Классике каждый 3-й правильный ответ подряд даёт ещё +1 бонусное очко. В Безумии бонусных очков за стрик нет. На Простом и Классике первые бесплатные пропуски не штрафуют, затем каждый пропуск = −1 очко. В Безумии бесплатных пропусков нет: первый пропуск подряд = −1, второй и каждый следующий подряд = −2; правильный ответ сбрасывает плохой стрик.',' a correct answer = +1 point and +1 streak. On Easy and Classic, every 3rd correct answer in a row gives +1 bonus point. Insane has no streak bonus points. On Easy and Classic, the first free skips have no penalty, then each skip = −1 point. Insane has no free skips: first consecutive skip = −1, second and every following consecutive skip = −2; a correct answer resets the bad skip streak.'],[' шанс начинается с 7%. После обычного раунда шанс следующего особого умножается на 1,2, максимум 90%. После особого — снова 7%. Соотношение проклятых/удачливых зависит от сложности.',' starts at 7%. After a normal round, the next special-round chance is multiplied by 1.2, up to 90%. After a special round it resets to 7%. Cursed/lucky weighting depends on difficulty.'],[' ответ за первые 30 секунд = +15 секунд на следующий ход. Первая попытка = ещё +10 секунд, а для врождённой способности = +20 вместо +10. Максимум +35 секунд.',' correct within the first 30 seconds = +15 seconds on the next turn. First try = another +10 seconds; for an innate ability it is +20 instead of +10. Maximum +35 seconds.'],[' пока отвечает другой игрок, у тебя есть одна попытка написать хосту героя/способность. После сообщения хост отмечает «верно» или «неверно»; до следующего хода повторная попытка закрыта. Общий чат при этом остаётся доступен.',' while another player is answering, you get one private guess for the hero/ability. The host marks it correct or wrong; another private guess is locked until the next turn. General chat remains available.'],[' на последних 20 секундах хода включается тихое тиканье, чтобы игрок успел поторопиться. Оно отключается отдельной кнопкой в шапке комнаты.',' a quiet ticking sound starts during the last 20 seconds so the player knows time is running out. It can be disabled with the room sound button.'],[' ссылки и запрещённый контент блокируются автоматически. Частый спам ограничивается. Хост может заглушить чат конкретного игрока или удалить его из комнаты.',' links and prohibited content are blocked automatically. Rapid spam is rate-limited. The host can mute a specific player or remove them from the room.']
+ ]);
+[
+ ['♿ Удобство','♿ Accessibility'],['♿ ДОСТУПНОСТЬ','♿ ACCESSIBILITY'],['Настройки удобства','Accessibility settings'],['Эти настройки сохраняются только на этом устройстве.','These settings are saved only on this device.'],['Увеличенный текст','Larger text'],['Высокий контраст','High contrast'],['Меньше анимаций','Reduce motion'],['Громкость тиканья','Tick volume'],['Как войти','Join as'],['🎮 Игрок','🎮 Player'],['👁 Зритель','👁 Spectator'],['Зритель видит матч и общий чат, но не участвует в очереди и не получает очки.','Spectators can watch the match and use general chat, but do not enter the turn order or earn points.'],['🔎 РАСКРЫТИЕ РАУНДА','🔎 ROUND REVEAL'],['⏭ Следующий ход сейчас','⏭ Next turn now'],['Награды матча','Match awards'],['👁 Зрители','👁 Spectators'],['🏅 РЕКОРДЫ КОМНАТЫ','🏅 ROOM RECORDS'],['Лучшее за эту комнату','Best in this room'],['сохраняются до выхода хоста','kept until the host leaves'],['Показ правильной способности между ходами','Show the correct ability between turns'],['Выключено','Off'],['3 секунды','3 seconds'],['5 секунд','5 seconds'],['Пресеты правил','Rule presets'],['— сохранённые пресеты —','— saved presets —'],['Загрузить','Load'],['Сохранить','Save'],['Удалить','Delete'],['Раскрытие раунда:','Round reveal:'],['Переподключение:','Reconnect:']
+].forEach(([a,b])=>STATIC_EN.set(a,b));
+[
+ [' хост может включить короткий экран на 3 или 5 секунд, где всем показывается правильная способность перед следующим ходом.',' the host can enable a short 3 or 5 second screen that shows everyone the correct ability before the next turn.'],
+ [' если игрок временно пропал из сети, его место и очки сохраняются. При обрыве активного игрока матч автоматически ставится на паузу и продолжится после возврата.',' if a player temporarily loses connection, their slot and score are preserved. If the active player disconnects, the match pauses automatically and resumes when they return.']
+].forEach(([a,b])=>STATIC_EN.set(a,b));
+const PLACEHOLDER_EN=new Map([['Например: Ауе','For example: Aue'],['Имя игрока','Player name'],['Написать всем…','Message everyone…'],['Напиши сообщение хосту…','Message the host…'],['Точный счёт','Exact score'],['Название пресета','Preset name']]);
+function translateUiText(s){
+ if(currentLang!=='en'||!s)return s;
+ const trimmed=s.trim();if(STATIC_EN.has(trimmed))return s.replace(trimmed,STATIC_EN.get(trimmed));
+ const bonusMark=' · 🎁 ';if(trimmed.includes(bonusMark)){const at=trimmed.indexOf(bonusMark),base=trimmed.slice(0,at),bonus=trimmed.slice(at+bonusMark.length);let outBonus=bonus.replace('быстро +15с','fast +15s').replace('врождённая с первой попытки +20с','innate first try +20s').replace('с первой попытки +10с','first try +10s').replace(/ → \+(\d+)с на следующий ход$/,' → +$1s next turn');return s.replace(trimmed,translateUiText(base)+bonusMark+outBonus)}
+ const rules=[
+  [/^База: (\d+) способност(?:ь|и|ей)( · аварийный пул)?$/,(_,n,f)=>`Database: ${n} abilities${f?' · fallback pool':''}`],
+  [/^База: (\d+)$/,(_,n)=>`Database: ${n}`],
+  [/^Открыто (\d+) из (\d+) способност(?:ь|и|ей)$/,(_,a,b)=>`Unlocked ${a} of ${b} abilities`],
+  [/^(\d+) игроков$/,(_,n)=>`${n} players`],[/^(\d+) игрок$/,(_,n)=>`${n} player`],
+  [/^Хост · объясняющий$/,'Host · explainer'],[/^Игрок · угадывающий$/,'Player · guesser'],
+  [/^Ход: (.+?)( · ⏱ бонус \+\d+с)?$/,(_,n,b)=>`Turn: ${n}${b?b.replace('бонус','bonus').replace('с','s'):''}`],
+  [/^Матч завершён$/,'Match finished'],[/^Пауза$/,'Paused'],[/^Игра$/,'Playing'],
+  [/^Следующий особый: (.+)$/,(m,x)=>`Next special: ${x}`],
+  [/^🏅 Новое достижение: (.+)$/,(m,x)=>`🏅 New achievement: ${x}`],
+  [/^Ссылка скопирована$/,'Invite copied'],[/^Код комнаты: (.+)$/,(m,x)=>`Room code: ${x}`],
+  [/^Онлайн$/,'Online'],[/^Подключение…$/,'Connecting…'],[/^Переподключение…$/,'Reconnecting…'],[/^Ошибка сети$/,'Network error'],[/^Возвращаемся в комнату…$/,'Rejoining room…'],
+  [/^Хост удалил тебя из комнаты\.$/,'The host removed you from the room.'],
+  [/^Нужно минимум 3 буквы$/,'At least 3 letters are required'],[/^Нужен хотя бы один игрок$/,'At least one player is required'],[/^База способностей ещё загружается$/,'The ability database is still loading'],
+  [/^Сообщение заблокировано модерацией\.$/,'Message blocked by moderation.'],[/^Слишком много сообщений\. Подожди немного\.$/,'Too many messages. Wait a moment.'],[/^Чат заглушён хостом\.$/,'The host muted your chat.'],
+  [/^Игрок заглушён$/,'Player muted'],[/^Чат игрока снова открыт$/,'Player chat unmuted'],[/^Матч начался · (.+)$/,(m,x)=>`Match started · ${x==='Простой'?'Easy':x==='Классика'?'Classic':x==='Безумие'?'Insane':x}`],[/^(.+) вошёл в комнату$/,(m,x)=>`${x} joined the room`],[/^(.+) готов к игре$/,(m,x)=>`${x} is ready`],[/^(.+) пока не готов$/,(m,x)=>`${x} is not ready`],[/^🚫 (.+) удалён хостом$/,(m,x)=>`🚫 ${x} was removed by the host`],[/^✏️ Хост изменил счёт (.+): (-?\d+) → (-?\d+)$/,(m,n,a,b)=>`✏️ Host changed ${n}'s score: ${a} → ${b}`],[/^↪ Бесплатный пропуск · осталось (\d+)$/,(m,n)=>`↪ Free skip · ${n} left`],[/^↪ Пропуск: −1 очко штрафа$/,'↪ Skip: −1 penalty point'],[/^💀 Пропуск в Безумии: −1 очко$/,'💀 Insane skip: −1 point'],[/^💀 Плохой стрик: (\d+) пропуска подряд · −2 очка$/,(m,n)=>`💀 Bad streak: ${n} skips in a row · −2 points`],[/^🏆 (.+) набрал (-?\d+) очков и победил на сложности «(.+)»!$/,(m,n,p,d)=>`🏆 ${n} scored ${p} points and won on ${d==='Простой'?'Easy':d==='Классика'?'Classic':d==='Безумие'?'Insane':d}!`],[/^🛡️ (.+) автоматически заглушён модерацией$/,(m,n)=>`🛡️ ${n} was automatically muted by moderation`],[/^🔇 (.+) заглушён хостом$/,(m,n)=>`🔇 ${n} was muted by the host`],[/^🔊 (.+) снова может писать$/,(m,n)=>`🔊 ${n} can chat again`],[/^Бесплатных пропусков на игрока: (\d+)$/,(m,n)=>`Free skips per player: ${n}`],[/^Колода закончилась: в безумии повторов нет\.$/,'Deck exhausted: Insane mode has no repeats.'],[/^⏱ Хост добавил (.+) \+15 секунд к текущему ходу$/,(m,n)=>`⏱ Host added +15 seconds to ${n}'s current turn`],[/^🎁 Хост добавил (.+) \+15 секунд на следующий ход$/,(m,n)=>`🎁 Host added +15 seconds to ${n}'s next turn`],[/^💬 (.+) угадал в личном чате: \+1 очко$/,(m,n)=>`💬 ${n} guessed correctly in private chat: +1 point`],[/^❌ (.+) использовал личную попытку — неверно$/,(m,n)=>`❌ ${n} used the private guess — wrong`],[/^Угадали! \+1 очко$/,'Correct! +1 point'],[/^🔥 Серия (\d+)! \+(\d+) очка \(включая \+1 бонус\)$/,(m,s,g)=>`🔥 Streak ${s}! +${g} points (includes +1 bonus)`],[/^⚡ Угадали! \+1 очко · в Безумии бонуса за стрик нет$/,'⚡ Correct! +1 point · Insane has no streak bonus'],[/^Пауза$/,'Paused'],[/^Продолжаем$/,'Resumed'],[/^Матч завершён$/,'Match finished']
+ ];
+ for(const [re,val] of rules){const m=trimmed.match(re);if(m){const out=typeof val==='function'?val(...m):val;return s.replace(trimmed,out)}}
+ return s;
+}
+function applyLanguage(root=document){
+ document.documentElement.lang=currentLang;
+ if($('languageSelect'))$('languageSelect').value=currentLang;
+ if(currentLang!=='en')return;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('[data-user-text="1"]'))return;n.nodeValue=translateUiText(n.nodeValue)});
+ root.querySelectorAll&&root.querySelectorAll('[placeholder]').forEach(el=>{const p=el.getAttribute('placeholder');if(PLACEHOLDER_EN.has(p))el.setAttribute('placeholder',PLACEHOLDER_EN.get(p))});
+}
+function setLanguage(lang){const next=lang==='en'?'en':'ru';try{localStorage.setItem(LANGUAGE_KEY,next)}catch(e){}const u=new URL(location.href);u.searchParams.set('lang',next);location.href=u.toString()}
+function normalizeModerationText(v){return String(v||'').normalize('NFKC').toLowerCase().replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/[0@]/g,'o').replace(/[1!|]/g,'i').replace(/[3]/g,'e').replace(/[4]/g,'a').replace(/[5$]/g,'s').replace(/[7]/g,'t').replace(/[_*~`^]/g,'').replace(/\s+/g,' ').trim()}
+const BLOCK_WORDS=[/\b(?:fuck|shit|bitch|cunt|asshole|motherfucker|nigg\w*|fagg?ot)\b/i,/\b(?:porn|porno|xxx|hentai|nudes?|naked|onlyfans)\b/i,/(?:бля|хуй|хуе|пизд|еба|ёба|ебл|сук[аи]|порн|хентай)/i];
+const CONTROLLED_TERMS=/\b(?:cocaine|heroin|meth|fentanyl|marijuana|weed|mdma|ecstasy|amphetamine|pistol|rifle|ammo|ammunition|grenade|firearm)\b|(?:кокаин|героин|метамф|фентан|марихуан|наркот|пистолет|винтовк|боеприпас|гранат|огнестрел)/i;
+const TRADE_TERMS=/\b(?:buy|sell|order|deliver|delivery|where to get|where can i get)\b|(?:купить|куплю|продам|продать|заказать|доставка|где достать|где купить)/i;
+const URL_RE=/(?:https?:\/\/|www\.|(?:[a-z0-9-]+\.)+(?:com|net|org|ru|io|gg|me|xyz|site)\b)/i;
+function moderateText(v,{isName=false}={}){const raw=String(v||'').trim();const n=normalizeModerationText(raw),compact=n.replace(/[^a-zа-яё0-9]/gi,'');if(!raw)return{ok:false,reason:'empty'};if(URL_RE.test(n))return{ok:false,reason:'link'};if(BLOCK_WORDS.some(re=>re.test(n)||re.test(compact)))return{ok:false,reason:'blocked'};if(!isName&&CONTROLLED_TERMS.test(n)&&TRADE_TERMS.test(n))return{ok:false,reason:'unsafe'};return{ok:true,text:raw}}
+function safeName(v){const n=clean(v);const r=moderateText(n,{isName:true});return r.ok?n:''}
+function canSendChat(){const now=Date.now();chatSendTimes=chatSendTimes.filter(t=>now-t<CHAT_WINDOW_MS);if(now-lastChatSentAt<CHAT_COOLDOWN_MS||chatSendTimes.length>=CHAT_WINDOW_MAX)return false;lastChatSentAt=now;chatSendTimes.push(now);return true}
+function allowIncomingChat(senderId){
+ const id=String(senderId||'unknown'),now=Date.now();let arr=Array.isArray(incomingChatTimes[id])?incomingChatTimes[id]:[];
+ arr=arr.filter(t=>now-t<CHAT_WINDOW_MS);if(arr.length>=CHAT_WINDOW_MAX){incomingChatTimes[id]=arr;return false}arr.push(now);incomingChatTimes[id]=arr;return true;
+}
+
+function participantMuted(){if(role==='host'||!state)return false;const arr=role==='spectator'?(state.spectators||[]):(state.players||[]);const me=arr.find(p=>p.id===clientId);return !!(me&&me.muted)}
+function playerMuted(){return participantMuted()}
+
 function clean(v){return String(v||'').trim().replace(/\s+/g,' ').slice(0,24)}
 function safeAvatar(v){
  v=String(v||'');
@@ -342,8 +503,55 @@ const BUILTIN_AVATARS=[
  avatarSvg('land','#7ac1d4','#496a55'),
  avatarSvg('land','#e0a56b','#725d75')
 ];
+function safeRoomAvatar(v){const av=safeAvatar(v);return av&&BUILTIN_AVATARS.includes(av)?av:''}
 function randomCode(){const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<5;i++)s+=a[Math.floor(Math.random()*a.length)];return s}
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function loadAccessibility(){
+ try{const x=JSON.parse(localStorage.getItem(ACCESS_KEY)||'{}');if(x&&typeof x==='object')accessibility=Object.assign(accessibility,x)}catch(e){}
+ accessibility.tickVolume=Math.max(0,Math.min(100,Number(accessibility.tickVolume)||0));applyAccessibility();
+}
+function saveAccessibility(){try{localStorage.setItem(ACCESS_KEY,JSON.stringify(accessibility))}catch(e){}applyAccessibility()}
+function applyAccessibility(){
+ document.body.classList.toggle('a11y-large',!!accessibility.largeText);
+ document.body.classList.toggle('a11y-contrast',!!accessibility.highContrast);
+ document.body.classList.toggle('reduce-motion',!!accessibility.reduceMotion);
+ if($('a11yLargeText'))$('a11yLargeText').checked=!!accessibility.largeText;
+ if($('a11yContrast'))$('a11yContrast').checked=!!accessibility.highContrast;
+ if($('a11yReduceMotion'))$('a11yReduceMotion').checked=!!accessibility.reduceMotion;
+ if($('a11yVolume'))$('a11yVolume').value=String(accessibility.tickVolume);
+ if($('a11yVolumeValue'))$('a11yVolumeValue').textContent=Math.round(accessibility.tickVolume)+'%';
+}
+function loadPresets(){
+ try{const x=JSON.parse(localStorage.getItem(PRESETS_KEY)||'{}');presets=x&&typeof x==='object'?x:{}}catch(e){presets={}}
+ renderPresetSelect();
+}
+function persistPresets(){try{localStorage.setItem(PRESETS_KEY,JSON.stringify(presets))}catch(e){}renderPresetSelect()}
+function renderPresetSelect(){
+ const sel=$('presetSelect');if(!sel)return;const current=sel.value;sel.innerHTML='<option value="">'+ui('— сохранённые пресеты —','— saved presets —')+'</option>';
+ Object.keys(presets).sort((a,b)=>a.localeCompare(b,currentLang==='en'?'en':'ru')).forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;sel.appendChild(o)});
+ if(presets[current])sel.value=current;
+}
+function saveCurrentPreset(){
+ if(role!=='host'||!state||state.phase!=='lobby')return toast(ui('Пресеты можно менять только в лобби','Presets can only be changed in the lobby'));
+ const raw=clean($('presetName').value);if(!raw)return toast(ui('Введи название пресета','Enter a preset name'));
+ presets[raw]={difficulty:state.difficulty,freeSkips:state.freeSkips,allowed:state.allowed.slice(),revealSeconds:state.revealSeconds,gameLang:state.gameLang};
+ persistPresets();$('presetSelect').value=raw;toast(ui('Пресет сохранён','Preset saved'));
+}
+function applySelectedPreset(){
+ if(role!=='host'||!state||state.phase!=='lobby')return toast(ui('Пресеты можно загружать только в лобби','Presets can only be loaded in the lobby'));
+ const key=$('presetSelect').value,p=presets[key];if(!p)return toast(ui('Выбери сохранённый пресет','Choose a saved preset'));
+ if(DIFFICULTIES[p.difficulty])state.difficulty=p.difficulty;
+ state.freeSkips=Math.max(0,Math.min(9,Number(p.freeSkips)||0));
+ const alphabet=roomAlphabet(state),allowed=Array.isArray(p.allowed)?p.allowed.filter(x=>alphabet.includes(x)):[];
+ state.allowed=allowed.length>=3?allowed:alphabet.slice();
+ state.revealSeconds=[0,3,5].includes(Number(p.revealSeconds))?Number(p.revealSeconds):3;
+ state.turnDuration=baseTurnSeconds(state);state.paused=state.turnDuration;
+ state.event=ui('Загружен пресет «','Loaded preset “')+key+ui('»','”');sendState();render();
+}
+function deleteSelectedPreset(){
+ const key=$('presetSelect').value;if(!key||!presets[key])return;
+ if(!confirm(ui('Удалить пресет «','Delete preset “')+key+ui('»?','”?')))return;delete presets[key];persistPresets();$('presetName').value='';toast(ui('Пресет удалён','Preset deleted'));
+}
 function ensureAudio(){
  try{
    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
@@ -352,8 +560,8 @@ function ensureAudio(){
 }
 function updateSoundButton(){
  const b=$('soundToggle');if(!b)return;
- b.textContent=soundEnabled?'🔊 20с: ВКЛ':'🔇 20с: ВЫКЛ';
- b.title=soundEnabled?'Тихое тиканье включено':'Тиканье выключено';
+ b.textContent=soundEnabled?ui('🔊 20с: ВКЛ','🔊 20s: ON'):ui('🔇 20с: ВЫКЛ','🔇 20s: OFF');
+ b.title=soundEnabled?ui('Тихое тиканье включено','Quiet ticking is on'):ui('Тиканье выключено','Ticking is off');
 }
 function setSoundEnabled(value){
  soundEnabled=!!value;
@@ -370,7 +578,7 @@ function playTick(){
    osc.type='triangle';osc.frequency.value=620;
    const now=audioCtx.currentTime;
    gain.gain.setValueAtTime(0.0001,now);
-   gain.gain.exponentialRampToValueAtTime(0.018,now+0.006);
+   gain.gain.exponentialRampToValueAtTime(Math.max(0.0001,0.03*(Number(accessibility.tickVolume)||0)/100),now+0.006);
    gain.gain.exponentialRampToValueAtTime(0.0001,now+0.055);
    osc.connect(gain);gain.connect(audioCtx.destination);
    osc.start(now);osc.stop(now+0.06);
@@ -386,19 +594,21 @@ function handleCountdownSound(seconds){
 function toast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2200)}
 function notice(t){$('notice').textContent=t;$('notice').classList.remove('hidden')}
 function clearNotice(){$('notice').classList.add('hidden');$('notice').textContent=''}
-function setConn(t,kind=''){$('conn').textContent=t;$('conn').className='status '+kind}
+function setConn(t,kind=''){$('conn').textContent=currentLang==='en'?translateUiText(t):t;$('conn').className='status '+kind}
 function fmt(v){v=Math.max(0,Math.ceil(v));return String(Math.floor(v/60)).padStart(2,'0')+':'+String(v%60).padStart(2,'0')}
 function difficultyConfig(s=state){return DIFFICULTIES[(s&&s.difficulty)||'classic']||DIFFICULTIES.classic}
+function gameLanguage(s=state){return s&&s.gameLang==='en'?'en':'ru'}
+function roomAlphabet(s=state){return (ALPHABETS[gameLanguage(s)]||ALPHABETS.ru).slice()}
 function baseTurnSeconds(s=state){return difficultyConfig(s).turn}
 function winScore(s=state){return difficultyConfig(s).win}
-function difficultyText(key){const d=DIFFICULTIES[key]||DIFFICULTIES.classic;return d.icon+' '+d.name+' · '+fmt(d.turn)+' · победа '+d.win+' очк. · особые '+Math.round(d.cursedChance*100)+'% проклятых / '+Math.round((1-d.cursedChance)*100)+'% удачливых'+(d.noRepeats?' · без повторов за весь матч':'')}
+function difficultyText(key){const d=DIFFICULTIES[key]||DIFFICULTIES.classic;return d.icon+' '+difficultyName(d)+' · '+fmt(d.turn)+' · '+ui('победа ','win at ')+d.win+' '+ui('очк.','pts')+' · '+ui('особые ','specials ')+Math.round(d.cursedChance*100)+'% '+ui('проклятых','cursed')+' / '+Math.round((1-d.cursedChance)*100)+'% '+ui('удачливых','lucky')+(d.noRepeats?ui(' · без повторов за весь матч',' · no repeats for the whole match'):'')}
 function remaining(){const base=state&&Number(state.turnDuration)>0?Number(state.turnDuration):baseTurnSeconds(state);if(!state)return DIFFICULTIES.classic.turn;if(state.phase==='paused')return Number(state.paused)||0;if(state.phase!=='playing'||!state.ends)return base;return Math.max(0,(state.ends-Date.now())/1000)}
 function specialLetters(type){
- const allowed=(state&&state.allowed&&state.allowed.length?state.allowed:ALL).slice();
+ const allowed=(state&&state.allowed&&state.allowed.length?state.allowed:roomAlphabet()).slice();
  if(type==='cursed')return shuffle(allowed).slice(0,1);
  if(type==='lucky'){
    const pool=allowed.slice();
-   ALL.forEach(x=>{if(!pool.includes(x))pool.push(x)});
+   roomAlphabet().forEach(x=>{if(!pool.includes(x))pool.push(x)});
    return shuffle(pool).slice(0,5);
  }
  return shuffle(allowed).slice(0,3);
@@ -422,13 +632,13 @@ function rollRoundType(){
 function prepareRoundSecret(){
  const ability=drawAbility();
  if(!ability){
-   if(state&&difficultyConfig().noRepeats){state.phase='finished';state.ends=null;state.event='Колода закончилась: в безумии повторов нет.'}
+   if(state&&difficultyConfig().noRepeats){const leader=rankedPlayers()[0]||null;state.phase='finished';state.ends=null;state.winnerId=leader?leader.id:null;state.winByScore=false;state.event='Колода закончилась: в безумии повторов нет.';finalizeRoomRecords(leader)}
    return null;
  }
  const type=rollRoundType();
  return{ability,letters:specialLetters(type),roundType:type,rollChance:state.roundRollChance,firstAttempt:false};
 }
-function pct(v){return (Math.round(Number(v||0)*10000)/100).toLocaleString('ru-RU',{maximumFractionDigits:2})+'%'}
+function pct(v){return (Math.round(Number(v||0)*10000)/100).toLocaleString(langLocale(),{maximumFractionDigits:2})+'%'}
 function resetDeckForMatch(){deck=shuffle(registry.map((_,i)=>i));lastHero=null}
 function drawAbility(){
  if(!registry.length)return null;
@@ -442,14 +652,14 @@ function drawAbility(){
  }
  const idx=deck.splice(pos,1)[0];lastHero=registry[idx].hero;return registry[idx];
 }
-function newState(difficulty='classic'){
- const d=DIFFICULTIES[difficulty]||DIFFICULTIES.classic;
- return{phase:'lobby',players:[],active:0,ends:null,paused:d.turn,event:'Комната готова',allowed:ALL.slice(),freeSkips:2,specialChance:SPECIAL_START,roundRollChance:SPECIAL_START,roundType:'normal',roundNumber:0,turnDuration:d.turn,currentTurnBonus:0,turnStartedAt:null,difficulty:d.key,deckExhausted:false}
+function newState(difficulty='classic',gameLang='ru'){
+ const d=DIFFICULTIES[difficulty]||DIFFICULTIES.classic;gameLang=gameLang==='en'?'en':'ru';
+ return{phase:'lobby',players:[],spectators:[],active:0,ends:null,paused:d.turn,event:'Комната готова',allowed:(ALPHABETS[gameLang]||ALPHABETS.ru).slice(),freeSkips:2,specialChance:SPECIAL_START,roundRollChance:SPECIAL_START,roundType:'normal',roundNumber:0,turnDuration:d.turn,currentTurnBonus:0,turnStartedAt:null,difficulty:d.key,gameLang,deckExhausted:false,revealSeconds:3,revealEnds:null,revealData:null,nextActive:null,autoPausedForDisconnect:null,roomRecords:{fastest:null,bestStreak:null,biggestComeback:null,cleanest:null},matchStats:{fastest:null}}
 }
 function normalizeState(s){
  if(!s||typeof s!=='object')return null;
- if(!Array.isArray(s.players))s.players=[];
- if(!Array.isArray(s.allowed)||s.allowed.length<3)s.allowed=ALL.slice();
+ if(!Array.isArray(s.players))s.players=[];if(!Array.isArray(s.spectators))s.spectators=[];
+ const alphabet=roomAlphabet(s);if(!Array.isArray(s.allowed))s.allowed=alphabet.slice();else s.allowed=s.allowed.filter(x=>alphabet.includes(x));if(s.allowed.length<3)s.allowed=alphabet.slice();
  if(!Number.isFinite(Number(s.freeSkips)))s.freeSkips=2;
  s.freeSkips=Math.max(0,Math.min(9,Math.floor(Number(s.freeSkips))));
  s.players.forEach(p=>{
@@ -463,11 +673,19 @@ function normalizeState(s){
    p.timeBonus=Math.max(0,Math.min(35,Math.floor(Number(p.timeBonus))));
    if(!Number.isFinite(Number(p.guessSubmittedRound)))p.guessSubmittedRound=0;
    if(!Number.isFinite(Number(p.guessLockedRound)))p.guessLockedRound=0;
-   p.avatar=safeAvatar(p.avatar);
+   if(typeof p.ready!=='boolean')p.ready=false;
+   if(typeof p.muted!=='boolean')p.muted=false;
+   if(!Number.isFinite(Number(p.violations)))p.violations=0;
+   if(!Number.isFinite(Number(p.maxDeficit)))p.maxDeficit=0;
+   if(!Number.isFinite(Number(p.lastSeen)))p.lastSeen=Date.now();
+   if(!['online','offline','expired'].includes(p.connection))p.connection='online';
+   if(!Number.isFinite(Number(p.reconnectUntil)))p.reconnectUntil=0;
+   p.avatar=safeRoomAvatar(p.avatar);
  });
  if(!Number.isInteger(s.active)||s.active<0)s.active=0;
- if(!['lobby','playing','paused','finished'].includes(s.phase))s.phase='lobby';
+ if(!['lobby','playing','paused','reveal','finished'].includes(s.phase))s.phase='lobby';
  if(!DIFFICULTIES[s.difficulty])s.difficulty='classic';
+ if(s.gameLang!=='en'&&s.gameLang!=='ru')s.gameLang='ru';
  if(typeof s.matchId!=='string')s.matchId=null;
  if(!Number.isFinite(Number(s.specialChance)))s.specialChance=SPECIAL_START;
  s.specialChance=Math.max(SPECIAL_START,Math.min(SPECIAL_CAP,Number(s.specialChance)));
@@ -477,6 +695,14 @@ function normalizeState(s){
  if(!Number.isFinite(Number(s.turnDuration))||Number(s.turnDuration)<=0)s.turnDuration=baseTurnSeconds(s);
  if(!Number.isFinite(Number(s.currentTurnBonus)))s.currentTurnBonus=0;
  if(s.turnStartedAt!==null&&!Number.isFinite(Number(s.turnStartedAt)))s.turnStartedAt=null;
+ if(!Number.isFinite(Number(s.revealSeconds)))s.revealSeconds=3;s.revealSeconds=[0,3,5].includes(Number(s.revealSeconds))?Number(s.revealSeconds):3;
+ if(s.revealEnds!==null&&!Number.isFinite(Number(s.revealEnds)))s.revealEnds=null;
+ if(!s.revealData||typeof s.revealData!=='object')s.revealData=null;
+ if(!Number.isInteger(s.nextActive))s.nextActive=null;
+ if(typeof s.autoPausedForDisconnect!=='string')s.autoPausedForDisconnect=null;
+ if(!s.roomRecords||typeof s.roomRecords!=='object')s.roomRecords={fastest:null,bestStreak:null,biggestComeback:null,cleanest:null};
+ if(!s.matchStats||typeof s.matchStats!=='object')s.matchStats={fastest:null};
+ s.spectators=s.spectators.slice(0,24).map(sp=>({id:String(sp.id||''),name:safeName(sp.name)||ui('Зритель','Spectator'),avatar:safeRoomAvatar(sp.avatar),muted:!!sp.muted,violations:Number(sp.violations)||0,lastSeen:Number(sp.lastSeen)||Date.now(),connection:['online','offline','expired'].includes(sp.connection)?sp.connection:'online',reconnectUntil:Number(sp.reconnectUntil)||0})).filter(sp=>sp.id);
  s.players.forEach(p=>{if(typeof p.wasLast!=='boolean')p.wasLast=false});
  return s;
 }
@@ -537,9 +763,9 @@ function renderSavedAvatarSelection(){
  document.querySelectorAll('.avatarChoice').forEach((b,i)=>b.classList.toggle('on',!!selectedAvatar&&selectedAvatar===BUILTIN_AVATARS[i]));
  if(selectedAvatar){
    const builtIn=BUILTIN_AVATARS.includes(selectedAvatar);
-   $('avatarHint').textContent=builtIn?'Сохранённая встроенная аватарка выбрана ✓':'Сохранённая своя аватарка выбрана ✓';
+   $('avatarHint').textContent=builtIn?ui('Сохранённая встроенная аватарка выбрана ✓','Saved built-in avatar selected ✓'):ui('Сохранённая своя аватарка выбрана ✓','Saved custom avatar selected ✓');
  }else{
-   $('avatarHint').textContent='Если ничего не выбрать, будет первая буква ника.';
+   $('avatarHint').textContent=ui('Если ничего не выбрать, будет первая буква ника.','If you choose nothing, the first letter of your nickname will be used.');
  }
 }
 function unlockAbilityLocal(ability,quiet=false){
@@ -550,7 +776,7 @@ function unlockAbilityLocal(ability,quiet=false){
    profile.unlockedAbilities[ability.id]=Date.now();
    saveProfile();
    renderLibrary();
-   if(!quiet)toast('📚 Открыта способность: '+(ability.name||ability.id));
+   if(!quiet)toast(ui('📚 Открыта способность: ','📚 Ability unlocked: ')+(ability.name||ability.id));
  }
  return isNew;
 }
@@ -560,18 +786,18 @@ function renderLibraryFilters(){
  const currentHero=heroSel.value,currentRole=roleSel.value;
  const heroes=[...new Set(registry.map(a=>a.hero).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru'));
  const roles=[...new Set(registry.flatMap(a=>Array.isArray(a.roles)?a.roles:[]).filter(Boolean))].sort();
- heroSel.innerHTML='<option value="">Все герои</option>'+heroes.map(h=>'<option value="'+escapeHtml(h)+'">'+escapeHtml(h)+'</option>').join('');
- roleSel.innerHTML='<option value="">Все роли</option>'+roles.map(r=>'<option value="'+escapeHtml(r)+'">'+escapeHtml(ROLE_LABELS[r]||r)+'</option>').join('');
+ heroSel.innerHTML='<option value="">'+ui('Все герои','All heroes')+'</option>'+heroes.map(h=>'<option value="'+escapeHtml(h)+'">'+escapeHtml(h)+'</option>').join('');
+ roleSel.innerHTML='<option value="">'+ui('Все роли','All roles')+'</option>'+roles.map(r=>'<option value="'+escapeHtml(r)+'">'+escapeHtml(roleLabel(r))+'</option>').join('');
  if(heroes.includes(currentHero))heroSel.value=currentHero;
  if(roles.includes(currentRole))roleSel.value=currentRole;
 }
 function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function renderLibrary(){
  if(!$('libraryGrid'))return;
- if(!registry.length){$('libraryProgressText').textContent='База способностей ещё загружается…';return}
+ if(!registry.length){$('libraryProgressText').textContent=ui('База способностей ещё загружается…','The ability database is still loading…');return}
  const hero=$('libraryHero').value||'',roleFilter=$('libraryRole').value||'';
  const unlockedCount=registry.filter(a=>libraryUnlocked(a.id)).length;
- $('libraryProgressText').textContent='Открыто '+unlockedCount+' из '+registry.length+' способностей';
+ $('libraryProgressText').textContent=ui('Открыто '+unlockedCount+' из '+registry.length+' способностей','Unlocked '+unlockedCount+' of '+registry.length+' abilities');
  $('libraryProgressBar').style.width=(registry.length?unlockedCount/registry.length*100:0)+'%';
  const list=registry.filter(a=>(!hero||a.hero===hero)&&(!roleFilter||(a.roles||[]).includes(roleFilter))).sort((a,b)=>a.hero.localeCompare(b.hero,'ru')||a.name.localeCompare(b.name,'ru'));
  const grid=$('libraryGrid');grid.innerHTML='';
@@ -580,20 +806,21 @@ function renderLibrary(){
    const card=document.createElement('div');card.className='abilityCard '+(unlocked?'':'locked');
    const img=document.createElement('img');img.loading='lazy';img.src=a.icon||'';img.alt='';card.appendChild(img);
    const nm=document.createElement('div');nm.className='abilityCardName';nm.textContent=a.name;card.appendChild(nm);
-   const meta=document.createElement('div');meta.className='abilityCardMeta';meta.textContent=a.hero+(a.roles&&a.roles.length?' · '+a.roles.map(r=>ROLE_LABELS[r]||r).join(', '):'');card.appendChild(meta);
-   const badge=document.createElement('div');badge.className='abilityCardBadge';badge.textContent=unlocked?'✓ Открыто':'🔒 Не угадано';card.appendChild(badge);
+   const meta=document.createElement('div');meta.className='abilityCardMeta';meta.textContent=a.hero+(a.roles&&a.roles.length?' · '+a.roles.map(roleLabel).join(', '):'');card.appendChild(meta);
+   const badge=document.createElement('div');badge.className='abilityCardBadge';badge.textContent=unlocked?ui('✓ Открыто','✓ Unlocked'):ui('🔒 Не угадано','🔒 Not guessed');card.appendChild(badge);
    grid.appendChild(card);
  });
+ applyLanguage($('libraryPanel'));
 }
 function renderProfile(){
  if(!profile||!$('profilePanel'))return;
  const wrap=$('profileAvatarWrap');wrap.innerHTML='';
  wrap.appendChild(avatarElement({name:profile.displayName||'?',avatar:profile.avatar},'profileAvatar','profileFallback'));
- $('profileName').textContent=profile.displayName||'Новый игрок';
- $('profileNote').textContent=profile.displayName?'Профиль сохранён в этом браузере.':'Ник и аватарка сохранятся после первого входа.';
+ $('profileName').textContent=profile.displayName||ui('Новый игрок','New player');
+ $('profileNote').textContent=profile.displayName?ui('Профиль сохранён в этом браузере.','Profile saved in this browser.'):ui('Ник и аватарка сохранятся после первого входа.','Your name and avatar will be saved after your first join.');
  const s=profile.stats;
  $('profileStats').innerHTML=[
-   ['Матчи',s.games],['Победы',s.wins],['Лучший стрик',s.bestStreak],['Очки всего',s.totalScore],['Штрафы',s.totalPenalties]
+   [ui('Матчи','Matches'),s.games],[ui('Победы','Wins'),s.wins],[ui('Лучший стрик','Best streak'),s.bestStreak],[ui('Очки всего','Total points'),s.totalScore],[ui('Штрафы','Penalties'),s.totalPenalties]
  ].map(([label,value])=>'<div class="profileStat"><b>'+Number(value||0)+'</b><small>'+label+'</small></div>').join('');
  const unlocked=ACHIEVEMENTS.filter(a=>profile.achievements[a.id]);
  $('profileAchievementCount').textContent='🏅 '+unlocked.length+' / '+ACHIEVEMENTS.length;
@@ -604,10 +831,11 @@ function renderProfile(){
    d.className='achievement '+(open?'':'locked')+(lastAchievementFlash.includes(a.id)?' new':'');
    const icon=document.createElement('div');icon.className='achievementIcon';icon.textContent=open?a.icon:'🔒';
    const tx=document.createElement('div');tx.className='achievementText';
-   const b=document.createElement('b');b.textContent=a.title;
-   const sm=document.createElement('small');sm.textContent=a.desc;
+   const b=document.createElement('b');b.textContent=achievementTitle(a);
+   const sm=document.createElement('small');sm.textContent=achievementDesc(a);
    tx.append(b,sm);d.append(icon,tx);box.appendChild(d);
  });
+ applyLanguage($('profilePanel'));
 }
 function unlockAchievement(id,newOnes){
  if(!profile)return;
@@ -620,8 +848,7 @@ function updateLastPlaceFlags(){
  if(!state||!Array.isArray(state.players)||state.players.length<2)return;
  const scores=state.players.map(p=>Number(p.score)||0);
  const min=Math.min(...scores),max=Math.max(...scores);
- if(min===max)return;
- state.players.forEach(p=>{if((Number(p.score)||0)===min)p.wasLast=true});
+ state.players.forEach(p=>{const score=Number(p.score)||0;p.maxDeficit=Math.max(Number(p.maxDeficit)||0,max-score);if(min!==max&&score===min)p.wasLast=true});
 }
 function processFinishedMatchForProfile(){
  if(role!=='player'||!state||state.phase!=='finished'||!state.matchId||!profile)return;
@@ -661,8 +888,8 @@ function processFinishedMatchForProfile(){
  lastAchievementFlash=fresh;
  saveProfile();
  if(fresh.length){
-   const names=fresh.map(id=>(ACHIEVEMENTS.find(a=>a.id===id)||{}).title).filter(Boolean);
-   toast('🏅 Новое достижение: '+names.join(', '));
+   const names=fresh.map(id=>{const a=ACHIEVEMENTS.find(x=>x.id===id);return a?achievementTitle(a):''}).filter(Boolean);
+   toast(ui('🏅 Новое достижение: ','🏅 New achievement: ')+names.join(', '));
    setTimeout(()=>{lastAchievementFlash=[];renderProfile()},5000);
  }
 }
@@ -680,7 +907,7 @@ function saveSession(){
      chatUnread:role==='host'?chatUnread:null,
      myChat:role==='player'?myChat:null,
      publicChat,
-     selectedAvatar:role==='player'?selectedAvatar:null
+     selectedAvatar:(role==='player'||role==='spectator')?selectedAvatar:null
    }));
  }catch(e){}
 }
@@ -692,7 +919,7 @@ function restoreSession(){
    if(!saved||Date.now()-Number(saved.savedAt||0)>SESSION_TTL){clearSession();return false}
    const roomFromUrl=new URLSearchParams(location.search).get('room');
    if(roomFromUrl&&String(roomFromUrl).toUpperCase()!==String(saved.code||'').toUpperCase())return false;
-   if(!['host','player'].includes(saved.role)||!saved.code||!saved.name)return false;
+   if(!['host','player','spectator'].includes(saved.role)||!saved.code||!saved.name)return false;
    role=saved.role;code=String(saved.code).toUpperCase();name=clean(saved.name);clientId=saved.clientId||crypto.randomUUID();hostId=saved.hostId||null;
    if(role==='host'){
      state=normalizeState(saved.state)||newState();
@@ -706,73 +933,107 @@ function restoreSession(){
      myChat=[];
    }else{
      state=null;secret=null;
-     myChat=Array.isArray(saved.myChat)?saved.myChat:[];
+     myChat=role==='player'&&Array.isArray(saved.myChat)?saved.myChat:[];
      publicChat=Array.isArray(saved.publicChat)?saved.publicChat:[];
      selectedAvatar=safeAvatar(saved.selectedAvatar);
      chatByPlayer={};selectedChatPlayer=null;chatUnread={};
    }
    connect();showRoom();
-   if(role==='player')setConn('Возвращаемся в комнату…');
+   if(role==='player'||role==='spectator')setConn(ui('Возвращаемся в комнату…','Returning to room…'));
    return true;
  }catch(e){clearSession();return false}
 }
-function showRoom(){$('home').classList.add('hidden');$('room').classList.remove('hidden');$('hostSecret').classList.toggle('hidden',role!=='host');$('hostControls').classList.toggle('hidden',role!=='host');$('settings').classList.toggle('hidden',role!=='host');$('playerListen').classList.toggle('hidden',role!=='player');$('chatPanel').classList.remove('hidden');render()}
+function showRoom(){$('home').classList.add('hidden');$('room').classList.remove('hidden');$('hostSecret').classList.toggle('hidden',role!=='host');$('hostControls').classList.toggle('hidden',role!=='host');$('settings').classList.toggle('hidden',role!=='host');$('playerListen').classList.toggle('hidden',role==='host');$('chatPrivateTab').classList.toggle('hidden',role==='spectator');if(role==='spectator')chatMode='public';setChatMode(chatMode);render()}
 function render(){
  if(!state||!code)return;
  $('roomCode').textContent=code;
- $('role').textContent=role==='host'?'Хост · объясняющий':'Игрок · угадывающий';
- $('phase').textContent=state.phase==='lobby'?'Лобби':state.phase==='playing'?'Игра':state.phase==='paused'?'Пауза':'Финиш';const dc=difficultyConfig();$('difficultyChip').textContent=dc.icon+' '+dc.name+' · '+fmt(dc.turn)+' · '+dc.win+' очк.';$('difficultyChip').className='chip difficultyBadge '+dc.key;
- $('event').textContent=state.event||'';
+ $('role').textContent=role==='host'?ui('Хост · объясняющий','Host · explainer'):role==='spectator'?ui('Зритель · наблюдение','Spectator · watching'):ui('Игрок · угадывающий','Player · guesser');
+ $('phase').textContent=state.phase==='lobby'?ui('Лобби','Lobby'):state.phase==='playing'?ui('Игра','Playing'):state.phase==='paused'?ui('Пауза','Paused'):state.phase==='reveal'?ui('Раскрытие','Reveal'):ui('Финиш','Finished');const dc=difficultyConfig();$('difficultyChip').textContent=dc.icon+' '+difficultyName(dc)+' · '+fmt(dc.turn)+' · '+dc.win+' '+ui('очк.','pts')+' · '+(gameLanguage()==='en'?'EN':'RU');$('difficultyChip').className='chip difficultyBadge '+dc.key;
+ $('event').textContent=currentLang==='en'?translateUiText(state.event||''):state.event||'';
  const rb=$('roundBanner');
  if(state.phase==='playing'||state.phase==='paused'){
-   if(state.roundType==='cursed'){rb.textContent='☠ ПРОКЛЯТЫЙ РАУНД · 1 БУКВА';rb.className='roundBanner cursed'}
-   else if(state.roundType==='lucky'){rb.textContent='✨ УДАЧЛИВЫЙ РАУНД · 5 БУКВ';rb.className='roundBanner lucky'}
+   if(state.roundType==='cursed'){rb.textContent=ui('☠ ПРОКЛЯТЫЙ РАУНД · 1 БУКВА','☠ CURSED ROUND · 1 LETTER');rb.className='roundBanner cursed'}
+   else if(state.roundType==='lucky'){rb.textContent=ui('✨ УДАЧЛИВЫЙ РАУНД · 5 БУКВ','✨ LUCKY ROUND · 5 LETTERS');rb.className='roundBanner lucky'}
    else{rb.className='roundBanner hidden';rb.textContent=''}
  }else{rb.className='roundBanner hidden';rb.textContent=''}
- $('count').textContent=state.players.length+' игроков';
+ $('count').textContent=state.players.length+' '+ui('игроков','players');
  const active=state.players[state.active]||null;
- $('turn').textContent=state.phase==='lobby'?'Ждём игроков':state.phase==='finished'?'Матч завершён':active?'Ход: '+active.name+(Number(state.currentTurnBonus)>0?' · ⏱ бонус +'+state.currentTurnBonus+'с':''):'Ждём игрока';
+ $('turn').textContent=state.phase==='lobby'?ui('Ждём игроков','Waiting for players'):state.phase==='finished'?ui('Матч завершён','Match finished'):state.phase==='reveal'?ui('Раунд завершён','Round complete'):active?ui('Ход: ','Turn: ')+active.name+(Number(state.currentTurnBonus)>0?' · ⏱ '+ui('бонус','bonus')+' +'+state.currentTurnBonus+ui('с','s'):''):ui('Ждём игрока','Waiting for player');
  $('scores').innerHTML='';
  $('empty').classList.toggle('hidden',state.players.length>0);
- state.players.forEach((p,i)=>{const d=document.createElement('div');d.className='score '+(i===state.active&&state.phase!=='lobby'?'active':'');const l=document.createElement('div');l.className='playerLeft';l.appendChild(avatarElement(p));const info=document.createElement('div');const b=document.createElement('b');b.textContent=p.name;const m=document.createElement('div');m.className='muted small';if(difficultyConfig().insaneSkipPenalty)m.textContent='↪ всего '+p.skips+' · 💀 подряд '+(Number(p.skipStreak)||0)+(Number(p.timeBonus)>0?' · 🎁 +'+p.timeBonus+'с':'');else{const freeLeft=Math.max(0,state.freeSkips-p.skips);m.textContent='🔥 сейчас '+p.streak+' · рекорд '+p.bestStreak+' · ↪ '+p.skips+' · бесплатно '+freeLeft+(Number(p.timeBonus)>0?' · 🎁 +'+p.timeBonus+'с':'')}info.append(b,m);l.appendChild(info);const right=document.createElement('div');right.className='scoreRight';const sc=document.createElement('div');sc.className='scorev';sc.textContent=String(p.score);right.appendChild(sc);if(role==='host'){const gear=document.createElement('button');gear.className='hostGear';gear.textContent='⚙️';gear.title='Управление игроком';gear.onclick=()=>openPlayerAdmin(p.id);right.appendChild(gear)}d.append(l,right);$('scores').appendChild(d)}); if(role==='host'){
+ state.players.forEach((p,i)=>{const d=document.createElement('div');d.className='score '+(i===state.active&&state.phase!=='lobby'?'active':'');const l=document.createElement('div');l.className='playerLeft';l.appendChild(avatarElement(p));const info=document.createElement('div');const head=document.createElement('div');const b=document.createElement('b');b.textContent=p.name;head.appendChild(b);const cb=document.createElement('span');cb.className='connectionBadge '+(p.connection==='online'?'':p.connection);cb.textContent=p.connection==='online'?ui('ОНЛАЙН','ONLINE'):p.connection==='offline'?ui('ВОЗВРАЩАЕТСЯ','RECONNECTING'):ui('ОФЛАЙН','OFFLINE');head.appendChild(cb);if(state.phase==='lobby'&&p.ready){const r=document.createElement('span');r.className='readyBadge';r.textContent=ui('ГОТОВ','READY');head.appendChild(r)}if(p.muted){const mu=document.createElement('span');mu.className='mutedBadge';mu.textContent=ui('ЧАТ ВЫКЛ','MUTED');head.appendChild(mu)}const m=document.createElement('div');m.className='muted small';if(difficultyConfig().insaneSkipPenalty)m.textContent='↪ '+ui('всего','total')+' '+p.skips+' · 💀 '+ui('подряд','in a row')+' '+(Number(p.skipStreak)||0)+(Number(p.timeBonus)>0?' · 🎁 +'+p.timeBonus+ui('с','s'):'');else{const freeLeft=Math.max(0,state.freeSkips-p.skips);m.textContent='🔥 '+ui('сейчас','now')+' '+p.streak+' · '+ui('рекорд','best')+' '+p.bestStreak+' · ↪ '+p.skips+' · '+ui('бесплатно','free')+' '+freeLeft+(Number(p.timeBonus)>0?' · 🎁 +'+p.timeBonus+ui('с','s'):'')}info.append(head,m);l.appendChild(info);const right=document.createElement('div');right.className='scoreRight';const sc=document.createElement('div');sc.className='scorev';sc.textContent=String(p.score);right.appendChild(sc);if(role==='host'){const gear=document.createElement('button');gear.className='hostGear';gear.textContent='⚙️';gear.title=ui('Управление игроком','Manage player');gear.onclick=()=>openPlayerAdmin(p.id);right.appendChild(gear)}d.append(l,right);$('scores').appendChild(d)}); if(role==='host'){
   $('lobbyControls').classList.toggle('hidden',state.phase!=='lobby');
+  const readyCount=state.players.filter(p=>p.ready).length,totalPlayers=state.players.length;
+  $('start').textContent=ui('▶ Начать матч','▶ Start match')+(state.phase==='lobby'&&totalPlayers?' · '+ui('готовы','ready')+' '+readyCount+'/'+totalPlayers:'');
   $('gameControls').classList.toggle('hidden',!(state.phase==='playing'||state.phase==='paused'));
   $('finishedControls').classList.toggle('hidden',state.phase!=='finished');
-  $('pause').textContent=state.phase==='paused'?'▶ Продолжить':'⏸ Пауза';
+  $('revealSeconds').value=String(state.revealSeconds);$('revealSeconds').disabled=state.phase!=='lobby';
+  $('pause').textContent=state.phase==='paused'?ui('▶ Продолжить','▶ Resume'):ui('⏸ Пауза','⏸ Pause');
   const fa=$('firstAttempt');
   if(secret){
     const innate=!!(secret.ability&&secret.ability.innate);
-    fa.textContent=(innate?'🧬 Врождённая с первой попытки: ':'🎯 С первой попытки: ')+(secret.firstAttempt?'ДА':'НЕТ');
+    fa.textContent=(innate?ui('🧬 Врождённая с первой попытки: ','🧬 Innate first try: '):ui('🎯 С первой попытки: ','🎯 First try: '))+(secret.firstAttempt?ui('ДА','YES'):ui('НЕТ','NO'));
     fa.classList.toggle('on',!!secret.firstAttempt);
     fa.disabled=state.phase!=='playing';
   }else{
-    fa.textContent='🎯 С первой попытки: НЕТ';fa.classList.remove('on');fa.disabled=true;
+    fa.textContent=ui('🎯 С первой попытки: НЕТ','🎯 First try: NO');fa.classList.remove('on');fa.disabled=true;
   }
+  renderLetterPicker();
   document.querySelectorAll('.toggle').forEach(btn=>{btn.classList.toggle('on',state.allowed.includes(btn.dataset.letter));btn.disabled=state.phase!=='lobby'});
   $('freeSkips').value=String(state.freeSkips);
   const insaneMode=difficultyConfig().insaneSkipPenalty;
   $('freeSkips').disabled=state.phase!=='lobby'||insaneMode;
-  $('freeSkipsHint').textContent=insaneMode?'В Безумии бесплатных пропусков нет: −1 за первый подряд, −2 начиная со второго.':'Настраивается хостом до начала матча.';
+  $('freeSkipsHint').textContent=insaneMode?ui('В Безумии бесплатных пропусков нет: −1 за первый подряд, −2 начиная со второго.','Insane has no free skips: −1 for the first in a row, −2 from the second onward.'):ui('Настраивается хостом до начала матча.','Configured by the host before the match.');
   const dc2=difficultyConfig();
-  $('roomDifficultyInfo').innerHTML='<b>'+dc2.icon+' '+dc2.name+'</b><br>Раунд: '+fmt(dc2.turn)+' · победа: '+dc2.win+' очков · особые: '+Math.round(dc2.cursedChance*100)+'% проклятых / '+Math.round((1-dc2.cursedChance)*100)+'% удачливых'+(dc2.noRepeats?' · колода не обновляется, повторов за матч нет':' · после конца колоды она перемешивается заново')+(dc2.insaneSkipPenalty?' · без бонуса за стрик · пропуски: −1, затем −2 подряд':'');
+  $('roomDifficultyInfo').innerHTML='<b>'+dc2.icon+' '+difficultyName(dc2)+' · '+(gameLanguage()==='en'?'English':'Русский')+'</b><br>'+ui('Раунд: ','Turn: ')+fmt(dc2.turn)+' · '+ui('победа: ','win at ')+dc2.win+' '+ui('очков','points')+' · '+ui('особые: ','specials: ')+Math.round(dc2.cursedChance*100)+'% '+ui('проклятых','cursed')+' / '+Math.round((1-dc2.cursedChance)*100)+'% '+ui('удачливых','lucky')+(dc2.noRepeats?ui(' · колода не обновляется, повторов за матч нет',' · the deck never refreshes; no repeats during the match'):ui(' · после конца колоды она перемешивается заново',' · the deck reshuffles after it is exhausted'))+(dc2.insaneSkipPenalty?ui(' · без бонуса за стрик · пропуски: −1, затем −2 подряд',' · no streak bonus · skips: −1, then −2 for consecutive skips'):'');
   const sci=$('specialChanceChip'),sri=$('secretRoundInfo');
   if(state.phase==='playing'||state.phase==='paused'){
     sci.classList.remove('hidden');
-    sci.textContent='Следующий особый: '+pct(state.specialChance);
-    if(state.roundType==='cursed'){sri.className='secretRoundInfo cursed';sri.textContent='☠ Проклятый раунд: объясняй только на ОДНУ букву. Шанс этого раунда был '+pct(state.roundRollChance)+'.'}
-    else if(state.roundType==='lucky'){sri.className='secretRoundInfo lucky';sri.textContent='✨ Удачливый раунд: тебе доступны ПЯТЬ букв. Шанс этого раунда был '+pct(state.roundRollChance)+'.'}
+    sci.textContent=ui('Следующий особый: ','Next special: ')+pct(state.specialChance);
+    if(state.roundType==='cursed'){sri.className='secretRoundInfo cursed';sri.textContent=ui('☠ Проклятый раунд: объясняй только на ОДНУ букву. Шанс этого раунда был ','☠ Cursed round: explain using only ONE letter. This round had a ')+pct(state.roundRollChance)+ui(' шанс.',' chance.')}
+    else if(state.roundType==='lucky'){sri.className='secretRoundInfo lucky';sri.textContent=ui('✨ Удачливый раунд: тебе доступны ПЯТЬ букв. Шанс этого раунда был ','✨ Lucky round: you have FIVE letters. This round had a ')+pct(state.roundRollChance)+ui(' шанс.',' chance.')}
     else{sri.className='secretRoundInfo hidden';sri.textContent=''}
   }else{sci.classList.add('hidden');sri.className='secretRoundInfo hidden';sri.textContent=''}
-  if(secret){$('secretEmpty').classList.add('hidden');$('secret').classList.remove('hidden');$('ability').textContent=secret.ability.name;$('hero').textContent=secret.ability.hero+(secret.ability.innate?' · 🧬 Врождённая':'');$('icon').src=secret.ability.icon||'';$('letters').innerHTML='';(secret.letters||[]).forEach(x=>{const d=document.createElement('div');d.className='letter';d.textContent=x;$('letters').appendChild(d)})}
+  if(secret){$('secretEmpty').classList.add('hidden');$('secret').classList.remove('hidden');$('ability').textContent=secret.ability.name;$('hero').textContent=secret.ability.hero+(secret.ability.innate?ui(' · 🧬 Врождённая',' · 🧬 Innate'):'');$('icon').src=secret.ability.icon||'';$('letters').innerHTML='';(secret.letters||[]).forEach(x=>{const d=document.createElement('div');d.className='letter';d.textContent=x;$('letters').appendChild(d)})}
   else{$('secret').classList.add('hidden');$('secretEmpty').classList.remove('hidden')}
  }
+ renderSpectators();
+ renderReveal();
+ renderRoomRecords();
+ const readyBtn=$('readyToggle');
+ if(readyBtn){const me=state.players.find(p=>p.id===clientId);const showReady=role==='player'&&state.phase==='lobby'&&!!me;readyBtn.classList.toggle('hidden',!showReady);if(showReady){readyBtn.textContent=me.ready?ui('✅ Я готов','✅ I am ready'):ui('○ Я не готов','○ Not ready');readyBtn.className='btn '+(me.ready?'success':'secondary')}}
+ if(role==='spectator'){$('listenIcon').textContent='👁';$('listenTitle').textContent=ui('Режим зрителя','Spectator mode');$('listenText').textContent=ui('Ты наблюдаешь за матчем и можешь писать в общий чат.','You are watching the match and can use general chat.')}else if(role==='player'){$('listenIcon').textContent='🎧';$('listenTitle').textContent=ui('Слушай объяснение','Listen to the explanation');$('listenText').textContent=ui('Название, иконка способности и буквы скрыты.','The ability name, icon and letters are hidden.')}
+ updateChatPhaseInfo();
  renderFinal();
  renderPublicChat();
  renderChat();
  updateSoundButton();
  if(!$('adminOverlay').classList.contains('hidden'))renderPlayerAdmin();
  processFinishedMatchForProfile();
+ applyLanguage(document);
  saveSession();
+}
+function renderSpectators(){
+ const panel=$('spectatorPanel'),box=$('spectatorList');if(!panel||!box||!state)return;
+ const list=Array.isArray(state.spectators)?state.spectators:[];
+ panel.classList.toggle('hidden',!list.length);$('spectatorCount').textContent=String(list.length);box.innerHTML='';
+ list.forEach(sp=>{const d=document.createElement('div');d.className='spectatorCard';const left=document.createElement('div');left.className='playerLeft';left.appendChild(avatarElement(sp));const info=document.createElement('div');const head=document.createElement('div');const b=document.createElement('b');b.textContent=sp.name;head.appendChild(b);const cb=document.createElement('span');cb.className='connectionBadge '+(sp.connection==='online'?'':sp.connection);cb.textContent=sp.connection==='online'?ui('ОНЛАЙН','ONLINE'):sp.connection==='offline'?ui('ВОЗВРАЩАЕТСЯ','RECONNECTING'):ui('ОФЛАЙН','OFFLINE');head.appendChild(cb);if(sp.muted){const mu=document.createElement('span');mu.className='mutedBadge';mu.textContent=ui('ЧАТ ВЫКЛ','MUTED');head.appendChild(mu)}const sub=document.createElement('div');sub.className='muted small';sub.textContent=ui('Зритель','Spectator');info.append(head,sub);left.appendChild(info);d.appendChild(left);if(role==='host'){const tools=document.createElement('div');tools.className='spectatorTools';const mute=document.createElement('button');mute.className='btn secondary';mute.textContent=sp.muted?'🔊':'🔇';mute.title=sp.muted?ui('Разрешить чат','Unmute chat'):ui('Заглушить чат','Mute chat');mute.onclick=()=>toggleSpectatorMute(sp.id);const kick=document.createElement('button');kick.className='btn danger';kick.textContent='🚫';kick.title=ui('Удалить зрителя','Remove spectator');kick.onclick=()=>kickSpectator(sp.id);tools.append(mute,kick);d.appendChild(tools)}box.appendChild(d)});
+}
+function renderReveal(){
+ const panel=$('revealPanel');if(!panel||!state)return;const show=state.phase==='reveal'&&state.revealData;
+ panel.classList.toggle('hidden',!show);if(!show)return;
+ const d=state.revealData;$('revealAbility').textContent=d.ability&&d.ability.name||'—';$('revealHero').textContent=d.ability&&d.ability.hero||'';$('revealIcon').src=d.ability&&d.ability.icon||'';$('revealResult').textContent=currentLang==='en'?translateUiText(d.event||''):d.event||'';$('revealNext').textContent=d.nextName?ui('Следующий ход: ','Next turn: ')+d.nextName:'';
+ $('skipReveal').classList.toggle('hidden',role!=='host');
+}
+function renderRoomRecords(){
+ const box=$('recordsGrid');if(!box||!state)return;const r=state.roomRecords||{};
+ const cards=[
+  ['⚡',ui('Самый быстрый ответ','Fastest answer'),r.fastest?r.fastest.seconds.toFixed(1)+ui('с','s')+' · '+r.fastest.name:ui('Пока нет','Not yet')],
+  ['🔥',ui('Лучший стрик','Best streak'),r.bestStreak?r.bestStreak.value+' · '+r.bestStreak.name:ui('Пока нет','Not yet')],
+  ['🔄',ui('Крупнейший камбэк','Biggest comeback'),r.biggestComeback?r.biggestComeback.value+' · '+r.biggestComeback.name:ui('Пока нет','Not yet')],
+  ['✨',ui('Минимум пропусков','Fewest skips'),r.cleanest?r.cleanest.value+' · '+r.cleanest.name:ui('Пока нет','Not yet')]
+ ];
+ box.innerHTML='';cards.forEach(([icon,label,value])=>{const c=document.createElement('div');c.className='recordCard';c.innerHTML='<div class="recordIcon">'+icon+'</div><div class="recordValue"></div><div class="recordLabel"></div>';c.querySelector('.recordValue').textContent=value;c.querySelector('.recordLabel').textContent=label;box.appendChild(c)});
 }
 function rankedPlayers(){
  const arr=(state&&Array.isArray(state.players)?state.players:[]).slice();
@@ -789,22 +1050,22 @@ function renderFinal(){
  panel.classList.toggle('hidden',!show);
  if(!show)return;
  const ranked=rankedPlayers(),winner=ranked[0];if(!winner)return;
- $('finalTitle').textContent=state.winByScore?'Победа! '+winner.name+' первым достиг 15 очков':'Матч завершён · лидер: '+winner.name;
+ $('finalTitle').textContent=state.winByScore?ui('Победа! ','Victory! ')+winner.name+ui(' первым достиг ',' reached ') + winScore()+ui(' очков первым',' points first'):ui('Матч завершён · лидер: ','Match finished · leader: ')+winner.name;
  const showcase=$('winnerShowcase');showcase.innerHTML='';
  const crown=document.createElement('div');crown.className='winnerCrown';crown.textContent='👑';
  showcase.appendChild(crown);
  showcase.appendChild(avatarElement(winner,'winnerAvatar','winnerFallback'));
  const wn=document.createElement('div');wn.className='winnerName';wn.textContent=winner.name;showcase.appendChild(wn);
- const ws=document.createElement('div');ws.className='winnerScore';ws.textContent=(Number(winner.score)||0)+' очков';showcase.appendChild(ws);
- const wstats=document.createElement('div');wstats.className='winnerStats';wstats.textContent='Лучший стрик: '+(winner.bestStreak||0)+' · пропуски: '+(winner.skips||0)+' · штрафы: '+(winner.penalties||0);showcase.appendChild(wstats);
+ const ws=document.createElement('div');ws.className='winnerScore';ws.textContent=(Number(winner.score)||0)+' '+ui('очков','points');showcase.appendChild(ws);
+ const wstats=document.createElement('div');wstats.className='winnerStats';wstats.textContent=ui('Лучший стрик: ','Best streak: ')+(winner.bestStreak||0)+' · '+ui('пропуски: ','skips: ')+(winner.skips||0)+' · '+ui('штрафы: ','penalties: ')+(winner.penalties||0);showcase.appendChild(wstats);
 
  const podium=$('podium');podium.innerHTML='';
  ranked.slice(0,3).forEach((p,i)=>{
    const card=document.createElement('div');card.className='podiumCard '+(i===0?'first':'');
-   const place=document.createElement('div');place.className='podiumPlace';place.textContent=(i===0?'👑 ':'')+(i+1)+' место';card.appendChild(place);
+   const place=document.createElement('div');place.className='podiumPlace';place.textContent=(i===0?'👑 ':'')+(i+1)+' '+ui('место','place');card.appendChild(place);
    card.appendChild(avatarElement(p,'podiumAvatar','podiumFallback'));
    const nm=document.createElement('div');nm.className='podiumName';nm.textContent=p.name;card.appendChild(nm);
-   const sc=document.createElement('div');sc.className='winnerScore';sc.style.fontSize='18px';sc.textContent=p.score+' очк.';card.appendChild(sc);
+   const sc=document.createElement('div');sc.className='winnerScore';sc.style.fontSize='18px';sc.textContent=p.score+' '+ui('очк.','pts');card.appendChild(sc);
    podium.appendChild(card);
  });
 
@@ -813,48 +1074,80 @@ function renderFinal(){
    const row=document.createElement('div');row.className='finalRow '+(i===0?'finalWinner':'');
    const place=document.createElement('div');place.className='finalPlace';place.textContent='#'+(i+1);
    const nm=document.createElement('div');nm.className='finalName';nm.textContent=p.name;
-   const score=document.createElement('div');score.className='finalStat';score.innerHTML='<small>очки</small><b>'+p.score+'</b>';
-   const streak=document.createElement('div');streak.className='finalStat';streak.innerHTML='<small>стрик</small><b>'+p.bestStreak+'</b>';
-   const skips=document.createElement('div');skips.className='finalStat extraStat';skips.innerHTML='<small>пропуски</small><b>'+p.skips+'</b>';
-   const penalties=document.createElement('div');penalties.className='finalStat extraStat';penalties.innerHTML='<small>штрафы</small><b>'+p.penalties+'</b>';
+   const score=document.createElement('div');score.className='finalStat';score.innerHTML='<small>'+ui('очки','points')+'</small><b>'+p.score+'</b>';
+   const streak=document.createElement('div');streak.className='finalStat';streak.innerHTML='<small>'+ui('стрик','streak')+'</small><b>'+p.bestStreak+'</b>';
+   const skips=document.createElement('div');skips.className='finalStat extraStat';skips.innerHTML='<small>'+ui('пропуски','skips')+'</small><b>'+p.skips+'</b>';
+   const penalties=document.createElement('div');penalties.className='finalStat extraStat';penalties.innerHTML='<small>'+ui('штрафы','penalties')+'</small><b>'+p.penalties+'</b>';
    row.append(place,nm,score,streak,skips,penalties);table.appendChild(row);
  });
+ const awards=$('finalAwards');awards.innerHTML='';
+ const fastest=state.matchStats&&state.matchStats.fastest;const best=ranked.slice().sort((a,b)=>(b.bestStreak||0)-(a.bestStreak||0))[0]||null;const clean=ranked.slice().sort((a,b)=>(a.skips||0)-(b.skips||0)||(b.score||0)-(a.score||0))[0]||null;const comeback=winner;
+ const items=[
+  ['⚡',ui('Самый быстрый','Fastest'),fastest?fastest.name+' · '+fastest.seconds.toFixed(1)+ui('с','s'):ui('Нет данных','No data')],
+  ['🔥',ui('Лучший стрик','Best streak'),best?best.name+' · '+best.bestStreak:ui('Нет данных','No data')],
+  ['✨',ui('Меньше пропусков','Fewest skips'),clean?clean.name+' · '+clean.skips:ui('Нет данных','No data')],
+  ['🔄',ui('Камбэк победителя','Winner comeback'),comeback?comeback.name+' · '+(comeback.maxDeficit||0):ui('Нет данных','No data')]
+ ];
+ items.forEach(([icon,label,value])=>{const c=document.createElement('div');c.className='awardCard';c.innerHTML='<div class="awardIcon">'+icon+'</div><div class="awardValue"></div><div class="awardLabel"></div>';c.querySelector('.awardValue').textContent=value;c.querySelector('.awardLabel').textContent=label;awards.appendChild(c)});
+}
+function recordCorrectAnswer(player,seconds,ability){
+ if(!state||!player)return;if(!state.matchStats)state.matchStats={fastest:null};if(!state.roomRecords)state.roomRecords={fastest:null,bestStreak:null,biggestComeback:null,cleanest:null};
+ const entry={name:player.name,seconds:Math.max(0,Number(seconds)||0),ability:ability&&ability.name||''};
+ if(!state.matchStats.fastest||entry.seconds<state.matchStats.fastest.seconds)state.matchStats.fastest=entry;
+ if(!state.roomRecords.fastest||entry.seconds<state.roomRecords.fastest.seconds)state.roomRecords.fastest=entry;
+ const streak=Number(player.bestStreak)||0;if(!state.roomRecords.bestStreak||streak>state.roomRecords.bestStreak.value)state.roomRecords.bestStreak={name:player.name,value:streak};
+}
+function finalizeRoomRecords(winner){
+ if(!state||!state.players.length)return;if(!state.roomRecords)state.roomRecords={fastest:null,bestStreak:null,biggestComeback:null,cleanest:null};
+ if(winner){const depth=Number(winner.maxDeficit)||0;if(!state.roomRecords.biggestComeback||depth>state.roomRecords.biggestComeback.value)state.roomRecords.biggestComeback={name:winner.name,value:depth}}
+ const clean=state.players.slice().sort((a,b)=>(Number(a.skips)||0)-(Number(b.skips)||0)||(Number(b.score)||0)-(Number(a.score)||0))[0];
+ if(clean){const v=Number(clean.skips)||0;if(!state.roomRecords.cleanest||v<state.roomRecords.cleanest.value)state.roomRecords.cleanest={name:clean.name,value:v}}
 }
 function finishWithWinner(player){
  if(!state||!player)return;
  state.phase='finished';state.ends=null;state.paused=0;state.winnerId=player.id;state.winByScore=true;
  state.event='🏆 '+player.name+' набрал '+player.score+' очков и победил на сложности «'+difficultyConfig().name+'»!';
- secret=null;
+ finalizeRoomRecords(player);secret=null;
  sendState();render();
 }
 function checkVictory(player){
  if(player&&state&&['playing','paused'].includes(state.phase)&&Number(player.score)>=winScore()){finishWithWinner(player);return true}
  return false;
 }
+function setChatMode(mode){if(role==='spectator')mode='public';chatMode=mode==='private'?'private':'public';if($('publicChatPanel'))$('publicChatPanel').classList.toggle('hidden',chatMode!=='public');if($('chatPanel'))$('chatPanel').classList.toggle('hidden',chatMode!=='private');if($('chatPublicTab'))$('chatPublicTab').classList.toggle('on',chatMode==='public');if($('chatPrivateTab'))$('chatPrivateTab').classList.toggle('on',chatMode==='private');if(chatMode==='public')publicUnread=0;else privateUnread=0;renderChatBadges()}
+function renderChatBadges(){const pb=$('publicUnreadBadge'),pr=$('privateUnreadBadge');if(pb){pb.textContent=String(Math.min(99,publicUnread));pb.classList.toggle('hidden',publicUnread<=0)}if(pr){pr.textContent=String(Math.min(99,privateUnread));pr.classList.toggle('hidden',privateUnread<=0)}}
+function updateChatPhaseInfo(){const e=$('chatPhaseInfo');if(!e||!state)return;if(role==='spectator')return e.textContent=ui('Режим зрителя: доступен общий чат комнаты.','Spectator mode: room general chat is available.');if(state.phase==='lobby')e.textContent=ui('До игры: общий и личный чат свободны. Отметь готовность, когда будешь готов.','Before the game: general and private chat are open. Mark yourself ready when you are ready.');else if(state.phase==='playing'||state.phase==='paused')e.textContent=ui('Во время игры: общий чат свободный; личный чат игрока — одна игровая догадка на ход.','During the game: general chat is free; a player gets one private game guess per turn.');else if(state.phase==='reveal')e.textContent=ui('Между ходами показана правильная способность. Общий чат открыт.','Between turns the correct ability is shown. General chat is open.');else e.textContent=ui('После игры: оба чата снова работают свободно.','After the game: both chats are open again.')}
 function publicMessage(raw){
  if(!raw||!raw.id)return null;
- const msg={id:String(raw.id),from:String(raw.from||''),fromName:clean(raw.fromName)||'Игрок',text:chatText(raw.text),ts:Number(raw.ts)||Date.now()};
+ const text=chatText(raw.text),mod=moderateText(text);if(!mod.ok)return null;
+ const fromName=safeName(raw.fromName)||ui('Игрок','Player');
+ const msg={id:String(raw.id),from:String(raw.from||''),fromName,text:mod.text,ts:Number(raw.ts)||Date.now()};
  return msg.text?msg:null;
 }
 function renderPublicChat(){
  const box=$('publicMessages');if(!box)return;box.innerHTML='';
- if(!publicChat.length){const e=document.createElement('div');e.className='chatEmpty';e.textContent='Сообщений пока нет.';box.appendChild(e);return}
+ if(!publicChat.length){const e=document.createElement('div');e.className='chatEmpty';e.textContent=ui('Сообщений пока нет.','No messages yet.');box.appendChild(e);return}
  publicChat.slice(-100).forEach(msg=>{
    const d=document.createElement('div');d.className='chatMsg '+(msg.from===clientId||msg.from==='host'&&role==='host'?'me':'them');
-   const meta=document.createElement('div');meta.className='chatMeta';meta.textContent=(msg.from===clientId||msg.from==='host'&&role==='host'?'Ты':msg.fromName)+' · '+chatTime(msg.ts);
-   const body=document.createElement('div');body.textContent=msg.text;d.append(meta,body);box.appendChild(d);
+   const meta=document.createElement('div');meta.className='chatMeta';meta.textContent=(msg.from===clientId||msg.from==='host'&&role==='host'?ui('Ты','You'):msg.fromName)+' · '+chatTime(msg.ts);
+   const body=document.createElement('div');body.dataset.userText='1';body.textContent=msg.text;d.append(meta,body);box.appendChild(d);
  });
  box.scrollTop=box.scrollHeight;
+ const muted=playerMuted();if($('publicInput'))$('publicInput').disabled=muted;if($('publicSend'))$('publicSend').disabled=muted;if($('publicChatHint'))$('publicChatHint').textContent=muted?ui('Чат заглушён хостом.','The host muted your chat.'):ui('Enter — отправить · ссылки и запрещённый контент блокируются','Enter — send · links and prohibited content are blocked');
+ applyLanguage(box);
 }
 function sendPublicChat(){
  const raw=chatText($('publicInput').value);if(!raw)return;
- const msg={id:crypto.randomUUID(),from:role==='host'?'host':clientId,fromName:name,text:raw,ts:Date.now()};
+ if(playerMuted())return toast(ui('Чат заглушён хостом.','The host muted your chat.'));
+ const mod=moderateText(raw);if(!mod.ok){$('publicInput').classList.add('messageBlocked');setTimeout(()=>$('publicInput').classList.remove('messageBlocked'),900);return toast(ui('Сообщение заблокировано модерацией.','Message blocked by moderation.'))}
+ if(!canSendChat())return toast(ui('Слишком много сообщений. Подожди немного.','Too many messages. Wait a moment.'));
+ const msg={id:crypto.randomUUID(),from:role==='host'?'host':clientId,fromName:name,text:mod.text,ts:Date.now()};
  addChatMessage(publicChat,msg);$('publicInput').value='';
- if(!send('public_chat',msg))toast('💾 Сообщение сохранено локально');
+ if(!send('public_chat',msg))toast(ui('💾 Сообщение сохранено локально','💾 Message saved locally'));
  renderPublicChat();saveSession();
 }
 function chatText(v){return String(v||'').trim().replace(/\s+/g,' ').slice(0,180)}
-function chatTime(ts){try{return new Date(ts).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}catch(e){return''}}
+function chatTime(ts){try{return new Date(ts).toLocaleTimeString(langLocale(),{hour:'2-digit',minute:'2-digit'})}catch(e){return''}}
 function isActivePlayer(id){
  if(!state||!state.players.length||!['playing','paused'].includes(state.phase))return false;
  const p=state.players[state.active];return !!(p&&p.id===id);
@@ -868,9 +1161,10 @@ function addChatMessage(arr,msg){
 }
 function normalizedChatMessage(raw,playerId,playerName){
  if(!raw||!raw.id)return null;
+ const body=chatText(raw.text),mod=moderateText(body);if(!mod.ok)return null;
  const from=raw.from==='host'?'host':playerId;
  const to=from==='host'?playerId:'host';
- const msg={id:String(raw.id),from,to,fromName:from==='host'?'Хост':(playerName||raw.fromName||'Игрок'),text:chatText(raw.text),ts:Number(raw.ts)||Date.now()};
+ const msg={id:String(raw.id),from,to,fromName:from==='host'?ui('Хост','Host'):(safeName(playerName||raw.fromName)||ui('Игрок','Player')),text:mod.text,ts:Number(raw.ts)||Date.now()};
  return msg.text?msg:null;
 }
 function queuePendingChat(playerId,msg){
@@ -897,13 +1191,14 @@ function mergeChatHistory(playerId,playerName,messages){
 }
 function renderChat(){
  if(!$('chatPanel')||!role)return;
+ if(role==='spectator'){$('chatPrivateTab').classList.add('hidden');if(chatMode==='private')setChatMode('public');return}
  const messages=$('chatMessages'),input=$('chatInput'),sendBtn=$('chatSend'),tabs=$('chatTabs'),status=$('chatStatus'),hint=$('chatHint');
  const controls=$('privateGuessControls'),guessState=$('privateGuessState');
  messages.innerHTML='';controls.classList.add('hidden');
  let list=[],locked=false,pending=false,target=null;
 
  if(role==='host'){
-   $('chatTitle').textContent='Личные игровые догадки';
+   $('chatTitle').textContent=ui('Личные игровые догадки','Private game guesses');
    tabs.classList.remove('hidden');tabs.innerHTML='';
    const players=state&&Array.isArray(state.players)?state.players:[];
    if(selectedChatPlayer&&!players.some(p=>p.id===selectedChatPlayer))selectedChatPlayer=null;
@@ -912,7 +1207,7 @@ function renderChat(){
    }
    players.forEach(p=>{
      const b=document.createElement('button');b.className='chatTab '+(p.id===selectedChatPlayer?'on ':'')+(isActivePlayer(p.id)?'activeTurn':'');
-     b.appendChild(document.createTextNode(p.name+(isActivePlayer(p.id)?' · отвечает':'')));
+     b.appendChild(document.createTextNode(p.name+(isActivePlayer(p.id)?ui(' · отвечает',' · answering'):'')));
      const unread=Number(chatUnread[p.id]||0);if(unread>0){const badge=document.createElement('span');badge.className='unread';badge.textContent=unread>9?'9+':String(unread);b.appendChild(badge)}
      b.onclick=()=>{selectedChatPlayer=p.id;chatUnread[p.id]=0;renderChat();saveSession()};tabs.appendChild(b);
    });
@@ -923,51 +1218,56 @@ function renderChat(){
      pending=state&&['playing','paused'].includes(state.phase)&&Number(target.guessSubmittedRound)===Number(state.roundNumber)&&Number(target.guessLockedRound)!==Number(state.roundNumber);
      const used=state&&['playing','paused'].includes(state.phase)&&Number(target.guessLockedRound)===Number(state.roundNumber);
      locked=active||used;
-     if(active)status.textContent='Сейчас отвечает '+target.name+' — личная догадка недоступна.';
-     else if(used)status.textContent='Попытка '+target.name+' на этот ход уже использована.';
-     else if(pending)status.textContent='Получена попытка '+target.name+'. Отметь результат.';
-     else status.textContent='У '+target.name+' одна игровая попытка на этот ход.';
-     input.placeholder='Ответить '+target.name+'…';
+     if(active)status.textContent=ui('Сейчас отвечает ','')+target.name+ui(' — личная догадка недоступна.',' is answering — private guess unavailable.');
+     else if(used)status.textContent=ui('Попытка ','Attempt by ')+target.name+ui(' на этот ход уже использована.',' for this turn is already used.');
+     else if(pending)status.textContent=ui('Получена попытка ','Guess received from ')+target.name+ui('. Отметь результат.','. Mark the result.');
+     else status.textContent=ui('У ','')+target.name+ui(' одна игровая попытка на этот ход.',' has one game guess this turn.');
+     input.placeholder=ui('Ответить ','Reply to ')+target.name+'…';
      if(pending){
        controls.className='guessControls pending';
        controls.classList.remove('hidden');
-       guessState.textContent='Ожидает решения хоста: верно или неверно?';
+       guessState.textContent=ui('Ожидает решения хоста: верно или неверно?','Waiting for host decision: correct or wrong?');
      }
-   }else{status.textContent='Ждём игроков.';locked=true;input.placeholder='Сначала должен войти игрок'}
+   }else{status.textContent=ui('Ждём игроков.','Waiting for players.');locked=true;input.placeholder=ui('Сначала должен войти игрок','A player must join first')}
  }else{
-   tabs.classList.add('hidden');tabs.innerHTML='';$('chatTitle').textContent='Личная игровая попытка хосту';
+   tabs.classList.add('hidden');tabs.innerHTML='';$('chatTitle').textContent=ui('Личная игровая попытка хосту','Private game guess to host');
    const me=state&&state.players?state.players.find(p=>p.id===clientId):null;
    const active=!!(me&&isActivePlayer(clientId));
    pending=!!(me&&state&&['playing','paused'].includes(state.phase)&&Number(me.guessSubmittedRound)===Number(state.roundNumber)&&Number(me.guessLockedRound)!==Number(state.roundNumber));
    const used=!!(me&&state&&['playing','paused'].includes(state.phase)&&Number(me.guessLockedRound)===Number(state.roundNumber));
    locked=active||pending||used;
    list=Array.isArray(myChat)?myChat:[];
-   if(active)status.textContent='Сейчас твой основной ход — отвечай голосом.';
-   else if(used)status.textContent='Твоя игровая попытка на этот ход уже использована. Общий чат открыт.';
-   else if(pending)status.textContent='Ответ отправлен. Ждём решения хоста.';
-   else if(state&&['playing','paused'].includes(state.phase))status.textContent='Пока отвечает другой игрок, у тебя одна попытка угадать героя/способность.';
-   else status.textContent='Личный чат с хостом.';
-   input.placeholder=locked?'Игровая попытка недоступна':'Напиши одну догадку хосту…';
+   if(active)status.textContent=ui('Сейчас твой основной ход — отвечай голосом.','This is your main turn — answer the host directly.');
+   else if(used)status.textContent=ui('Твоя игровая попытка на этот ход уже использована. Общий чат открыт.','Your game guess for this turn is already used. General chat is still open.');
+   else if(pending)status.textContent=ui('Ответ отправлен. Ждём решения хоста.','Guess sent. Waiting for the host.');
+   else if(state&&['playing','paused'].includes(state.phase))status.textContent=ui('Пока отвечает другой игрок, у тебя одна попытка угадать героя/способность.','While another player is answering, you have one private guess for the hero/ability.');
+   else status.textContent=ui('Личный чат с хостом.','Private chat with the host.');
+   input.placeholder=locked?ui('Игровая попытка недоступна','Game guess unavailable'):ui('Напиши одну догадку хосту…','Send one guess to the host…');
  }
+ if(role==='player'&&playerMuted()){locked=true;status.textContent=ui('Чат заглушён хостом.','The host muted your chat.')}
  input.disabled=locked;sendBtn.disabled=locked;
- hint.textContent=state&&['playing','paused'].includes(state.phase)?'Во время игры одна личная догадка на ход. Общий чат остаётся свободным.':'Enter — отправить сообщение.';
+ hint.textContent=state&&['playing','paused'].includes(state.phase)?ui('Во время игры одна личная догадка на ход. Общий чат остаётся свободным.','During the game: one private guess per turn. General chat stays open.'):ui('Enter — отправить сообщение.','Enter — send message.');
 
- if(!list.length){const e=document.createElement('div');e.className='chatEmpty';e.textContent='Сообщений пока нет.';messages.appendChild(e)}
- else{list.forEach(msg=>{const d=document.createElement('div');const mine=role==='host'?msg.from==='host':msg.from===clientId;d.className='chatMsg '+(mine?'me':'them');const meta=document.createElement('div');meta.className='chatMeta';meta.textContent=(mine?'Ты':(role==='host'?(msg.fromName||'Игрок'):'Хост'))+' · '+chatTime(msg.ts);const body=document.createElement('div');body.textContent=msg.text||'';d.append(meta,body);messages.appendChild(d)});messages.scrollTop=messages.scrollHeight}
+ if(!list.length){const e=document.createElement('div');e.className='chatEmpty';e.textContent=ui('Сообщений пока нет.','No messages yet.');messages.appendChild(e)}
+ else{list.forEach(msg=>{const d=document.createElement('div');const mine=role==='host'?msg.from==='host':msg.from===clientId;d.className='chatMsg '+(mine?'me':'them');const meta=document.createElement('div');meta.className='chatMeta';meta.textContent=(mine?ui('Ты','You'):(role==='host'?(msg.fromName||ui('Игрок','Player')):ui('Хост','Host')))+' · '+chatTime(msg.ts);const body=document.createElement('div');body.dataset.userText='1';body.textContent=msg.text||'';d.append(meta,body);messages.appendChild(d)});messages.scrollTop=messages.scrollHeight}
 }
 function sendChat(){
+ if(role==='spectator')return toast(ui('Зрители используют общий чат','Spectators use general chat'));
  const raw=chatText($('chatInput').value);if(!raw)return;
- const msg={id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),text:raw,ts:Date.now(),fromName:name};
+ if(playerMuted())return toast(ui('Чат заглушён хостом.','The host muted your chat.'));
+ const mod=moderateText(raw);if(!mod.ok){$('chatInput').classList.add('messageBlocked');setTimeout(()=>$('chatInput').classList.remove('messageBlocked'),900);return toast(ui('Сообщение заблокировано модерацией.','Message blocked by moderation.'))}
+ if(!canSendChat())return toast(ui('Слишком много сообщений. Подожди немного.','Too many messages. Wait a moment.'));
+ const msg={id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),text:mod.text,ts:Date.now(),fromName:name};
  if(role==='host'){
-   if(!selectedChatPlayer||isActivePlayer(selectedChatPlayer))return toast('Чат этого игрока сейчас закрыт');
+   if(!selectedChatPlayer||isActivePlayer(selectedChatPlayer))return toast(ui('Чат этого игрока сейчас закрыт','This player chat is currently locked'));
    msg.from='host';msg.to=selectedChatPlayer;
    if(!Array.isArray(chatByPlayer[selectedChatPlayer]))chatByPlayer[selectedChatPlayer]=[];
    addChatMessage(chatByPlayer[selectedChatPlayer],msg);
  }else{
-   if(isActivePlayer(clientId))return toast('Сейчас твой ход — отвечай голосом');
+   if(isActivePlayer(clientId))return toast(ui('Сейчас твой ход — отвечай хосту','It is your turn — answer the host'));
    const me=state&&state.players?state.players.find(p=>p.id===clientId):null;
    if(me&&state&&['playing','paused'].includes(state.phase)){
-     if(Number(me.guessSubmittedRound)===Number(state.roundNumber)||Number(me.guessLockedRound)===Number(state.roundNumber))return toast('Попытка на этот ход уже использована');
+     if(Number(me.guessSubmittedRound)===Number(state.roundNumber)||Number(me.guessLockedRound)===Number(state.roundNumber))return toast(ui('Попытка на этот ход уже использована','Your guess for this turn is already used'));
      me.guessSubmittedRound=state.roundNumber;
    }
    msg.from=clientId;msg.to='host';
@@ -975,7 +1275,7 @@ function sendChat(){
  }
  $('chatInput').value='';
  const delivered=send('chat_message',msg);
- if(!delivered)toast('💾 Сообщение сохранено — отправим после переподключения');
+ if(!delivered)toast(ui('💾 Сообщение сохранено — отправим после переподключения','💾 Message saved — it will be sent after reconnecting'));
  renderChat();saveSession();
 }
 function sendAbilityUnlock(playerId,ability){
@@ -985,7 +1285,7 @@ function sendAbilityUnlock(playerId,ability){
 function judgePrivateGuess(correct){
  if(role!=='host'||!state||!selectedChatPlayer||!['playing','paused'].includes(state.phase))return;
  const p=state.players.find(x=>x.id===selectedChatPlayer);if(!p||isActivePlayer(p.id))return;
- if(Number(p.guessSubmittedRound)!==Number(state.roundNumber)||Number(p.guessLockedRound)===Number(state.roundNumber))return toast('Нет новой попытки для проверки');
+ if(Number(p.guessSubmittedRound)!==Number(state.roundNumber)||Number(p.guessLockedRound)===Number(state.roundNumber))return toast(ui('Нет новой попытки для проверки','There is no new guess to review'));
  p.guessLockedRound=state.roundNumber;
  if(correct){
    p.score=(Number(p.score)||0)+1;
@@ -1019,17 +1319,18 @@ function renderPlayerAdmin(){
  $('adminScore').textContent=String(p.score);
  $('adminExactInput').value=String(p.score);
  const insane=difficultyConfig().insaneSkipPenalty;
- $('adminMeta').textContent=insane?'Пропуски: '+p.skips+' · подряд: '+(p.skipStreak||0)+' · штрафы: '+p.penalties:'Стрик: '+p.streak+' · лучший: '+p.bestStreak+' · пропуски: '+p.skips+' · штрафы: '+p.penalties;
+ $('adminMeta').textContent=insane?ui('Пропуски: ','Skips: ')+p.skips+' · '+ui('подряд: ','in a row: ')+(p.skipStreak||0)+' · '+ui('штрафы: ','penalties: ')+p.penalties:ui('Стрик: ','Streak: ')+p.streak+' · '+ui('лучший: ','best: ')+p.bestStreak+' · '+ui('пропуски: ','skips: ')+p.skips+' · '+ui('штрафы: ','penalties: ')+p.penalties;
  const active=state.players[state.active]&&state.players[state.active].id===p.id&&['playing','paused'].includes(state.phase);
  $('adminSkip').disabled=!active;
- $('adminSkip').title=active?'Засчитать пропуск и передать ход':'Пропуск можно засчитать только игроку, чей сейчас ход';
- $('adminAddTime').textContent=active?'⏱ +15 сек к текущему ходу':'🎁 +15 сек на следующий ход';
+ $('adminSkip').title=active?ui('Засчитать пропуск и передать ход','Count a skip and pass the turn'):ui('Пропуск можно засчитать только игроку, чей сейчас ход','A skip can only be counted for the active player');
+ $('adminAddTime').textContent=active?ui('⏱ +15 сек к текущему ходу','⏱ +15s to current turn'):ui('🎁 +15 сек на следующий ход','🎁 +15s to next turn');
+ $('adminMute').textContent=p.muted?ui('🔊 Включить чат','🔊 Unmute chat'):ui('🔇 Заглушить чат','🔇 Mute chat');
 }
 function adminAdjust(delta){if(!adminPlayerId)return;adjustScore(adminPlayerId,delta);renderPlayerAdmin()}
 function adminApplyExact(){
  if(!adminPlayerId)return;
  const n=Number($('adminExactInput').value);
- if(!Number.isSafeInteger(n)||n<-999||n>999)return toast('Допустимый счёт: от -999 до 999');
+ if(!Number.isSafeInteger(n)||n<-999||n>999)return toast(ui('Допустимый счёт: от -999 до 999','Allowed score: -999 to 999'));
  const p=state.players.find(x=>x.id===adminPlayerId);if(!p)return;
  const old=Number(p.score)||0;p.score=n;updateLastPlaceFlags();
  state.event='✏️ Хост изменил счёт '+p.name+': '+old+' → '+p.score;
@@ -1055,9 +1356,10 @@ function adminAddTime(){
 function adminCountSkip(){
  if(!adminPlayerId||!state)return;
  const p=state.players[state.active];
- if(!p||p.id!==adminPlayerId||!['playing','paused'].includes(state.phase))return toast('Сейчас ход другого игрока');
+ if(!p||p.id!==adminPlayerId||!['playing','paused'].includes(state.phase))return toast(ui('Сейчас ход другого игрока','It is another player’s turn'));
  closePlayerAdmin();next(false);
 }
+function adminToggleMute(){if(!adminPlayerId||!state)return;const p=state.players.find(x=>x.id===adminPlayerId);if(!p)return;p.muted=!p.muted;state.event=p.muted?'🔇 '+p.name+' заглушён хостом':'🔊 '+p.name+' снова может писать';sendState();render();toast(p.muted?ui('Игрок заглушён','Player muted'):ui('Чат игрока снова открыт','Player chat unmuted'))}
 function adminKick(){
  if(!adminPlayerId)return;
  const id=adminPlayerId;closePlayerAdmin();kickPlayer(id);
@@ -1075,12 +1377,12 @@ function adjustScore(id,delta){
 function setExactScore(id){
  if(role!=='host'||!state||!id)return;
  const player=state.players.find(p=>p.id===id);if(!player)return;
- const value=prompt('Новый счёт для «'+player.name+'»:',String(player.score));
+ const value=prompt(ui('Новый счёт для «','New score for “')+player.name+ui('»:', '”:'),String(player.score));
  if(value===null)return;
  const clean=String(value).trim().replace(',','.');
- if(!/^-?\d+$/.test(clean))return toast('Введи целое число');
+ if(!/^-?\d+$/.test(clean))return toast(ui('Введи целое число','Enter a whole number'));
  const next=Number(clean);
- if(!Number.isSafeInteger(next)||next<-999||next>999)return toast('Допустимый счёт: от -999 до 999');
+ if(!Number.isSafeInteger(next)||next<-999||next>999)return toast(ui('Допустимый счёт: от -999 до 999','Allowed score: -999 to 999'));
  const old=Number(player.score)||0;
  player.score=next;
  updateLastPlaceFlags();
@@ -1092,7 +1394,7 @@ function kickPlayer(id){
  if(role!=='host'||!state||!id)return;
  const index=state.players.findIndex(p=>p.id===id);if(index<0)return;
  const player=state.players[index];
- if(!confirm('Кикнуть игрока «'+player.name+'» из комнаты?'))return;
+ if(!confirm(ui('Кикнуть игрока «','Remove player “')+player.name+ui('» из комнаты?','” from the room?')))return;
  send('kicked',{id:player.id,name:player.name});
  state.players.splice(index,1);delete chatByPlayer[player.id];delete chatUnread[player.id];delete pendingChatByPlayer[player.id];if(selectedChatPlayer===player.id)selectedChatPlayer=null;
  if(!state.players.length){
@@ -1100,16 +1402,33 @@ function kickPlayer(id){
    state.phase='lobby';
    state.ends=null;
    state.paused=baseTurnSeconds();
+   state.revealEnds=null;state.revealData=null;state.nextActive=null;
    secret=null;
  }else if(index<state.active){
    state.active--;
  }else if(state.active>=state.players.length){
    state.active=0;
  }
+ if(state.phase==='reveal')state.nextActive=state.players.length?Math.min(state.active,state.players.length-1):null;
  state.event='🚫 '+player.name+' удалён хостом';
  sendState();render();
 }
-function disconnect(){clearInterval(heartbeat);clearTimeout(reconnectTimer);if(ws){ws.onclose=null;try{ws.close()}catch(e){}}ws=null}
+function participantById(id){if(!state)return null;return [...(state.players||[]),...(state.spectators||[])].find(x=>x.id===id)||null}
+function markParticipantOnline(id){
+ const p=participantById(id);if(!p)return false;const was=p.connection;p.lastSeen=Date.now();p.connection='online';p.reconnectUntil=0;let changed=was!=='online';
+ if(was!=='online'&&state.autoPausedForDisconnect===id&&state.phase==='paused'){state.ends=Date.now()+(Number(state.paused)||baseTurnSeconds())*1000;state.phase='playing';state.autoPausedForDisconnect=null;state.event='✅ '+p.name+' вернулся · матч продолжен';changed=true}
+ return changed;
+}
+function sweepConnections(){
+ if(role!=='host'||!state)return;const now=Date.now();let changed=false;
+ [...(state.players||[]),...(state.spectators||[])].forEach(p=>{const age=now-(Number(p.lastSeen)||now);const next=age>RECONNECT_RESERVE_MS?'expired':age>RECONNECT_OFFLINE_MS?'offline':'online';if(p.connection!==next){p.connection=next;if(next==='offline')p.reconnectUntil=now+RECONNECT_RESERVE_MS;changed=true}});
+ const active=state.players&&state.players[state.active];
+ if(active&&active.connection!=='online'&&state.phase==='playing'){state.paused=Math.ceil(remaining());state.ends=null;state.phase='paused';state.autoPausedForDisconnect=active.id;state.event='📡 '+active.name+' потерял соединение · ждём переподключения';changed=true}
+ if(changed){sendState();render()}
+}
+function toggleSpectatorMute(id){if(role!=='host'||!state)return;const sp=(state.spectators||[]).find(x=>x.id===id);if(!sp)return;sp.muted=!sp.muted;state.event=(sp.muted?'🔇 ':'🔊 ')+sp.name+(sp.muted?ui(' заглушён',' muted'):ui(' снова может писать',' can chat again'));sendState();render()}
+function kickSpectator(id){if(role!=='host'||!state)return;const i=(state.spectators||[]).findIndex(x=>x.id===id);if(i<0)return;const sp=state.spectators[i];if(!confirm(ui('Удалить зрителя «','Remove spectator “')+sp.name+ui('»?','”?')))return;send('kicked',{id:sp.id,name:sp.name});state.spectators.splice(i,1);state.event='🚫 '+sp.name+ui(' удалён из зрителей',' removed from spectators');sendState();render()}
+function disconnect(){clearInterval(heartbeat);clearInterval(presenceTimer);clearInterval(connectionSweepTimer);clearTimeout(reconnectTimer);if(ws){ws.onclose=null;try{ws.close()}catch(e){}}ws=null}
 function connect(){
  disconnect();
  topic='realtime:spell-hunt:'+code;
@@ -1126,12 +1445,16 @@ function connect(){
      clearInterval(heartbeat);
      heartbeat=setInterval(()=>{if(ws&&ws.readyState===1)ws.send(JSON.stringify({topic:'phoenix',event:'heartbeat',payload:{},ref:String(++ref),join_ref:null}))},20000);
      if(role==='host'){
+       clearInterval(connectionSweepTimer);connectionSweepTimer=setInterval(sweepConnections,5000);
        setTimeout(()=>{sendState();send('chat_sync_request',{hostId})},150);
      }else{
-       send('join_request',{id:clientId,name,avatar:safeAvatar(selectedAvatar)});
+       const mode=role==='spectator'?'spectator':'player';
+       send('join_request',{id:clientId,name,avatar:safeRoomAvatar(selectedAvatar),mode});
+       send('client_ping',{id:clientId,mode});
+       clearInterval(presenceTimer);presenceTimer=setInterval(()=>send('client_ping',{id:clientId,mode}),10000);
        send('state_request',{from:clientId});
        send('public_chat_sync_request',{from:clientId});
-       setTimeout(()=>send('chat_sync_response',{from:clientId,name,messages:myChat.slice(-100)}),220);
+       if(role==='player')setTimeout(()=>send('chat_sync_response',{from:clientId,name,messages:myChat.slice(-100)}),220);
      }
      return;
    }
@@ -1142,35 +1465,48 @@ function connect(){
 }
 function onBroadcast(ev,p){
  if(ev==='public_chat'&&p){
-   const msg=publicMessage(p);if(msg){addChatMessage(publicChat,msg);renderPublicChat();saveSession()}
+   if(!allowIncomingChat(p.from))return;
+   const sender=state?[...(state.players||[]),...(state.spectators||[])].find(x=>x.id===p.from):null;
+   const moderation=moderateText(chatText(p.text));
+   if(role==='host'&&sender&&!moderation.ok){sender.violations=(Number(sender.violations)||0)+1;if(sender.violations>=3){sender.muted=true;state.event='🛡️ '+sender.name+' автоматически заглушён модерацией';sendState();render()}return}
+   if(!(sender&&sender.muted)){
+     const msg=publicMessage(p);if(msg){const before=publicChat.length;addChatMessage(publicChat,msg);if(publicChat.length!==before&&chatMode!=='public')publicUnread++;renderPublicChat();renderChatBadges();saveSession()}
+   }
  }
  if(role==='host'){
    if(ev==='join_request'&&state){
-     const incoming=clean(p.name)||'Игрок';
+     const incoming=safeName(p.name);if(!incoming){if(p.id)send('join_rejected',{to:p.id,reason:'name'});return}
      if(p.id){
-       let player=state.players.find(x=>x.id===p.id);
-       if(!player&&state.players.length<8){
-         player={id:p.id,name:incoming,avatar:safeAvatar(p.avatar),score:0,streak:0,bestStreak:0,skips:0,skipStreak:0,penalties:0,wasLast:false,timeBonus:0,guessSubmittedRound:0,guessLockedRound:0};
-         state.players.push(player);
-         state.event=incoming+' вошёл в комнату';
-       }else if(player){
-         player.name=incoming;player.avatar=safeAvatar(p.avatar)||player.avatar;
-       }
-       if(player){
-         flushPendingChat(p.id,player.name);
-         sendState();render();
-         setTimeout(()=>send('chat_sync_request',{hostId,to:p.id}),80);
+       const mode=p.mode==='spectator'?'spectator':'player';
+       if(mode==='spectator'){
+         let sp=(state.spectators||[]).find(x=>x.id===p.id);
+         if(!sp&&state.spectators.length<24){sp={id:p.id,name:incoming,avatar:safeRoomAvatar(p.avatar),muted:false,violations:0,lastSeen:Date.now(),connection:'online',reconnectUntil:0};state.spectators.push(sp);state.event='👁 '+incoming+ui(' вошёл как зритель',' joined as spectator')}
+         else if(sp){sp.name=incoming;sp.avatar=safeRoomAvatar(p.avatar)||sp.avatar;markParticipantOnline(sp.id)}
+         if(sp){sendState();render()}
+       }else{
+         let player=state.players.find(x=>x.id===p.id);
+         if(!player&&state.players.length<8){
+           player={id:p.id,name:incoming,avatar:safeRoomAvatar(p.avatar),score:0,streak:0,bestStreak:0,skips:0,skipStreak:0,penalties:0,wasLast:false,maxDeficit:0,timeBonus:0,guessSubmittedRound:0,guessLockedRound:0,ready:false,muted:false,violations:0,lastSeen:Date.now(),connection:'online',reconnectUntil:0};
+           state.players.push(player);state.event=incoming+' вошёл в комнату';
+         }else if(player){player.name=incoming;player.avatar=safeRoomAvatar(p.avatar)||player.avatar;markParticipantOnline(player.id)}
+         else if(state.players.length>=8){send('join_rejected',{to:p.id,reason:'full'});return}
+         if(player){flushPendingChat(p.id,player.name);sendState();render();setTimeout(()=>send('chat_sync_request',{hostId,to:p.id}),80)}
        }
      }
    }
+   if(ev==='client_ping'&&p&&p.id){const person=participantById(p.id);if(person){const changed=markParticipantOnline(p.id);if(changed){sendState();render()}}}
+   if(ev==='ready_toggle'&&p&&p.id&&state&&state.phase==='lobby'){const player=state.players.find(x=>x.id===p.id);if(player){player.ready=!!p.ready;state.event=player.name+(player.ready?' готов к игре':' пока не готов');sendState();render()}}
    if(ev==='state_request')sendState();
    if(ev==='public_chat_sync_request'&&p&&p.from)send('public_chat_sync_response',{to:p.from,messages:publicChat.slice(-100)});
    if(ev==='chat_sync_response'&&p&&p.from){
-     mergeChatHistory(p.from,clean(p.name)||'Игрок',Array.isArray(p.messages)?p.messages:[]);
+     mergeChatHistory(p.from,safeName(p.name)||ui('Игрок','Player'),Array.isArray(p.messages)?p.messages:[]);
    }
    if(ev==='chat_message'&&p&&p.to==='host'&&p.from){
+     if(!allowIncomingChat(p.from))return;
      const player=state&&state.players?state.players.find(x=>x.id===p.from):null;
-     const msg=normalizedChatMessage(p,p.from,player?player.name:(clean(p.fromName)||'Игрок'));
+     if(player&&player.muted)return;
+     const moderation=moderateText(chatText(p.text));if(player&&!moderation.ok){player.violations=(Number(player.violations)||0)+1;if(player.violations>=3){player.muted=true;state.event='🛡️ '+player.name+' автоматически заглушён модерацией';sendState();render()}return}
+     const msg=normalizedChatMessage(p,p.from,player?player.name:(safeName(p.fromName)||ui('Игрок','Player')));
      if(msg){
        if(!player)queuePendingChat(p.from,msg);
        else{
@@ -1179,7 +1515,7 @@ function onBroadcast(ev,p){
          }
          if(!Array.isArray(chatByPlayer[p.from]))chatByPlayer[p.from]=[];
          const before=chatByPlayer[p.from].length;addChatMessage(chatByPlayer[p.from],msg);
-         if(chatByPlayer[p.from].length!==before&&selectedChatPlayer!==p.from){chatUnread[p.from]=Number(chatUnread[p.from]||0)+1;toast('💬 '+player.name+': '+msg.text.slice(0,42)+(msg.text.length>42?'…':''))}
+         if(chatByPlayer[p.from].length!==before){if(selectedChatPlayer!==p.from)chatUnread[p.from]=Number(chatUnread[p.from]||0)+1;if(chatMode!=='private')privateUnread++;if(selectedChatPlayer!==p.from||chatMode!=='private')toast('💬 '+player.name+': '+msg.text.slice(0,42)+(msg.text.length>42?'…':''))}
          sendState();renderChat();saveSession();
        }
      }
@@ -1189,9 +1525,10 @@ function onBroadcast(ev,p){
      p.messages.forEach(raw=>{const msg=publicMessage(raw);if(msg)addChatMessage(publicChat,msg)});renderPublicChat();saveSession();
    }
    if(ev==='ability_unlocked'&&p&&p.to===clientId&&p.ability)unlockAbilityLocal(p.ability);
-   if(ev==='chat_sync_request'&&(!p.to||p.to===clientId)){
+   if(role==='player'&&ev==='chat_sync_request'&&(!p.to||p.to===clientId)){
      send('chat_sync_response',{from:clientId,name,messages:myChat.slice(-100)});
    }
+   if(ev==='join_rejected'&&p&&p.to===clientId){disconnect();clearSession();role=null;state=null;location.href=location.pathname+'?rejected='+encodeURIComponent(p.reason||'1');return}
    if(ev==='kicked'&&p&&p.id===clientId){
      disconnect();
      clearSession();
@@ -1200,10 +1537,10 @@ function onBroadcast(ev,p){
      return;
    }
    if(ev==='chat_message'&&p&&p.to===clientId&&p.from==='host'){
-     const msg={id:String(p.id||''),from:'host',to:clientId,fromName:'Хост',text:chatText(p.text),ts:Number(p.ts)||Date.now()};
-     if(msg.id&&msg.text){
+     const msg=normalizedChatMessage(p,clientId,ui('Игрок','Player'));
+     if(msg){
        const before=myChat.length;addChatMessage(myChat,msg);
-       if(myChat.length!==before)toast('💬 Хост: '+msg.text.slice(0,42)+(msg.text.length>42?'…':''));
+       if(myChat.length!==before){if(chatMode!=='private')privateUnread++;toast('💬 '+ui('Хост','Host')+': '+msg.text.slice(0,42)+(msg.text.length>42?'…':''));}
        renderChat();saveSession();
      }
    }
@@ -1212,6 +1549,17 @@ function onBroadcast(ev,p){
      if(hostId===p.hostId){state=normalizeState(p.state);render()}
    }
  }
+}
+function enterReveal(eventText){
+ if(!state||!secret||!secret.ability)return advanceAfterReveal();
+ const nextIndex=(state.active+1)%state.players.length,next=state.players[nextIndex];
+ state.revealData={ability:{id:secret.ability.id,name:secret.ability.name,hero:secret.ability.hero,icon:secret.ability.icon,innate:!!secret.ability.innate},event:eventText||state.event,nextName:next?next.name:''};
+ state.nextActive=nextIndex;state.ends=null;state.paused=0;
+ if(Number(state.revealSeconds)>0){state.phase='reveal';state.revealEnds=Date.now()+Number(state.revealSeconds)*1000;sendState();render()}
+ else advanceAfterReveal();
+}
+function advanceAfterReveal(){
+ if(!state||!state.players.length)return;state.active=Number.isInteger(state.nextActive)?state.nextActive:(state.active+1)%state.players.length;state.nextActive=null;state.revealEnds=null;state.revealData=null;beginActiveTurn();secret=prepareRoundSecret();sendState();render();
 }
 function beginActiveTurn(){
  if(!state||!state.players.length)return;
@@ -1240,83 +1588,39 @@ function calculateTimeReward(player){
  return{total,fast,first,innate};
 }
 function next(correct){
- if(!state||!state.players.length)return;
- const p=state.players[state.active]||state.players[0];
- const dc=difficultyConfig();
- let earnedTime=0;
- let reward=null;
+ if(!state||!state.players.length||state.phase!=='playing')return;
+ const p=state.players[state.active]||state.players[0],dc=difficultyConfig(),elapsed=currentTurnElapsed();let earnedTime=0,reward=null;
  if(correct){
-   reward=calculateTimeReward(p);
-   earnedTime=reward.total;
-   if(earnedTime>0)p.timeBonus=Math.max(Number(p.timeBonus)||0,earnedTime);
-
-   p.skipStreak=0;
-   p.streak++;
-   p.bestStreak=Math.max(Number(p.bestStreak)||0,p.streak);
-   let gained=1;
-   if(dc.streakBonus&&p.streak%3===0)gained+=1;
-   p.score+=gained;
-   updateLastPlaceFlags();
-
-   let event;
-   if(dc.insaneSkipPenalty)event='⚡ Угадали! +1 очко · в Безумии бонуса за стрик нет';
-   else event=gained>1?'🔥 Серия '+p.streak+'! +'+gained+' очка (включая +1 бонус)':'Угадали! +1 очко';
-   if(earnedTime>0){
-     const parts=[];
-     if(reward.fast)parts.push('быстро +15с');
-     if(reward.first)parts.push(reward.innate?'врождённая с первой попытки +20с':'с первой попытки +10с');
-     event+=' · 🎁 '+parts.join(' + ')+' → +'+earnedTime+'с на следующий ход';
-   }
-   state.event=event;
-   if(secret&&secret.ability)sendAbilityUnlock(p.id,secret.ability);
-   if(checkVictory(p))return;
+   reward=calculateTimeReward(p);earnedTime=reward.total;if(earnedTime>0)p.timeBonus=Math.max(Number(p.timeBonus)||0,earnedTime);
+   p.skipStreak=0;p.streak++;p.bestStreak=Math.max(Number(p.bestStreak)||0,p.streak);let gained=1;if(dc.streakBonus&&p.streak%3===0)gained+=1;p.score+=gained;updateLastPlaceFlags();
+   let event=dc.insaneSkipPenalty?'⚡ Угадали! +1 очко · в Безумии бонуса за стрик нет':gained>1?'🔥 Серия '+p.streak+'! +'+gained+' очка (включая +1 бонус)':'Угадали! +1 очко';
+   if(earnedTime>0){const parts=[];if(reward.fast)parts.push('быстро +15с');if(reward.first)parts.push(reward.innate?'врождённая с первой попытки +20с':'с первой попытки +10с');event+=' · 🎁 '+parts.join(' + ')+' → +'+earnedTime+'с на следующий ход'}
+   state.event=event;if(secret&&secret.ability){sendAbilityUnlock(p.id,secret.ability);recordCorrectAnswer(p,elapsed,secret.ability)}if(checkVictory(p))return;
  }else{
-   p.skips++;
-   p.streak=0;
-   if(dc.insaneSkipPenalty){
-     p.skipStreak=(Number(p.skipStreak)||0)+1;
-     const penalty=p.skipStreak>=2?2:1;
-     p.score-=penalty;
-     p.penalties=(Number(p.penalties)||0)+penalty;
-     state.event=p.skipStreak>=2?'💀 Плохой стрик: '+p.skipStreak+' пропуска подряд · −2 очка':'💀 Пропуск в Безумии: −1 очко';
-   }else{
-     p.skipStreak=0;
-     if(p.skips>state.freeSkips){
-       p.score-=1;
-       p.penalties=(Number(p.penalties)||0)+1;
-       state.event='↪ Пропуск: −1 очко штрафа';
-     }else{
-       const left=Math.max(0,state.freeSkips-p.skips);
-       state.event='↪ Бесплатный пропуск · осталось '+left;
-     }
-   }
-   updateLastPlaceFlags();
+   p.skips++;p.streak=0;if(dc.insaneSkipPenalty){p.skipStreak=(Number(p.skipStreak)||0)+1;const penalty=p.skipStreak>=2?2:1;p.score-=penalty;p.penalties=(Number(p.penalties)||0)+penalty;state.event=p.skipStreak>=2?'💀 Плохой стрик: '+p.skipStreak+' пропуска подряд · −2 очка':'💀 Пропуск в Безумии: −1 очко'}else{p.skipStreak=0;if(p.skips>state.freeSkips){p.score-=1;p.penalties=(Number(p.penalties)||0)+1;state.event='↪ Пропуск: −1 очко штрафа'}else{const left=Math.max(0,state.freeSkips-p.skips);state.event='↪ Бесплатный пропуск · осталось '+left}}updateLastPlaceFlags();
  }
- state.active=(state.active+1)%state.players.length;
- beginActiveTurn();
- secret=prepareRoundSecret();
- sendState();render();
+ enterReveal(state.event);
 }
 function initAvatarPicker(){
  const box=$('avatarChoices');if(!box)return;
  box.innerHTML='';
  BUILTIN_AVATARS.forEach((src,i)=>{
-   const b=document.createElement('button');b.type='button';b.className='avatarChoice';b.title=i<3?'Кот':i<6?'Собака':'Пейзаж';
+   const b=document.createElement('button');b.type='button';b.className='avatarChoice';b.title=i<3?ui('Кот','Cat'):i<6?ui('Собака','Dog'):ui('Пейзаж','Landscape');
    const img=document.createElement('img');img.src=src;img.alt=b.title;b.appendChild(img);
-   b.onclick=()=>{selectedAvatar=src;document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('avatarHint').textContent='Выбрана встроенная аватарка.';if(profile){profile.avatar=selectedAvatar;saveProfile()}};
+   b.onclick=()=>{selectedAvatar=src;document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('avatarHint').textContent=ui('Выбрана встроенная аватарка.','Built-in avatar selected.');if(profile){profile.avatar=selectedAvatar;saveProfile()}};
    box.appendChild(b);
  });
- $('clearAvatar').onclick=()=>{selectedAvatar='';document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));$('avatarHint').textContent='Без аватарки — покажем первую букву ника.';if(profile){profile.avatar='';saveProfile()}};
+ $('clearAvatar').onclick=()=>{selectedAvatar='';document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));$('avatarHint').textContent=ui('Без аватарки — покажем первую букву ника.','No avatar — the first letter of your nickname will be shown.');if(profile){profile.avatar='';saveProfile()}};
  $('avatarUpload').addEventListener('change',async e=>{
    const file=e.target.files&&e.target.files[0];if(!file)return;
-   if(!file.type.startsWith('image/'))return toast('Выбери изображение');
-   if(file.size>12*1024*1024)return toast('Файл слишком большой');
+   if(!file.type.startsWith('image/'))return toast(ui('Выбери изображение','Choose an image'));
+   if(file.size>12*1024*1024)return toast(ui('Файл слишком большой','The file is too large'));
    try{
      selectedAvatar=await compressAvatar(file);
      document.querySelectorAll('.avatarChoice').forEach(x=>x.classList.remove('on'));
-     $('avatarHint').textContent='Своя аватарка готова ✓';
+     $('avatarHint').textContent=ui('Своя аватарка готова ✓','Custom avatar ready ✓');
      if(profile){profile.avatar=selectedAvatar;saveProfile()}
-   }catch(err){toast('Не получилось обработать картинку')}
+   }catch(err){toast(ui('Не получилось обработать картинку','Could not process the image'))}
  });
 }
 function compressAvatar(file){
@@ -1339,9 +1643,15 @@ function compressAvatar(file){
    img.src=url;
  });
 }
-function initPicker(){
- ALL.forEach(letter=>{const b=document.createElement('button');b.className='toggle on';b.textContent=letter;b.dataset.letter=letter;b.onclick=()=>{if(!state||state.phase!=='lobby')return;const s=new Set(state.allowed);if(s.has(letter)){if(s.size<=3)return toast('Нужно минимум 3 буквы');s.delete(letter)}else s.add(letter);state.allowed=ALL.filter(x=>s.has(x));sendState();render()};$('picker').appendChild(b)});
+function renderLetterPicker(){
+ const box=$('picker');if(!box)return;const alphabet=roomAlphabet(),key=gameLanguage();
+ if(box.dataset.lang===key&&box.children.length===alphabet.length){Array.from(box.children).forEach(btn=>{btn.classList.toggle('on',!!(state&&state.allowed&&state.allowed.includes(btn.dataset.letter)));btn.disabled=!!(state&&state.phase!=='lobby')});return}
+ box.dataset.lang=key;box.innerHTML='';
+ alphabet.forEach(letter=>{const b=document.createElement('button');b.className='toggle';b.textContent=letter;b.dataset.letter=letter;b.onclick=()=>{if(!state||state.phase!=='lobby')return;const chosen=new Set(state.allowed);if(chosen.has(letter)){if(chosen.size<=3)return toast(ui('Нужно минимум 3 буквы','At least 3 letters are required'));chosen.delete(letter)}else chosen.add(letter);state.allowed=alphabet.filter(x=>chosen.has(x));sendState();render()};box.appendChild(b)});
+ Array.from(box.children).forEach(btn=>btn.classList.toggle('on',!!(state&&state.allowed&&state.allowed.includes(btn.dataset.letter))));
 }
+function initPicker(){renderLetterPicker()}
+
 function initPenaltySettings(){
  $('freeSkips').addEventListener('change',()=>{
    if(!state||state.phase!=='lobby')return;
@@ -1363,41 +1673,44 @@ async function loadRegistry(){
    for(const [hi,info] of Object.entries(heroAbilities||{})){const hero=heroNames.get(hi);if(!hero||!info)continue;const ids=new Set();collect(info.abilities,ids);if(Array.isArray(info.facets))info.facets.forEach(f=>collect(f&&f.abilities,ids));for(const id of ids){const m=abilities&&abilities[id];if(hidden(id,m))continue;const n=String(m.dname).trim(),k=hero+'|'+n.toLowerCase();if(seen.has(k))continue;seen.add(k);out.push({id,hero,name:n,innate:!!m.is_innate,roles:Array.isArray(heroMeta.get(hi)&&heroMeta.get(hi).roles)?heroMeta.get(hi).roles.slice():[],icon:m.img?STEAM+m.img:STEAM+'/apps/dota2/images/dota_react/abilities/'+id+'.png'})}}
    if(out.length<250)throw new Error('too few');
    registry=out;
-   $('registry').textContent='База: '+registry.length+' способностей';
-   $('regChip').textContent='База: '+registry.length;
+   $('registry').textContent=ui('База: '+registry.length+' способностей','Database: '+registry.length+' abilities');
+   $('regChip').textContent=ui('База: '+registry.length,'Database: '+registry.length);
    renderLibraryFilters();renderLibrary();
  }catch(e){
    const fb=[['Kunkka','Torrent','kunkka_torrent'],['Shadow Fiend','Shadowraze','nevermore_shadowraze1'],['Crystal Maiden','Crystal Nova','crystal_maiden_crystal_nova'],['Pudge','Meat Hook','pudge_meat_hook'],['Invoker','Tornado','invoker_tornado'],['Earthshaker','Fissure','earthshaker_fissure'],['Storm Spirit','Ball Lightning','storm_spirit_ball_lightning'],['Axe',"Berserker's Call",'axe_berserkers_call'],['Juggernaut','Blade Fury','juggernaut_blade_fury'],['Tidehunter','Ravage','tidehunter_ravage'],['Lina','Laguna Blade','lina_laguna_blade'],['Lion','Finger of Death','lion_finger_of_death'],['Queen of Pain','Sonic Wave','queenofpain_sonic_wave']];
    registry=fb.map(([hero,name,id])=>({hero,name,id,innate:false,roles:[],icon:STEAM+'/apps/dota2/images/dota_react/abilities/'+id+'.png'}));
-   $('registry').textContent='База: '+registry.length+' способностей · аварийный пул';
-   $('regChip').textContent='База: '+registry.length;
+   $('registry').textContent=ui('База: '+registry.length+' способностей · аварийный пул','Database: '+registry.length+' abilities · fallback pool');
+   $('regChip').textContent=ui('База: '+registry.length,'Database: '+registry.length);
    renderLibraryFilters();renderLibrary();
  }
 }
 
 function startMatch(){
- if(!state||!state.players.length)return toast('Нужен хотя бы один игрок');
- if(!registry.length)return toast('База способностей ещё загружается');
+ if(!state||!state.players.length)return toast(ui('Нужен хотя бы один игрок','At least one player is required'));
+ if(!registry.length)return toast(ui('База способностей ещё загружается','The ability database is still loading'));
  state=normalizeState(state);const d=difficultyConfig();
  state.active=0;state.event='Матч начался · '+d.name;state.winnerId=null;state.winByScore=false;state.matchId=crypto.randomUUID();
- state.specialChance=SPECIAL_START;state.roundRollChance=SPECIAL_START;state.roundType='normal';state.roundNumber=0;state.currentTurnBonus=0;state.turnDuration=d.turn;state.turnStartedAt=null;state.deckExhausted=false;
- state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.skipStreak=0;p.penalties=0;p.wasLast=false;p.timeBonus=0;p.guessSubmittedRound=0;p.guessLockedRound=0});
+ state.specialChance=SPECIAL_START;state.roundRollChance=SPECIAL_START;state.roundType='normal';state.roundNumber=0;state.currentTurnBonus=0;state.turnDuration=d.turn;state.turnStartedAt=null;state.deckExhausted=false;state.revealEnds=null;state.revealData=null;state.nextActive=null;state.autoPausedForDisconnect=null;state.matchStats={fastest:null};
+ state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.skipStreak=0;p.penalties=0;p.wasLast=false;p.maxDeficit=0;p.timeBonus=0;p.guessSubmittedRound=0;p.guessLockedRound=0;p.ready=false});
  resetDeckForMatch();beginActiveTurn();secret=prepareRoundSecret();sendState();render();
 }
-$('create').onclick=()=>{clearNotice();const n=clean($('hostName').value);if(!n)return notice('Введи имя хоста.');saveProfileIdentity(n,selectedAvatar);clearSession();role='host';name=n;code=randomCode();clientId=crypto.randomUUID();hostId=crypto.randomUUID();state=newState($('difficulty').value);secret=null;deck=[];lastHero=null;chatByPlayer={};myChat=[];publicChat=[];selectedChatPlayer=null;chatUnread={};pendingChatByPlayer={};saveSession();connect();showRoom()};
-$('join').onclick=()=>{clearNotice();const n=clean($('playerName').value),c=String($('joinCode').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);if(!n)return notice('Введи имя игрока.');if(c.length!==5)return notice('Код комнаты должен состоять из 5 символов.');saveProfileIdentity(n,selectedAvatar);clearSession();role='player';name=n;code=c;clientId=crypto.randomUUID();hostId=null;state=null;secret=null;selectedAvatar=safeAvatar(selectedAvatar);chatByPlayer={};myChat=[];publicChat=[];selectedChatPlayer=null;chatUnread={};pendingChatByPlayer={};saveSession();connect();showRoom()};
+$('create').onclick=()=>{clearNotice();const n=safeName($('hostName').value);if(!n)return notice(ui('Имя не подходит. Используй обычный ник без ссылок и запрещённых слов.','That name is not allowed. Use a normal nickname without links or prohibited words.'));saveProfileIdentity(n,selectedAvatar);clearSession();role='host';name=n;code=randomCode();clientId=crypto.randomUUID();hostId=crypto.randomUUID();state=newState($('difficulty').value,currentLang);secret=null;deck=[];lastHero=null;chatByPlayer={};myChat=[];publicChat=[];selectedChatPlayer=null;chatUnread={};pendingChatByPlayer={};incomingChatTimes={};saveSession();connect();showRoom()};
+$('join').onclick=()=>{clearNotice();const n=safeName($('playerName').value),c=String($('joinCode').value||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);if(!n)return notice(ui('Имя не подходит. Используй обычный ник без ссылок и запрещённых слов.','That name is not allowed. Use a normal nickname without links or prohibited words.'));if(c.length!==5)return notice(ui('Код комнаты должен состоять из 5 символов.','Room code must contain 5 characters.'));saveProfileIdentity(n,selectedAvatar);clearSession();role=$('joinMode').value==='spectator'?'spectator':'player';name=n;code=c;clientId=crypto.randomUUID();hostId=null;state=null;secret=null;selectedAvatar=safeAvatar(selectedAvatar);chatByPlayer={};myChat=[];publicChat=[];selectedChatPlayer=null;chatUnread={};pendingChatByPlayer={};incomingChatTimes={};saveSession();connect();showRoom()};
+$('readyToggle').onclick=()=>{if(role!=='player'||!state||state.phase!=='lobby')return;const me=state.players.find(p=>p.id===clientId);if(!me)return;me.ready=!me.ready;send('ready_toggle',{id:clientId,ready:me.ready});render()};
 $('soundToggle').onclick=()=>setSoundEnabled(!soundEnabled);
-$('copy').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('room',code);try{await navigator.clipboard.writeText(u.toString());toast('Ссылка скопирована')}catch(e){toast('Код комнаты: '+code)}};
+$('copy').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('room',code);try{await navigator.clipboard.writeText(u.toString());toast(ui('Ссылка скопирована','Invite copied'))}catch(e){toast(ui('Код комнаты: ','Room code: ')+code)}};
 $('start').onclick=startMatch;
 $('firstAttempt').onclick=()=>{if(!state||state.phase!=='playing'||!secret)return;secret.firstAttempt=!secret.firstAttempt;render();saveSession()};
 $('correct').onclick=()=>{if(state&&state.phase==='playing')next(true)};
 $('guessCorrect').onclick=()=>judgePrivateGuess(true);
 $('guessWrong').onclick=()=>judgePrivateGuess(false);
 $('skip').onclick=()=>{if(state&&state.phase==='playing')next(false)};
-$('pause').onclick=()=>{if(!state)return;if(state.phase==='playing'){state.paused=Math.ceil(remaining());state.ends=null;state.phase='paused';state.event='Пауза'}else if(state.phase==='paused'){state.ends=Date.now()+state.paused*1000;state.phase='playing';state.event='Продолжаем'}sendState();render()};
-$('finish').onclick=()=>{if(!state)return;const leader=rankedPlayers()[0];state.phase='finished';state.ends=null;state.winnerId=leader?leader.id:null;state.winByScore=false;state.event='Матч завершён';sendState();render()};
+$('skipReveal').onclick=()=>{if(role==='host'&&state&&state.phase==='reveal')advanceAfterReveal()};
+$('revealSeconds').onchange=()=>{if(role!=='host'||!state||state.phase!=='lobby')return;state.revealSeconds=[0,3,5].includes(Number($('revealSeconds').value))?Number($('revealSeconds').value):3;sendState();render()};
+$('pause').onclick=()=>{if(!state)return;state.autoPausedForDisconnect=null;if(state.phase==='playing'){state.paused=Math.ceil(remaining());state.ends=null;state.phase='paused';state.event='Пауза'}else if(state.phase==='paused'){state.ends=Date.now()+state.paused*1000;state.phase='playing';state.event='Продолжаем'}sendState();render()};
+$('finish').onclick=()=>{if(!state)return;const leader=rankedPlayers()[0];state.phase='finished';state.ends=null;state.winnerId=leader?leader.id:null;state.winByScore=false;state.event='Матч завершён';finalizeRoomRecords(leader);sendState();render()};
 $('rematch').onclick=()=>{if(!state)return;startMatch()};
-$('newMatch').onclick=()=>{if(!state)return;const d=difficultyConfig();state.phase='lobby';state.active=0;state.ends=null;state.paused=d.turn;state.event='Комната готова';state.winnerId=null;state.winByScore=false;state.matchId=null;state.specialChance=SPECIAL_START;state.roundRollChance=SPECIAL_START;state.roundType='normal';state.roundNumber=0;state.turnDuration=d.turn;state.currentTurnBonus=0;state.turnStartedAt=null;state.deckExhausted=false;state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.skipStreak=0;p.penalties=0;p.wasLast=false;p.timeBonus=0;p.guessSubmittedRound=0;p.guessLockedRound=0});secret=null;deck=[];lastHero=null;sendState();render()};
+$('newMatch').onclick=()=>{if(!state)return;const d=difficultyConfig();state.phase='lobby';state.active=0;state.ends=null;state.paused=d.turn;state.event='Комната готова';state.winnerId=null;state.winByScore=false;state.matchId=null;state.specialChance=SPECIAL_START;state.roundRollChance=SPECIAL_START;state.roundType='normal';state.roundNumber=0;state.turnDuration=d.turn;state.currentTurnBonus=0;state.turnStartedAt=null;state.deckExhausted=false;state.revealEnds=null;state.revealData=null;state.nextActive=null;state.autoPausedForDisconnect=null;state.matchStats={fastest:null};state.players.forEach(p=>{p.score=0;p.streak=0;p.bestStreak=0;p.skips=0;p.skipStreak=0;p.penalties=0;p.wasLast=false;p.maxDeficit=0;p.timeBonus=0;p.guessSubmittedRound=0;p.guessLockedRound=0;p.ready=false});secret=null;deck=[];lastHero=null;sendState();render()};
 $('adminClose').onclick=closePlayerAdmin;
 $('adminOverlay').onclick=e=>{if(e.target===$('adminOverlay'))closePlayerAdmin()};
 $('adminMinus').onclick=()=>adminAdjust(-1);
@@ -1405,20 +1718,31 @@ $('adminPlus').onclick=()=>adminAdjust(1);
 $('adminExactApply').onclick=adminApplyExact;
 $('adminAddTime').onclick=adminAddTime;
 $('adminSkip').onclick=adminCountSkip;
+$('adminMute').onclick=adminToggleMute;
 $('adminKick').onclick=adminKick;
 $('leave').onclick=()=>{disconnect();clearSession();location.href=location.pathname};
-setInterval(()=>{const r=remaining(),d=state&&Number(state.turnDuration)>0?Number(state.turnDuration):baseTurnSeconds();$('timer').textContent=fmt(r);$('bar').style.width=(Math.min(d,r)/d*100)+'%';handleCountdownSound(r);if(role==='host'&&state&&state.phase==='playing'&&r<=0)next(false)},250);
+setInterval(()=>{if(state&&state.phase==='reveal'){const left=Math.max(0,(Number(state.revealEnds)||0)-Date.now())/1000;$('timer').textContent='—';$('bar').style.width='0%';$('revealCountdown').textContent=Math.ceil(left)+ui('с','s');handleCountdownSound(999);if(role==='host'&&left<=0)advanceAfterReveal();return}const r=remaining(),d=state&&Number(state.turnDuration)>0?Number(state.turnDuration):baseTurnSeconds();$('timer').textContent=fmt(r);$('bar').style.width=(Math.min(d,r)/d*100)+'%';handleCountdownSound(r);if(role==='host'&&state&&state.phase==='playing'&&r<=0)next(false)},250);
+$('chatPublicTab').onclick=()=>setChatMode('public');
+$('chatPrivateTab').onclick=()=>setChatMode('private');
 $('publicSend').onclick=sendPublicChat;
 $('publicInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendPublicChat()}});
 $('chatSend').onclick=sendChat;
 $('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat()}});
-$('playerName').addEventListener('change',()=>{const n=clean($('playerName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
-$('hostName').addEventListener('change',()=>{const n=clean($('hostName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
+$('playerName').addEventListener('change',()=>{const n=safeName($('playerName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
+$('hostName').addEventListener('change',()=>{const n=safeName($('hostName').value);if(n)saveProfileIdentity(n,selectedAvatar)});
 
 function updateDifficultyPreview(){
  const key=$('difficulty').value,d=DIFFICULTIES[key]||DIFFICULTIES.classic;
- $('difficultyPreview').innerHTML='<b>'+d.icon+' '+d.name+'</b><br>Раунд: '+fmt(d.turn)+' · победа: '+d.win+' очков · '+Math.round(d.cursedChance*100)+'% проклятых / '+Math.round((1-d.cursedChance)*100)+'% удачливых'+(d.noRepeats?' · способности не повторяются вообще за матч':' · колода обновляется после полного прохождения')+(d.insaneSkipPenalty?' · без бонуса за стрик · пропуск: −1, второй подряд и дальше: −2':'');
+ $('difficultyPreview').innerHTML='<b>'+d.icon+' '+difficultyName(d)+'</b><br>'+ui('Раунд: ','Turn: ')+fmt(d.turn)+' · '+ui('победа: ','win at ')+d.win+' '+ui('очков','points')+' · '+Math.round(d.cursedChance*100)+'% '+ui('проклятых','cursed')+' / '+Math.round((1-d.cursedChance)*100)+'% '+ui('удачливых','lucky')+(d.noRepeats?ui(' · способности не повторяются вообще за матч',' · abilities never repeat during the match'):ui(' · колода обновляется после полного прохождения',' · the deck refreshes after a full pass'))+(d.insaneSkipPenalty?ui(' · без бонуса за стрик · пропуск: −1, второй подряд и дальше: −2',' · no streak bonus · skip: −1, second consecutive and later: −2'):'');
 }
+$('a11yToggle').onclick=()=>{$('a11yPanel').classList.toggle('hidden');applyAccessibility()};
+$('a11yClose').onclick=()=>$('a11yPanel').classList.add('hidden');
+$('a11yLargeText').onchange=e=>{accessibility.largeText=e.target.checked;saveAccessibility()};
+$('a11yContrast').onchange=e=>{accessibility.highContrast=e.target.checked;saveAccessibility()};
+$('a11yReduceMotion').onchange=e=>{accessibility.reduceMotion=e.target.checked;saveAccessibility()};
+$('a11yVolume').oninput=e=>{accessibility.tickVolume=Number(e.target.value);saveAccessibility()};
+$('presetSave').onclick=saveCurrentPreset;$('presetLoad').onclick=applySelectedPreset;$('presetDelete').onclick=deleteSelectedPreset;
+$('languageSelect').addEventListener('change',e=>setLanguage(e.target.value));
 $('difficulty').addEventListener('change',updateDifficultyPreview);
 $('libraryToggle').onclick=()=>{$('libraryPanel').classList.remove('hidden');renderLibrary();$('libraryPanel').scrollIntoView({behavior:'smooth',block:'start'})};
 $('libraryClose').onclick=()=>{$('libraryPanel').classList.add('hidden')};
@@ -1428,8 +1752,8 @@ $('libraryRole').addEventListener('change',renderLibrary);
 document.addEventListener('pointerdown',()=>{if(soundEnabled)ensureAudio()},{passive:true});
 const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
-if(params.get('kicked')==='1')notice('Хост удалил тебя из комнаты.');
-initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();loadRegistry();setConn('Готово');
+if(params.get('kicked')==='1')notice(ui('Хост удалил тебя из комнаты.','The host removed you from the room.'));if(params.get('rejected')){const rr=params.get('rejected');notice(rr==='full'?ui('Комната заполнена: уже 8 игроков. Можно войти зрителем.','The room is full: 8 players are already in. You can join as a spectator.'):ui('Не удалось войти: ник не прошёл модерацию.','Could not join: the nickname was blocked by moderation.'))}
+$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();loadRegistry();setConn(ui('Готово','Ready'));setChatMode('public');applyLanguage(document);applyAccessibility();
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 })();
 </script>

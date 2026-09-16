@@ -97,13 +97,17 @@ button:hover,.btn:hover{transform:translateY(-1px)}
 .letterGlossary b{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:#d4a94e;color:#1a1206}
 @media(max-width:700px){.rankedHelpScroll{top:auto;bottom:88px;width:44px;height:62px}.rankedScrollCard{max-height:88vh}}
 
+
+.wordGlossary{display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:9px 14px;align-items:start}
+.wordGlossary b{color:#f0bd54}.wordGlossary span{line-height:1.42}
+@media(max-width:560px){.wordGlossary{grid-template-columns:1fr}.wordGlossary b{margin-top:5px}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.3 BETA · RANKED TEST</div>
+      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.4 BETA · RANKED TEST</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
     <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU</option><option value="en">ENG</option></select><button id="a11yToggle" class="btn secondary compactBtn">♿ Удобство</button><div id="conn" class="status">Готово</div></div>
@@ -227,28 +231,45 @@ button:hover,.btn:hover{transform:translateY(-1px)}
 <button id="rankedHelpScroll" class="rankedHelpScroll hidden" type="button" aria-label="Ranked подсказки">📜</button>
 <div id="rankedHelpModal" class="modal hidden">
  <div class="modalCard rankedScrollCard">
-  <div class="modalHead"><h2>📜 Ranked 1×1 — правила и сложные буквы</h2><button id="rankedHelpClose" class="iconBtn" type="button">✕</button></div>
+  <div class="modalHead"><h2>📜 Ranked 1×1 — правила и словарь</h2><button id="rankedHelpClose" class="iconBtn" type="button">✕</button></div>
   <div class="scrollSection">
    <h3>Как проходит раунд</h3>
-   <p>BO7 — победа при 4 выигранных раундах. На способность даётся до 5 попыток и 5 уровней подсказок. Более ранняя разгадка важнее; при равном уровне учитываются попытки и время Bot Host.</p>
-   <p>Можно отдельно угадать героя: это не завершает раунд и не тратит попытку. После этого всё равно нужно назвать способность.</p>
+   <p>BO7 — до 4 побед. Есть 5 уровней подсказок и максимум 5 попыток. Чем раньше уровень разгадки, тем лучше; дальше учитываются попытки и время Bot Host.</p>
+   <p>Героя можно угадать отдельно: попытка не тратится и раунд не заканчивается — способность всё равно нужно назвать.</p>
   </div>
   <div class="scrollSection">
-   <h3>Сложные буквы RU</h3>
-   <div class="letterGlossary">
-    <b>Ж</b><span>жар, жертва, живучесть</span><b>З</b><span>замедление, защита, зона</span>
-    <b>Ф</b><span>физика, форма, фокус</span><b>Х</b><span>хекс, хил, холод</span>
-    <b>Ц</b><span>цель, цепь</span><b>Ч</b><span>ченнел / прерываемый каст, чистый урон</span>
-    <b>Ш</b><span>щит, шанс</span><b>Э</b><span>эффект, эскейп</span><b>Я</b><span>яд, ярость</span>
+   <h3>🧠 Сложные слова — что примерно имеется в виду</h3>
+   <p class="muted">Это не готовые ответы и не полный список значений. Здесь только направление, чтобы новичок понимал игровой термин, когда увидит его в подсказке.</p>
+   <div class="wordGlossary">
+    <b>Стан</b><span>контроль, из-за которого герой ненадолго не может нормально действовать.</span>
+    <b>Хекс</b><span>сильное превращение/контроль, временно сильно ограничивающее героя.</span>
+    <b>Сало / сайленс</b><span>ограничение, связанное прежде всего с использованием способностей.</span>
+    <b>Рут</b><span>контроль передвижения: герой остаётся привязан к месту, но это не обязательно полный стан.</span>
+    <b>Дизарм</b><span>ограничение обычных атак.</span>
+    <b>Диспел</b><span>снятие определённых эффектов с героя; каких именно — зависит от ситуации.</span>
+    <b>Пурж</b><span>термин про снятие эффектов; иногда одновременно связан с ослаблением цели.</span>
+    <b>Хил</b><span>восстановление здоровья.</span>
+    <b>Сейв</b><span>действие или способность, помогающая союзнику пережить опасный момент.</span>
+    <b>КД</b><span>время, которое нужно подождать перед повторным использованием.</span>
+    <b>АОЕ</b><span>воздействие не на одну точечную цель, а на область.</span>
+    <b>Ченнел</b><span>действие, которое герой некоторое время поддерживает; его часто можно прервать.</span>
+    <b>Блинк</b><span>очень быстрое перемещение на другую позицию.</span>
+    <b>Инвиз</b><span>механика невидимости.</span>
+    <b>Трусайт</b><span>обнаружение того, что обычным зрением может быть скрыто.</span>
+    <b>Крит</b><span>усиленный удар, наносящий заметно больше обычного урона.</span>
+    <b>Клив</b><span>часть урона от атаки задевает дополнительные цели рядом.</span>
+    <b>Баш</b><span>эффект удара, который может ненадолго дать контроль.</span>
+    <b>ДОТ</b><span>урон приходит не весь сразу, а частями в течение времени.</span>
+    <b>Нюк</b><span>способность, смысл которой в быстром заметном уроне.</span>
+    <b>Пьюр</b><span>особый тип чистого урона с другими правилами расчёта, чем физический или магический.</span>
    </div>
-   <p class="muted">В RU Ranked не используются: Ё, Й, Щ, Ъ, Ы, Ь, Ю.</p>
   </div>
   <div class="scrollSection">
-   <h3>Сложные буквы ENG</h3>
-   <div class="letterGlossary">
-    <b>J</b><span>jump</span><b>K</b><span>knockback / knock-up</span><b>V</b><span>vision</span><b>W</b><span>wave</span>
-   </div>
-   <p class="muted">В ENG Ranked не используются: Q, X, Y, Z.</p>
+   <h3>Буквы Ranked</h3>
+   <p><b>RU:</b> А Б В Г Д Е Ж З И К Л М Н О П Р С Т У Ф Х Ц Ч Ш Э Я</p>
+   <p class="muted">Не используются: Ё, Й, Щ, Ъ, Ы, Ь, Ю.</p>
+   <p><b>ENG:</b> A B C D E F G H I J K L M N O P R S T U V W</p>
+   <p class="muted">Не используются: Q, X, Y, Z.</p>
   </div>
  </div>
 </div>
@@ -537,7 +558,7 @@ const DIFFICULTIES={
  classic:{key:'classic',name:'Классика',turn:180,win:15,cursedChance:0.50,noRepeats:false,streakBonus:true,insaneSkipPenalty:false,icon:'🟡'},
  insane:{key:'insane',name:'Безумие',turn:30,win:30,cursedChance:0.70,noRepeats:true,streakBonus:false,insaneSkipPenalty:true,icon:'🔴'}
 };
-const ROLE_LABELS={Carry:'Керри',Support:'Саппорт',Nuker:'Нюкер',Disabler:'Контроль',Jungler:'Лес',Durable:'Танк',Escape:'Эскейп',Pusher:'Пушер',Initiator:'Инициатор'};
+const ROLE_LABELS={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Саппорт 4 позиции',P5:'Саппорт 5 позиции'};
 const RANKED_TEST_VERSION='1.9-ranked-test-fix11-clue-quality';
 const RANKED_CLUE_RELEASE='0.4.1';
 
@@ -756,7 +777,10 @@ const $=id=>document.getElementById(id);
 function ui(ru,en){return currentLang==='en'?en:ru}
 function langLocale(){return currentLang==='en'?'en-US':'ru-RU'}
 function difficultyName(d){return currentLang==='en'?({easy:'Easy',classic:'Classic',insane:'Insane'}[d.key]||d.name):d.name}
-function roleLabel(r){return currentLang==='en'?r:(ROLE_LABELS[r]||r)}
+function roleLabel(r){
+ const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Position 4 Support',P5:'Position 5 Support'};
+ return currentLang==='en'?(en[r]||r):(ROLE_LABELS[r]||r)
+}
 function achievementTitle(a){return currentLang==='en'?(a.titleEn||a.title):a.title}
 function achievementDesc(a){return currentLang==='en'?(a.descEn||a.desc):a.desc}
 const STATIC_EN=new Map([
@@ -1136,14 +1160,6 @@ function unlockAbilityLocal(ability,quiet=false){
 }
 function libraryUnlocked(id){return !!(profile&&profile.unlockedAbilities&&profile.unlockedAbilities[id])}
 
-
-function fixLibraryRoleLabels(){
- const sel=$('libRole'); if(!sel)return;
- [...sel.options].forEach(o=>{
-   if(/^P[1-5]$/.test(o.value)) o.textContent=friendlyRole(o.value);
-   else if(!o.value) o.textContent=ui('Все роли','All roles');
- });
-}
 
 function friendlyRole(role){
  const ru={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Саппорт 4 позиции',P5:'Саппорт 5 позиции'};
@@ -2050,122 +2066,7 @@ function initPenaltySettings(){
    sendState();render();
  });
 }
-const HERO_POSITIONS={
-'Abaddon':['P5'],
-'Alchemist':['P1'],
-'Anti-Mage':['P1'],
-'Axe':['P3'],
-'Bane':['P5'],
-'Batrider':['P3','P2'],
-'Beastmaster':['P3'],
-'Bloodseeker':['P1'],
-'Bounty Hunter':['P4'],
-'Bristleback':['P3'],
-'Centaur Warrunner':['P3'],
-'Chaos Knight':['P1'],
-'Chen':['P5'],
-'Clinkz':['P1'],
-'Clockwerk':['P5','P4'],
-'Crystal Maiden':['P5'],
-'Dark Seer':['P3'],
-'Dazzle':['P5'],
-'Death Prophet':['P3','P2'],
-'Disruptor':['P5'],
-'Doom':['P3'],
-'Dragon Knight':['P1','P2'],
-'Drow Ranger':['P1'],
-'Earth Spirit':['P2'],
-'Earthshaker':['P2','P3'],
-'Elder Titan':['P5'],
-'Ember Spirit':['P2'],
-'Enchantress':['P5'],
-'Enigma':['P3'],
-'Faceless Void':['P1'],
-'Grimstroke':['P5','P4'],
-'Gyrocopter':['P1'],
-'Hoodwink':['P5','P4'],
-'Huskar':['P2'],
-'Invoker':['P2'],
-'Io':['P5'],
-'Jakiro':['P5'],
-'Juggernaut':['P1'],
-'Keeper of the Light':['P4'],
-'Kunkka':['P3','P2'],
-'Legion Commander':['P3'],
-'Leshrac':['P2'],
-'Lich':['P5'],
-'Lifestealer':['P1'],
-'Lina':['P2','P1'],
-'Lion':['P5','P4'],
-'Luna':['P1'],
-'Magnus':['P3'],
-'Mars':['P3'],
-'Medusa':['P1'],
-'Meepo':['P2'],
-'Mirana':['P4'],
-'Monkey King':['P1'],
-'Muerta':['P1'],
-'Naga Siren':['P1'],
-'Nature\'s Prophet':['P1','P4'],
-'Necrophos':['P2','P3'],
-'Night Stalker':['P3'],
-'Nyx Assassin':['P4'],
-'Ogre Magi':['P5'],
-'Omniknight':['P5'],
-'Oracle':['P5'],
-'Outworld Destroyer':['P2'],
-'Pangolier':['P2','P3'],
-'Phantom Assassin':['P1'],
-'Phantom Lancer':['P1'],
-'Phoenix':['P5'],
-'Primal Beast':['P3','P2'],
-'Puck':['P2'],
-'Pudge':['P5'],
-'Pugna':['P5'],
-'Queen of Pain':['P2'],
-'Razor':['P3','P1'],
-'Riki':['P1'],
-'Rubick':['P4'],
-'Sand King':['P2','P3'],
-'Shadow Demon':['P4','P1'],
-'Shadow Fiend':['P1'],
-'Shadow Shaman':['P5'],
-'Silencer':['P5'],
-'Skywrath Mage':['P5'],
-'Slardar':['P1'],
-'Slark':['P1'],
-'Snapfire':['P2','P4'],
-'Sniper':['P2'],
-'Spectre':['P1'],
-'Spirit Breaker':['P4'],
-'Storm Spirit':['P2'],
-'Sven':['P1'],
-'Techies':['P5','P4'],
-'Templar Assassin':['P1'],
-'Terrorblade':['P1'],
-'Tidehunter':['P3'],
-'Timbersaw':['P3','P2'],
-'Tinker':['P2'],
-'Tiny':['P1'],
-'Treant Protector':['P5'],
-'Troll Warlord':['P1'],
-'Tusk':['P5'],
-'Underlord':['P3'],
-'Undying':['P5','P4'],
-'Ursa':['P1'],
-'Vengeful Spirit':['P4','P3'],
-'Venomancer':['P5'],
-'Viper':['P2','P3'],
-'Visage':['P3','P2'],
-'Void Spirit':['P2'],
-'Warlock':['P5'],
-'Weaver':['P1','P4'],
-'Windranger':['P1','P4'],
-'Winter Wyvern':['P5'],
-'Witch Doctor':['P5'],
-'Wraith King':['P1','P3'],
-'Zeus':['P2','P4']
-};
+const HERO_POSITIONS={"Abaddon":["P5"],"Alchemist":["P1"],"Anti-Mage":["P1"],"Axe":["P3"],"Bane":["P5"],"Batrider":["P3","P2"],"Beastmaster":["P3"],"Bloodseeker":["P1"],"Bounty Hunter":["P4"],"Bristleback":["P3"],"Centaur Warrunner":["P3"],"Chaos Knight":["P1"],"Chen":["P5"],"Clinkz":["P1"],"Clockwerk":["P5","P4"],"Crystal Maiden":["P5"],"Dark Seer":["P3"],"Dazzle":["P5"],"Death Prophet":["P3","P2"],"Disruptor":["P5"],"Doom":["P3"],"Dragon Knight":["P1","P2"],"Drow Ranger":["P1"],"Earth Spirit":["P2"],"Earthshaker":["P2","P3"],"Elder Titan":["P5"],"Ember Spirit":["P2"],"Enchantress":["P5"],"Enigma":["P3"],"Faceless Void":["P1"],"Grimstroke":["P5","P4"],"Gyrocopter":["P1"],"Hoodwink":["P5","P4"],"Huskar":["P2"],"Invoker":["P2"],"Io":["P5"],"Jakiro":["P5"],"Juggernaut":["P1"],"Keeper of the Light":["P4"],"Kunkka":["P3","P2"],"Legion Commander":["P3"],"Leshrac":["P2"],"Lich":["P5"],"Lifestealer":["P1"],"Lina":["P2","P1"],"Lion":["P5","P4"],"Luna":["P1"],"Magnus":["P3"],"Mars":["P3"],"Medusa":["P1"],"Meepo":["P2"],"Mirana":["P4"],"Monkey King":["P1"],"Muerta":["P1"],"Naga Siren":["P1"],"Nature's Prophet":["P1","P4"],"Necrophos":["P2","P3"],"Night Stalker":["P3"],"Nyx Assassin":["P4"],"Ogre Magi":["P5"],"Omniknight":["P5"],"Oracle":["P5"],"Outworld Destroyer":["P2"],"Pangolier":["P2","P3"],"Phantom Assassin":["P1"],"Phantom Lancer":["P1"],"Phoenix":["P5"],"Primal Beast":["P3","P2"],"Puck":["P2"],"Pudge":["P5"],"Pugna":["P5"],"Queen of Pain":["P2"],"Razor":["P3","P1"],"Riki":["P1"],"Rubick":["P4"],"Sand King":["P2","P3"],"Shadow Demon":["P4","P1"],"Shadow Fiend":["P1"],"Shadow Shaman":["P5"],"Silencer":["P5"],"Skywrath Mage":["P5"],"Slardar":["P1"],"Slark":["P1"],"Snapfire":["P2","P4"],"Sniper":["P2"],"Spectre":["P1"],"Spirit Breaker":["P4"],"Storm Spirit":["P2"],"Sven":["P1"],"Techies":["P5","P4"],"Templar Assassin":["P1"],"Terrorblade":["P1"],"Tidehunter":["P3"],"Timbersaw":["P3","P2"],"Tinker":["P2"],"Tiny":["P1"],"Treant Protector":["P5"],"Troll Warlord":["P1"],"Tusk":["P5"],"Underlord":["P3"],"Undying":["P5","P4"],"Ursa":["P1"],"Vengeful Spirit":["P4","P3"],"Venomancer":["P5"],"Viper":["P2","P3"],"Visage":["P3","P2"],"Void Spirit":["P2"],"Warlock":["P5"],"Weaver":["P1","P4"],"Windranger":["P1","P4"],"Winter Wyvern":["P5"],"Witch Doctor":["P5"],"Wraith King":["P1","P3"],"Zeus":["P2","P4"]};
 
 const REGISTRY_CACHE_KEY='d2slh_registry_recovery_v1918';
 
@@ -2510,7 +2411,7 @@ function setupStandalonePages(){
   Object.entries(pages).forEach(([k,node])=>node&&node.classList.toggle('hidden',k!==which));
   Object.entries(buttons).forEach(([k,node])=>node&&node.classList.toggle('on',k===which));
   if(which==='profile')loadProfile();
-  if(which==='library'){renderLibraryFilters();fixLibraryRoleLabels();renderLibrary()}
+  if(which==='library'){renderLibraryFilters();renderLibrary()}
   window.scrollTo({top:0,behavior:'smooth'});
  }
  buttons.game.onclick=()=>openPage('game');
@@ -2520,7 +2421,7 @@ function setupStandalonePages(){
 }
 
 $('languageSelect').addEventListener('change',e=>setLanguage(e.target.value));
-$('languageSelect').addEventListener('change',()=>setTimeout(fixLibraryRoleLabels,0));
+$('languageSelect').addEventListener('change',()=>renderLibraryFilters());
 
 $('languageSelect').addEventListener('change',()=>{
  const en=$('languageSelect').value==='en';
@@ -2563,7 +2464,7 @@ function syncRegistryRolesFromHeroMap(){
  if(!Array.isArray(registry))return;
  registry.forEach(a=>{if(a&&a.hero&&HERO_POSITIONS[a.hero])a.roles=HERO_POSITIONS[a.hero].slice()});
 }
-setInterval(()=>{syncRegistryRolesFromHeroMap();fixLibraryRoleLabels()},1200);
+setInterval(syncRegistryRolesFromHeroMap,1200);
 
 $('languageSelect').value=currentLang;setupStandalonePages();loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();activateRecoveryRegistry();loadRegistry().catch(()=>{});setConn('');setChatMode('public');applyLanguage(document);applyAccessibility();
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);

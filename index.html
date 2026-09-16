@@ -101,16 +101,60 @@ button:hover,.btn:hover{transform:translateY(-1px)}
 .wordGlossary{display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:9px 14px;align-items:start}
 .wordGlossary b{color:#f0bd54}.wordGlossary span{line-height:1.42}
 @media(max-width:560px){.wordGlossary{grid-template-columns:1fr}.wordGlossary b{margin-top:5px}}
+
+.rankedLobbyRulesBar{max-width:1180px;margin:0 auto 10px;display:flex;justify-content:flex-start}
+.rankedLobbyRulesBar.hidden{display:none!important}
+.rankedPromptCard{max-width:470px!important}
+.rankedPromptCard h2{margin:6px 0 8px}
+.dontRemind{display:flex;align-items:center;gap:9px;margin:18px 0;padding:11px 12px;border-radius:13px;background:rgba(255,255,255,.05)}
+.dontRemind input{width:18px;height:18px;min-height:0}
+.promptActions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+@media(max-width:520px){.promptActions{grid-template-columns:1fr}}
+
+
+/* ===== v1.92.6 HOME + RANKED GAME CLEANUP ===== */
+#a11yToggle,#a11yPanel{display:none!important}
+header .toggle,header .switch,.langRow .toggle,.langRow .switch{display:none!important}
+
+/* Cleaner home */
+#home{max-width:920px!important;margin:12px auto 0!important}
+#home>.card,#home>.panel{margin-bottom:12px!important}
+#home h1{font-size:clamp(28px,5vw,46px)!important;line-height:1.02!important}
+#home .grid{gap:10px!important}
+#home button{min-height:48px}
+
+/* In lobby/game: navigation becomes a single Game tab */
+body.inGameContext #appNav{grid-template-columns:1fr!important;max-width:360px;margin-left:auto;margin-right:auto}
+body.inGameContext #navProfile,body.inGameContext #navLibrary{display:none!important}
+body.inGameContext #navGame{display:block!important}
+
+/* Ranked room/game */
+body.rankedContext #room,body.rankedContext #game{max-width:1120px!important;margin:10px auto 0!important}
+body.rankedContext #rankedLobbyRulesBar{margin:4px auto 10px!important}
+body.rankedContext #rankedLobbyRulesBtn{min-height:40px!important;padding:8px 13px!important}
+body.rankedContext header{padding:8px 12px!important}
+body.rankedContext .appNav{margin-top:8px!important;margin-bottom:8px!important}
+
+/* Never allow rules to leak over Profile/Library/Home. */
+body:not(.rankedContext) #rankedRulesPrompt,
+body:not(.rankedContext) #rankedHelpModal{display:none!important}
+
+@media(max-width:700px){
+ #home{margin-top:7px!important}
+ body.inGameContext #appNav{max-width:none}
+ body.rankedContext #room,body.rankedContext #game{margin-top:6px!important}
+}
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.4 BETA · RANKED TEST</div>
+      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.6 BETA · RANKED TEST</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
-    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU</option><option value="en">ENG</option></select><button id="a11yToggle" class="btn secondary compactBtn">♿ Удобство</button><div id="conn" class="status">Готово</div></div>
+    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU</option><option value="en">ENG</option></select><div id="conn" class="status">Готово</div></div>
   </div>
   <nav id="appNav" class="appNav" aria-label="Основная навигация">
     <button id="navGame" class="appNavBtn on" type="button">🎮 <span>Игра</span></button>
@@ -229,6 +273,20 @@ button:hover,.btn:hover{transform:translateY(-1px)}
 
 
 <button id="rankedHelpScroll" class="rankedHelpScroll hidden" type="button" aria-label="Ranked подсказки">📜</button>
+
+<div id="rankedRulesPrompt" class="modal hidden">
+ <div class="modalCard rankedPromptCard">
+  <div class="eyebrow">RANKED 1×1</div>
+  <h2>Перед началом Ranked</h2>
+  <p>Хочешь быстро прочитать правила режима и сводку сложных игровых слов?</p>
+  <label class="dontRemind"><input id="rankedDontRemind" type="checkbox"> <span>Больше не напоминать</span></label>
+  <div class="promptActions">
+    <button id="rankedPromptRead" class="btn primary" type="button">📜 Прочитать</button>
+    <button id="rankedPromptSkip" class="btn secondary" type="button">Продолжить игру</button>
+  </div>
+ </div>
+</div>
+
 <div id="rankedHelpModal" class="modal hidden">
  <div class="modalCard rankedScrollCard">
   <div class="modalHead"><h2>📜 Ranked 1×1 — правила и словарь</h2><button id="rankedHelpClose" class="iconBtn" type="button">✕</button></div>
@@ -275,6 +333,9 @@ button:hover,.btn:hover{transform:translateY(-1px)}
 </div>
 
   <section id="room" class="hidden">
+    <div id="rankedLobbyRulesBar" class="rankedLobbyRulesBar hidden">
+      <button id="rankedLobbyRulesBtn" class="btn secondary" type="button">📜 Правила и сложные слова</button>
+    </div>
     <div class="panel roomhead">
       <div><div class="eyebrow">КОМНАТА</div><div id="roomCode" class="roomcode">—</div><div id="role" class="muted"></div></div>
       <div class="row"><span id="regChip" class="chip">База: —</span><span id="difficultyChip" class="chip">Классика</span><span id="phase" class="chip">Лобби</span></div>
@@ -558,7 +619,7 @@ const DIFFICULTIES={
  classic:{key:'classic',name:'Классика',turn:180,win:15,cursedChance:0.50,noRepeats:false,streakBonus:true,insaneSkipPenalty:false,icon:'🟡'},
  insane:{key:'insane',name:'Безумие',turn:30,win:30,cursedChance:0.70,noRepeats:true,streakBonus:false,insaneSkipPenalty:true,icon:'🔴'}
 };
-const ROLE_LABELS={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Саппорт 4 позиции',P5:'Саппорт 5 позиции'};
+const ROLE_LABELS={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Четвёрка',P5:'Пятёрка'};
 const RANKED_TEST_VERSION='1.9-ranked-test-fix11-clue-quality';
 const RANKED_CLUE_RELEASE='0.4.1';
 
@@ -778,7 +839,7 @@ function ui(ru,en){return currentLang==='en'?en:ru}
 function langLocale(){return currentLang==='en'?'en-US':'ru-RU'}
 function difficultyName(d){return currentLang==='en'?({easy:'Easy',classic:'Classic',insane:'Insane'}[d.key]||d.name):d.name}
 function roleLabel(r){
- const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Position 4 Support',P5:'Position 5 Support'};
+ const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Support 4',P5:'Support 5'};
  return currentLang==='en'?(en[r]||r):(ROLE_LABELS[r]||r)
 }
 function achievementTitle(a){return currentLang==='en'?(a.titleEn||a.title):a.title}
@@ -1162,8 +1223,8 @@ function libraryUnlocked(id){return !!(profile&&profile.unlockedAbilities&&profi
 
 
 function friendlyRole(role){
- const ru={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Саппорт 4 позиции',P5:'Саппорт 5 позиции'};
- const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Position 4 Support',P5:'Position 5 Support'};
+ const ru={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Четвёрка',P5:'Пятёрка'};
+ const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Support 4',P5:'Support 5'};
  return (currentLang==='en'?en:ru)[role]||role;
 }
 
@@ -2408,6 +2469,11 @@ function setupStandalonePages(){
  const pages={game:home,profile,library};
  const buttons={game:$('navGame'),profile:$('navProfile'),library:$('navLibrary')};
  function openPage(which){
+  if(which!=='game'){
+    $('rankedRulesPrompt')?.classList.add('hidden');
+    $('rankedHelpModal')?.classList.add('hidden');
+  }
+
   Object.entries(pages).forEach(([k,node])=>node&&node.classList.toggle('hidden',k!==which));
   Object.entries(buttons).forEach(([k,node])=>node&&node.classList.toggle('on',k===which));
   if(which==='profile')loadProfile();
@@ -2449,12 +2515,64 @@ const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
 if(params.get('kicked')==='1')notice(ui('Хост удалил тебя из комнаты.','The host removed you from the room.'));if(params.get('rejected')){const rr=params.get('rejected');notice(rr==='full'?ui('Комната заполнена. В Ranked Test участвуют только 2 игрока.','The room is full. Ranked Test supports exactly 2 players.'):rr==='ranked_spectator_disabled'?ui('В Ranked Test зрители отключены.','Spectators are disabled in Ranked Test.'):ui('Не удалось войти: ник не прошёл модерацию.','Could not join: the nickname was blocked by moderation.'))}
 
-function syncRankedHelpScroll(){
- const b=$('rankedHelpScroll'); if(!b)return;
- const ranked=(state&&state.mode==='ranked') || isRankedTest();
- b.classList.toggle('hidden',!ranked);
+const RANKED_RULES_REMINDER_KEY='d2slh_ranked_rules_no_remind_v1';
+let rankedRulesPromptShownThisSession=false;
+
+function isRankedActive(){
+ return !!((state&&state.mode==='ranked') || isRankedTest());
 }
-$('rankedHelpScroll').onclick=()=>$('rankedHelpModal').classList.remove('hidden');
+function syncRankedHelpScroll(){
+ const ranked=isRankedActive();
+ const roomVisible=$('room') && !$('room').classList.contains('hidden');
+ const gameVisible=$('game') && !$('game').classList.contains('hidden');
+ const inGameContext=roomVisible || gameVisible;
+ const rankedContext=ranked && inGameContext;
+
+ document.body.classList.toggle('inGameContext',inGameContext);
+ document.body.classList.toggle('rankedContext',rankedContext);
+
+ const bar=$('rankedLobbyRulesBar');
+ if(bar)bar.classList.toggle('hidden',!rankedContext);
+
+ // Rules are allowed only on the Ranked room/game screen.
+ if(!rankedContext){
+   $('rankedRulesPrompt')?.classList.add('hidden');
+   $('rankedHelpModal')?.classList.add('hidden');
+   rankedRulesPromptShownThisSession=false;
+   return;
+ }
+
+ if(!rankedRulesPromptShownThisSession){
+   rankedRulesPromptShownThisSession=true;
+   let muted=false;
+   try{muted=localStorage.getItem(RANKED_RULES_REMINDER_KEY)==='1'}catch(e){}
+   if(!muted)$('rankedRulesPrompt').classList.remove('hidden');
+ }
+}
+
+
+function saveRankedReminderChoice(){
+ try{
+   if($('rankedDontRemind').checked)localStorage.setItem(RANKED_RULES_REMINDER_KEY,'1');
+ }catch(e){}
+}
+$('rankedPromptRead').onclick=()=>{
+ saveRankedReminderChoice();
+ $('rankedRulesPrompt').classList.add('hidden');
+ $('rankedHelpModal').classList.remove('hidden');
+};
+$('rankedPromptSkip').onclick=()=>{
+ saveRankedReminderChoice();
+ $('rankedRulesPrompt').classList.add('hidden');
+};
+$('rankedLobbyRulesBtn').onclick=()=>{if(document.body.classList.contains('rankedContext'))$('rankedHelpModal').classList.remove('hidden')};
+$('rankedRulesPrompt').addEventListener('click',e=>{
+ if(e.target===$('rankedRulesPrompt')){
+   saveRankedReminderChoice();
+   $('rankedRulesPrompt').classList.add('hidden');
+ }
+});
+
 $('rankedHelpClose').onclick=()=>$('rankedHelpModal').classList.add('hidden');
 $('rankedHelpModal').addEventListener('click',e=>{if(e.target===$('rankedHelpModal'))$('rankedHelpModal').classList.add('hidden')});
 setInterval(syncRankedHelpScroll,700);
@@ -2487,3 +2605,5 @@ if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 <style>
 .rulesRail,.helpRail,.leftRail,.floatingRules,.floatingHelp{display:none!important}
 </style>
+
+<style>#rankedHelpScroll{display:none!important}</style>

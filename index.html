@@ -2048,9 +2048,28 @@ function initPenaltySettings(){
  });
 }
 async function loadRegistry(){
+ const registryEl=$('registry'),regChip=$('regChip');
+ const setRegistryStatus=(ru,en)=>{if(registryEl)registryEl.textContent=ui(ru,en);};
+ const fetchJsonWithTimeout=async(url,ms=4500)=>{
+   const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),ms);
+   try{const r=await fetch(url,{signal:ctrl.signal,cache:'force-cache'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.json()}
+   finally{clearTimeout(timer)}
+ };
+ const fetchDotaconstants=async(file)=>{
+   const urls=[
+     'https://cdn.jsdelivr.net/gh/odota/dotaconstants@master/build/'+file,
+     'https://unpkg.com/dotaconstants@latest/build/'+file,
+     'https://raw.githubusercontent.com/odota/dotaconstants/master/build/'+file
+   ];
+   let last;
+   for(const url of urls){try{return await fetchJsonWithTimeout(url,4500)}catch(e){last=e}}
+   throw last||new Error('registry unavailable');
+ };
  try{
-   const base='https://cdn.jsdelivr.net/gh/odota/dotaconstants@master/build/';
-   const [abilities,heroAbilities,heroes]=await Promise.all(['abilities.json','hero_abilities.json','heroes.json'].map(async f=>{const r=await fetch(base+f);if(!r.ok)throw new Error(r.status);return r.json()}));
+   setRegistryStatus('Загрузка базы способностей…','Loading ability database…');
+   const [abilities,heroAbilities,heroes]=await Promise.all(
+     ['abilities.json','hero_abilities.json','heroes.json'].map(fetchDotaconstants)
+   );
    const heroNames=new Map(Object.values(heroes||{}).filter(h=>h&&h.name&&h.localized_name).map(h=>[h.name,h.localized_name]));const heroMeta=new Map(Object.values(heroes||{}).filter(h=>h&&h.name).map(h=>[h.name,h]));
    const out=[],seen=new Set();
    function collect(v,s){if(typeof v==='string')s.add(v);else if(Array.isArray(v))v.forEach(x=>collect(x,s));else if(v&&typeof v==='object')Object.values(v).forEach(x=>collect(x,s))}
@@ -2064,11 +2083,19 @@ async function loadRegistry(){
  }catch(e){
    const fb=[['Kunkka','Torrent','kunkka_torrent'],['Shadow Fiend','Shadowraze','nevermore_shadowraze1'],['Crystal Maiden','Crystal Nova','crystal_maiden_crystal_nova'],['Pudge','Meat Hook','pudge_meat_hook'],['Invoker','Tornado','invoker_tornado'],['Earthshaker','Fissure','earthshaker_fissure'],['Storm Spirit','Ball Lightning','storm_spirit_ball_lightning'],['Axe',"Berserker's Call",'axe_berserkers_call'],['Juggernaut','Blade Fury','juggernaut_blade_fury'],['Tidehunter','Ravage','tidehunter_ravage'],['Lina','Laguna Blade','lina_laguna_blade'],['Lion','Finger of Death','lion_finger_of_death'],['Queen of Pain','Sonic Wave','queenofpain_sonic_wave']];
    const hints={kunkka_torrent:['STUN','KNOCKUP','AREA','MAGICAL_DAMAGE','DELAY','WATER'],nevermore_shadowraze1:['MAGICAL_DAMAGE','AREA','DAMAGE','BURST'],crystal_maiden_crystal_nova:['SLOW','MAGICAL_DAMAGE','AREA','FROST','DAMAGE'],pudge_meat_hook:['PULL','PROJECTILE','DAMAGE','ENEMY_TARGET','LINE'],invoker_tornado:['KNOCKUP','DISPEL','PROJECTILE','LINE','MAGICAL_DAMAGE'],earthshaker_fissure:['STUN','LINE','AREA','DAMAGE','EARTH'],storm_spirit_ball_lightning:['MOBILITY','MAGICAL_DAMAGE','MANA_COST','FLIGHT','DASH'],axe_berserkers_call:['TAUNT','AREA','ARMOR','CONTROL'],juggernaut_blade_fury:['MAGICAL_DAMAGE','AREA','IMMUNITY','DAMAGE'],tidehunter_ravage:['STUN','AREA','KNOCKUP','MAGICAL_DAMAGE'],lina_laguna_blade:['MAGICAL_DAMAGE','SINGLE_TARGET','BURST','DAMAGE'],lion_finger_of_death:['MAGICAL_DAMAGE','SINGLE_TARGET','BURST','DAMAGE'],queenofpain_sonic_wave:['MAGICAL_DAMAGE','CONE','DAMAGE','WAVE']};registry=fb.map(([hero,name,id])=>({hero,name,id,innate:false,roles:(HERO_POSITIONS[hero]||[]).slice(),attackType:'',primaryAttr:'',conceptHints:hints[id]||[],meta:{dname:name,desc:'',lore:'',behavior:'',target_team:'',target_type:'',dmg_type:'',dispellable:'',bkbpierce:'',attrib:[]},icon:STEAM+'/apps/dota2/images/dota_react/abilities/'+id+'.png'}));
-   $('registry').textContent=ui('База: '+registry.length+' способностей · аварийный пул','Database: '+registry.length+' abilities · fallback pool');
+   $('registry').textContent=ui('Офлайн-база: '+registry.length+' способностей','Offline database: '+registry.length+' abilities');
    $('regChip').textContent=ui('База: '+registry.length,'Database: '+registry.length);
    renderLibraryFilters();renderLibrary();
  }
 }
+
+
+setTimeout(()=>{
+ const el=$('registry');
+ if(el&&/загружается|загрузка|loading/i.test(el.textContent||'')){
+   el.textContent=ui('Сеть недоступна · используется офлайн-база','Network unavailable · using offline database');
+ }
+},18000);
 
 function isRankedTest(s=state){return !!(s&&s.mode==='ranked_test')}
 function rankedNorm(v){return String(v||'').normalize('NFKC').toLowerCase().replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/gi,' ').replace(/\s+/g,' ').trim()}
@@ -2352,7 +2379,8 @@ document.addEventListener('pointerdown',()=>{if(soundEnabled)ensureAudio()},{pas
 const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
 if(params.get('kicked')==='1')notice(ui('Хост удалил тебя из комнаты.','The host removed you from the room.'));if(params.get('rejected')){const rr=params.get('rejected');notice(rr==='full'?ui('Комната заполнена. В Ranked Test участвуют только 2 игрока.','The room is full. Ranked Test supports exactly 2 players.'):rr==='ranked_spectator_disabled'?ui('В Ranked Test зрители отключены.','Spectators are disabled in Ranked Test.'):ui('Не удалось войти: ник не прошёл модерацию.','Could not join: the nickname was blocked by moderation.'))}
-$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();loadRegistry();setConn('');setChatMode('public');applyLanguage(document);applyAccessibility();
+$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();setConn('');setChatMode('public');
+loadRegistry().catch(()=>{});applyLanguage(document);applyAccessibility();
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 })();
 </script>

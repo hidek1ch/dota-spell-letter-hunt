@@ -9,7 +9,7 @@
 <style>
 :root{color-scheme:dark;font-family:Inter,Arial,sans-serif;background:#0b1118;color:#f7f8fb}
 *{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(circle at 15% 0%,rgba(62,91,126,.28),transparent 35%),radial-gradient(circle at 85% 20%,rgba(244,180,26,.1),transparent 30%),#0b1118}
-button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.topTools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.langSelect{width:auto;min-width:128px;padding:9px 11px;border-radius:999px;border:1px solid #46566e;background:#18212d;color:#d7dfea;font-weight:800}.soundNotice{margin-top:13px;padding:10px 12px;border:1px solid #3a4b61;border-radius:12px;background:#111923;color:#aeb9c8;font-size:13px;line-height:1.35}.roomActions{display:flex;gap:8px;flex-wrap:wrap}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus,select:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}.difficultyPreview,.difficultyRoomInfo{margin-top:10px;padding:11px 12px;border:1px solid #35445a;border-radius:12px;background:#111923;color:#cbd5e2;line-height:1.35}.difficultyPreview b,.difficultyRoomInfo b{color:#f4b41a}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.roundBanner{width:fit-content;margin:0 auto 10px;padding:9px 15px;border-radius:999px;font-weight:1000;letter-spacing:.06em;border:1px solid #46566e}.roundBanner.cursed{color:#f0c3ff;border-color:#8246a0;background:rgba(88,35,111,.28);box-shadow:0 0 28px rgba(152,72,190,.14)}.roundBanner.lucky{color:#ffe79a;border-color:#9c7b1f;background:rgba(117,91,22,.28);box-shadow:0 0 28px rgba(244,180,26,.12)}.secretRoundInfo{margin:12px 0 2px;padding:10px 12px;border-radius:12px;font-weight:900}.secretRoundInfo.cursed{border:1px solid #8246a0;background:rgba(88,35,111,.23);color:#f0c3ff}.secretRoundInfo.lucky{border:1px solid #9c7b1f;background:rgba(117,91,22,.23);color:#ffe79a}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.hostGear{width:42px;height:42px;border:1px solid #4a596f;border-radius:11px;background:#202b39;color:#fff;cursor:pointer;font-size:19px}.hostGear:hover{border-color:#f4b41a;background:#2a3646}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.profilePanel{border-color:#39495f}.profileHead{display:flex;gap:14px;align-items:center}.profileMain{flex:1;min-width:0}.profileName{font-size:24px;font-weight:1000;overflow:hidden;text-overflow:ellipsis}.profileAvatar,.profileFallback{width:68px;height:68px;flex:0 0 68px;border-radius:50%;object-fit:cover;border:3px solid #f4b41a;background:#18212d}.profileFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.profileStats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.profileStat{padding:10px 8px;border:1px solid #2d394b;border-radius:12px;background:#111923;text-align:center}.profileStat b{display:block;font-size:20px;color:#f4b41a}.profileStat small{color:#8f9daf}.profileAchievementsTitle{margin:16px 0 8px;font-weight:900}.achievementGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.achievement{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #2d394b;border-radius:12px;background:#111923}.achievement.locked{opacity:.4;filter:grayscale(1)}.achievementIcon{font-size:24px;line-height:1}.achievementText b{display:block}.achievementText small{display:block;color:#8f9daf;margin-top:2px;line-height:1.25}.achievement.new{border-color:#f4b41a;box-shadow:0 0 0 2px rgba(244,180,26,.12)}@media(max-width:700px){.profileHead{align-items:flex-start}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr}.profileAvatar,.profileFallback{width:58px;height:58px;flex-basis:58px}}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.libraryPanel{border-color:#39495f}.libraryProgress{height:10px;border-radius:999px;background:#273243;overflow:hidden;margin:14px 0}.libraryProgressBar{height:100%;width:0;background:#f4b41a;transition:width .25s}.libraryFilters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.libraryGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px;max-height:620px;overflow:auto;padding-right:3px}.abilityCard{border:1px solid #35445a;border-radius:14px;background:#111923;padding:10px;min-width:0}.abilityCard.locked{opacity:.42;filter:grayscale(1)}.abilityCard img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#0b1017}.abilityCardName{font-weight:900;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.abilityCardMeta{color:#8f9daf;font-size:11px;line-height:1.3;margin-top:3px}.abilityCardBadge{margin-top:7px;font-size:11px;font-weight:900;color:#7df1a4}.publicMessages{height:190px}.guessControls{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;padding:10px;border:1px solid #35445a;border-radius:12px;background:#111923}.guessControls.pending{border-color:#705a22}.difficultyBadge.easy{color:#8ef0ac;border-color:#38764d}.difficultyBadge.classic{color:#ffe07a;border-color:#7b6425}.difficultyBadge.insane{color:#ff9da8;border-color:#8a3541}@media(max-width:700px){.libraryFilters{grid-template-columns:1fr}.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:520px}}.adminOverlay{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(3,7,12,.72);backdrop-filter:blur(5px)}.adminModal{width:min(520px,100%);max-height:90vh;overflow:auto;padding:20px;border:1px solid #46566e;border-radius:20px;background:linear-gradient(145deg,#1a2431,#0f161f);box-shadow:0 28px 80px rgba(0,0,0,.55)}.adminTop{display:flex;justify-content:space-between;gap:12px;align-items:center}.adminName{font-size:25px;font-weight:1000}.adminClose{padding:9px 12px}.adminScoreBox{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:18px;padding:13px;border:1px solid #303d50;border-radius:14px;background:#111923}.adminScoreCenter{text-align:center;min-width:100px}.adminScore{font-size:34px;font-weight:1000;color:#f4b41a}.adminExact{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.adminActionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.adminActionGrid .danger{grid-column:1/-1}.adminAvatarImg,.adminAvatarFallback{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #f4b41a;background:#18212d}.adminAvatarFallback{display:grid;place-items:center;font-size:24px;font-weight:1000;color:#f4b41a}@media(max-width:560px){.adminScoreBox{grid-template-columns:1fr 1fr}.adminScoreCenter{grid-column:1/-1;grid-row:1}.adminActionGrid{grid-template-columns:1fr}.adminActionGrid .danger{grid-column:auto}}.chatHub{border-color:#405169}.chatHubTop{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}.chatModeTabs{display:flex;gap:7px;flex-wrap:wrap}.chatModeTab{border:1px solid #46566e;border-radius:999px;padding:9px 12px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:900}.chatModeTab.on{border-color:#f4b41a;color:#f4b41a;background:#2a2518}.chatSafety{margin:10px 0 14px;padding:10px 12px;border:1px solid #365b4a;border-radius:12px;background:rgba(33,122,73,.12);color:#bfe9ce;font-size:12px;line-height:1.35}.chatModePanel{margin-top:8px}.readyBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #3f6851;color:#7df1a4;font-size:10px;font-weight:900}.mutedBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #6c4b4f;color:#ffb2b9;font-size:10px;font-weight:900}.messageBlocked{border-color:#7a3b45!important}.chatComposer input:disabled{opacity:.55}.chatComposer button:disabled{opacity:.55;cursor:not-allowed}@media(max-width:720px){.chatHubTop{flex-direction:column}.chatModeTabs{width:100%}.chatModeTab{flex:1}.topTools{width:100%;justify-content:space-between}.langSelect{flex:1}}.compactBtn{padding:9px 11px}.accessibilityPanel{border-color:#526279}.accessGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.accessOption{margin:0;padding:12px;border:1px solid #35445a;border-radius:12px;background:#111923;display:flex;gap:9px;align-items:center}.accessOption input[type="checkbox"]{width:auto}.volumeOption{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto}.volumeOption input{padding:0}.a11y-large{font-size:18px}.a11y-large .small{font-size:14px}.a11y-contrast{background:#000!important;color:#fff}.a11y-contrast .panel,.a11y-contrast .score,.a11y-contrast .chatMessages,.a11y-contrast .abilityCard{border-color:#75849b;background:#080b0f}.reduce-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.revealPanel{text-align:center;border-color:#5e6f88;background:radial-gradient(circle at 50% 0%,rgba(112,239,152,.1),transparent 46%),linear-gradient(145deg,#1a2431,#0f161f)}.revealBody{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:12px;text-align:left}.revealIcon{width:92px;height:92px;border-radius:14px;object-fit:cover;background:#0b1017;border:1px solid #45566d}.revealAbility{font-size:28px;font-weight:1000;color:#70ef98}.revealResult{margin-top:8px;font-weight:900}.settingsExtras{display:grid;grid-template-columns:220px 1fr;gap:14px;margin:12px 0 4px}.presetBox{min-width:0}.presetRow{display:flex;gap:8px;margin-top:7px}.presetRow .select,.presetRow input{min-width:0}.spectatorList{display:flex;flex-direction:column;gap:8px}.spectatorCard{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.connectionBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid #3f6851;color:#7df1a4}.connectionBadge.offline{border-color:#8a5f2f;color:#ffc26a}.connectionBadge.expired{border-color:#7a3b45;color:#ff9da8}.recordGrid,.awardGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.recordCard,.awardCard{padding:12px;border:1px solid #35445a;border-radius:14px;background:#111923}.recordIcon,.awardIcon{font-size:28px}.recordValue,.awardValue{font-size:18px;font-weight:1000;color:#f4b41a;margin-top:6px}.recordLabel,.awardLabel{font-size:11px;color:#8f9daf;margin-top:3px}.spectatorTools{display:flex;gap:6px}.spectatorTools button{padding:7px 9px}@media(max-width:700px){.accessGrid,.settingsExtras{grid-template-columns:1fr}.recordGrid,.awardGrid{grid-template-columns:repeat(2,1fr)}.revealBody{align-items:flex-start}.presetRow{flex-wrap:wrap}.presetRow .select,.presetRow input{flex:1 1 180px}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.attemptBtn.on{border:1px solid #f4b41a;background:#5a4613;color:#ffe89c}.attemptBtn:disabled{opacity:.55;cursor:not-allowed}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
+button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin:auto;padding:22px 0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px}.topTools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.langSelect{width:auto;min-width:128px;padding:9px 11px;border-radius:999px;border:1px solid #46566e;background:#18212d;color:#d7dfea;font-weight:800}.soundNotice{margin-top:13px;padding:10px 12px;border:1px solid #3a4b61;border-radius:12px;background:#111923;color:#aeb9c8;font-size:13px;line-height:1.35}.roomActions{display:flex;gap:8px;flex-wrap:wrap}.brand{font-size:clamp(26px,6vw,42px);font-weight:1000}.eyebrow{color:#f7bd2e;font-size:12px;font-weight:900;letter-spacing:.12em}.panel{margin:14px 0;padding:20px;border:1px solid #2f3d50;border-radius:20px;background:linear-gradient(145deg,rgba(26,36,49,.96),rgba(15,22,31,.96));box-shadow:0 18px 50px rgba(0,0,0,.25)}.hero{padding:clamp(22px,5vw,34px)}.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.04;margin:14px 0 10px}.muted{color:#a9b4c3}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.chiprow,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.chip,.status{display:inline-flex;align-items:center;width:fit-content;border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;font-weight:700;font-size:13px}.status.ok{color:#7df1a4;border-color:#2c8053}.status.bad{color:#ff9797;border-color:#7f3e46}label{display:block;margin:10px 0 6px;font-weight:800}input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}input:focus,select:focus{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.12)}.select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #425169;outline:none;background:#0c131c;color:#fff}.difficultyPreview,.difficultyRoomInfo{margin-top:10px;padding:11px 12px;border:1px solid #35445a;border-radius:12px;background:#111923;color:#cbd5e2;line-height:1.35}.difficultyPreview b,.difficultyRoomInfo b{color:#f4b41a}.btn{border:0;border-radius:12px;padding:12px 15px;cursor:pointer;font-weight:900}.primary{background:#f4b41a;color:#171000}.secondary{background:#2b3748;color:#fff}.success{background:#217a49;color:#fff}.danger{background:#8b303b;color:#fff}.wide{width:100%}.hidden{display:none!important}.roomhead{display:flex;justify-content:space-between;align-items:center;gap:16px}.roomcode{font-size:36px;font-weight:1000;letter-spacing:.12em}.timerpanel{text-align:center}.roundBanner{width:fit-content;margin:0 auto 10px;padding:9px 15px;border-radius:999px;font-weight:1000;letter-spacing:.06em;border:1px solid #46566e}.roundBanner.cursed{color:#f0c3ff;border-color:#8246a0;background:rgba(88,35,111,.28);box-shadow:0 0 28px rgba(152,72,190,.14)}.roundBanner.lucky{color:#ffe79a;border-color:#9c7b1f;background:rgba(117,91,22,.28);box-shadow:0 0 28px rgba(244,180,26,.12)}.secretRoundInfo{margin:12px 0 2px;padding:10px 12px;border-radius:12px;font-weight:900}.secretRoundInfo.cursed{border:1px solid #8246a0;background:rgba(88,35,111,.23);color:#f0c3ff}.secretRoundInfo.lucky{border:1px solid #9c7b1f;background:rgba(117,91,22,.23);color:#ffe79a}.turn{font-size:22px;font-weight:900}.timer{margin:8px 0;font-size:clamp(54px,12vw,82px);color:#ffc421;font-weight:1000}.progress{height:9px;overflow:hidden;border-radius:999px;background:#303b4c}.bar{height:100%;width:100%;background:#ffc421;transition:width .25s linear}.secret{display:flex;gap:16px;align-items:center;margin-top:14px}.icon{width:104px;height:104px;object-fit:cover;border-radius:14px;background:#0b1017;border:1px solid #344154}.ability{color:#70ef98;font-size:clamp(24px,5vw,34px);font-weight:1000}.letters,.picker{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.letter{width:56px;height:56px;display:grid;place-items:center;border:2px solid #f4b41a;border-radius:12px;font-size:28px;font-weight:1000}.toggle{min-width:40px;border:1px solid #4a596f;border-radius:10px;padding:8px 10px;background:#202b39;color:#e7edf5;cursor:pointer}.toggle.on{background:#f4b41a;border-color:#f4b41a;color:#171000}.score{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:12px 14px;border:1px solid #2d394b;border-radius:12px;background:#111923}.score.active{border-color:#f4b41a}.scoreRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.hostGear{width:42px;height:42px;border:1px solid #4a596f;border-radius:11px;background:#202b39;color:#fff;cursor:pointer;font-size:19px}.hostGear:hover{border-color:#f4b41a;background:#2a3646}.scorev{color:#f4b41a;font-size:24px;font-weight:1000;min-width:34px;text-align:center}.scorebtn{border:1px solid #4a596f;border-radius:9px;padding:7px 10px;background:#202b39;color:#fff;cursor:pointer;font-weight:1000;min-width:38px}.scorebtn:hover{border-color:#f4b41a}.scoreExact{border:1px solid #705a22;border-radius:9px;padding:5px 9px;background:#2b2414;color:#f4b41a;cursor:pointer;font-weight:1000;font-size:24px;min-width:42px}.kickbtn{border:1px solid #7f3e46;border-radius:9px;padding:7px 10px;background:#341b21;color:#ffb2b9;cursor:pointer;font-weight:900}.kickbtn:hover{background:#55242d}.chatTabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.chatTab{border:1px solid #46566e;border-radius:999px;padding:8px 11px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:800}.chatTab.on{border-color:#f4b41a;color:#f4b41a}.chatTab.activeTurn{opacity:.55}.chatMessages{height:220px;overflow:auto;padding:12px;border:1px solid #2d394b;border-radius:14px;background:#0d141d;display:flex;flex-direction:column;gap:8px}.chatEmpty{margin:auto;color:#8290a3;text-align:center}.chatMsg{max-width:82%;padding:9px 11px;border-radius:12px;line-height:1.3;word-break:break-word}.chatMsg.me{align-self:flex-end;background:#634c13;color:#fff3c4}.chatMsg.them{align-self:flex-start;background:#202b39;color:#eef3f9}.chatMeta{font-size:11px;opacity:.68;margin-bottom:3px}.chatComposer{display:flex;gap:8px;margin-top:10px}.chatComposer input{flex:1}.chatComposer button{flex:0 0 auto}.chatHint{margin:8px 0 0;color:#98a6b8;font-size:12px}.unread{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#f4b41a;color:#171000;font-size:11px;font-weight:1000;margin-left:5px}.profilePanel{border-color:#39495f}.profileHead{display:flex;gap:14px;align-items:center}.profileMain{flex:1;min-width:0}.profileName{font-size:24px;font-weight:1000;overflow:hidden;text-overflow:ellipsis}.profileAvatar,.profileFallback{width:68px;height:68px;flex:0 0 68px;border-radius:50%;object-fit:cover;border:3px solid #f4b41a;background:#18212d}.profileFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.profileStats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}.profileStat{padding:10px 8px;border:1px solid #2d394b;border-radius:12px;background:#111923;text-align:center}.profileStat b{display:block;font-size:20px;color:#f4b41a}.profileStat small{color:#8f9daf}.profileAchievementsTitle{margin:16px 0 8px;font-weight:900}.achievementGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.achievement{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid #2d394b;border-radius:12px;background:#111923}.achievement.locked{opacity:.4;filter:grayscale(1)}.achievementIcon{font-size:24px;line-height:1}.achievementText b{display:block}.achievementText small{display:block;color:#8f9daf;margin-top:2px;line-height:1.25}.achievement.new{border-color:#f4b41a;box-shadow:0 0 0 2px rgba(244,180,26,.12)}@media(max-width:700px){.profileHead{align-items:flex-start}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr}.profileAvatar,.profileFallback{width:58px;height:58px;flex-basis:58px}}.avatarChoices{display:grid;grid-template-columns:repeat(4,58px);gap:9px;margin:8px 0 10px}.avatarChoice{width:58px;height:58px;border-radius:50%;border:2px solid #425169;padding:2px;background:#111923;cursor:pointer;overflow:hidden}.avatarChoice img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}.avatarChoice.on{border-color:#f4b41a;box-shadow:0 0 0 3px rgba(244,180,26,.16)}.avatarUploadRow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.avatarUploadBtn{display:inline-flex!important;margin:0!important}.playerLeft{display:flex;align-items:center;gap:11px;min-width:0}.playerAvatar,.fallbackAvatar{width:44px;height:44px;flex:0 0 44px;border-radius:50%;object-fit:cover;border:2px solid #344154;background:#18212d}.fallbackAvatar{display:grid;place-items:center;font-weight:1000;font-size:20px;color:#f4b41a}.finalPanel{text-align:center;border-color:#705a22;background:radial-gradient(circle at 50% 0%,rgba(244,180,26,.18),transparent 42%),linear-gradient(145deg,rgba(28,35,45,.98),rgba(15,22,31,.98))}.winnerShowcase{display:flex;flex-direction:column;align-items:center;margin:18px 0 24px}.winnerCrown{font-size:46px;line-height:1;margin-bottom:-8px;z-index:2}.winnerAvatar,.winnerFallback{width:128px;height:128px;border-radius:50%;object-fit:cover;border:4px solid #f4b41a;box-shadow:0 0 0 6px rgba(244,180,26,.12),0 18px 45px rgba(0,0,0,.35);background:#18212d}.winnerFallback{display:grid;place-items:center;font-size:52px;font-weight:1000;color:#f4b41a}.winnerName{font-size:clamp(28px,6vw,42px);font-weight:1000;margin-top:12px}.winnerScore{color:#f4b41a;font-size:24px;font-weight:1000}.winnerStats{color:#a9b4c3;margin-top:5px}.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:end;max-width:720px;margin:0 auto}.podiumCard{padding:14px 10px;border:1px solid #35445a;border-radius:16px;background:#111923}.podiumCard.first{border-color:#f4b41a;transform:translateY(-8px)}.podiumPlace{font-weight:1000;color:#f4b41a}.podiumAvatar,.podiumFallback{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid #425169;background:#18212d;margin:8px auto}.podiumFallback{display:grid;place-items:center;font-size:28px;font-weight:1000;color:#f4b41a}.podiumName{font-weight:1000;overflow:hidden;text-overflow:ellipsis}.finalTable{display:flex;flex-direction:column;gap:8px;text-align:left}.finalRow{display:grid;grid-template-columns:48px 1fr repeat(4,minmax(70px,auto));gap:10px;align-items:center;padding:11px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.finalPlace{font-weight:1000;color:#f4b41a}.finalName{font-weight:900;min-width:0;overflow:hidden;text-overflow:ellipsis}.finalStat{text-align:center}.finalStat small{display:block;color:#8290a3;font-size:10px}.finalStat b{font-size:16px}.finalWinner{border-color:#705a22}@media(max-width:700px){.podium{grid-template-columns:1fr}.podiumCard.first{transform:none}.finalRow{grid-template-columns:38px 1fr 58px 58px}.finalRow .extraStat{display:none}.avatarChoices{grid-template-columns:repeat(4,54px)}}.libraryPanel{border-color:#39495f}.libraryProgress{height:10px;border-radius:999px;background:#273243;overflow:hidden;margin:14px 0}.libraryProgressBar{height:100%;width:0;background:#f4b41a;transition:width .25s}.libraryFilters{display:grid;grid-template-columns:1fr 1fr;gap:12px}.libraryGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px;max-height:620px;overflow:auto;padding-right:3px}.abilityCard{border:1px solid #35445a;border-radius:14px;background:#111923;padding:10px;min-width:0}.abilityCard.locked{opacity:.42;filter:grayscale(1)}.abilityCard img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#0b1017}.abilityCardName{font-weight:900;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.abilityCardMeta{color:#8f9daf;font-size:11px;line-height:1.3;margin-top:3px}.abilityCardBadge{margin-top:7px;font-size:11px;font-weight:900;color:#7df1a4}.publicMessages{height:190px}.guessControls{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;padding:10px;border:1px solid #35445a;border-radius:12px;background:#111923}.guessControls.pending{border-color:#705a22}.difficultyBadge.easy{color:#8ef0ac;border-color:#38764d}.difficultyBadge.classic{color:#ffe07a;border-color:#7b6425}.difficultyBadge.insane{color:#ff9da8;border-color:#8a3541}@media(max-width:700px){.libraryFilters{grid-template-columns:1fr}.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:520px}}.adminOverlay{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:18px;background:rgba(3,7,12,.72);backdrop-filter:blur(5px)}.adminModal{width:min(520px,100%);max-height:90vh;overflow:auto;padding:20px;border:1px solid #46566e;border-radius:20px;background:linear-gradient(145deg,#1a2431,#0f161f);box-shadow:0 28px 80px rgba(0,0,0,.55)}.adminTop{display:flex;justify-content:space-between;gap:12px;align-items:center}.adminName{font-size:25px;font-weight:1000}.adminClose{padding:9px 12px}.adminScoreBox{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:18px;padding:13px;border:1px solid #303d50;border-radius:14px;background:#111923}.adminScoreCenter{text-align:center;min-width:100px}.adminScore{font-size:34px;font-weight:1000;color:#f4b41a}.adminExact{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.adminActionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.adminActionGrid .danger{grid-column:1/-1}.adminAvatarImg,.adminAvatarFallback{width:58px;height:58px;border-radius:50%;object-fit:cover;border:2px solid #f4b41a;background:#18212d}.adminAvatarFallback{display:grid;place-items:center;font-size:24px;font-weight:1000;color:#f4b41a}@media(max-width:560px){.adminScoreBox{grid-template-columns:1fr 1fr}.adminScoreCenter{grid-column:1/-1;grid-row:1}.adminActionGrid{grid-template-columns:1fr}.adminActionGrid .danger{grid-column:auto}}.chatHub{border-color:#405169}.chatHubTop{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:10px}.chatModeTabs{display:flex;gap:7px;flex-wrap:wrap}.chatModeTab{border:1px solid #46566e;border-radius:999px;padding:9px 12px;background:#18212d;color:#d7dfea;cursor:pointer;font-weight:900}.chatModeTab.on{border-color:#f4b41a;color:#f4b41a;background:#2a2518}.chatSafety{margin:10px 0 14px;padding:10px 12px;border:1px solid #365b4a;border-radius:12px;background:rgba(33,122,73,.12);color:#bfe9ce;font-size:12px;line-height:1.35}.chatModePanel{margin-top:8px}.readyBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #3f6851;color:#7df1a4;font-size:10px;font-weight:900}.mutedBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;border:1px solid #6c4b4f;color:#ffb2b9;font-size:10px;font-weight:900}.messageBlocked{border-color:#7a3b45!important}.chatComposer input:disabled{opacity:.55}.chatComposer button:disabled{opacity:.55;cursor:not-allowed}@media(max-width:720px){.chatHubTop{flex-direction:column}.chatModeTabs{width:100%}.chatModeTab{flex:1}.topTools{width:100%;justify-content:space-between}.langSelect{flex:1}}.compactBtn{padding:9px 11px}.accessibilityPanel{border-color:#526279}.accessGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}.accessOption{margin:0;padding:12px;border:1px solid #35445a;border-radius:12px;background:#111923;display:flex;gap:9px;align-items:center}.accessOption input[type="checkbox"]{width:auto}.volumeOption{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto}.volumeOption input{padding:0}.a11y-large{font-size:18px}.a11y-large .small{font-size:14px}.a11y-contrast{background:#000!important;color:#fff}.a11y-contrast .panel,.a11y-contrast .score,.a11y-contrast .chatMessages,.a11y-contrast .abilityCard{border-color:#75849b;background:#080b0f}.reduce-motion *{animation:none!important;transition:none!important;scroll-behavior:auto!important}.revealPanel{text-align:center;border-color:#5e6f88;background:radial-gradient(circle at 50% 0%,rgba(112,239,152,.1),transparent 46%),linear-gradient(145deg,#1a2431,#0f161f)}.revealBody{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:12px;text-align:left}.revealIcon{width:92px;height:92px;border-radius:14px;object-fit:cover;background:#0b1017;border:1px solid #45566d}.revealAbility{font-size:28px;font-weight:1000;color:#70ef98}.revealResult{margin-top:8px;font-weight:900}.settingsExtras{display:grid;grid-template-columns:220px 1fr;gap:14px;margin:12px 0 4px}.presetBox{min-width:0}.presetRow{display:flex;gap:8px;margin-top:7px}.presetRow .select,.presetRow input{min-width:0}.spectatorList{display:flex;flex-direction:column;gap:8px}.spectatorCard{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;border:1px solid #2d394b;border-radius:12px;background:#111923}.connectionBadge{display:inline-flex;margin-left:7px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid #3f6851;color:#7df1a4}.connectionBadge.offline{border-color:#8a5f2f;color:#ffc26a}.connectionBadge.expired{border-color:#7a3b45;color:#ff9da8}.recordGrid,.awardGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.recordCard,.awardCard{padding:12px;border:1px solid #35445a;border-radius:14px;background:#111923}.recordIcon,.awardIcon{font-size:28px}.recordValue,.awardValue{font-size:18px;font-weight:1000;color:#f4b41a;margin-top:6px}.recordLabel,.awardLabel{font-size:11px;color:#8f9daf;margin-top:3px}.spectatorTools{display:flex;gap:6px}.spectatorTools button{padding:7px 9px}@media(max-width:700px){.accessGrid,.settingsExtras{grid-template-columns:1fr}.recordGrid,.awardGrid{grid-template-columns:repeat(2,1fr)}.revealBody{align-items:flex-start}.presetRow{flex-wrap:wrap}.presetRow .select,.presetRow input{flex:1 1 180px}}.toast{position:fixed;right:18px;bottom:18px;z-index:20;max-width:min(360px,calc(100vw - 36px));padding:12px 14px;border:1px solid #46566e;border-radius:12px;background:#151e2a;box-shadow:0 12px 36px rgba(0,0,0,.38)}.notice{margin:12px 0;padding:12px 14px;border-radius:12px;border:1px solid #7a3b45;background:rgba(116,42,52,.22);color:#ffb2b9}.center{text-align:center}.small{font-size:12px}.controls{display:flex;gap:9px;flex-wrap:wrap}.attemptBtn.on{border:1px solid #f4b41a;background:#5a4613;color:#ffe89c}.attemptBtn:disabled{opacity:.55;cursor:not-allowed}.settinggrid{display:grid;grid-template-columns:1fr 180px;gap:14px;align-items:end}.rulebox{margin-top:14px;padding:12px 14px;border:1px solid #35445a;border-radius:12px;background:#111923}.rulebox b{color:#f7bd2e}@media(max-width:560px){.settinggrid{grid-template-columns:1fr}}
 @media(max-width:720px){.wrap{width:min(100% - 20px,980px);padding-top:14px}.grid{grid-template-columns:1fr}.top,.roomhead{align-items:flex-start}.roomhead{flex-direction:column}.secret{align-items:flex-start}.icon{width:82px;height:82px}.brand{line-height:1.05}}
 
 .rankedTestPanel{border-color:#725d20;background:radial-gradient(circle at 100% 0%,rgba(244,180,26,.13),transparent 32%),linear-gradient(145deg,rgba(26,36,49,.98),rgba(15,22,31,.98))}.rankedMeta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.rankedNotice{padding:11px 12px;border:1px solid #46566e;border-radius:12px;background:#111923;color:#d7dfea;margin:12px 0}.rankedClueGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.rankedClueCard{padding:14px;border:1px solid #3c4d63;border-radius:14px;background:#0d151f;min-height:112px}.rankedClueLetter{font-size:28px;font-weight:1000;color:#f4b41a}.rankedClueWord{margin-top:8px;font-size:20px;font-weight:900;word-break:break-word}.rankedClueLocked{opacity:.45}.rankedAnswerBox{margin-top:12px;padding:14px;border:1px solid #3b4b60;border-radius:14px;background:#111923}.rankedAnswerRow{display:flex;gap:8px}.rankedAnswerRow input{flex:1}.rankedAnswerRow button{flex:0 0 auto}.rankedPlayersStatus{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.rankedPlayerCard{padding:12px;border:1px solid #334257;border-radius:12px;background:#111923}.rankedPlayerCard.solved{border-color:#2c8053}.rankedPlayerCard.me{box-shadow:0 0 0 2px rgba(244,180,26,.12)}.rankedRoundResult{margin-top:14px;padding:14px;border:1px solid #705a22;border-radius:14px;background:#2b2414;color:#ffe79a;font-weight:900;text-align:center}.rankedRulebox{margin-top:14px}.rankedAnswerInputLocked{opacity:.6}@media(max-width:700px){.rankedClueGrid{grid-template-columns:1fr}.rankedPlayersStatus{grid-template-columns:1fr}.rankedAnswerRow{flex-direction:column}}
@@ -19,148 +19,18 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
 @media(max-width:900px){.rankedLayout{grid-template-columns:1fr}.rankedLayout>#chatHub{position:static}.rankedRulesBtn{left:6px;top:auto;bottom:14px;transform:none;border-radius:14px}.rankedGlossaryBtn{left:60px;top:auto;bottom:18px;border-radius:14px}.ranked-active #publicMessages{height:220px}}
 
 
-/* ===== v1.92 REDESIGN — visual layer only; game engine untouched ===== */
-:root{--rd-gap:14px;--rd-radius:22px}
-body{background:
- radial-gradient(circle at 12% 0%,rgba(119,80,255,.13),transparent 28rem),
- radial-gradient(circle at 92% 15%,rgba(0,190,255,.08),transparent 25rem),
- #080b12!important}
-.wrap{max-width:1180px!important;margin:0 auto!important;padding:14px 16px 36px!important}
-header{border:1px solid rgba(255,255,255,.08)!important;border-radius:20px!important;
- background:rgba(14,18,29,.88)!important;backdrop-filter:blur(16px);padding:12px 14px!important;
- box-shadow:0 18px 60px rgba(0,0,0,.24)}
-.brand h1{font-size:clamp(18px,3.8vw,26px)!important;letter-spacing:-.02em}
-.card{border-radius:var(--rd-radius)!important;border:1px solid rgba(255,255,255,.08)!important;
- background:linear-gradient(180deg,rgba(22,27,41,.96),rgba(13,17,27,.96))!important;
- box-shadow:0 18px 50px rgba(0,0,0,.22)!important}
-button,.btn,input,select{min-height:44px;border-radius:14px!important}
-button,.btn{font-weight:800!important}
-button:hover,.btn:hover{transform:translateY(-1px)}
-#home{max-width:980px;margin:16px auto 0}
-#home .hero,#home .card:first-child{overflow:hidden}
-#home .grid{gap:var(--rd-gap)!important}
-#home .row{gap:10px!important}
-#home h2,#home h3{letter-spacing:-.02em}
-#home .muted{line-height:1.45}
-#registry{font-size:12px!important;opacity:.72}
-#profilePanel,#libraryPanel{max-width:980px!important;margin:16px auto!important}
-#profilePanel>.card,#libraryPanel>.card{min-height:68vh}
-#profilePanel .grid,#libraryPanel .grid{gap:14px!important}
-#game{max-width:1180px;margin:14px auto 0}
-#game .card{overflow:hidden}
-@media(max-width:720px){
- .wrap{padding:8px 9px 24px!important}
- header{border-radius:16px!important;padding:9px 10px!important}
- .card{border-radius:18px!important}
- #home{margin-top:9px}
- button,.btn,input,select{min-height:46px}
- .grid,.grid2,.grid3{grid-template-columns:1fr!important}
-}
-/* compact navigation chips */
-.rd-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-.rd-nav button{flex:1 1 150px}
-
-
-/* ===== v1.92.1 REAL TABBED REDESIGN ===== */
-.appNav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px;padding:6px;
- border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(12,16,25,.88);position:sticky;top:8px;z-index:30;backdrop-filter:blur(14px)}
-.appNavBtn{border:0;background:transparent;color:#98a6b8;border-radius:13px;padding:11px 10px;font-weight:900;cursor:pointer}
-.appNavBtn.on{background:#f4b41a;color:#171000;box-shadow:0 8px 24px rgba(244,180,26,.18)}
-.appPage{max-width:980px;margin:12px auto 0}.pageHero{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.pageHero h1{margin:5px 0;font-size:clamp(26px,5vw,40px)}
-#home>#profilePanel,#home>#libraryPanel{display:none!important}
-#profilePanel.appStandalone,#libraryPanel.appStandalone{display:block;max-width:980px;margin:12px auto 0}
-#profilePanel.appStandalone.hidden,#libraryPanel.appStandalone.hidden{display:none!important}
-#profilePanel.appStandalone{padding:26px}
-#libraryPanel.appStandalone{padding:24px}
-#libraryClose,#libraryToggle{display:none!important}
-.rolesToolbar{display:flex;gap:10px;align-items:center;margin-bottom:14px}.rolesToolbar input{flex:1}
-.rolesGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.roleEditCard{display:grid;grid-template-columns:minmax(130px,1fr) 150px 150px;gap:9px;align-items:center;
- padding:11px;border:1px solid #2f3d50;border-radius:15px;background:#101722}
-.roleHero{font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.roleEditCard select{width:100%;padding:9px 10px;border-radius:11px;border:1px solid #425169;background:#0c131c;color:#fff}
-@media(max-width:760px){
- .appNav{grid-template-columns:repeat(3,1fr);top:5px}.appNavBtn{font-size:12px;padding:10px 4px}.appNavBtn span{display:none}
- .pageHero{align-items:flex-start;flex-direction:column}.rolesGrid{grid-template-columns:1fr}
- .roleEditCard{grid-template-columns:1fr 1fr}.roleHero{grid-column:1/-1}
-}
-
-
-/* Ranked scroll */
-.rankedHelpScroll{position:fixed;left:0;top:42%;z-index:70;width:48px;height:74px;border-radius:0 16px 16px 0!important;
- border:1px solid #72582b;border-left:0;background:linear-gradient(180deg,#d7b36a,#9a6b2d);font-size:25px;
- box-shadow:8px 12px 30px rgba(0,0,0,.34)}
-.rankedScrollCard{max-width:650px!important;max-height:82vh;overflow:auto;background:#17130d!important;border-color:#745d35!important}
-.scrollSection{padding:13px 0;border-top:1px solid rgba(220,184,111,.18)}.scrollSection:first-of-type{border-top:0}
-.letterGlossary{display:grid;grid-template-columns:34px 1fr;gap:8px 12px;align-items:center}
-.letterGlossary b{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:#d4a94e;color:#1a1206}
-@media(max-width:700px){.rankedHelpScroll{top:auto;bottom:88px;width:44px;height:62px}.rankedScrollCard{max-height:88vh}}
-
-
-.wordGlossary{display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:9px 14px;align-items:start}
-.wordGlossary b{color:#f0bd54}.wordGlossary span{line-height:1.42}
-@media(max-width:560px){.wordGlossary{grid-template-columns:1fr}.wordGlossary b{margin-top:5px}}
-
-.rankedLobbyRulesBar{max-width:1180px;margin:0 auto 10px;display:flex;justify-content:flex-start}
-.rankedLobbyRulesBar.hidden{display:none!important}
-.rankedPromptCard{max-width:470px!important}
-.rankedPromptCard h2{margin:6px 0 8px}
-.dontRemind{display:flex;align-items:center;gap:9px;margin:18px 0;padding:11px 12px;border-radius:13px;background:rgba(255,255,255,.05)}
-.dontRemind input{width:18px;height:18px;min-height:0}
-.promptActions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-@media(max-width:520px){.promptActions{grid-template-columns:1fr}}
-
-
-/* ===== v1.92.6 HOME + RANKED GAME CLEANUP ===== */
-#a11yToggle,#a11yPanel{display:none!important}
-header .toggle,header .switch,.langRow .toggle,.langRow .switch{display:none!important}
-
-/* Cleaner home */
-#home{max-width:920px!important;margin:12px auto 0!important}
-#home>.card,#home>.panel{margin-bottom:12px!important}
-#home h1{font-size:clamp(28px,5vw,46px)!important;line-height:1.02!important}
-#home .grid{gap:10px!important}
-#home button{min-height:48px}
-
-/* In lobby/game: navigation becomes a single Game tab */
-body.inGameContext #appNav{grid-template-columns:1fr!important;max-width:360px;margin-left:auto;margin-right:auto}
-body.inGameContext #navProfile,body.inGameContext #navLibrary{display:none!important}
-body.inGameContext #navGame{display:block!important}
-
-/* Ranked room/game */
-body.rankedContext #room,body.rankedContext #game{max-width:1120px!important;margin:10px auto 0!important}
-body.rankedContext #rankedLobbyRulesBar{margin:4px auto 10px!important}
-body.rankedContext #rankedLobbyRulesBtn{min-height:40px!important;padding:8px 13px!important}
-body.rankedContext header{padding:8px 12px!important}
-body.rankedContext .appNav{margin-top:8px!important;margin-bottom:8px!important}
-
-/* Never allow rules to leak over Profile/Library/Home. */
-body:not(.rankedContext) #rankedRulesPrompt,
-body:not(.rankedContext) #rankedHelpModal{display:none!important}
-
-@media(max-width:700px){
- #home{margin-top:7px!important}
- body.inGameContext #appNav{max-width:none}
- body.rankedContext #room,body.rankedContext #game{margin-top:6px!important}
-}
-
+#a11yPanel,#a11yToggle{display:none!important}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top">
     <div>
-      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.6 BETA · RANKED TEST</div>
+      <div class="eyebrow">DOTA 2 · PARTY GAME · v1.92.8 SAFE · RANKED TEST</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
-    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU</option><option value="en">ENG</option></select><div id="conn" class="status">Готово</div></div>
+    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU</option><option value="en">ENG</option></select><button id="a11yToggle" class="btn secondary compactBtn">♿ Удобство</button><div id="conn" class="status">Готово</div></div>
   </div>
-  <nav id="appNav" class="appNav" aria-label="Основная навигация">
-    <button id="navGame" class="appNavBtn on" type="button">🎮 <span>Игра</span></button>
-    <button id="navProfile" class="appNavBtn" type="button">👤 <span>Профиль</span></button>
-    <button id="navLibrary" class="appNavBtn" type="button">📚 <span>Библиотека</span></button>
-  </nav>
 
   <div id="a11yPanel" class="panel accessibilityPanel hidden">
     <div class="row" style="justify-content:space-between;align-items:flex-start">
@@ -268,74 +138,10 @@ body:not(.rankedContext) #rankedHelpModal{display:none!important}
       </div>
     </div>
     <div id="notice" class="notice hidden"></div>
-    <div id="registry" class="center muted">База способностей загружается…</div>
+    <div id="registry" class="center muted">Локальная база готова</div>
   </section>
 
-
-<button id="rankedHelpScroll" class="rankedHelpScroll hidden" type="button" aria-label="Ranked подсказки">📜</button>
-
-<div id="rankedRulesPrompt" class="modal hidden">
- <div class="modalCard rankedPromptCard">
-  <div class="eyebrow">RANKED 1×1</div>
-  <h2>Перед началом Ranked</h2>
-  <p>Хочешь быстро прочитать правила режима и сводку сложных игровых слов?</p>
-  <label class="dontRemind"><input id="rankedDontRemind" type="checkbox"> <span>Больше не напоминать</span></label>
-  <div class="promptActions">
-    <button id="rankedPromptRead" class="btn primary" type="button">📜 Прочитать</button>
-    <button id="rankedPromptSkip" class="btn secondary" type="button">Продолжить игру</button>
-  </div>
- </div>
-</div>
-
-<div id="rankedHelpModal" class="modal hidden">
- <div class="modalCard rankedScrollCard">
-  <div class="modalHead"><h2>📜 Ranked 1×1 — правила и словарь</h2><button id="rankedHelpClose" class="iconBtn" type="button">✕</button></div>
-  <div class="scrollSection">
-   <h3>Как проходит раунд</h3>
-   <p>BO7 — до 4 побед. Есть 5 уровней подсказок и максимум 5 попыток. Чем раньше уровень разгадки, тем лучше; дальше учитываются попытки и время Bot Host.</p>
-   <p>Героя можно угадать отдельно: попытка не тратится и раунд не заканчивается — способность всё равно нужно назвать.</p>
-  </div>
-  <div class="scrollSection">
-   <h3>🧠 Сложные слова — что примерно имеется в виду</h3>
-   <p class="muted">Это не готовые ответы и не полный список значений. Здесь только направление, чтобы новичок понимал игровой термин, когда увидит его в подсказке.</p>
-   <div class="wordGlossary">
-    <b>Стан</b><span>контроль, из-за которого герой ненадолго не может нормально действовать.</span>
-    <b>Хекс</b><span>сильное превращение/контроль, временно сильно ограничивающее героя.</span>
-    <b>Сало / сайленс</b><span>ограничение, связанное прежде всего с использованием способностей.</span>
-    <b>Рут</b><span>контроль передвижения: герой остаётся привязан к месту, но это не обязательно полный стан.</span>
-    <b>Дизарм</b><span>ограничение обычных атак.</span>
-    <b>Диспел</b><span>снятие определённых эффектов с героя; каких именно — зависит от ситуации.</span>
-    <b>Пурж</b><span>термин про снятие эффектов; иногда одновременно связан с ослаблением цели.</span>
-    <b>Хил</b><span>восстановление здоровья.</span>
-    <b>Сейв</b><span>действие или способность, помогающая союзнику пережить опасный момент.</span>
-    <b>КД</b><span>время, которое нужно подождать перед повторным использованием.</span>
-    <b>АОЕ</b><span>воздействие не на одну точечную цель, а на область.</span>
-    <b>Ченнел</b><span>действие, которое герой некоторое время поддерживает; его часто можно прервать.</span>
-    <b>Блинк</b><span>очень быстрое перемещение на другую позицию.</span>
-    <b>Инвиз</b><span>механика невидимости.</span>
-    <b>Трусайт</b><span>обнаружение того, что обычным зрением может быть скрыто.</span>
-    <b>Крит</b><span>усиленный удар, наносящий заметно больше обычного урона.</span>
-    <b>Клив</b><span>часть урона от атаки задевает дополнительные цели рядом.</span>
-    <b>Баш</b><span>эффект удара, который может ненадолго дать контроль.</span>
-    <b>ДОТ</b><span>урон приходит не весь сразу, а частями в течение времени.</span>
-    <b>Нюк</b><span>способность, смысл которой в быстром заметном уроне.</span>
-    <b>Пьюр</b><span>особый тип чистого урона с другими правилами расчёта, чем физический или магический.</span>
-   </div>
-  </div>
-  <div class="scrollSection">
-   <h3>Буквы Ranked</h3>
-   <p><b>RU:</b> А Б В Г Д Е Ж З И К Л М Н О П Р С Т У Ф Х Ц Ч Ш Э Я</p>
-   <p class="muted">Не используются: Ё, Й, Щ, Ъ, Ы, Ь, Ю.</p>
-   <p><b>ENG:</b> A B C D E F G H I J K L M N O P R S T U V W</p>
-   <p class="muted">Не используются: Q, X, Y, Z.</p>
-  </div>
- </div>
-</div>
-
   <section id="room" class="hidden">
-    <div id="rankedLobbyRulesBar" class="rankedLobbyRulesBar hidden">
-      <button id="rankedLobbyRulesBtn" class="btn secondary" type="button">📜 Правила и сложные слова</button>
-    </div>
     <div class="panel roomhead">
       <div><div class="eyebrow">КОМНАТА</div><div id="roomCode" class="roomcode">—</div><div id="role" class="muted"></div></div>
       <div class="row"><span id="regChip" class="chip">База: —</span><span id="difficultyChip" class="chip">Классика</span><span id="phase" class="chip">Лобби</span></div>
@@ -838,14 +644,11 @@ const $=id=>document.getElementById(id);
 function ui(ru,en){return currentLang==='en'?en:ru}
 function langLocale(){return currentLang==='en'?'en-US':'ru-RU'}
 function difficultyName(d){return currentLang==='en'?({easy:'Easy',classic:'Classic',insane:'Insane'}[d.key]||d.name):d.name}
-function roleLabel(r){
- const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Support 4',P5:'Support 5'};
- return currentLang==='en'?(en[r]||r):(ROLE_LABELS[r]||r)
-}
+function roleLabel(r){const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Support 4',P5:'Support 5'};return currentLang==='en'?(en[r]||r):(ROLE_LABELS[r]||r)}
 function achievementTitle(a){return currentLang==='en'?(a.titleEn||a.title):a.title}
 function achievementDesc(a){return currentLang==='en'?(a.descEn||a.desc):a.desc}
 const STATIC_EN=new Map([
- ['Готово','Ready'],['Онлайн-комнаты','Online rooms'],['Один объясняет. Остальные угадывают.','One explains. Everyone else guesses.'],['Способность, иконку и буквы видит только хост. Игроки видят таймер, очередь и счёт.','Only the host sees the ability, icon and letters. Players see the timer, turn order and score.'],['🎚 3 сложности','🎚 3 difficulties'],['🏆 Победа по очкам','🏆 Score victory'],['🎭 Особые раунды','🎭 Special rounds'],['📚 Библиотека способностей','📚 Ability library'],['👥 До 8 игроков','👥 Up to 8 players'],['🔊 В последние 20 секунд хода звучит тихое синтезированное тиканье. Оно создаётся самим браузером, без аудиофайлов, и его можно отключить в комнате.','🔊 A quiet synthesized tick plays during the final 20 seconds. It is generated by the browser, uses no audio file, and can be disabled in the room.'],['ЛОКАЛЬНЫЙ ПРОФИЛЬ','LOCAL PROFILE'],['Новый игрок','New player'],['Ник и аватарка сохранятся в этом браузере.','Your name and avatar are saved in this browser.'],['Достижения','Achievements'],['📚 Открыть библиотеку способностей','📚 Open ability library'],['КОЛЛЕКЦИЯ','COLLECTION'],['Библиотека способностей','Ability library'],['Загрузка базы…','Loading database…'],['Закрыть','Close'],['Герой','Hero'],['Все герои','All heroes'],['Роль','Role'],['Все роли','All roles'],['👑 Создать комнату','👑 Create room'],['Твоё имя','Your name'],['Сложность','Difficulty'],['Создать комнату','Create room'],['🎧 Войти в комнату','🎧 Join room'],['Код комнаты','Room code'],['Имя игрока','Player name'],['Аватарка','Avatar'],['(необязательно)','(optional)'],['📷 Загрузить свою','📷 Upload yours'],['Без аватарки','No avatar'],['Если ничего не выбрать, будет первая буква ника.','If you choose nothing, the first letter of your nickname will be used.'],['🛡️ Для безопасности свои фото пока хранятся только в твоём локальном профиле и не отправляются другим участникам; в комнате вместо них будет буква ника. Встроенные аватарки видны всем.','🛡️ For safety, custom photos are currently kept only in your local profile and are not sent to other participants; rooms show your nickname initial instead. Built-in avatars are visible to everyone.'],['Войти','Join'],['База способностей загружается…','Loading ability database…'],['КОМНАТА','ROOM'],['Классика','Classic'],['Лобби','Lobby'],['🔊 20с: ВКЛ','🔊 20s: ON'],['🔇 20с: ВЫКЛ','🔇 20s: OFF'],['🔗 Скопировать приглашение','🔗 Copy invite'],['Ждём игроков','Waiting for players'],['Комната готова','Room ready'],['🏆 ФИНАЛ МАТЧА','🏆 MATCH FINALS'],['Победитель','Winner'],['Итоговая таблица','Final standings'],['🔒 ТОЛЬКО ДЛЯ ХОСТА','🔒 HOST ONLY'],['Запусти матч — здесь появится способность.','Start the match — the ability will appear here.'],['Объясняй словами на эти буквы:','Explain using words starting with these letters:'],['Слушай объяснение','Listen to the explanation'],['Название, иконка способности и буквы скрыты.','The ability name, icon and letters are hidden.'],['○ Я не готов','○ Not ready'],['Игроки','Players'],['Пока никого нет. Отправь другу код комнаты.','Nobody is here yet. Send a friend the room code.'],['ЧАТ КОМНАТЫ','ROOM CHAT'],['Общение и игровые догадки','Chat and game guesses'],['🌐 Общий','🌐 General'],['🔒 Личный','🔒 Private'],['🛡️ Автомодерация включена: сообщения с оскорблениями, сексуальным контентом, опасными предложениями и внешними ссылками блокируются. Хост может заглушить или удалить игрока.','🛡️ Auto-moderation is on: abusive language, sexual content, unsafe solicitations and external links are blocked. The host can mute or remove a player.'],['🌐 Общий чат','🌐 General chat'],['Свободное общение до, во время и после матча.','Free chat before, during and after the match.'],['все участники','all participants'],['Сообщений пока нет.','No messages yet.'],['Отправить','Send'],['Enter — отправить · ссылки и запрещённый контент блокируются','Enter — send · links and prohibited content are blocked'],['Личный чат','Private chat'],['💬 хост ↔ игрок','💬 host ↔ player'],['✅ Верно · +1','✅ Correct · +1'],['❌ Неверно · закрыть попытку','❌ Wrong · close attempt'],['Управление хоста','Host controls'],['▶ Начать матч','▶ Start match'],['🎯 С первой попытки: НЕТ','🎯 First try: NO'],['✓ Угадал +1','✓ Correct +1'],['↪ Пропустить','↪ Skip'],['⏸ Пауза','⏸ Pause'],['🏁 Завершить','🏁 Finish'],['🔁 Рематч','🔁 Rematch'],['⚙️ В лобби','⚙️ Back to lobby'],['Настройки матча','Match settings'],['Буквы','Letters'],['До начала матча выбери буквы. Минимум 3.','Choose letters before the match. Minimum 3.'],['Бесплатных пропусков','Free skips'],['← Выйти из комнаты','← Leave room'],['УПРАВЛЕНИЕ ИГРОКОМ','PLAYER MANAGEMENT'],['Игрок','Player'],['−1 очко','−1 point'],['Текущий счёт','Current score'],['+1 очко','+1 point'],['Применить','Apply'],['⏱ +15 секунд','⏱ +15 seconds'],['↪ Засчитать пропуск','↪ Count as skip'],['🔇 Заглушить чат','🔇 Mute chat'],['🚫 Кикнуть игрока','🚫 Kick player'],['Если игрок сейчас ходит, +15 секунд добавятся к текущему таймеру. Иначе — к его следующему ходу.','If this player is active, +15 seconds are added now. Otherwise they are added to the next turn.'],['🟢 Простой — 5:00 · до 10 очков','🟢 Easy — 5:00 · to 10 points'],['🟡 Классика — 3:00 · до 15 очков','🟡 Classic — 3:00 · to 15 points'],['🔴 Безумие — 0:30 · до 30 очков','🔴 Insane — 0:30 · to 30 points'],['Базовые правила:','Core rules:'],['Особые раунды:','Special rounds:'],['Бонусы времени:','Time bonuses:'],['Личные игровые догадки:','Private game guesses:'],['Звук:','Sound:'],['Безопасность чата:','Chat safety:'],[' правильный ответ = +1 очко и +1 к серии. На Простом и Классике каждый 3-й правильный ответ подряд даёт ещё +1 бонусное очко. В Безумии бонусных очков за стрик нет. На Простом и Классике первые бесплатные пропуски не штрафуют, затем каждый пропуск = −1 очко. В Безумии бесплатных пропусков нет: первый пропуск подряд = −1, второй и каждый следующий подряд = −2; правильный ответ сбрасывает плохой стрик.',' a correct answer = +1 point and +1 streak. On Easy and Classic, every 3rd correct answer in a row gives +1 bonus point. Insane has no streak bonus points. On Easy and Classic, the first free skips have no penalty, then each skip = −1 point. Insane has no free skips: first consecutive skip = −1, second and every following consecutive skip = −2; a correct answer resets the bad skip streak.'],[' шанс начинается с 7%. После обычного раунда шанс следующего особого умножается на 1,2, максимум 90%. После особого — снова 7%. Соотношение проклятых/удачливых зависит от сложности.',' starts at 7%. After a normal round, the next special-round chance is multiplied by 1.2, up to 90%. After a special round it resets to 7%. Cursed/lucky weighting depends on difficulty.'],[' ответ за первые 30 секунд = +15 секунд на следующий ход. Первая попытка = ещё +10 секунд, а для врождённой способности = +20 вместо +10. Максимум +35 секунд.',' correct within the first 30 seconds = +15 seconds on the next turn. First try = another +10 seconds; for an innate ability it is +20 instead of +10. Maximum +35 seconds.'],[' пока отвечает другой игрок, у тебя есть одна попытка написать хосту героя/способность. После сообщения хост отмечает «верно» или «неверно»; до следующего хода повторная попытка закрыта. Общий чат при этом остаётся доступен.',' while another player is answering, you get one private guess for the hero/ability. The host marks it correct or wrong; another private guess is locked until the next turn. General chat remains available.'],[' на последних 20 секундах хода включается тихое тиканье, чтобы игрок успел поторопиться. Оно отключается отдельной кнопкой в шапке комнаты.',' a quiet ticking sound starts during the last 20 seconds so the player knows time is running out. It can be disabled with the room sound button.'],[' ссылки и запрещённый контент блокируются автоматически. Частый спам ограничивается. Хост может заглушить чат конкретного игрока или удалить его из комнаты.',' links and prohibited content are blocked automatically. Rapid spam is rate-limited. The host can mute a specific player or remove them from the room.']
+ ['Готово','Ready'],['Онлайн-комнаты','Online rooms'],['Один объясняет. Остальные угадывают.','One explains. Everyone else guesses.'],['Способность, иконку и буквы видит только хост. Игроки видят таймер, очередь и счёт.','Only the host sees the ability, icon and letters. Players see the timer, turn order and score.'],['🎚 3 сложности','🎚 3 difficulties'],['🏆 Победа по очкам','🏆 Score victory'],['🎭 Особые раунды','🎭 Special rounds'],['📚 Библиотека способностей','📚 Ability library'],['👥 До 8 игроков','👥 Up to 8 players'],['🔊 В последние 20 секунд хода звучит тихое синтезированное тиканье. Оно создаётся самим браузером, без аудиофайлов, и его можно отключить в комнате.','🔊 A quiet synthesized tick plays during the final 20 seconds. It is generated by the browser, uses no audio file, and can be disabled in the room.'],['ЛОКАЛЬНЫЙ ПРОФИЛЬ','LOCAL PROFILE'],['Новый игрок','New player'],['Ник и аватарка сохранятся в этом браузере.','Your name and avatar are saved in this browser.'],['Достижения','Achievements'],['📚 Открыть библиотеку способностей','📚 Open ability library'],['КОЛЛЕКЦИЯ','COLLECTION'],['Библиотека способностей','Ability library'],['Загрузка базы…','Loading database…'],['Закрыть','Close'],['Герой','Hero'],['Все герои','All heroes'],['Роль','Role'],['Все роли','All roles'],['👑 Создать комнату','👑 Create room'],['Твоё имя','Your name'],['Сложность','Difficulty'],['Создать комнату','Create room'],['🎧 Войти в комнату','🎧 Join room'],['Код комнаты','Room code'],['Имя игрока','Player name'],['Аватарка','Avatar'],['(необязательно)','(optional)'],['📷 Загрузить свою','📷 Upload yours'],['Без аватарки','No avatar'],['Если ничего не выбрать, будет первая буква ника.','If you choose nothing, the first letter of your nickname will be used.'],['🛡️ Для безопасности свои фото пока хранятся только в твоём локальном профиле и не отправляются другим участникам; в комнате вместо них будет буква ника. Встроенные аватарки видны всем.','🛡️ For safety, custom photos are currently kept only in your local profile and are not sent to other participants; rooms show your nickname initial instead. Built-in avatars are visible to everyone.'],['Войти','Join'],['Локальная база готова','Local database ready'],['КОМНАТА','ROOM'],['Классика','Classic'],['Лобби','Lobby'],['🔊 20с: ВКЛ','🔊 20s: ON'],['🔇 20с: ВЫКЛ','🔇 20s: OFF'],['🔗 Скопировать приглашение','🔗 Copy invite'],['Ждём игроков','Waiting for players'],['Комната готова','Room ready'],['🏆 ФИНАЛ МАТЧА','🏆 MATCH FINALS'],['Победитель','Winner'],['Итоговая таблица','Final standings'],['🔒 ТОЛЬКО ДЛЯ ХОСТА','🔒 HOST ONLY'],['Запусти матч — здесь появится способность.','Start the match — the ability will appear here.'],['Объясняй словами на эти буквы:','Explain using words starting with these letters:'],['Слушай объяснение','Listen to the explanation'],['Название, иконка способности и буквы скрыты.','The ability name, icon and letters are hidden.'],['○ Я не готов','○ Not ready'],['Игроки','Players'],['Пока никого нет. Отправь другу код комнаты.','Nobody is here yet. Send a friend the room code.'],['ЧАТ КОМНАТЫ','ROOM CHAT'],['Общение и игровые догадки','Chat and game guesses'],['🌐 Общий','🌐 General'],['🔒 Личный','🔒 Private'],['🛡️ Автомодерация включена: сообщения с оскорблениями, сексуальным контентом, опасными предложениями и внешними ссылками блокируются. Хост может заглушить или удалить игрока.','🛡️ Auto-moderation is on: abusive language, sexual content, unsafe solicitations and external links are blocked. The host can mute or remove a player.'],['🌐 Общий чат','🌐 General chat'],['Свободное общение до, во время и после матча.','Free chat before, during and after the match.'],['все участники','all participants'],['Сообщений пока нет.','No messages yet.'],['Отправить','Send'],['Enter — отправить · ссылки и запрещённый контент блокируются','Enter — send · links and prohibited content are blocked'],['Личный чат','Private chat'],['💬 хост ↔ игрок','💬 host ↔ player'],['✅ Верно · +1','✅ Correct · +1'],['❌ Неверно · закрыть попытку','❌ Wrong · close attempt'],['Управление хоста','Host controls'],['▶ Начать матч','▶ Start match'],['🎯 С первой попытки: НЕТ','🎯 First try: NO'],['✓ Угадал +1','✓ Correct +1'],['↪ Пропустить','↪ Skip'],['⏸ Пауза','⏸ Pause'],['🏁 Завершить','🏁 Finish'],['🔁 Рематч','🔁 Rematch'],['⚙️ В лобби','⚙️ Back to lobby'],['Настройки матча','Match settings'],['Буквы','Letters'],['До начала матча выбери буквы. Минимум 3.','Choose letters before the match. Minimum 3.'],['Бесплатных пропусков','Free skips'],['← Выйти из комнаты','← Leave room'],['УПРАВЛЕНИЕ ИГРОКОМ','PLAYER MANAGEMENT'],['Игрок','Player'],['−1 очко','−1 point'],['Текущий счёт','Current score'],['+1 очко','+1 point'],['Применить','Apply'],['⏱ +15 секунд','⏱ +15 seconds'],['↪ Засчитать пропуск','↪ Count as skip'],['🔇 Заглушить чат','🔇 Mute chat'],['🚫 Кикнуть игрока','🚫 Kick player'],['Если игрок сейчас ходит, +15 секунд добавятся к текущему таймеру. Иначе — к его следующему ходу.','If this player is active, +15 seconds are added now. Otherwise they are added to the next turn.'],['🟢 Простой — 5:00 · до 10 очков','🟢 Easy — 5:00 · to 10 points'],['🟡 Классика — 3:00 · до 15 очков','🟡 Classic — 3:00 · to 15 points'],['🔴 Безумие — 0:30 · до 30 очков','🔴 Insane — 0:30 · to 30 points'],['Базовые правила:','Core rules:'],['Особые раунды:','Special rounds:'],['Бонусы времени:','Time bonuses:'],['Личные игровые догадки:','Private game guesses:'],['Звук:','Sound:'],['Безопасность чата:','Chat safety:'],[' правильный ответ = +1 очко и +1 к серии. На Простом и Классике каждый 3-й правильный ответ подряд даёт ещё +1 бонусное очко. В Безумии бонусных очков за стрик нет. На Простом и Классике первые бесплатные пропуски не штрафуют, затем каждый пропуск = −1 очко. В Безумии бесплатных пропусков нет: первый пропуск подряд = −1, второй и каждый следующий подряд = −2; правильный ответ сбрасывает плохой стрик.',' a correct answer = +1 point and +1 streak. On Easy and Classic, every 3rd correct answer in a row gives +1 bonus point. Insane has no streak bonus points. On Easy and Classic, the first free skips have no penalty, then each skip = −1 point. Insane has no free skips: first consecutive skip = −1, second and every following consecutive skip = −2; a correct answer resets the bad skip streak.'],[' шанс начинается с 7%. После обычного раунда шанс следующего особого умножается на 1,2, максимум 90%. После особого — снова 7%. Соотношение проклятых/удачливых зависит от сложности.',' starts at 7%. After a normal round, the next special-round chance is multiplied by 1.2, up to 90%. After a special round it resets to 7%. Cursed/lucky weighting depends on difficulty.'],[' ответ за первые 30 секунд = +15 секунд на следующий ход. Первая попытка = ещё +10 секунд, а для врождённой способности = +20 вместо +10. Максимум +35 секунд.',' correct within the first 30 seconds = +15 seconds on the next turn. First try = another +10 seconds; for an innate ability it is +20 instead of +10. Maximum +35 seconds.'],[' пока отвечает другой игрок, у тебя есть одна попытка написать хосту героя/способность. После сообщения хост отмечает «верно» или «неверно»; до следующего хода повторная попытка закрыта. Общий чат при этом остаётся доступен.',' while another player is answering, you get one private guess for the hero/ability. The host marks it correct or wrong; another private guess is locked until the next turn. General chat remains available.'],[' на последних 20 секундах хода включается тихое тиканье, чтобы игрок успел поторопиться. Оно отключается отдельной кнопкой в шапке комнаты.',' a quiet ticking sound starts during the last 20 seconds so the player knows time is running out. It can be disabled with the room sound button.'],[' ссылки и запрещённый контент блокируются автоматически. Частый спам ограничивается. Хост может заглушить чат конкретного игрока или удалить его из комнаты.',' links and prohibited content are blocked automatically. Rapid spam is rate-limited. The host can mute a specific player or remove them from the room.']
  ]);
 [
  ['♿ Удобство','♿ Accessibility'],['♿ ДОСТУПНОСТЬ','♿ ACCESSIBILITY'],['Настройки удобства','Accessibility settings'],['Эти настройки сохраняются только на этом устройстве.','These settings are saved only on this device.'],['Увеличенный текст','Larger text'],['Высокий контраст','High contrast'],['Меньше анимаций','Reduce motion'],['Громкость тиканья','Tick volume'],['Как войти','Join as'],['🎮 Игрок','🎮 Player'],['👁 Зритель','👁 Spectator'],['Зритель видит матч и общий чат, но не участвует в очереди и не получает очки.','Spectators can watch the match and use general chat, but do not enter the turn order or earn points.'],['🔎 РАСКРЫТИЕ РАУНДА','🔎 ROUND REVEAL'],['⏭ Следующий ход сейчас','⏭ Next turn now'],['Награды матча','Match awards'],['👁 Зрители','👁 Spectators'],['🏅 РЕКОРДЫ КОМНАТЫ','🏅 ROOM RECORDS'],['Лучшее за эту комнату','Best in this room'],['сохраняются до выхода хоста','kept until the host leaves'],['Показ правильной способности между ходами','Show the correct ability between turns'],['Выключено','Off'],['3 секунды','3 seconds'],['5 секунд','5 seconds'],['Пресеты правил','Rule presets'],['— сохранённые пресеты —','— saved presets —'],['Загрузить','Load'],['Сохранить','Save'],['Удалить','Delete'],['Раскрытие раунда:','Round reveal:'],['Переподключение:','Reconnect:']
@@ -1220,14 +1023,6 @@ function unlockAbilityLocal(ability,quiet=false){
  return isNew;
 }
 function libraryUnlocked(id){return !!(profile&&profile.unlockedAbilities&&profile.unlockedAbilities[id])}
-
-
-function friendlyRole(role){
- const ru={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Четвёрка',P5:'Пятёрка'};
- const en={P1:'Carry',P2:'Mid',P3:'Offlane',P4:'Support 4',P5:'Support 5'};
- return (currentLang==='en'?en:ru)[role]||role;
-}
-
 function renderLibraryFilters(){
  const heroSel=$('libraryHero'),roleSel=$('libraryRole');if(!heroSel||!roleSel||!registry.length)return;
  const currentHero=heroSel.value,currentRole=roleSel.value;
@@ -2181,6 +1976,8 @@ function activateRecoveryRegistry(){
 }
 
 async function loadRegistry(){
+ activateRecoveryRegistry(); return;
+
  const hadFullLocal=activateRecoveryRegistry();
  const fetchJSON=async url=>{
    const ctrl=new AbortController();
@@ -2460,41 +2257,7 @@ $('a11yContrast').onchange=e=>{accessibility.highContrast=e.target.checked;saveA
 $('a11yReduceMotion').onchange=e=>{accessibility.reduceMotion=e.target.checked;saveAccessibility()};
 $('a11yVolume').oninput=e=>{accessibility.tickVolume=Number(e.target.value);saveAccessibility()};
 $('presetSave').onclick=saveCurrentPreset;$('presetLoad').onclick=applySelectedPreset;$('presetDelete').onclick=deleteSelectedPreset;
-
-
-function setupStandalonePages(){
- const profile=$('profilePanel'),library=$('libraryPanel'),home=$('home');
- if(profile&&profile.parentElement===home){home.after(profile);profile.classList.add('appStandalone','hidden')}
- if(library&&library.parentElement===home){profile.after(library);library.classList.add('appStandalone','hidden')}
- const pages={game:home,profile,library};
- const buttons={game:$('navGame'),profile:$('navProfile'),library:$('navLibrary')};
- function openPage(which){
-  if(which!=='game'){
-    $('rankedRulesPrompt')?.classList.add('hidden');
-    $('rankedHelpModal')?.classList.add('hidden');
-  }
-
-  Object.entries(pages).forEach(([k,node])=>node&&node.classList.toggle('hidden',k!==which));
-  Object.entries(buttons).forEach(([k,node])=>node&&node.classList.toggle('on',k===which));
-  if(which==='profile')loadProfile();
-  if(which==='library'){renderLibraryFilters();renderLibrary()}
-  window.scrollTo({top:0,behavior:'smooth'});
- }
- buttons.game.onclick=()=>openPage('game');
- buttons.profile.onclick=()=>openPage('profile');
- buttons.library.onclick=()=>openPage('library');
- openPage('game');
-}
-
 $('languageSelect').addEventListener('change',e=>setLanguage(e.target.value));
-$('languageSelect').addEventListener('change',()=>renderLibraryFilters());
-
-$('languageSelect').addEventListener('change',()=>{
- const en=$('languageSelect').value==='en';
- const labels={navGame:en?'Game':'Игра',navProfile:en?'Profile':'Профиль',navLibrary:en?'Library':'Библиотека'};
- Object.entries(labels).forEach(([id,t])=>{const s=$(id)?.querySelector('span');if(s)s.textContent=t});
-});
-
 $('difficulty').addEventListener('change',updateDifficultyPreview);
 $('roomMode').addEventListener('change',updateModePreview);
 if($('rankedRulesBtn'))$('rankedRulesBtn').onclick=openRankedRules;
@@ -2514,96 +2277,9 @@ document.addEventListener('pointerdown',()=>{if(soundEnabled)ensureAudio()},{pas
 const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
 if(params.get('kicked')==='1')notice(ui('Хост удалил тебя из комнаты.','The host removed you from the room.'));if(params.get('rejected')){const rr=params.get('rejected');notice(rr==='full'?ui('Комната заполнена. В Ranked Test участвуют только 2 игрока.','The room is full. Ranked Test supports exactly 2 players.'):rr==='ranked_spectator_disabled'?ui('В Ranked Test зрители отключены.','Spectators are disabled in Ranked Test.'):ui('Не удалось войти: ник не прошёл модерацию.','Could not join: the nickname was blocked by moderation.'))}
-
-const RANKED_RULES_REMINDER_KEY='d2slh_ranked_rules_no_remind_v1';
-let rankedRulesPromptShownThisSession=false;
-
-function isRankedActive(){
- return !!((state&&state.mode==='ranked') || isRankedTest());
-}
-function syncRankedHelpScroll(){
- const ranked=isRankedActive();
- const roomVisible=$('room') && !$('room').classList.contains('hidden');
- const gameVisible=$('game') && !$('game').classList.contains('hidden');
- const inGameContext=roomVisible || gameVisible;
- const rankedContext=ranked && inGameContext;
-
- document.body.classList.toggle('inGameContext',inGameContext);
- document.body.classList.toggle('rankedContext',rankedContext);
-
- const bar=$('rankedLobbyRulesBar');
- if(bar)bar.classList.toggle('hidden',!rankedContext);
-
- // Rules are allowed only on the Ranked room/game screen.
- if(!rankedContext){
-   $('rankedRulesPrompt')?.classList.add('hidden');
-   $('rankedHelpModal')?.classList.add('hidden');
-   rankedRulesPromptShownThisSession=false;
-   return;
- }
-
- if(!rankedRulesPromptShownThisSession){
-   rankedRulesPromptShownThisSession=true;
-   let muted=false;
-   try{muted=localStorage.getItem(RANKED_RULES_REMINDER_KEY)==='1'}catch(e){}
-   if(!muted)$('rankedRulesPrompt').classList.remove('hidden');
- }
-}
-
-
-function saveRankedReminderChoice(){
- try{
-   if($('rankedDontRemind').checked)localStorage.setItem(RANKED_RULES_REMINDER_KEY,'1');
- }catch(e){}
-}
-$('rankedPromptRead').onclick=()=>{
- saveRankedReminderChoice();
- $('rankedRulesPrompt').classList.add('hidden');
- $('rankedHelpModal').classList.remove('hidden');
-};
-$('rankedPromptSkip').onclick=()=>{
- saveRankedReminderChoice();
- $('rankedRulesPrompt').classList.add('hidden');
-};
-$('rankedLobbyRulesBtn').onclick=()=>{if(document.body.classList.contains('rankedContext'))$('rankedHelpModal').classList.remove('hidden')};
-$('rankedRulesPrompt').addEventListener('click',e=>{
- if(e.target===$('rankedRulesPrompt')){
-   saveRankedReminderChoice();
-   $('rankedRulesPrompt').classList.add('hidden');
- }
-});
-
-$('rankedHelpClose').onclick=()=>$('rankedHelpModal').classList.add('hidden');
-$('rankedHelpModal').addEventListener('click',e=>{if(e.target===$('rankedHelpModal'))$('rankedHelpModal').classList.add('hidden')});
-setInterval(syncRankedHelpScroll,700);
-
-
-function syncRegistryRolesFromHeroMap(){
- if(!Array.isArray(registry))return;
- registry.forEach(a=>{if(a&&a.hero&&HERO_POSITIONS[a.hero])a.roles=HERO_POSITIONS[a.hero].slice()});
-}
-setInterval(syncRegistryRolesFromHeroMap,1200);
-
-$('languageSelect').value=currentLang;setupStandalonePages();loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();activateRecoveryRegistry();loadRegistry().catch(()=>{});setConn('');setChatMode('public');applyLanguage(document);applyAccessibility();
+$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();activateRecoveryRegistry();setConn('');setChatMode('public');applyLanguage(document);applyAccessibility();
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 })();
 </script>
 </body>
 </html>
-
-<style>
-#a11yPanel,#a11yToggle,[id*="a11y"][class*="chip"]{display:none!important}
-</style>
-
-<style>#rulesFloat{display:none!important}</style>
-<style>#rulesScroll{display:none!important}</style>
-<style>#hardLettersScroll{display:none!important}</style>
-<style>#hardLettersBtn{display:none!important}</style>
-<style>#rulesBtn{display:none!important}</style>
-<style>#rankedRulesBtn{display:none!important}</style>
-<style>#rankedGlossaryBtn,#rankedRulesBtn{display:none!important}</style>
-<style>
-.rulesRail,.helpRail,.leftRail,.floatingRules,.floatingHelp{display:none!important}
-</style>
-
-<style>#rankedHelpScroll{display:none!important}</style>

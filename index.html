@@ -23,6 +23,10 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
 .wrap{width:min(1120px,calc(100% - 20px));padding-top:14px}.top{padding:4px 2px}.brand{font-size:clamp(23px,4vw,34px)}.top .eyebrow{font-size:11px}.langSelect{min-width:116px}.hero{padding:18px}.hero h1{font-size:clamp(28px,5vw,40px);margin:10px 0 6px}.homeTiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}.homeTiles span{padding:12px 8px;border:1px solid #35445a;border-radius:13px;background:#111923;text-align:center;font-weight:900;font-size:13px}.profilePanel{padding:16px}.profileAchievementsTitle{margin-top:12px}.achievementGrid{grid-template-columns:repeat(4,minmax(0,1fr));max-height:250px;overflow:auto}.achievement{padding:9px}.achievementIcon{font-size:20px}.grid>.panel{padding:16px}.grid>.panel h2{margin-top:0;font-size:20px}.avatarChoices{grid-template-columns:repeat(4,50px)}.avatarChoice{width:50px;height:50px}.libraryGrid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));max-height:560px}.customQuickTools{position:fixed;left:max(10px,calc((100vw - 1120px)/2 - 74px));top:42%;z-index:45;display:flex;flex-direction:column;gap:8px}.quickTool{width:58px;min-height:56px;border:1px solid #46566e;border-radius:15px;background:#18212d;color:#fff;font-size:22px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25)}.quickTool small{display:block;font-size:9px;margin-top:2px;color:#aeb9c8}.compactSettings{max-width:820px;margin-left:auto;margin-right:auto}.compactSettings .rulebox{max-height:260px;overflow:auto}.roomcode{font-size:28px}.timer{font-size:clamp(42px,9vw,64px)}
 @media(max-width:900px){.achievementGrid{grid-template-columns:repeat(2,1fr)}.customQuickTools{left:8px;top:auto;bottom:12px;flex-direction:row}.quickTool{width:54px}.homeTiles{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.wrap{width:min(100% - 12px,1120px);padding-top:8px}.top{align-items:flex-start}.topTools{width:auto}.langSelect{min-width:102px;padding:8px}.hero{padding:14px}.panel{border-radius:15px;margin:9px 0}.grid{grid-template-columns:1fr}.profileStats{grid-template-columns:repeat(3,1fr)}.achievementGrid{grid-template-columns:1fr 1fr;max-height:220px}.achievementText small{font-size:10px}.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.homeTiles span{font-size:12px}.roomhead{align-items:flex-start}.roomcode{font-size:24px}}
+
+/* v1.91.2: focused home + separate profile */
+.homeNav{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.homeNav .btn{flex:1 1 150px}.profilePanel{margin-top:10px}.profileBack{margin-bottom:10px}.homeTiles span[data-home-action]{cursor:pointer}.homeTiles span[data-home-action]:hover{border-color:#f4b41a}
+@media(max-width:700px){.homeNav .btn{flex:1 1 calc(50% - 8px)}}
 </style>
 </head>
 <body>
@@ -32,7 +36,7 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       <div class="eyebrow">DOTA 2 · PARTY GAME · v1.91 BETA</div>
       <div class="brand">⚔️ Spell Letter Hunt</div>
     </div>
-    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU · Русский</option><option value="en">ENG · English</option></select><button id="a11yToggle" class="btn secondary compactBtn hidden">♿ Удобство</button><div id="conn" class="status">Готово</div></div>
+    <div class="topTools"><select id="languageSelect" class="langSelect" aria-label="Язык / Language"><option value="ru">RU · Русский</option><option value="en">ENG · English</option></select><button id="a11yToggle" class="btn secondary compactBtn hidden">♿ Удобство</button><div id="conn" class="status hidden"></div></div>
   </div>
 
   <div id="a11yPanel" class="panel accessibilityPanel hidden" aria-hidden="true">
@@ -56,44 +60,8 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
       <div class="homeTiles"><span>🏆 Ranked 1v1</span><span>🎙 Custom</span><span>📚 Библиотека</span><span>🏅 20 достижений</span></div>
     </div>
 
-    <div id="profilePanel" class="panel profilePanel">
-      <div class="profileHead">
-        <div id="profileAvatarWrap"></div>
-        <div class="profileMain">
-          <div class="eyebrow">ЛОКАЛЬНЫЙ ПРОФИЛЬ</div>
-          <div id="profileName" class="profileName">Новый игрок</div>
-          <div id="profileNote" class="muted small">Ник и аватарка сохранятся в этом браузере.</div>
-        </div>
-        <div id="profileAchievementCount" class="chip">🏅 0 / 10</div>
-      </div>
-      <div id="profileStats" class="profileStats"></div>
-      <div class="profileAchievementsTitle">Достижения</div>
-      <div id="profileAchievements" class="achievementGrid"></div>
-      <button id="libraryToggle" class="btn secondary wide" style="margin-top:14px">📚 Библиотека</button>
-    </div>
+    <div class="homeNav"><button id="profileToggle" class="btn secondary">👤 Профиль</button><button id="libraryHomeToggle" class="btn secondary">📚 Библиотека</button></div>
 
-    <div id="libraryPanel" class="panel libraryPanel hidden">
-      <div class="row" style="justify-content:space-between">
-        <div>
-          <div class="eyebrow">КОЛЛЕКЦИЯ</div>
-          <h2 style="margin:5px 0">Библиотека способностей</h2>
-          <div id="libraryProgressText" class="muted">Загрузка базы…</div>
-        </div>
-        <button id="libraryClose" class="btn secondary">Закрыть</button>
-      </div>
-      <div class="libraryProgress"><div id="libraryProgressBar" class="libraryProgressBar"></div></div>
-      <div class="libraryFilters">
-        <div>
-          <label for="libraryHero">Герой</label>
-          <select id="libraryHero" class="select"><option value="">Все герои</option></select>
-        </div>
-        <div>
-          <label for="libraryRole">Роль</label>
-          <select id="libraryRole" class="select"><option value="">Все роли</option></select>
-        </div>
-      </div>
-      <div id="libraryGrid" class="libraryGrid"></div>
-    </div>
 
     <div class="grid">
       <div class="panel">
@@ -143,6 +111,50 @@ button,input,select{font:inherit}.wrap{width:min(980px,calc(100% - 28px));margin
     <div id="notice" class="notice hidden"></div>
     <div id="registry" class="center muted">База способностей загружается…</div>
   </section>
+
+
+  <section id="libraryPanel" class="panel libraryPanel hidden">
+    <button id="libraryClose" class="btn secondary profileBack">← На главный экран</button>
+
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <div class="eyebrow">КОЛЛЕКЦИЯ</div>
+          <h2 style="margin:5px 0">Библиотека способностей</h2>
+          <div id="libraryProgressText" class="muted">Загрузка базы…</div>
+        </div>
+        
+      </div>
+      <div class="libraryProgress"><div id="libraryProgressBar" class="libraryProgressBar"></div></div>
+      <div class="libraryFilters">
+        <div>
+          <label for="libraryHero">Герой</label>
+          <select id="libraryHero" class="select"><option value="">Все герои</option></select>
+        </div>
+        <div>
+          <label for="libraryRole">Роль</label>
+          <select id="libraryRole" class="select"><option value="">Все роли</option></select>
+        </div>
+      </div>
+      <div id="libraryGrid" class="libraryGrid"></div>
+  </section>
+
+  <section id="profilePanel" class="panel profilePanel hidden">
+      <button id="profileClose" class="btn secondary profileBack">← На главный экран</button>
+      <div class="profileHead">
+        <div id="profileAvatarWrap"></div>
+        <div class="profileMain">
+          <div class="eyebrow">ЛОКАЛЬНЫЙ ПРОФИЛЬ</div>
+          <div id="profileName" class="profileName">Новый игрок</div>
+          <div id="profileNote" class="muted small">Ник и аватарка сохранятся в этом браузере.</div>
+        </div>
+        <div id="profileAchievementCount" class="chip">🏅 0 / 10</div>
+      </div>
+      <div id="profileStats" class="profileStats"></div>
+      <div class="profileAchievementsTitle">Достижения</div>
+      <div id="profileAchievements" class="achievementGrid"></div>
+      <button id="libraryToggle" class="btn secondary wide" style="margin-top:14px">📚 Библиотека</button>
+  </section>
+
 
   <section id="room" class="hidden">
     <div class="panel roomhead">
@@ -436,40 +448,122 @@ const DIFFICULTIES={
 };
 const ROLE_LABELS={P1:'Керри',P2:'Мидер',P3:'Оффлейнер',P4:'Саппорт 4',P5:'Саппорт 5'};
 // v1.91 positional model: never infer lane position from Valve's broad Carry/Support/Nuker tags.
-// Conservative current-meta defaults; ambiguous flex heroes intentionally get multiple positions.
+// v1.91.4: positions are taken directly from the user-reviewed Excel table; no automatic role inference.
 const HERO_POSITIONS={
-'Abaddon':['P5','P3'],'Alchemist':['P1','P2'],'Anti-Mage':['P1'],'Axe':['P3'],'Bane':['P5','P4'],'Batrider':['P4','P3'],'Beastmaster':['P3'],'Bloodseeker':['P1'],'Bounty Hunter':['P4'],'Bristleback':['P3','P1'],'Centaur Warrunner':['P3'],'Chaos Knight':['P1'],'Chen':['P5','P4'],'Clinkz':['P1','P2'],'Clockwerk':['P4','P3'],'Crystal Maiden':['P5'],'Dark Seer':['P3'],'Dazzle':['P5','P4'],'Death Prophet':['P2','P3'],'Disruptor':['P5'],'Doom':['P3','P4'],'Dragon Knight':['P2','P3'],'Drow Ranger':['P1'],'Earth Spirit':['P4'],'Earthshaker':['P4','P3'],'Elder Titan':['P5','P4'],'Ember Spirit':['P2'],'Enchantress':['P5','P4'],'Enigma':['P3','P4'],'Faceless Void':['P1'],'Grimstroke':['P5','P4'],'Gyrocopter':['P1'],'Hoodwink':['P4'],'Huskar':['P2'],'Invoker':['P2'],'Io':['P5','P4'],'Jakiro':['P5','P4'],'Juggernaut':['P1'],'Keeper of the Light':['P5','P4'],'Kunkka':['P2','P3'],'Legion Commander':['P3'],'Leshrac':['P2'],'Lich':['P5'],'Lifestealer':['P1'],'Lina':['P2','P1'],'Lion':['P4','P5'],'Luna':['P1'],'Magnus':['P3','P4'],'Mars':['P3'],'Medusa':['P1','P2'],'Meepo':['P2'],'Mirana':['P4'],'Monkey King':['P1','P4'],'Muerta':['P1','P4'],'Naga Siren':['P1'],'Nature’s Prophet':['P3','P4'],'Nature\'s Prophet':['P3','P4'],'Necrophos':['P2','P3'],'Night Stalker':['P3'],'Nyx Assassin':['P4'],'Ogre Magi':['P5'],'Omniknight':['P5','P3'],'Oracle':['P5'],'Outworld Destroyer':['P2'],'Pangolier':['P2','P3'],'Phantom Assassin':['P1'],'Phantom Lancer':['P1'],'Phoenix':['P4','P5'],'Primal Beast':['P3','P2'],'Puck':['P2'],'Pudge':['P4','P3'],'Pugna':['P4','P2'],'Queen of Pain':['P2'],'Razor':['P3','P1'],'Riki':['P4','P1'],'Rubick':['P4'],'Sand King':['P3'],'Shadow Demon':['P5','P4'],'Shadow Fiend':['P1','P2'],'Shadow Shaman':['P4','P5'],'Silencer':['P5','P4'],'Skywrath Mage':['P4'],'Slardar':['P3'],'Slark':['P1'],'Snapfire':['P4','P5'],'Sniper':['P2','P1'],'Spectre':['P1'],'Spirit Breaker':['P4','P3'],'Storm Spirit':['P2'],'Sven':['P1'],'Techies':['P4'],'Templar Assassin':['P2','P1'],'Terrorblade':['P1'],'Tidehunter':['P3'],'Timbersaw':['P3','P2'],'Tinker':['P2'],'Tiny':['P4','P2'],'Treant Protector':['P5'],'Troll Warlord':['P1'],'Tusk':['P4','P3'],'Underlord':['P3'],'Undying':['P5','P4'],'Ursa':['P1'],'Vengeful Spirit':['P5','P4'],'Venomancer':['P4','P3'],'Viper':['P2','P3'],'Visage':['P3','P2'],'Void Spirit':['P2'],'Warlock':['P5'],'Weaver':['P1','P4'],'Windranger':['P2','P4'],'Winter Wyvern':['P5','P4'],'Witch Doctor':['P5'],'Wraith King':['P1','P3'],'Zeus':['P2']};
-const RANKED_TEST_VERSION='1.91.1-alphabet-audit';
-const RANKED_CLUE_RELEASE='0.4.1';
-
-const RANKED_SLANG_RELEASE='0.5';
-const RANKED_DOTA_RU_SLANG=[
- ['STUN','ability','стан','CONTROL',82,3],['SLOW','ability','слоу','SLOW',70,3],['ROOT','ability','рут','CONTROL',82,3],['SILENCE','ability','сайленс','CONTROL',84,3],['DISARM','ability','дизарм','CONTROL',82,3],['TAUNT','ability','агр','CONTROL',78,3],['HEX','ability','хекс','CONTROL',92,3],['BREAK','ability','брейк','CONTROL',84,3],['LEASH','ability','лиш','CONTROL',82,3],['KNOCKBACK','ability','нокбэк','DISPLACEMENT',78,4],['KNOCKUP','ability','подброс','DISPLACEMENT',76,4],['PULL','ability','пулл','DISPLACEMENT',80,4],
- ['DISPEL','ability','диспел','MODIFIER',86,3],['DISPEL','ability','пурж','MODIFIER',88,3],['DEBUFF','ability','дебафф','MODIFIER',82,3],['BUFF','ability','бафф','MODIFIER',82,3],['HEAL','ability','хил','SURVIVAL',84,3],['BARRIER','ability','щит','SURVIVAL',78,3],['MAGIC_RESIST','ability','магрезист','SURVIVAL',82,4],['IMMUNITY','ability','иммун','SURVIVAL',86,3],['LIFESTEAL','ability','лайфстил','SURVIVAL',84,3],
- ['MANA_BURN','ability','манаберн','MANA',82,4],['MANA_RESTORE','ability','манареген','MANA',76,3],['MANA_STEAL','ability','дрейн','INTERACTION',86,3],['ATTACK_SPEED','ability','атакспид','SPEED',72,3],['MOVE_SPEED','ability','мувспид','SPEED',72,3],
- ['AREA','ability','аое','TARGETING',86,3],['SINGLE_TARGET','ability','таргет','TARGETING',76,3],['GLOBAL','ability','глобал','TARGETING',82,3],['POINT_TARGET','ability','поинт','TARGETING',68,3],['NO_TARGET','ability','ноутаргет','TARGETING',74,3],['SELF_TARGET','ability','селфкаст','SHAPE_TARGETING',72,3],['VECTOR_TARGET','ability','вектор','SHAPE_TARGETING',78,4],
- ['CHANNEL','ability','ченнелинг','CASTING',86,3],['COOLDOWN','ability','кд','CASTING',82,3],['COOLDOWN_REDUCTION','ability','кдр','TIMING',84,4],['COOLDOWN_RESET','ability','рефреш','TIMING',88,4],['CHARGES','ability','заряды','CASTING',74,3],['STACKS','ability','стаки','CASTING',78,3],['CAST_TIME','ability','касттайм','TIMING',72,3],
- ['BLINK','ability','блинк','MOBILITY',88,3],['DASH','ability','дэш','MOBILITY',80,4],['TELEPORT','ability','тп','POSITIONING',82,3],['SUMMON','ability','суммон','SUMMONS',80,3],['ILLUSION','ability','иллюзии','SUMMONS',82,3],['INVISIBILITY','ability','инвиз','VISION_STEALTH',90,3],['VISION','ability','вижн','VISION_STEALTH',78,3],['REVEAL','ability','детект','VISION_STEALTH',82,3],
- ['WARD','ability','вард','OBJECT_SUMMON',86,3],['TRAP','ability','трап','OBJECT_SUMMON',78,3],['MINE','ability','мина','OBJECT_SUMMON',82,4],['CREEP','ability','крип','OBJECT_SUMMON',76,3],['CLONE','ability','клон','OBJECT_SUMMON',82,4],
- ['CRIT','ability','крит','DAMAGE',88,3],['CLEAVE','ability','клив','ATTACK_MECHANIC',84,3],['SPLASH','ability','сплэш','ATTACK_MECHANIC',82,4],['BASH','ability','баш','ATTACK_MECHANIC',88,3],['PROC','ability','прок','ATTACK_MECHANIC',78,3],['PASSIVE','ability','пассивка','PASSIVE_PROPERTY',86,3],['AURA','ability','аура','CASTING',80,3],['PROJECTILE','ability','проджектайл','CASTING',76,3],
- ['DAMAGE_OVER_TIME','ability','дот','DAMAGE',82,3],['BURST','ability','берст','DAMAGE',76,3],['PHYSICAL_DAMAGE','ability','физика','DAMAGE',76,3],['ARMOR_REDUCTION','ability','минусброня','DEFENSE',86,3],['SPELL_AMP','ability','спелламп','DEFENSE',78,3],['STATUS_RESIST','ability','статусрезист','DEFENSE',78,3],['REFLECT_SPELL','ability','рефлект','INTERACTION',84,3],['SPELL_STEAL','ability','стил','INTERACTION',88,3],['SPELL_COPY','ability','копия','INTERACTION',80,4],['TRUE_SIGHT','ability','трусайт','DETECTION_INTERACTION',86,3],['DETECTION','ability','детект','DETECTION_INTERACTION',82,3],['GOLD','ability','голда','ECONOMY',74,3],['EXPERIENCE','ability','экспа','ECONOMY',74,3],
- ['HERO_POS1','hero','керри','HERO_POSITION_1',88,3],['HERO_POS1','hero','поз1','HERO_POSITION_1',88,4],['HERO_POS2','hero','мидер','HERO_POSITION_2',88,3],['HERO_POS2','hero','поз2','HERO_POSITION_2',88,4],['HERO_POS3','hero','оффлейнер','HERO_POSITION_3',88,3],['HERO_POS3','hero','поз3','HERO_POSITION_3',88,4],['HERO_POS4','hero','четверка','HERO_POSITION_4',88,3],['HERO_POS4','hero','поз4','HERO_POSITION_4',88,4],['HERO_POS5','hero','пятерка','HERO_POSITION_5',88,3],['HERO_POS5','hero','поз5','HERO_POSITION_5',88,4],['HERO_CARRY','hero','керри','HERO_ROLE',84,3],['HERO_SUPPORT','hero','саппорт','HERO_ROLE',84,3],['HERO_NUKER','hero','нюкер','HERO_ROLE',80,3],['HERO_DISABLER','hero','дизейблер','HERO_ROLE',82,3],['HERO_INITIATOR','hero','инициатор','HERO_ROLE',82,3],['HERO_ESCAPE','hero','эскейп','HERO_ROLE',76,3],['HERO_PUSHER','hero','пушер','HERO_ROLE',80,3],['HERO_DURABLE','hero','танк','HERO_ROLE',72,2],['HERO_MELEE','hero','мили','HERO_ATTACK',80,3],['HERO_RANGED','hero','ренж','HERO_ATTACK',80,3],['HERO_STRENGTH','hero','силовик','HERO_ATTRIBUTE',78,3],['HERO_AGILITY','hero','агильщик','HERO_ATTRIBUTE',80,3],['HERO_INTELLIGENCE','hero','интовик','HERO_ATTRIBUTE',80,3],['HERO_UNIVERSAL','hero','универсал','HERO_ATTRIBUTE',80,3],['HERO_CORE','hero','кор','HERO_ARCHETYPE',80,3],['HERO_UTILITY','hero','утилити','HERO_ARCHETYPE',72,2],['HERO_FRONTLINER','hero','фронтлайн','HERO_ARCHETYPE',74,2],['HERO_BACKLINE','hero','бэклайн','HERO_ARCHETYPE',74,2],['HERO_MOBILE','hero','мобильный','HERO_ARCHETYPE',68,2],['HERO_SIEGE','hero','пуш','HERO_ARCHETYPE',76,3],['HERO_CONTROL','hero','контроль','HERO_ARCHETYPE',72,2],['HERO_CASTER','hero','кастер','HERO_ARCHETYPE',76,3],['HERO_BRAWLER','hero','файтер','HERO_ARCHETYPE',74,2],['HERO_FLEX','hero','флекс','HERO_ARCHETYPE',70,2]
-,
- ['STUN','ability','станчик','CONTROL',80,3],['SILENCE','ability','сало','CONTROL',86,3],['ROOT','ability','корни','CONTROL',76,3],['DISARM','ability','без атак','CONTROL',74,3],['TAUNT','ability','агрится','CONTROL',72,3],
- ['DISPEL','ability','снять бафф','MODIFIER',76,3],['HEAL','ability','хилка','SURVIVAL',88,3],['BARRIER','ability','сейв','SURVIVAL',74,3],['INVULNERABLE','ability','неуяз','SURVIVAL',86,3],['EVASION','ability','миссы','SURVIVAL',82,3],['ARMOR','ability','армор','DEFENSE',80,3],['ARMOR_REDUCTION','ability','минус армор','DEFENSE',88,3],['DAMAGE_REDUCTION','ability','резист','DEFENSE',74,3],
- ['MANA_BURN','ability','жжет ману','MANA',78,3],['MANA_STEAL','ability','манадрейн','MANA',88,3],['MANA_REGEN','ability','манареген','MANA',80,3],['MANA_RESTORE','ability','заливает ману','MANA',76,3],
- ['ATTACK_SPEED','ability','ас','SPEED',78,3],['MOVE_SPEED','ability','мс','SPEED',78,3],['CAST_RANGE','ability','кастренж','CASTING',78,3],['ATTACK_RANGE','ability','атакренж','ATTACK_MECHANIC',76,3],
- ['AREA','ability','аое','TARGETING',90,3],['SINGLE_TARGET','ability','синглтаргет','TARGETING',78,3],['GLOBAL','ability','глобал','TARGETING',86,3],['CHANNEL','ability','ченнел','CASTING',88,3],['COOLDOWN','ability','кд','CASTING',88,3],['CAST_TIME','ability','каст','CASTING',72,3],
- ['BLINK','ability','блинк','MOBILITY',92,3],['DASH','ability','рывок','MOBILITY',76,3],['TELEPORT','ability','тп','POSITIONING',88,3],['FORCED_MOVE','ability','форс','POSITIONING',72,3],
- ['SUMMON','ability','саммоны','SUMMONS',84,3],['ILLUSION','ability','иллюзии','SUMMONS',86,3],['INVISIBILITY','ability','инвиз','VISION_STEALTH',94,3],['TRUE_SIGHT','ability','трусайт','DETECTION_INTERACTION',90,3],
- ['WARD','ability','вардик','OBJECT_SUMMON',82,3],['TRAP','ability','трап','OBJECT_SUMMON',82,3],['MINE','ability','минка','OBJECT_SUMMON',78,3],
- ['CRIT','ability','криты','DAMAGE',90,3],['CLEAVE','ability','клив','ATTACK_MECHANIC',90,3],['BASH','ability','баш','ATTACK_MECHANIC',92,3],['PROC','ability','прок','ATTACK_MECHANIC',82,3],['PASSIVE','ability','пассивка','PASSIVE_PROPERTY',92,3],['AURA','ability','аура','MODIFIER',84,3],
- ['DAMAGE_OVER_TIME','ability','дот','DAMAGE',88,3],['BURST','ability','нюк','DAMAGE',80,3],['PHYSICAL_DAMAGE','ability','физика','DAMAGE',82,3],['MAGICAL_DAMAGE','ability','магия','DAMAGE',76,3],['PURE_DAMAGE','ability','пьюр','DAMAGE',84,3],['SPELL_AMP','ability','амп','DEFENSE',76,3],['REFLECT_SPELL','ability','рефлект','INTERACTION',88,3],['SPELL_STEAL','ability','стил','INTERACTION',92,3],
- ['HERO_CARRY','hero','поз1','HERO_POSITION',78,3],['HERO_SUPPORT','hero','сап','HERO_ROLE',80,3],['HERO_INITIATOR','hero','иниш','HERO_ROLE',76,3],['HERO_DURABLE','hero','танчит','HERO_ROLE',70,2],['HERO_RANGED','hero','ренжевик','HERO_ATTACK',76,3],['HERO_MELEE','hero','милишник','HERO_ATTACK',76,3]
-].map(([concept_id,scope,word,semantic_family,specificity,forced_level])=>({concept_id,scope,word,stem:'',semantic_family,specificity,forced_level,language:'ru',manual_decision:'SLANG',manual_merge_key:'',requires_review:0,dota_slang:true}));
-const RANKED_RU_HERO_ALIASES={
- 'Shadow Demon':['шадоу демон','шэдоу демон','шд'],
- 'Shadow Fiend':['сф','финд'], 'Sven':['свен'], 'Nature\'s Prophet':['фурион','фура'], 'Queen of Pain':['квоп'], 'Outworld Destroyer':['од'], 'Keeper of the Light':['котл'], 'Wraith King':['вк'], 'Faceless Void':['войд','фв'], 'Spirit Breaker':['бара'], 'Anti-Mage':['ам'], 'Phantom Assassin':['па'], 'Phantom Lancer':['пл'], 'Templar Assassin':['та'], 'Dragon Knight':['дк'], 'Chaos Knight':['цк'], 'Crystal Maiden':['цм','кристалка'], 'Drow Ranger':['дровка','тракса'], 'Windranger':['вр'], 'Necrophos':['некр'], 'Lifestealer':['гуля','найкс'], 'Doom':['дум'], 'Pudge':['пудж'], 'Invoker':['инвокер'], 'Tidehunter':['тайд'], 'Earthshaker':['шейкер'], 'Storm Spirit':['шторм'], 'Ember Spirit':['эмбер'], 'Death Prophet':['дп'], 'Legion Commander':['лк'], 'Monkey King':['мк'], 'Bounty Hunter':['бх'], 'Ancient Apparition':['аа'], 'Dark Seer':['дс'], 'Shadow Shaman':['раста','шаман'], 'Sand King':['ск'], 'Clockwerk':['клок'], 'Timbersaw':['тимбер'], 'Bristleback':['бристл'], 'Bloodseeker':['бс'], 'Gyrocopter':['гиро'], 'Morphling':['морф'], 'Terrorblade':['тб'], 'Viper':['вайпер'], 'Rubick':['рубик'], 'Io':['висп'], 'Magnus':['магнус'], 'Enigma':['энигма'], 'Techies':['течис'], 'Sniper':['снайпер'], 'Lion':['лион'], 'Sven':['свен'], 'Shadow Fiend':['сф','финд'], 'Axe':['акс'], 'Juggernaut':['джагер','джаг'], 'Puck':['пак'], 'Dazzle':['даззл'], 'Undying':['андед','андаинг'], 'Lich':['лич'], 'Disruptor':['дизраптор'], 'Tusk':['таск'], 'Phoenix':['феникс'], 'Mars':['марс'], 'Medusa':['медуза'], 'Weaver':['вивер'], 'Slark':['сларк'], 'Riki':['рики'], 'Ursa':['урса'], 'Razor':['разор'], 'Jakiro':['джакиро'], 'Venomancer':['веник','веном'], 'Pugna':['пугна'], 'Alchemist':['алхимик','алхим'], 'Kunkka':['кунка']
+'Abaddon':['P5'],
+'Alchemist':['P1'],
+'Anti-Mage':['P1'],
+'Axe':['P3'],
+'Bane':['P5'],
+'Batrider':['P3','P2'],
+'Beastmaster':['P3'],
+'Bloodseeker':['P1'],
+'Bounty Hunter':['P4'],
+'Bristleback':['P3'],
+'Centaur Warrunner':['P3'],
+'Chaos Knight':['P1'],
+'Chen':['P5'],
+'Clinkz':['P1'],
+'Clockwerk':['P5','P4'],
+'Crystal Maiden':['P5'],
+'Dark Seer':['P3'],
+'Dazzle':['P5'],
+'Death Prophet':['P3','P2'],
+'Disruptor':['P5'],
+'Doom':['P3'],
+'Dragon Knight':['P1','P2'],
+'Drow Ranger':['P1'],
+'Earth Spirit':['P2'],
+'Earthshaker':['P2','P3'],
+'Elder Titan':['P5'],
+'Ember Spirit':['P2'],
+'Enchantress':['P5'],
+'Enigma':['P3'],
+'Faceless Void':['P1'],
+'Grimstroke':['P5','P4'],
+'Gyrocopter':['P1'],
+'Hoodwink':['P5','P4'],
+'Huskar':['P2'],
+'Invoker':['P2'],
+'Io':['P5'],
+'Jakiro':['P5'],
+'Juggernaut':['P1'],
+'Keeper of the Light':['P4'],
+'Kunkka':['P3','P2'],
+'Legion Commander':['P3'],
+'Leshrac':['P2'],
+'Lich':['P5'],
+'Lifestealer':['P1'],
+'Lina':['P2','P1'],
+'Lion':['P5','P4'],
+'Luna':['P1'],
+'Magnus':['P3'],
+'Mars':['P3'],
+'Medusa':['P1'],
+'Meepo':['P2'],
+'Mirana':['P4'],
+'Monkey King':['P1'],
+'Muerta':['P1'],
+'Naga Siren':['P1'],
+'Nature\'s Prophet':['P1','P4'],
+'Necrophos':['P2','P3'],
+'Night Stalker':['P3'],
+'Nyx Assassin':['P4'],
+'Ogre Magi':['P5'],
+'Omniknight':['P5'],
+'Oracle':['P5'],
+'Outworld Destroyer':['P2'],
+'Pangolier':['P2','P3'],
+'Phantom Assassin':['P1'],
+'Phantom Lancer':['P1'],
+'Phoenix':['P5'],
+'Primal Beast':['P3','P2'],
+'Puck':['P2'],
+'Pudge':['P5'],
+'Pugna':['P5'],
+'Queen of Pain':['P2'],
+'Razor':['P3','P1'],
+'Riki':['P1'],
+'Rubick':['P4'],
+'Sand King':['P2','P3'],
+'Shadow Demon':['P4','P1'],
+'Shadow Fiend':['P1'],
+'Shadow Shaman':['P5'],
+'Silencer':['P5'],
+'Skywrath Mage':['P5'],
+'Slardar':['P1'],
+'Slark':['P1'],
+'Snapfire':['P2','P4'],
+'Sniper':['P2'],
+'Spectre':['P1'],
+'Spirit Breaker':['P4'],
+'Storm Spirit':['P2'],
+'Sven':['P1'],
+'Techies':['P5','P4'],
+'Templar Assassin':['P1'],
+'Terrorblade':['P1'],
+'Tidehunter':['P3'],
+'Timbersaw':['P3','P2'],
+'Tinker':['P2'],
+'Tiny':['P1'],
+'Treant Protector':['P5'],
+'Troll Warlord':['P1'],
+'Tusk':['P5'],
+'Underlord':['P3'],
+'Undying':['P5','P4'],
+'Ursa':['P1'],
+'Vengeful Spirit':['P4','P3'],
+'Venomancer':['P5'],
+'Viper':['P2','P3'],
+'Visage':['P3','P2'],
+'Void Spirit':['P2'],
+'Warlock':['P5'],
+'Weaver':['P1','P4'],
+'Windranger':['P1','P4'],
+'Winter Wyvern':['P5'],
+'Witch Doctor':['P5'],
+'Wraith King':['P1','P3'],
+'Zeus':['P2','P4']
 };
 const RANKED_RU_ABILITY_ALIASES={
  'Demonic Purge':['демоник пурдж','демоник пурж','пурдж','пурж'], 'Disruption':['дизрапшн','дисрапшн'], 'Disseminate':['диссеминейт','диссеминат'], 'Shadow Poison':['шадоу пойзон','шэдоу пойзон','пойзон'],
@@ -625,25 +719,25 @@ const CHAT_COOLDOWN_MS=700;
 const CHAT_WINDOW_MS=10000;
 const CHAT_WINDOW_MAX=6;
 const ACHIEVEMENTS=[
- {id:'streak3',icon:'🔥',title:'Разогрев',titleEn:'Warm-up',desc:'Сделать стрик 3 подряд',descEn:'Get 3 correct answers in a row'},
- {id:'streak5',icon:'⚡',title:'На волне',titleEn:'On a roll',desc:'Сделать стрик 5 подряд',descEn:'Get 5 correct answers in a row'},
- {id:'streak10',icon:'☄️',title:'Не остановить',titleEn:'Unstoppable',desc:'Сделать стрик 10 подряд',descEn:'Get 10 correct answers in a row'},
+ {id:'streak3',icon:'🔥',title:'Разминка',titleEn:'Warm-up',desc:'Дать 3 правильных ответа подряд',descEn:'Get 3 correct answers in a row'},
+ {id:'streak5',icon:'⚡',title:'Серия из пяти',titleEn:'On a roll',desc:'Дать 5 правильных ответов подряд',descEn:'Get 5 correct answers in a row'},
+ {id:'streak10',icon:'☄️',title:'Неудержимый',titleEn:'Unstoppable',desc:'Дать 10 правильных ответов подряд',descEn:'Get 10 correct answers in a row'},
  {id:'firstWin',icon:'🏆',title:'Первая победа',titleEn:'First win',desc:'Выиграть свой первый матч',descEn:'Win your first match'},
- {id:'comeback',icon:'🔄',title:'Камбэк',titleEn:'Comeback',desc:'Побывать последним и всё равно победить',descEn:'Be in last place and still win'},
+ {id:'comeback',icon:'🔄',title:'Возвращение в игру',titleEn:'Comeback',desc:'Вырваться с последнего места и победить',descEn:'Be in last place and still win'},
  {id:'cleanWin',icon:'✨',title:'Чистая игра',titleEn:'Clean game',desc:'Победить без единого пропуска',descEn:'Win without using a skip'},
  {id:'noPenaltyWin',icon:'🛡️',title:'Без штрафов',titleEn:'No penalties',desc:'Победить без штрафных очков',descEn:'Win without penalty points'},
- {id:'photoFinish',icon:'📸',title:'Фотофиниш',titleEn:'Photo finish',desc:'Победить, когда соперник отстал не больше чем на 1 очко',descEn:'Win by no more than 1 point'},
- {id:'games10',icon:'🎮',title:'Завсегдатай',titleEn:'Regular',desc:'Сыграть 10 матчей',descEn:'Play 10 matches'},
+ {id:'photoFinish',icon:'📸',title:'Фотофиниш',titleEn:'Photo finish',desc:'Победить с преимуществом не более чем в 1 очко',descEn:'Win by no more than 1 point'},
+ {id:'games10',icon:'🎮',title:'Постоянный игрок',titleEn:'Regular',desc:'Сыграть 10 матчей',descEn:'Play 10 matches'},
  {id:'wins10',icon:'👑',title:'Чемпион',titleEn:'Champion',desc:'Выиграть 10 матчей',descEn:'Win 10 matches'},
- {id:'games3',icon:'🎲',title:'Вкатился',titleEn:'Getting started',desc:'Сыграть 3 матча',descEn:'Play 3 matches'},
+ {id:'games3',icon:'🎲',title:'Первые шаги',titleEn:'Getting started',desc:'Сыграть 3 матча',descEn:'Play 3 matches'},
  {id:'games25',icon:'🧭',title:'Ветеран лобби',titleEn:'Lobby veteran',desc:'Сыграть 25 матчей',descEn:'Play 25 matches'},
- {id:'wins3',icon:'🥉',title:'Пошли победы',titleEn:'Winning ways',desc:'Выиграть 3 матча',descEn:'Win 3 matches'},
- {id:'wins5',icon:'🥈',title:'Стабильный',titleEn:'Consistent',desc:'Выиграть 5 матчей',descEn:'Win 5 matches'},
- {id:'score25',icon:'💫',title:'Набираю ход',titleEn:'Scoring up',desc:'Набрать 25 очков суммарно',descEn:'Score 25 total points'},
- {id:'score100',icon:'💯',title:'Сотня',titleEn:'Century',desc:'Набрать 100 очков суммарно',descEn:'Score 100 total points'},
- {id:'streak7',icon:'🌪️',title:'Семь подряд',titleEn:'Seven straight',desc:'Сделать стрик 7 подряд',descEn:'Get 7 correct answers in a row'},
+ {id:'wins3',icon:'🥉',title:'Серия побед',titleEn:'Winning ways',desc:'Выиграть 3 матча',descEn:'Win 3 matches'},
+ {id:'wins5',icon:'🥈',title:'Уверенная игра',titleEn:'Consistent',desc:'Выиграть 5 матчей',descEn:'Win 5 matches'},
+ {id:'score25',icon:'💫',title:'Набираю темп',titleEn:'Scoring up',desc:'Набрать суммарно 25 очков',descEn:'Score 25 total points'},
+ {id:'score100',icon:'💯',title:'Сотня',titleEn:'Century',desc:'Набрать суммарно 100 очков',descEn:'Score 100 total points'},
+ {id:'streak7',icon:'🌪️',title:'Семь подряд',titleEn:'Seven straight',desc:'Дать 7 правильных ответов подряд',descEn:'Get 7 correct answers in a row'},
  {id:'noSkips3',icon:'🎯',title:'Без обходных путей',titleEn:'No shortcuts',desc:'Победить без пропусков 3 раза',descEn:'Win without skips 3 times'},
- {id:'comeback2',icon:'🪽',title:'Возвращение',titleEn:'Return',desc:'Сделать 2 победных камбэка',descEn:'Win 2 comeback matches'},
+ {id:'comeback2',icon:'🪽',title:'Возвращение',titleEn:'Return',desc:'Дважды победить после отставания',descEn:'Win 2 comeback matches'},
  {id:'collector50',icon:'📚',title:'Коллекционер',titleEn:'Collector',desc:'Открыть 50 способностей в библиотеке',descEn:'Unlock 50 abilities in the library'}
 ];
 const SESSION_KEY='spell_hunt_session_v2';
@@ -713,7 +807,7 @@ function applyLanguage(root=document){
  nodes.forEach(n=>{if(n.parentElement&&n.parentElement.closest('[data-user-text="1"]'))return;n.nodeValue=translateUiText(n.nodeValue)});
  root.querySelectorAll&&root.querySelectorAll('[placeholder]').forEach(el=>{const p=el.getAttribute('placeholder');if(PLACEHOLDER_EN.has(p))el.setAttribute('placeholder',PLACEHOLDER_EN.get(p))});
 }
-function setLanguage(lang){const next=lang==='en'?'en':'ru';try{localStorage.setItem(LANGUAGE_KEY,next)}catch(e){}const u=new URL(location.href);u.searchParams.set('lang',next);location.href=u.toString()}
+function setLanguage(lang){const next=lang==='en'?'en':'ru';try{localStorage.setItem(LANGUAGE_KEY,next)}catch(e){}currentLang=next;location.reload()}
 function normalizeModerationText(v){return String(v||'').normalize('NFKC').toLowerCase().replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/[0@]/g,'o').replace(/[1!|]/g,'i').replace(/[3]/g,'e').replace(/[4]/g,'a').replace(/[5$]/g,'s').replace(/[7]/g,'t').replace(/[_*~`^]/g,'').replace(/\s+/g,' ').trim()}
 const BLOCK_WORDS=[/\b(?:fuck|shit|bitch|cunt|asshole|motherfucker|nigg\w*|fagg?ot)\b/i,/\b(?:porn|porno|xxx|hentai|nudes?|naked|onlyfans)\b/i,/(?:бля|хуй|хуе|пизд|еба|ёба|ебл|сук[аи]|порн|хентай)/i];
 const CONTROLLED_TERMS=/\b(?:cocaine|heroin|meth|fentanyl|marijuana|weed|mdma|ecstasy|amphetamine|pistol|rifle|ammo|ammunition|grenade|firearm)\b|(?:кокаин|героин|метамф|фентан|марихуан|наркот|пистолет|винтовк|боеприпас|гранат|огнестрел)/i;
@@ -855,7 +949,7 @@ function handleCountdownSound(seconds){
 function toast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2200)}
 function notice(t){$('notice').textContent=t;$('notice').classList.remove('hidden')}
 function clearNotice(){$('notice').classList.add('hidden');$('notice').textContent=''}
-function setConn(t,kind=''){$('conn').textContent=currentLang==='en'?translateUiText(t):t;$('conn').className='status '+kind}
+function setConn(t,kind=''){const el=$('conn');if(!el)return;const text=currentLang==='en'?translateUiText(t):t;el.textContent=text;el.className='status '+kind;el.classList.toggle('hidden',!String(text||'').trim())}
 function fmt(v){v=Math.max(0,Math.ceil(v));return String(Math.floor(v/60)).padStart(2,'0')+':'+String(v%60).padStart(2,'0')}
 function difficultyConfig(s=state){return DIFFICULTIES[(s&&s.difficulty)||'classic']||DIFFICULTIES.classic}
 function gameLanguage(s=state){return s&&s.gameLang==='en'?'en':'ru'}
@@ -2225,8 +2319,29 @@ if($('rankedGlossaryClose'))$('rankedGlossaryClose').onclick=closeRankedGlossary
 if($('rankedGlossaryModal'))$('rankedGlossaryModal').onclick=e=>{if(e.target===$('rankedGlossaryModal'))closeRankedGlossary()};
 $('rankedAnswerSubmit').onclick=rankedSubmitAnswer;
 $('rankedAnswerInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();rankedSubmitAnswer()}});
-$('libraryToggle').onclick=()=>{$('libraryPanel').classList.remove('hidden');renderLibrary();$('libraryPanel').scrollIntoView({behavior:'smooth',block:'start'})};
-$('libraryClose').onclick=()=>{$('libraryPanel').classList.add('hidden')};
+
+function openProfilePage(){
+ if($('home'))$('home').classList.add('hidden');
+ if($('profilePanel')){$('profilePanel').classList.remove('hidden');renderProfile();window.scrollTo({top:0,behavior:'smooth'});}
+}
+function closeProfilePage(){
+ if($('profilePanel'))$('profilePanel').classList.add('hidden');
+ if($('home')){$('home').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+}
+if($('profileToggle'))$('profileToggle').onclick=openProfilePage;
+if($('profileClose'))$('profileClose').onclick=closeProfilePage;
+function openLibraryPage(){
+ if($('home'))$('home').classList.add('hidden');
+ if($('profilePanel'))$('profilePanel').classList.add('hidden');
+ if($('libraryPanel')){$('libraryPanel').classList.remove('hidden');renderLibrary();window.scrollTo({top:0,behavior:'smooth'});}
+}
+function closeLibraryPage(){
+ if($('libraryPanel'))$('libraryPanel').classList.add('hidden');
+ if($('home')){$('home').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+}
+if($('libraryHomeToggle'))$('libraryHomeToggle').onclick=openLibraryPage;
+if($('libraryToggle'))$('libraryToggle').onclick=openLibraryPage;
+if($('libraryClose'))$('libraryClose').onclick=closeLibraryPage;
 $('libraryHero').addEventListener('change',renderLibrary);
 $('libraryRole').addEventListener('change',renderLibrary);
 function syncCustomQuickTools(){const q=$('customQuickTools');if(!q)return;const show=!!(state&&state.mode==='custom'&&role==='host');q.classList.toggle('hidden',!show)}
@@ -2237,7 +2352,7 @@ document.addEventListener('pointerdown',()=>{if(soundEnabled)ensureAudio()},{pas
 const params=new URLSearchParams(location.search);
 const q=params.get('room');if(q)$('joinCode').value=q.toUpperCase().slice(0,5);
 if(params.get('kicked')==='1')notice(ui('Хост удалил тебя из комнаты.','The host removed you from the room.'));if(params.get('rejected')){const rr=params.get('rejected');notice(rr==='full'?ui('Комната заполнена. В Ranked Test участвуют только 2 игрока.','The room is full. Ranked Test supports exactly 2 players.'):rr==='ranked_spectator_disabled'?ui('В Ranked Test зрители отключены.','Spectators are disabled in Ranked Test.'):ui('Не удалось войти: ник не прошёл модерацию.','Could not join: the nickname was blocked by moderation.'))}
-$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();loadRegistry();setConn(ui('Готово','Ready'));setChatMode('public');applyLanguage(document);applyAccessibility();
+$('languageSelect').value=currentLang;loadAccessibility();loadPresets();initAvatarPicker();loadProfile();initPicker();initPenaltySettings();updateDifficultyPreview();updateModePreview();loadRegistry();setConn('');setChatMode('public');applyLanguage(document);applyAccessibility();
 if(!restoreSession()&&q)$('joinCode').value=q.toUpperCase().slice(0,5);
 })();
 </script>

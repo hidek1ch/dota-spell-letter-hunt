@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Онлайн-занятия по английскому для школьников 1–11 классов. Школьная программа, повышение успеваемости, подготовка к ОГЭ и ЕГЭ." />
+  <title>Английский для школьников — 1–11 класс, ОГЭ и ЕГЭ</title>
+  <style>
+    :root{
+      --bg:#f7f8fc;
+      --surface:#ffffff;
+      --surface-2:#eef2ff;
+      --text:#182033;
+      --muted:#667085;
+      --line:#e6e8ef;
+      --accent:#5b5ce2;
+      --accent-2:#8b5cf6;
+      --accent-soft:#ececff;
+      --green:#16a34a;
+      --shadow:0 18px 45px rgba(34, 43, 69, .10);
+      --radius:26px;
+      --radius-sm:18px;
+      --container:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139,92,246,.10), transparent 34%),
+        radial-gradient(circle at 90% 8%, rgba(91,92,226,.10), transparent 28%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(calc(100% - 32px),var(--container));margin:auto}
+    .section{padding:92px 0}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:var(--accent-soft);color:var(--accent);
+      font-weight:800;font-size:13px;letter-spacing:.02em;
+    }
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-.045em;margin-bottom:24px}
+    h2{font-size:clamp(32px,4.5vw,54px);line-height:1.02;letter-spacing:-.035em;margin-bottom:18px}
+    h3{font-size:22px;line-height:1.2;margin-bottom:10px}
+    .lead{font-size:clamp(18px,2.2vw,22px);color:var(--muted);max-width:720px}
+    .small{font-size:14px;color:var(--muted)}
+    .muted{color:var(--muted)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:0 22px;border-radius:16px;border:1px solid transparent;
+      font-weight:800;cursor:pointer;transition:.2s ease;
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:white;box-shadow:0 12px 28px rgba(91,92,226,.28)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(91,92,226,.35)}
+    .btn-secondary{background:white;border-color:var(--line)}
+    .btn-secondary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:rgba(247,248,252,.78);
+      border-bottom:1px solid rgba(230,232,239,.75);
+    }
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .logo{
+      width:40px;height:40px;border-radius:13px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff;display:grid;place-items:center;font-size:18px;box-shadow:0 8px 20px rgba(91,92,226,.25)
+    }
+    .nav-links{display:flex;gap:24px;align-items:center;color:#4b5565;font-weight:700;font-size:14px}
+    .nav-links a:hover{color:var(--accent)}
+    .hero{padding:76px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 24px}
+    .hero-points{display:flex;gap:18px;flex-wrap:wrap;color:#4b5565;font-size:14px;font-weight:700}
+    .hero-points span{display:flex;align-items:center;gap:7px}
+    .check{
+      width:21px;height:21px;border-radius:999px;background:#e7f8ec;color:var(--green);
+      display:grid;place-items:center;font-weight:900;font-size:13px
+    }
+    .hero-card{
+      position:relative;
+      min-height:520px;
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:34px;
+      background:
+        linear-gradient(160deg,rgba(255,255,255,.98),rgba(239,242,255,.98));
+      box-shadow:var(--shadow);
+      padding:26px;overflow:hidden;
+    }
+    .hero-card:before,.hero-card:after{
+      content:"";position:absolute;border-radius:999px;filter:blur(2px)
+    }
+    .hero-card:before{width:210px;height:210px;background:rgba(91,92,226,.15);right:-70px;top:-65px}
+    .hero-card:after{width:170px;height:170px;background:rgba(139,92,246,.12);left:-60px;bottom:-50px}
+    .teacher{
+      position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:space-between
+    }
+    .teacher-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .teacher-badge{background:#fff;border:1px solid var(--line);border-radius:16px;padding:11px 14px;font-weight:800;font-size:14px}
+    .avatar{
+      width:160px;height:160px;border-radius:34px;margin:28px auto 20px;
+      background:
+        radial-gradient(circle at 50% 34%, #ffe8d6 0 22%, transparent 23%),
+        radial-gradient(circle at 50% 44%, #3b2f2f 0 26%, transparent 27%),
+        linear-gradient(180deg,#dfe4ff 0 45%,#5b5ce2 45% 100%);
+      border:8px solid white;box-shadow:0 18px 45px rgba(44,52,88,.18);
+      position:relative;
+    }
+    .avatar:after{
+      content:"Фото преподавателя";
+      position:absolute;left:50%;bottom:-38px;transform:translateX(-50%);
+      white-space:nowrap;font-size:12px;color:var(--muted);font-weight:700
+    }
+    .teacher-copy{text-align:center;margin-top:52px}
+    .teacher-copy p{color:var(--muted);max-width:420px;margin:0 auto}
+    .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px}
+    .mini-stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center}
+    .mini-stat b{display:block;font-size:20px}
+    .mini-stat span{font-size:12px;color:var(--muted);font-weight:700}
+    .trust{padding:22px 0 0}
+    .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .trust-item{padding:22px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:20px}
+    .trust-item b{display:block;font-size:22px;margin-bottom:5px}
+    .trust-item span{color:var(--muted);font-size:14px}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:36px}
+    .section-head .lead{max-width:560px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{
+      background:var(--surface);border:1px solid var(--line);
+      border-radius:var(--radius);padding:28px;box-shadow:0 8px 24px rgba(33,43,74,.05)
+    }
+    .card:hover{transform:translateY(-4px);transition:.2s ease;box-shadow:var(--shadow)}
+    .icon{
+      width:50px;height:50px;border-radius:16px;background:var(--accent-soft);color:var(--accent);
+      display:grid;place-items:center;font-size:23px;margin-bottom:22px;font-weight:900
+    }
+    .card p{color:var(--muted);margin-bottom:0}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{position:relative;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px}
+    .step-num{
+      width:34px;height:34px;border-radius:12px;background:var(--text);color:#fff;display:grid;place-items:center;
+      font-weight:900;margin-bottom:20px
+    }
+    .exam-wrap{
+      background:linear-gradient(135deg,#1f2442,#343767 60%,#5b5ce2);
+      color:#fff;border-radius:34px;padding:42px;box-shadow:var(--shadow)
+    }
+    .exam-wrap .muted{color:#d9dcf5}
+    .exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+    .exam-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:26px}
+    .exam-card ul{padding-left:18px;margin-bottom:0;color:#e9ebff}
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:28px}
+    .about-photo{
+      min-height:430px;border-radius:32px;border:1px solid var(--line);
+      background:
+        linear-gradient(135deg,rgba(91,92,226,.10),rgba(139,92,246,.10)),
+        repeating-linear-gradient(45deg,#fff,#fff 14px,#f7f8fc 14px,#f7f8fc 28px);
+      display:grid;place-items:center;padding:30px;text-align:center;color:var(--muted);font-weight:800
+    }
+    .about-panel{background:#fff;border:1px solid var(--line);border-radius:32px;padding:36px}
+    .ticks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+    .tick{display:flex;gap:11px;align-items:flex-start}
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;position:relative}
+    .price-card.featured{border:2px solid var(--accent);box-shadow:var(--shadow)}
+    .tag{position:absolute;top:16px;right:16px;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:900;padding:7px 10px;border-radius:999px}
+    .price{font-size:38px;letter-spacing:-.03em;font-weight:900;margin:14px 0 4px}
+    .price-card ul{padding-left:18px;color:var(--muted)}
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .review{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px}
+    .stars{letter-spacing:3px;margin-bottom:14px}
+    .review-author{margin-top:18px;font-weight:900}
+    .faq{display:grid;gap:12px}
+    details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+    summary{cursor:pointer;font-weight:900}
+    details p{margin:12px 0 0;color:var(--muted)}
+    .cta{
+      background:linear-gradient(135deg,#fff,#f0f2ff);
+      border:1px solid var(--line);border-radius:34px;padding:42px;
+      display:grid;grid-template-columns:1fr .9fr;gap:32px;box-shadow:var(--shadow)
+    }
+    .form{background:#fff;border:1px solid var(--line);border-radius:26px;padding:24px}
+    .field{display:grid;gap:7px;margin-bottom:14px}
+    .field label{font-size:13px;font-weight:800}
+    .field input,.field select,.field textarea{
+      width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 14px;background:#fbfcff;color:var(--text);outline:none
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(91,92,226,.10)}
+    .success{
+      display:none;margin-top:14px;padding:12px 14px;border-radius:14px;background:#eaf8ee;color:#15713a;font-weight:800;font-size:14px
+    }
+    footer{padding:36px 0 50px;color:var(--muted);font-size:14px}
+    .footer-grid{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .note{
+      margin-top:18px;padding:14px 16px;background:#fff7e8;border:1px solid #f6dfb6;border-radius:14px;color:#7a5a16;font-size:13px
+    }
+    @media (max-width: 980px){
+      .hero-grid,.about-grid,.cta{grid-template-columns:1fr}
+      .cards,.process{grid-template-columns:repeat(2,1fr)}
+      .pricing,.reviews{grid-template-columns:1fr}
+      .trust-grid{grid-template-columns:repeat(2,1fr)}
+      .nav-links{display:none}
+      .hero-card{min-height:auto}
+      .section-head{align-items:flex-start;flex-direction:column}
+    }
+    @media (max-width: 620px){
+      .section{padding:68px 0}
+      .hero{padding-top:48px}
+      .cards,.process,.trust-grid,.exam-grid,.ticks{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
+      .btn{width:100%}
+      .exam-wrap,.cta,.about-panel{padding:26px}
+      .mini-stats{grid-template-columns:1fr}
+      .footer-grid{flex-direction:column;align-items:flex-start}
+      .nav .btn{width:auto;min-height:44px;padding:0 16px}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <span class="logo">A+</span>
+        <span>English с Александрой</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#programs">Занятия</a>
+        <a href="#exams">ОГЭ и ЕГЭ</a>
+        <a href="#about">О преподавателе</a>
+        <a href="#prices">Стоимость</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Записаться</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Онлайн • 1–11 класс • ОГЭ и ЕГЭ</span>
+          <h1>Английский, который становится понятным</h1>
+          <p class="lead">
+            Индивидуальные онлайн-занятия для школьников: помогаю закрыть пробелы,
+            улучшить оценки, увереннее говорить и системно подготовиться к ОГЭ и ЕГЭ.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Записаться на пробное занятие →</a>
+            <a class="btn btn-secondary" href="#programs">Посмотреть программу</a>
+          </div>
+          <div class="hero-points">
+            <span><i class="check">✓</i> Индивидуальный план</span>
+            <span><i class="check">✓</i> Понятные объяснения</span>
+            <span><i class="check">✓</i> Регулярная обратная связь родителям</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="teacher">
+            <div class="teacher-top">
+              <div class="teacher-badge">👋 Давайте знакомиться</div>
+              <div class="teacher-badge">Онлайн по РФ</div>
+            </div>
+            <div>
+              <div class="avatar" aria-label="Место для фотографии преподавателя"></div>
+              <div class="teacher-copy">
+                <h3>Александра Костина</h3>
+                <p>Репетитор по английскому языку для школьников 1–11 класса.</p>
+              </div>
+            </div>
+            <div class="mini-stats">
+              <div class="mini-stat"><b>1–11</b><span>классы</span></div>
+              <div class="mini-stat"><b>ОГЭ</b><span>подготовка</span></div>
+              <div class="mini-stat"><b>ЕГЭ</b><span>подготовка</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container trust">
+        <div class="trust-grid">
+          <div class="trust-item"><b>60 мин</b><span>индивидуальное занятие</span></div>
+          <div class="trust-item"><b>Онлайн</b><span>из любого города России</span></div>
+          <div class="trust-item"><b>1 на 1</b><span>всё внимание ученику</span></div>
+          <div class="trust-item"><b>План</b><span>под конкретную цель ребёнка</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="programs">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">С чем я помогаю</span>
+            <h2>Не просто «делаем домашку», а закрываем конкретную задачу</h2>
+          </div>
+          <p class="lead">Программа строится под уровень ученика, школьные требования и цель семьи.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">📘</div>
+            <h3>Школьная программа</h3>
+            <p>Разбираем темы, которые остались непонятны, готовимся к контрольным и закрепляем материал без спешки.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📈</div>
+            <h3>Повышение успеваемости</h3>
+            <p>Находим слабые места и постепенно выстраиваем базу, чтобы ребёнок увереннее чувствовал себя на уроках.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>Подготовка к ОГЭ</h3>
+            <p>Разбираем формат экзамена, отрабатываем задания по темам и учимся распределять время на работе.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>Подготовка к ЕГЭ</h3>
+            <p>Системная работа по всем частям экзамена: лексика, грамматика, письмо, аудирование и устная часть.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Как проходит обучение</span>
+            <h2>Понятный путь от текущего уровня к цели</h2>
+          </div>
+        </div>
+        <div class="process">
+          <div class="step"><div class="step-num">1</div><h3>Диагностика</h3><p class="muted">Определяем уровень, пробелы и главную цель обучения.</p></div>
+          <div class="step"><div class="step-num">2</div><h3>План</h3><p class="muted">Составляю индивидуальный маршрут и приоритетные темы.</p></div>
+          <div class="step"><div class="step-num">3</div><h3>Практика</h3><p class="muted">На каждом занятии объяснение, закрепление и самостоятельная практика.</p></div>
+          <div class="step"><div class="step-num">4</div><h3>Прогресс</h3><p class="muted">Отслеживаем результат и корректируем программу по ходу обучения.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="exams">
+      <div class="container">
+        <div class="exam-wrap">
+          <span class="eyebrow" style="background:rgba(255,255,255,.14);color:white">Экзамены</span>
+          <h2 style="max-width:760px;margin-top:16px">Подготовка к ОГЭ и ЕГЭ без хаотичного решения вариантов</h2>
+          <p class="lead muted">Сначала закрываем слабые темы, затем отрабатываем экзаменационные задания и стратегию выполнения.</p>
+          <div class="exam-grid">
+            <div class="exam-card">
+              <h3>ОГЭ по английскому</h3>
+              <ul>
+                <li>аудирование и чтение;</li>
+                <li>лексика и грамматика;</li>
+                <li>письменная часть;</li>
+                <li>устная часть;</li>
+                <li>тренировочные варианты и разбор ошибок.</li>
+              </ul>
+            </div>
+            <div class="exam-card">
+              <h3>ЕГЭ по английскому</h3>
+              <ul>
+                <li>систематизация грамматики;</li>
+                <li>работа со словарным запасом;</li>
+                <li>письменные задания;</li>
+                <li>устная часть;</li>
+                <li>практика по формату экзамена.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="small" style="color:#d9dcf5;margin-top:18px">
+            Важно: сайт не обещает конкретный балл — результат зависит от стартового уровня, регулярности занятий и самостоятельной работы ученика.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-photo">
+          <div>
+            <div style="font-size:58px;margin-bottom:14px">📷</div>
+            Здесь можно разместить живую фотографию преподавателя — лучше светлый портрет без студийной «официальности».
+          </div>
+        </div>
+        <div class="about-panel">
+          <span class="eyebrow">О преподавателе</span>
+          <h2 style="margin-top:16px">Объясняю спокойно и простыми словами</h2>
+          <p class="lead">
+            Меня зовут Александра. Я помогаю школьникам перестать бояться английского и увидеть в нём понятную систему.
+            На занятиях важно не просто получить правильный ответ, а понять, почему он правильный.
+          </p>
+          <div class="ticks">
+            <div class="tick"><span class="check">✓</span><div><b>Индивидуальный темп</b><div class="small">Не идём дальше, пока база не стала понятной.</div></div></div>
+            <div class="tick"><span class="check">✓</span><div><b>Без перегруза</b><div class="small">Домашняя работа только по действительно нужным темам.</div></div></div>
+            <div class="tick"><span class="check">✓</span><div><b>Связь с родителями</b><div class="small">Коротко сообщаю о прогрессе и сложностях.</div></div></div>
+            <div class="tick"><span class="check">✓</span><div><b>Практика речи</b><div class="small">Даже школьный английский должен использоваться в речи.</div></div></div>
+          </div>
+          <div class="note">
+            Замените этот текст на реальные данные: образование, сертификаты, стаж, результаты учеников и подтверждаемые достижения.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prices">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Стоимость</span>
+            <h2>Простой формат без сложных тарифов</h2>
+          </div>
+          <p class="lead">Цены ниже стоят как демонстрационные — перед публикацией их нужно заменить на реальные.</p>
+        </div>
+
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Пробное занятие</h3>
+            <div class="price">500 ₽</div>
+            <p class="small">30–40 минут</p>
+            <ul>
+              <li>знакомство;</li>
+              <li>определение уровня;</li>
+              <li>поиск основных пробелов;</li>
+              <li>рекомендация по плану обучения.</li>
+            </ul>
+            <a class="btn btn-secondary" style="width:100%" href="#contact">Записаться</a>
+          </div>
+
+          <div class="price-card featured">
+            <span class="tag">Популярно</span>
+            <h3>Индивидуально</h3>
+            <div class="price">1 200 ₽</div>
+            <p class="small">60 минут</p>
+            <ul>
+              <li>1 на 1 с преподавателем;</li>
+              <li>персональная программа;</li>
+              <li>материалы к занятию;</li>
+              <li>домашняя практика;</li>
+              <li>обратная связь по прогрессу.</li>
+            </ul>
+            <a class="btn btn-primary" style="width:100%" href="#contact">Записаться</a>
+          </div>
+
+          <div class="price-card">
+            <h3>Подготовка к ОГЭ / ЕГЭ</h3>
+            <div class="price">1 400 ₽</div>
+            <p class="small">60 минут</p>
+            <ul>
+              <li>диагностика текущего уровня;</li>
+              <li>план подготовки;</li>
+              <li>работа по структуре экзамена;</li>
+              <li>разбор ошибок;</li>
+              <li>регулярные контрольные точки.</li>
+            </ul>
+            <a class="btn btn-secondary" style="width:100%" href="#contact">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Отзывы</span>
+            <h2>Что говорят родители и ученики</h2>
+          </div>
+        </div>
+        <div class="reviews">
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Сын перестал бояться отвечать на уроках. Самое ценное — наконец понял базовые времена, которые раньше просто заучивал.»</p>
+            <div class="review-author">Марина, мама ученика 7 класса</div>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Подготовка была очень системной: разбирали конкретные ошибки и постепенно закрывали темы. Ребёнку стало гораздо спокойнее перед экзаменом.»</p>
+            <div class="review-author">Ольга, мама ученицы 9 класса</div>
+          </article>
+          <article class="review">
+            <div class="stars">★★★★★</div>
+            <p>«Нравится, что после занятий понятно, над чем ещё нужно работать. Дочь стала увереннее писать контрольные и лучше понимать школьные задания.»</p>
+            <div class="review-author">Алексей, папа ученицы 6 класса</div>
+          </article>
+        </div>
+        <div class="note">Эти отзывы — примеры для макета. Перед публикацией замените их на реальные отзывы клиентов.</div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>Частые вопросы родителей</h2>
+          </div>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>С какого класса можно заниматься?</summary>
+            <p>Занятия рассчитаны на школьников с 1 по 11 класс. Программа и формат подбираются по возрасту и текущему уровню.</p>
+          </details>
+          <details>
+            <summary>Занятия проходят только онлайн?</summary>
+            <p>Да. Благодаря онлайн-формату заниматься можно из любого города России, где есть стабильный интернет.</p>
+          </details>
+          <details>
+            <summary>Есть ли домашние задания?</summary>
+            <p>Да, но объём зависит от цели и загруженности ученика. Домашняя работа нужна для закрепления, а не ради количества.</p>
+          </details>
+          <details>
+            <summary>Можно ли начать подготовку к ОГЭ или ЕГЭ с пробелами в базе?</summary>
+            <p>Да. Сначала проводится диагностика, после чего в план включаются и базовые темы, и экзаменационный формат.</p>
+          </details>
+          <details>
+            <summary>Как родители узнают о прогрессе?</summary>
+            <p>Можно договориться о короткой обратной связи раз в несколько занятий: что получается, что пока сложно и на чём будет следующий фокус.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <span class="eyebrow">Пробное занятие</span>
+            <h2 style="margin-top:16px">Расскажите, что сейчас сложно с английским</h2>
+            <p class="lead">
+              На пробном занятии определим текущий уровень, основные пробелы и поймём, какой формат обучения подойдёт лучше.
+            </p>
+            <p class="muted">После отправки формы можно связаться с родителем удобным способом и согласовать время.</p>
+          </div>
+
+          <form class="form" id="leadForm">
+            <div class="field">
+              <label for="parentName">Имя родителя</label>
+              <input id="parentName" name="parentName" placeholder="Например, Елена" required />
+            </div>
+            <div class="field">
+              <label for="grade">Класс ученика</label>
+              <select id="grade" name="grade" required>
+                <option value="">Выберите класс</option>
+                <option>1–4 класс</option>
+                <option>5–8 класс</option>
+                <option>9 класс / ОГЭ</option>
+                <option>10 класс</option>
+                <option>11 класс / ЕГЭ</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contactWay">Телефон или Telegram</label>
+              <input id="contactWay" name="contactWay" placeholder="+7 ... или @username" required />
+            </div>
+            <div class="field">
+              <label for="goal">Главная цель</label>
+              <textarea id="goal" name="goal" rows="3" placeholder="Например: подтянуть оценки и закрыть пробелы"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%" type="submit">Отправить заявку</button>
+            <div class="success" id="successBox">Готово! Это демонстрационная форма: заявка показана как отправленная, но пока не подключена к Telegram/CRM.</div>
+            <p class="small" style="margin:12px 0 0">Нажимая кнопку, пользователь должен согласиться с политикой обработки персональных данных. Перед реальным запуском добавьте политику и чекбокс согласия.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <b style="color:var(--text)">English с Александрой</b><br />
+        Репетитор по английскому для школьников 1–11 класса
+      </div>
+      <div>© <span id="year"></span> • Демонстрационный сайт</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('leadForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const box = document.getElementById('successBox');
+      box.style.display = 'block';
+      box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  </script>
+</body>
+</html>

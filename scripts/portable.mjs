@@ -8,8 +8,13 @@ let html = await readFile(path.join(dist, 'index.html'), 'utf8');
 const scriptTag = html.match(/<script\b[^>]*\bsrc="([^"]+)"[^>]*><\/script>/);
 const styleTag = html.match(/<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"[^>]*>/);
 if (!scriptTag || !styleTag) throw new Error('Expected one bundled script and stylesheet in dist/index.html.');
+// Vite emits public URLs under its base; map them back to local dist assets.
+const assetsOffset = scriptTag[1].lastIndexOf('assets/');
+if (assetsOffset < 0) throw new Error('Expected Vite assets/ directory.');
+const publicBase = scriptTag[1].slice(0, assetsOffset);
 function asset(relative) {
-  const resolved = path.resolve(dist, relative);
+  if (!relative.startsWith(publicBase)) throw new Error('Asset did not match the Vite public base.');
+  const resolved = path.resolve(dist, relative.slice(publicBase.length));
   if (!resolved.startsWith(dist + path.sep)) throw new Error('Asset escaped dist directory.');
   return resolved;
 }

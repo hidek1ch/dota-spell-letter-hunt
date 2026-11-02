@@ -16,6 +16,11 @@ export class WorldView {
   private cracks!: Phaser.GameObjects.Graphics;
   private torchLight!: Phaser.GameObjects.Graphics;
   private seal?: Phaser.GameObjects.Image;
+  private gateBars?: Phaser.GameObjects.Graphics;
+  private gateLight?: Phaser.GameObjects.Graphics;
+  private gateRune?: Phaser.GameObjects.Image;
+  private gatePrompt?: Phaser.GameObjects.Text;
+  private trainingGateOpen = false;
   private objects: Phaser.GameObjects.GameObject[] = [];
   private views = new Map<string, ActorView>();
   private map?: Phaser.Tilemaps.Tilemap;
@@ -105,6 +110,7 @@ export class WorldView {
     }
     this.image(480, 65, 'arch', 1500).setOrigin(0.5, 0.5);
     const gate = this.graphics(6);
+    this.gateBars = gate;
     gate.fillStyle(0x080f16, 0.87);
     gate.fillRect(434, 16, 92, 48);
     for (let x = 438; x <= 522; x += 12) {
@@ -138,7 +144,13 @@ export class WorldView {
       details.fillStyle(0x56605a, 0.24); details.fillRect(398, y + 2, 166, 1);
     }
     if (stage === 'training') {
-      this.image(480, 94, 'sigil', 8).setScale(0.19).setAlpha(0.9);
+      this.gateRune = this.image(480, 94, 'sigil', 8).setScale(0.19).setAlpha(0.3);
+      this.gateLight = this.graphics(1801);
+      this.gatePrompt = this.scene.add.text(480, 200, 'К АРКЕ ↑', {
+        fontFamily: 'Georgia, serif', fontSize: '13px', color: '#e4d29b',
+        stroke: '#131c22', strokeThickness: 4,
+      }).setOrigin(0.5).setDepth(4100).setVisible(false);
+      this.own(this.gatePrompt);
     }
     this.cracks = this.graphics(9);
     this.torchLight = this.graphics(1798);
@@ -149,10 +161,12 @@ export class WorldView {
     this.atmosphere = this.graphics(5800);
     this.createVignette(stage);
     if (stage === 'dawn') this.drawDawn();
+    this.setTrainingGate(false);
   }
 
   render(world: CombatWorld, dt: number): void {
     this.setSealDamage(1 - world.sealIntegrity);
+    if (this.stage === 'training') this.setTrainingGate(world.trainingComplete);
     this.renderActors(world.actors, dt);
     this.ground.clear();
     this.effectGraphics.clear();
@@ -214,7 +228,60 @@ export class WorldView {
     }
     this.drawAtmosphere(dt);
     this.flickerLights();
+    this.drawTrainingGate();
     this.drawPulses();
+  }
+
+  /** The opened arch marks the same x430..530 / y<=155 doorway used by gameplay. */
+  setTrainingGate(open: boolean): void {
+    if (this.stage !== 'training') return;
+    const justOpened = open && !this.trainingGateOpen;
+    this.trainingGateOpen = open;
+    this.gateBars?.setVisible(!open);
+    this.gateRune?.setAlpha(open ? 1 : 0.3);
+    this.gatePrompt?.setVisible(open);
+    if (justOpened) {
+      this.particles(480, 122, 0xe5c579, 28);
+      this.ringPulse(480, 127, 0xe5c579, 54);
+    }
+    this.drawTrainingGate();
+  }
+
+  private drawTrainingGate(): void {
+    const g = this.gateLight;
+    if (!g) return;
+    g.clear();
+    if (!this.trainingGateOpen) return;
+    const pulse = 0.65 + Math.sin(this.clock * 2.8) * 0.2;
+    // Warm light spills through the actual doorway; no extra floor obstacles.
+    g.fillStyle(0xd3b66b, 0.05 * pulse);
+    g.fillTriangle(450, 93, 418, 155, 480, 155);
+    g.fillTriangle(510, 93, 480, 155, 542, 155);
+    g.fillStyle(0xe6cb84, 0.08 * pulse);
+    g.fillRect(434, 104, 92, 50);
+    // Inlaid threshold corners make the entry zone visible at the walkable Y.
+    g.lineStyle(2, 0xe6cb84, pulse);
+    g.lineBetween(431, 139, 431, 155); g.lineBetween(431, 155, 451, 155);
+    g.lineBetween(529, 139, 529, 155); g.lineBetween(529, 155, 509, 155);
+    g.lineStyle(1, 0xb39d69, pulse * 0.6);
+    g.lineBetween(445, 128, 445, 145); g.lineBetween(515, 128, 515, 145);
+    // A restrained animated trail leads north rather than to the wall itself.
+    for (let i = 0; i < 5; i++) {
+      const y = 151 + i * 18;
+      const alpha = (0.28 + Math.sin(this.clock * 3.5 + i * 0.8) * 0.17) * (1 - i * 0.12);
+      g.fillStyle(0xe4d092, alpha);
+      g.fillRect(478, y, 4, 2);
+      if (i === 0) {
+        g.fillRect(475, y + 3, 3, 2); g.fillRect(482, y + 3, 3, 2);
+      }
+    }
+    for (let i = 0; i < 7; i++) {
+      const phase = (this.clock * 0.18 + i / 7) % 1;
+      g.fillStyle(0xe8d39b, Math.sin(phase * Math.PI) * 0.65);
+      g.fillRect(Math.round(447 + (i * 17 % 62)), Math.round(151 - phase * 50), 2, 2);
+    }
+    this.gateRune?.setAlpha(0.7 + pulse * 0.3);
+    this.gatePrompt?.setAlpha(0.8 + pulse * 0.2);
   }
 
   particles(x: number, y: number, color: number, count = 12): void {
@@ -258,6 +325,11 @@ export class WorldView {
     this.map?.destroy();
     this.map = undefined;
     this.seal = undefined;
+    this.gateBars = undefined;
+    this.gateLight = undefined;
+    this.gateRune = undefined;
+    this.gatePrompt = undefined;
+    this.trainingGateOpen = false;
     this.sparks = [];
     this.pulses = [];
     this.candles = [];

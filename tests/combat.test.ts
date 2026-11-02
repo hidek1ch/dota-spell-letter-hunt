@@ -64,17 +64,59 @@ test('combo chain expires without continued input', () => {
   assert.deepEqual(world.telemetry.comboSteps, [2, 0, 0]);
 });
 
-test('a single power-key edge during a held sword combo casts at the recovery boundary', () => {
+test('one press creates exactly one strike even when the outer frame has many physics substeps', () => {
+  for (const delta of [0.05, 0.25]) {
+    const world = new CombatWorld('training');
+    world.enemies.forEach(e => { e.hp = 0; });
+    world.update(delta, input({ attack: true }));
+    run(world, 2);
+    assert.deepEqual(world.telemetry.comboSteps, [1, 0, 0], `single ${delta}s input must not autofire`);
+    assert.equal(world.events.filter(e => e.type === 'attack').length, 1);
+    assert.equal(world.telemetry.swordInputs, 1);
+    assert.equal(world.telemetry.acceptedSwordInputs, 1);
+  }
+});
+
+test('three distinct timed presses advance the combo once each and never create a fourth strike', () => {
+  const world = new CombatWorld('training');
+  world.enemies.forEach(e => { e.hp = 0; });
+  for (let press = 0; press < 3; press++) {
+    world.update(0.05, input({ attack: true }));
+    run(world, 0.39);
+  }
+  run(world, 2);
+  assert.deepEqual(world.telemetry.comboSteps, [1, 1, 1]);
+  assert.deepEqual(world.events.filter(e => e.type === 'attack').map(e => e.detail), ['0', '1', '2']);
+  assert.equal(world.telemetry.swordInputs, 3);
+  assert.equal(world.telemetry.acceptedSwordInputs, 3);
+});
+
+test('an early distinct press queues at most one next strike and accepted inputs never become ghost attacks', () => {
+  const world = new CombatWorld('training');
+  world.enemies.forEach(e => { e.hp = 0; });
+  world.update(1 / 120, input({ attack: true }));
+  world.update(1 / 120, input({ attack: true })); // Valid second press, still in first windup.
+  world.update(0.25, input({ attack: true })); // The one-slot next-strike buffer is already full.
+  run(world, 2);
+  assert.deepEqual(world.telemetry.comboSteps, [1, 1, 0]);
+  assert.equal(world.telemetry.swordInputs, 3);
+  assert.equal(world.telemetry.acceptedSwordInputs, 2);
+  assert.equal(world.telemetry.comboSteps.reduce((sum, n) => sum + n, 0), world.telemetry.acceptedSwordInputs);
+});
+
+test('a single power-key edge during a separately queued sword combo casts at the recovery boundary', () => {
   for (const power of ['dragon', 'seal'] as const) {
     const world = bossWorld();
     world.boss!.attackCooldown = 99;
     world.update(1 / 120, input({ attack: true }));
-    run(world, 0.1, { attack: true });
+    run(world, 0.1);
     assert.equal(world.player.state, 'Attack');
     world.update(1 / 120, input({ attack: true, [power]: true }));
-    run(world, 0.5, { attack: true });
+    run(world, 0.5);
     assert.equal(world.telemetry[power === 'dragon' ? 'dragonCasts' : 'sealCasts'], 1, `${power} edge must survive the attack lock`);
-    assert.ok(world.telemetry.comboSteps[1] > 0, 'held sword resumes the next combo step');
+    assert.ok(world.telemetry.comboSteps[1] > 0, 'the distinct buffered sword press resumes the next combo step');
+    run(world, 1);
+    assert.deepEqual(world.telemetry.comboSteps, [1, 1, 0], 'a power cast must not manufacture another sword press');
   }
 });
 
@@ -249,7 +291,7 @@ test('normal boss is beatable through movement, combo, correctly timed dodge and
       x = -dy / d; y = dx / d;
       if (p.x + x * 125 < 95 || p.x + x * 125 > 865 || p.y + y * 125 < 120 || p.y + y * 125 > 540) { x = -x; y = -y; }
     }
-    world.update(1 / 120, input({ x, y, aimX: b.x, aimY: b.y, attack: !telegraph && d < 100,
+    world.update(1 / 120, input({ x, y, aimX: b.x, aimY: b.y, attack: !telegraph && d < 100 && frame % 24 === 0,
       dodge: telegraph && b.stateTime > b.attackWindup - 0.19, dragon: !telegraph, seal: !telegraph }));
   }
   assert.equal(world.outcome, 'victory', JSON.stringify(world.serialize()));

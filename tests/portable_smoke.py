@@ -38,7 +38,9 @@ with sync_playwright() as p:
     before = page.evaluate('window.__seal.snapshot().player.y')
     page.keyboard.down('KeyW'); page.evaluate('window.__seal.advance(.75)'); page.keyboard.up('KeyW')
     assert page.evaluate('window.__seal.snapshot().player.y') < before - 50
-    page.keyboard.down('KeyJ'); page.evaluate('window.__seal.advance(1.5)'); page.keyboard.up('KeyJ')
+
+    for _ in range(3):
+        page.keyboard.press('KeyJ'); page.evaluate('window.__seal.advance(.45)')
     assert page.evaluate('window.__seal.snapshot().telemetry.comboSteps.every(count => count > 0)')
     page.keyboard.press('KeyQ'); page.evaluate('window.__seal.advance(.8)')
     page.keyboard.press('Space'); page.evaluate('window.__seal.advance(.1)')

@@ -11,6 +11,7 @@ type Mode = 'menu' | 'training' | 'intro' | 'boss' | 'ending' | 'epilogue' | 're
 interface Preferences { difficulty: Difficulty; demo: boolean; muted: boolean; volume: number }
 const DIRECTION = (actor: Actor, x: number, y: number) => { actor.facing = Math.atan2(y - actor.y, x - actor.x); };
 const lerp = (a: number, b: number, f: number) => a + (b - a) * Phaser.Math.Clamp(f, 0, 1);
+const difficultyLabel = { story: 'ИСТОРИЯ', normal: 'РЫЦАРЬ', hard: 'ПЕПЕЛ' } as const;
 const clock = (value: number) => `${Math.floor(Math.max(0, value) / 60).toString().padStart(2, '0')}:${Math.floor(Math.max(0, value) % 60).toString().padStart(2, '0')}`;
 
 export class GameScene extends Phaser.Scene {
@@ -34,6 +35,7 @@ export class GameScene extends Phaser.Scene {
   private moved = 0;
   private stepDistance = 0;
   private epilogueTime = 0;
+  private gateReadyFor = 0;
   private visibleHandler = () => { if (document.hidden && ['training', 'boss', 'epilogue'].includes(this.mode) && !this.paused) this.togglePause(); };
 
   constructor() { super('Game'); }
@@ -61,7 +63,7 @@ export class GameScene extends Phaser.Scene {
     // Opt-in development harness. No test shortcuts are active in a normal game.
     if (new URLSearchParams(location.search).get('test') === '1') {
       (window as unknown as { __seal: unknown }).__seal = {
-        snapshot: () => ({ ...this.world.serialize(), combatMode: this.world.mode, mode: this.mode, paused: this.paused, cinemaActors: this.cinemaActors.map(actor => ({ kind: actor.kind, x: actor.x, y: actor.y, state: actor.state })) }),
+        snapshot: () => ({ ...this.world.serialize(), combatMode: this.world.mode, mode: this.mode, paused: this.paused, difficulty: this.prefs.difficulty, demo: this.prefs.demo, gateOpen: this.mode === 'training' && this.world.trainingComplete, cinemaActors: this.cinemaActors.map(actor => ({ kind: actor.kind, x: actor.x, y: actor.y, state: actor.state })) }),
         world: () => this.world,
         beginBoss: () => this.startBoss(),
         startTraining: () => this.startTraining(),
@@ -120,12 +122,13 @@ export class GameScene extends Phaser.Scene {
       <div class="brand-line"><div class="brand"><span class="brand-mark">⟐</span><span class="eyebrow">АОЕ · ИСТОРИИ ПЕПЛА</span></div><span class="eyebrow quiet">ИГРАБЕЛЬНЫЙ ПРОЛОГ / 01</span></div>
       <div class="menu-main"><div class="eyebrow">ДВА РОДА. ОДНА ПОСЛЕДНЯЯ КЛЯТВА.</div><h1>НАСЛЕДИЕ<br><span>ПЕЧАТИ</span></h1><div class="rule"></div>
       <p class="lede">Нас учили ненавидеть друг друга.<br>Теперь лишь доверие удержит тьму.</p>
-      <div class="menu-actions"><button id="start" class="button primary">Начать путь <span>→</span></button><button id="controls" class="button ghost">Управление</button></div>
-      <div class="menu-options"><label>Защита печати<select id="timer"><option value="canonical" ${!this.prefs.demo ? 'selected' : ''}>15:00 · по канону</option><option value="demo" ${this.prefs.demo ? 'selected' : ''}>2:30 · демонстрация</option></select></label><label>Испытание<select id="difficulty"><option value="story" ${this.prefs.difficulty === 'story' ? 'selected' : ''}>История · мягче</option><option value="normal" ${this.prefs.difficulty === 'normal' ? 'selected' : ''}>Рыцарь · обычное</option><option value="hard" ${this.prefs.difficulty === 'hard' ? 'selected' : ''}>Пепел · сложнее</option></select></label></div></div>
+      <div class="menu-actions"><button id="start" class="button primary">Начать путь <span>→</span></button><button id="controls" class="button ghost">Управление</button><button id="boss-start" class="button ghost">Сразу к печати →</button></div>
+      <div class="menu-options"><label>Защита печати<select id="timer"><option value="canonical" ${!this.prefs.demo ? 'selected' : ''}>15:00 · бой с демоном</option><option value="demo" ${this.prefs.demo ? 'selected' : ''}>2:30 · бой с демоном · демо</option></select></label><label>Испытание<select id="difficulty"><option value="story" ${this.prefs.difficulty === 'story' ? 'selected' : ''}>История · мягче</option><option value="normal" ${this.prefs.difficulty === 'normal' ? 'selected' : ''}>Рыцарь · обычное</option><option value="hard" ${this.prefs.difficulty === 'hard' ? 'selected' : ''}>Пепел · сложнее</option></select></label></div><p class="menu-stage-note">Два врага во дворе — обучение. Выбранный таймер и кольцо включатся после входа в печать.</p></div>
       <aside class="chapter-card"><div class="eyebrow">СЕРДЦЕ СВЯТИЛИЩА</div><h3>То, что заперто,<br>помнит наши имена.</h3><p>Пройдите через руины.<br>Откройте кольцо хранителя.<br>Разорвите Кровавый Завет.</p><div class="eyebrow">⟡ ОДИНОЧНАЯ ИСТОРИЯ</div></aside>
       <footer class="menu-footer"><p>TOP-DOWN ACTION · DARK FANTASY<br>ОРИГИНАЛЬНЫЙ 2D-ПРОТОТИП</p><div class="top-tools"><button class="icon-button" id="sound" aria-label="Переключить звук">${this.prefs.muted ? '♪ ×' : '♪'}</button><button class="icon-button" id="settings" aria-label="Громкость">⚙</button><button class="icon-button" id="fullscreen" aria-label="Полный экран">⛶</button></div><p>МЕЧ СВЯЗЫВАЕТ СУДЬБЫ.<br>ВЫБОР РАЗРЫВАЕТ ЦЕПИ.</p></footer>
     </section><div class="portrait-warning">Поверните телефон горизонтально.<br>Так лучше видны арена и сенсорное управление.</div>`;
     this.click('start', () => this.startTraining());
+    this.click('boss-start', () => this.beginCinema('intro'));
     this.click('controls', () => this.showControls());
     this.click('settings', () => this.showSettings());
     this.bindTools();
@@ -147,11 +150,11 @@ export class GameScene extends Phaser.Scene {
   private showControls() {
     const previous = this.ui.querySelector('.modal-wrap');
     const root = this.modal(`<div class="eyebrow">ЗНАНИЕ — ПЕРВАЯ ЗАЩИТА</div><h2>Искусство боя</h2><div class="control-grid">
-    <div>Движение<kbd>WASD / ↑↓←→</kbd></div><div>Меч · три удара<kbd>J / ЛКМ</kbd></div>
+    <div>Движение<kbd>WASD / ↑↓←→</kbd></div><div>Меч · один удар за нажатие<kbd>J / ЛКМ</kbd></div>
     <div>Рывок · неуязвимость<kbd>Пробел</kbd></div><div>Драконья волна<kbd>Q / K</kbd></div>
     <div>Совместная печать<kbd>L / R</kbd></div><div>Взаимодействие<kbd>E / Enter</kbd></div>
     <div>Пауза<kbd>Esc</kbd></div><div>Направление удара<kbd>Курсор / движение</kbd></div></div>
-    <p>Удерживайте атаку для цепочки из трёх ударов. Уйдите от красного телеграфа или пройдите сквозь удар рывком. Драконья сила расходует восстанавливающийся ресурс. Кольцо доступно лишь с согласия живого хранителя.</p>
+    <p>Одно нажатие ЛКМ, J или сенсорной кнопки — один удар. Три последовательных нажатия дают комбо 1 → 2 → 3; после паузы комбо начинается заново. Удержание не повторяет удары. Уйдите от красного телеграфа или пройдите сквозь удар рывком. Драконья сила расходует восстанавливающийся ресурс. Кольцо откроется в сцене после арки с согласия живого хранителя. Во дворе оно ещё заблокировано. Таймер начинает отсчёт только в бою с демоном.</p>
     <p>На телефоне: стик слева, меч и три приёма справа; ◇ — взаимодействие. Играйте горизонтально. Направление атаки задаёт стик.</p><button id="close-controls" class="button primary">Понятно</button>`);
     this.click('close-controls', () => { root.remove(); if (previous) this.ui.append(previous); });
   }
@@ -163,10 +166,10 @@ export class GameScene extends Phaser.Scene {
   }
 
   private startTraining() {
-    this.cleanCinematic(); this.mode = 'training'; this.paused = false; this.moved = 0;
+    this.cleanCinematic(); this.mode = 'training'; this.paused = false; this.moved = 0; this.gateReadyFor = 0;
     this.world = new CombatWorld('training', this.prefs); this.view.build('training');
     this.controls.enabled = true; this.renderHud();
-    this.notify('Руины ещё помнят войну. Держитесь вместе.');
+    this.notify('Этап 1/2: обучение. После двух врагов — арка, кольцо и бой с демоном.', 5);
   }
   private startBoss() {
     this.cleanCinematic(); this.mode = 'boss'; this.paused = false;
@@ -178,11 +181,11 @@ export class GameScene extends Phaser.Scene {
     const training = this.mode === 'training';
     this.ui.innerHTML = `<section class="hud" aria-label="Состояние боя"><div class="hud-top">
       <div class="player-panel"><div class="player-title">⟐ Безымянный <small>НАСЛЕДНИК ЗАВЕТА</small></div><div class="bar"><i id="hero-hp"></i></div><div class="vitals"><span id="hero-value"></span><span>ЖИЗНЬ</span></div><div class="bar energy"><i id="energy"></i></div><div class="bar ally"><i id="ally-hp"></i></div><div id="link" class="link"></div></div>
-      <div class="time-panel" id="time-panel"><small>${training ? 'ПЕРЕД ПОСЛЕДНЕЙ ДВЕРЬЮ' : this.prefs.demo ? 'ДЕМО · УСКОРЕННЫЙ ОТСЧЁТ' : 'ЗАЩИТА ПЕЧАТИ'}</small><b id="timer-value">${training ? 'РУИНЫ' : clock(this.world.timeLeft)}</b><small id="seal-status">${training ? 'ОБУЧЕНИЕ · БЕЗ ТАЙМЕРА' : 'ЦЕЛОСТНОСТЬ 100%'}</small></div>${this.buttonTools()}</div>
+      <div class="time-panel" id="time-panel"><small>${training ? 'ЭТАП 1/2 · ОБУЧЕНИЕ' : this.prefs.demo ? 'ЭТАП 2/2 · ДЕМО' : 'ЭТАП 2/2 · ЗАЩИТА ПЕЧАТИ'}</small><b id="timer-value">${clock(this.world.timeLeft)}</b><small id="seal-status">${training ? 'СТАРТ ОТСЧЁТА — У ДЕМОНА' : 'ЦЕЛОСТНОСТЬ 100%'}</small><span class="difficulty-label">${difficultyLabel[this.prefs.difficulty]}</span></div>${this.buttonTools()}</div>
       ${!training ? '<div class="boss-panel"><div class="boss-name">МОРВЕЙН · ЗАКЛЮЧЁННЫЙ</div><div class="bar"><i id="boss-hp"></i></div><div class="boss-phase" id="boss-phase"></div></div>' : ''}
       <div class="objective" id="objective"><strong id="objective-title"></strong><p id="objective-text"></p>${training ? '<div class="training-badges"><span id="lesson-move">ДВИЖЕНИЕ</span><span id="lesson-sword">МЕЧ</span><span id="lesson-dodge">РЫВОК</span><span id="lesson-magic">ДРАКОН</span></div>' : ''}</div>
       <div class="bottom-hint">WASD ДВИЖЕНИЕ · J МЕЧ · SPACE РЫВОК · Q ДРАКОН · L ПЕЧАТЬ · ESC ПАУЗА</div>
-      <div class="actionbar"><div class="ability"><em>†</em><small>J · МЕЧ</small></div><div class="ability"><em>»</em><small>SPACE</small><div class="cool" id="dodge-cool"></div></div><div class="ability"><em style="color:#df987b">♨</em><small>Q · ДРАКОН</small><div class="cool" id="dragon-cool"></div></div><div class="ability"><em style="color:#d9c18a">✧</em><small>L · ПЕЧАТЬ</small><div class="cool" id="seal-cool"></div></div></div>
+      <div class="actionbar"><div class="ability" title="Одно нажатие — один удар"><em>†</em><small>J · МЕЧ</small></div><div class="ability"><em>»</em><small>SPACE</small><div class="cool" id="dodge-cool"></div></div><div class="ability"><em style="color:#df987b">♨</em><small>Q · ДРАКОН</small><div class="cool" id="dragon-cool"></div></div><div class="ability" id="seal-ability"><em style="color:#d9c18a">✧</em><small>L · ПЕЧАТЬ</small><div class="cool" id="seal-cool"></div></div></div>
       <div class="notification" id="notification"></div></section>`;
     this.bindTools(); this.updateHud();
   }
@@ -192,17 +195,17 @@ export class GameScene extends Phaser.Scene {
     const p = this.world.player, a = this.world.ally;
     this.setBar('hero-hp', p.hp / p.maxHp); this.setBar('energy', p.energy / p.maxEnergy); this.setBar('ally-hp', a.hp / a.maxHp);
     this.setText('hero-value', `${Math.ceil(p.hp)} / ${p.maxHp}`);
-    this.setText('link', this.world.ringEnabled ? '⟡ ХРАНИТЕЛЬ ЖИВ · СВЯЗЬ ОТКРЫТА' : '◇ КОЛЬЦО ОЖИДАЕТ СОГЛАСИЯ');
+    this.setText('link', this.world.ringEnabled ? '⟡ ХРАНИТЕЛЬ ЖИВ · СВЯЗЬ ОТКРЫТА' : '◇ ПЕЧАТЬ ОТКРОЕТСЯ ПОСЛЕ АРКИ');
     for (const [id, cooldown, locked] of [['dodge', p.dodgeCooldown, false], ['dragon', p.dragonCooldown, p.energy < BALANCE.hero.dragon.cost], ['seal', p.sealCooldown, !this.world.ringEnabled || p.energy < BALANCE.hero.seal.cost]] as const) {
       const el = this.ui.querySelector<HTMLElement>(`#${id}-cool`);
-      if (el) { el.style.display = cooldown > 0 || locked ? 'grid' : 'none'; el.textContent = cooldown > 0 ? cooldown.toFixed(1) : locked ? '◇' : ''; }
+      if (el) { el.style.display = cooldown > 0 || locked ? 'grid' : 'none'; el.textContent = cooldown > 0 ? cooldown.toFixed(1) : id === 'seal' && !this.world.ringEnabled ? 'АРКА' : locked ? '◇' : ''; }
     }
     if (this.mode === 'training') {
       const t = this.world.telemetry;
       const alive = this.world.enemies.filter(enemy => enemy.hp > 0).length;
       const ready = alive === 0;
-      this.setText('objective-title', ready ? 'Путь в сердце печати открыт' : 'Разбудите память клинка');
-      this.setText('objective-text', ready ? 'Подойдите к золотой арке на севере. E / ◇ — войти вместе с хранителем.' : 'J — цепочка ударов. Space — сквозь опасность. Q — драконья волна. Красная область предупреждает об атаке.');
+      this.setText('objective-title', ready ? 'Арка открыта · идите по золотому следу ↑' : `Обучение · противников осталось: ${alive}/2`);
+      this.setText('objective-text', ready ? 'Пройдите между колоннами на севере — переход сработает сам. Рядом также доступны Enter / E / ◇.' : 'ЛКМ / J — один удар. Три нажатия — комбо. Space — рывок, Q — дракон. Кольцо и отсчёт включатся после арки.');
       for (const [id, done] of [['move', this.moved > 70], ['sword', t.comboSteps.some(count => count > 0)], ['dodge', t.dodges > 0], ['magic', t.dragonCasts > 0]] as const) this.ui.querySelector(`#lesson-${id}`)?.classList.toggle('done', done);
     } else if (this.mode === 'boss') {
       const boss = this.world.boss!;
@@ -434,6 +437,9 @@ export class GameScene extends Phaser.Scene {
       if ((this.controls.consumeInteract() && this.epilogueTime > 1) || this.epilogueTime > 12) this.showResult();
       return;
     }
+    if (input.seal && !this.world.ringEnabled) this.notify('Печать пока закрыта: завершите обучение и войдите в арку. Хранитель откроет кольцо.', 4);
+    else if (input.seal && this.world.player.energy < BALANCE.hero.seal.cost) this.notify(`Для печати нужно ${BALANCE.hero.seal.cost} силы. Дождитесь восстановления ресурса.`, 3);
+    else if (input.seal && this.world.player.sealCooldown > 0) this.notify(`Печать восстанавливается: ${this.world.player.sealCooldown.toFixed(1)} с.`, 2);
     const oldX = this.world.player.x, oldY = this.world.player.y;
     this.world.update(delta / 1000, input);
     const distanceMoved = Math.hypot(this.world.player.x - oldX, this.world.player.y - oldY);
@@ -449,17 +455,24 @@ export class GameScene extends Phaser.Scene {
       else if (type === 'hit') { audio.play(event.actorId === this.world.player.id ? 'hurt' : 'hit'); if ((event.amount || 0) > 40) this.cameras.main.shake(90, .002); }
       else if (type === 'dodge' || type === 'dragon' || type === 'seal' || type === 'phase') audio.play(type);
       else if (type === 'barrier') audio.play('seal');
-      else if (type === 'training-complete') this.notify('Двор очищен. Войдите в золотую арку на севере.');
+      else if (type === 'training-complete') { this.view.setTrainingGate(true); this.notify('Арка открылась. Идите по золотому следу на север — дальше демон.', 5); }
       if (['hit', 'dragon', 'seal', 'phase'].includes(type)) this.view.particles(event.x, event.y, event.color || (type === 'seal' ? 0xd5c481 : 0xcc8b69), type === 'hit' ? 8 : 24);
     }
     this.hudClock += dt;
     if (this.hudClock > .08) { this.hudClock = 0; this.updateHud(); }
     if (this.notificationTime > 0) { this.notificationTime -= dt; if (this.notificationTime <= 0) this.ui.querySelector('#notification')?.classList.remove('show'); }
-    if (this.mode === 'training' && this.controls.consumeInteract()) {
-      if (this.world.enemies.every(enemy => enemy.hp <= 0)) {
-        if (Math.hypot(this.world.player.x - 480, this.world.player.y - 135) < 115) this.beginCinema('intro');
-        else this.notify('Кольцо ждёт у арки на севере. Подойдите ближе.');
-      } else this.notify('Сначала очистите двор от двух пепельных стражей.');
+    if (this.mode === 'training') {
+      const interact = this.controls.consumeInteract();
+      const ready = this.world.trainingComplete;
+      this.gateReadyFor = ready ? this.gateReadyFor + dt : 0;
+      const p = this.world.player;
+      const insideDoorway = p.x >= 430 && p.x <= 530 && p.y <= 155;
+      const nearGate = Math.hypot(p.x - 480, p.y - 135) <= 115;
+      if (ready && ((insideDoorway && this.gateReadyFor >= .25) || (interact && nearGate))) {
+        this.beginCinema('intro');
+        return;
+      }
+      if (interact) this.notify(ready ? 'Идите к светящемуся проходу между колоннами на севере.' : 'Сначала победите двух тренировочных врагов. Затем откроется проход к демону.');
     }
     if (this.mode === 'boss' && this.world.outcome) this.beginCinema('ending', this.world.outcome);
   }

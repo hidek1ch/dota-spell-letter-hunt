@@ -1,5 +1,5 @@
 """Optional integration test: pip install playwright; requires local Chromium + running Vite.
-Run SEAL_URL=http://127.0.0.1:5173 python3 tests/browser_smoke.py.
+Run SEAL_URL=http://127.0.0.1:5173/dota-spell-letter-hunt python3 tests/browser_smoke.py.
 Only ?test=1 enables the scene harness. Honest victories use DOM keyboard/pointer events.
 """
 import json
@@ -9,7 +9,7 @@ from playwright.sync_api import sync_playwright
 
 ARTIFACTS = Path('artifacts')
 ARTIFACTS.mkdir(exist_ok=True)
-URL = os.environ.get('SEAL_URL', 'http://127.0.0.1:5173')
+URL = os.environ.get('SEAL_URL', 'http://127.0.0.1:5173/dota-spell-letter-hunt').rstrip('/')
 
 CONTROLLER = r'''(targetMode) => {
   const api = window.__seal;
@@ -37,7 +37,8 @@ CONTROLLER = r'''(targetMode) => {
     }
     set('KeyD',x>.36);set('KeyA',x<-.36);set('KeyS',y>.36);set('KeyW',y<-.36);
     aim(target.x,target.y);
-    set('KeyJ',!danger&&d<100);
+    // Each press produces one attack; the controller deliberately taps, never holds.
+    set('KeyJ',!danger&&d<100&&Math.floor(time*5)%2===0);
     // Tap cooldown abilities, preserving edge semantics instead of injecting combat input.
     const dodge=danger&&target.stateTime>target.attackWindup-.20&&p.dodgeCooldown<=0;
     set('Space',dodge);
@@ -68,6 +69,11 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Начать путь').click()
     page.wait_for_timeout(100)
     assert page.evaluate('window.__seal.snapshot().timeLeft') == 150
+    assert page.locator('#timer-value').inner_text() == '02:30'
+    assert 'СТАРТ ОТСЧЁТА' in page.locator('#seal-status').inner_text()
+    page.keyboard.press('KeyL');page.evaluate('window.__seal.advance(.1)')
+    assert 'Печать пока закрыта' in page.locator('#notification').inner_text()
+    assert page.evaluate('window.__seal.snapshot().telemetry.sealCasts') == 0
     page.keyboard.press('Escape')
     paused = page.evaluate('window.__seal.snapshot()')
     page.evaluate('window.__seal.advance(3)')
@@ -78,20 +84,19 @@ with sync_playwright() as p:
     assert training['snapshot']['trainingComplete'], json.dumps(training,ensure_ascii=False)
     assert training['snapshot']['telemetry']['damageDealt'] > 0
     page.screenshot(path=str(ARTIFACTS/'02-training.png'))
-    # Walk through the actual northern gate; no level transition shortcut.
+    # Walk through the opened doorway without pressing E or invoking a scene shortcut.
     page.evaluate(r'''() => {
       const api=window.__seal, held=new Set();
       for(let i=0;i<500;i++){
         const p=api.world().player,dx=480-p.x,dy=135-p.y;
-        if(Math.hypot(dx,dy)<80)break;
+        if(api.snapshot().mode!=='training')break;
         for(const [code,on] of [['KeyD',dx>12],['KeyA',dx<-12],['KeyS',dy>12],['KeyW',dy<-12]]){
           if(held.has(code)!==on){window.dispatchEvent(new KeyboardEvent(on?'keydown':'keyup',{code}));on?held.add(code):held.delete(code);}
         }
         api.advance(1/60);
       }
       for(const code of held)window.dispatchEvent(new KeyboardEvent('keyup',{code}));
-      window.dispatchEvent(new KeyboardEvent('keydown',{code:'KeyE'}));api.advance(1/60);
-      window.dispatchEvent(new KeyboardEvent('keyup',{code:'KeyE'}));
+
     }''')
     assert page.evaluate('window.__seal.snapshot().mode') == 'intro', json.dumps(page.evaluate('window.__seal.snapshot()'), ensure_ascii=False)
     assert page.evaluate('window.__seal.snapshot().timeLeft') == 150
@@ -100,6 +105,9 @@ with sync_playwright() as p:
     page.evaluate('window.__seal.advance(6.5)')
     assert page.evaluate('window.__seal.snapshot().mode') == 'boss'
     assert page.evaluate('window.__seal.snapshot().ringEnabled')
+    assert 'ЭТАП 2/2' in page.locator('#time-panel').inner_text()
+    assert page.evaluate('window.__seal.snapshot().difficulty') == 'story'
+    assert page.evaluate('window.__seal.snapshot().timeLeft') < 150
     page.screenshot(path=str(ARTIFACTS/'04-boss.png'))
     # Boss pause really freezes the countdown.
     page.keyboard.press('Escape')
@@ -163,7 +171,7 @@ with sync_playwright() as p:
     cdp.send('Input.dispatchTouchEvent',{'type':'touchEnd','touchPoints':[]})
     snap=phone.evaluate('window.__seal.snapshot()')
     assert snap['player']['x']>old+10,snap
-    assert sum(snap['telemetry']['comboSteps'])>0,snap
+    assert sum(snap['telemetry']['comboSteps'])==1,snap
     assert phone.evaluate('document.documentElement.scrollWidth<=window.innerWidth')
     assert not errors,errors
     print('Mobile landscape touch movement + attack, layout and console: PASS')

@@ -6,6 +6,7 @@ export type ActorState = 'Idle' | 'Walk' | 'Chase' | 'Telegraph' | 'Attack' | 'R
 export type Outcome = 'victory' | 'health' | 'timeout' | 'ally' | null;
 export interface CombatInput {
   x: number; y: number; aimX?: number; aimY?: number;
+  /** Action booleans are press edges, never a held-button state. One edge per outer update. */
   attack: boolean; dodge: boolean; dragon: boolean; seal: boolean;
 }
 export interface CombatOptions { difficulty: Difficulty; demo: boolean; seed?: number }
@@ -35,5 +36,6 @@ export interface Telemetry {
   damageDealt: number; damageTaken: number; allyDamage: number; comboSteps: number[];
   dodges: number; avoidedHits: number; dragonCasts: number; sealCasts: number;
   bossAttacks: number[]; phaseChanges: number; enemyKills: number;
+  swordInputs: number; acceptedSwordInputs: number;
 }
 export const EMPTY_INPUT: CombatInput = { x: 0, y: 0, attack: false, dodge: false, dragon: false, seal: false };

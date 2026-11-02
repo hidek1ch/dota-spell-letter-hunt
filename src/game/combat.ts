@@ -30,7 +30,7 @@ export class CombatWorld {
   readonly enemies: Actor[] = [];
   readonly events: CombatEvent[] = [];
   readonly effects: CombatEffect[] = [];
-  readonly telemetry: Telemetry = { damageDealt: 0, damageTaken: 0, allyDamage: 0, comboSteps: [0, 0, 0], dodges: 0, avoidedHits: 0, dragonCasts: 0, sealCasts: 0, bossAttacks: [0, 0, 0, 0], phaseChanges: 0, enemyKills: 0 };
+  readonly telemetry: Telemetry = { damageDealt: 0, damageTaken: 0, allyDamage: 0, comboSteps: [0, 0, 0], dodges: 0, avoidedHits: 0, dragonCasts: 0, sealCasts: 0, bossAttacks: [0, 0, 0, 0], phaseChanges: 0, enemyKills: 0, swordInputs: 0, acceptedSwordInputs: 0 };
   elapsed = 0;
   timeLeft: number;
   readonly timeLimit: number;
@@ -69,7 +69,9 @@ export class CombatWorld {
    * dt is REAL elapsed seconds in an active playable scene. Do not call during pause/cutscenes.
    * The seal countdown consumes the whole dt; physics is capped at .25s and fixed-substepped
    * to avoid tunnelling and an unbounded catch-up spiral after a long renderer stall.
-   * Edge-triggered power input is buffered once per call, including while a sword combo runs.
+   * All action booleans are distinct press EDGES, not held states. Each edge is consumed by
+   * exactly one substep. A sword press can start one strike or buffer one next strike.
+   * Powers are buffered once per call, including while a sword combo runs.
    */
   update(dt: number, input: CombatInput): void {
     if (!Number.isFinite(dt) || dt <= 0 || this.outcome) return;
@@ -80,10 +82,14 @@ export class CombatWorld {
     }
     if (input.seal && this.ringEnabled && this.player.sealCooldown <= B.hero.powerInputBuffer) this.pendingPower = { kind: 'seal', remaining: B.hero.powerInputBuffer };
     else if (input.dragon && this.player.dragonCooldown <= B.hero.powerInputBuffer) this.pendingPower = { kind: 'dragon', remaining: B.hero.powerInputBuffer };
+    if (input.attack) this.telemetry.swordInputs++;
+    const continuedInput = { ...input, attack: false, dodge: false, dragon: false, seal: false };
+    let firstStep = true;
     let remaining = Math.min(dt, 0.25);
     while (remaining > 0 && !this.outcome) {
       const step = Math.min(remaining, 1 / 120);
-      this.tick(step, input);
+      this.tick(step, firstStep ? input : continuedInput);
+      firstStep = false;
       remaining -= step;
     }
   }
@@ -144,7 +150,7 @@ export class CombatWorld {
       return;
     }
     if (p.state === 'Attack') {
-      if (input.attack && p.stateTime > 0.06) p.queuedAttack = true;
+      if (input.attack && !p.queuedAttack) { p.queuedAttack = true; this.telemetry.acceptedSwordInputs++; }
       const c = B.hero.combo[p.attackIndex];
       if (!p.attackTriggered && p.stateTime >= c.windup) {
         p.attackTriggered = true;
@@ -163,15 +169,16 @@ export class CombatWorld {
       if (p.stateTime >= p.attackDuration) {
         p.comboNext = (p.attackIndex + 1) % 3;
         p.comboTimer = B.hero.comboWindow;
-        if (this.canCastBufferedPower()) { this.state(p, 'Idle'); this.castBufferedPower(desiredFacing); }
-        else if (p.queuedAttack) this.startSword(p.comboNext, desiredFacing);
+        if (this.canCastBufferedPower()) this.castBufferedPower(desiredFacing);
+        if (p.queuedAttack) this.startSword(p.comboNext, desiredFacing);
         else this.state(p, 'Idle');
       }
       return;
     }
     p.facing = desiredFacing;
     if (this.canCastBufferedPower()) this.castBufferedPower(desiredFacing);
-    else if (input.attack) {
+    if (input.attack) {
+      this.telemetry.acceptedSwordInputs++;
       this.startSword(p.comboTimer > 0 ? p.comboNext : 0, desiredFacing);
       return;
     }

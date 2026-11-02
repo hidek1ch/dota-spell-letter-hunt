@@ -18,8 +18,9 @@ export class Input {
   private scene: Phaser.Scene;
   private keys = new Set<string>();
   private pressed = new Set<Action>();
+  private attackQueue = 0;
   private heldAttack = false;
-  private touchAttack = false;
+  private attackPointers = new Set<number>();
   private mouseAim?: { x: number; y: number };
   private stick = { x: 0, y: 0 };
   private stickPointer: number | null = null;
@@ -85,6 +86,7 @@ export class Input {
         this.mouseAim = undefined;
       }
       if (!this.keys.has(event.code)) {
+        if (event.code === 'KeyJ' && !event.repeat) this.attackQueue++;
         const action = this.keyAction(event.code);
         if (action) this.pressed.add(action);
       }
@@ -104,10 +106,15 @@ export class Input {
       if (!this.active || event.pointerType !== 'mouse' || event.button !== 0) return;
       event.preventDefault();
       this.mouseAim = { x: event.clientX, y: event.clientY };
+      if (!this.heldAttack) this.attackQueue++;
       this.heldAttack = true;
     });
     this.listen(window, 'pointerup', (raw) => {
-      if ((raw as PointerEvent).button === 0) this.heldAttack = false;
+      const event = raw as PointerEvent;
+      if (event.pointerType === 'mouse' && event.button === 0) this.heldAttack = false;
+    });
+    this.listen(window, 'pointercancel', (raw) => {
+      if ((raw as PointerEvent).pointerType === 'mouse') this.heldAttack = false;
     });
     this.listen(canvas, 'contextmenu', (event) => event.preventDefault());
 
@@ -158,13 +165,18 @@ export class Input {
         button.setPointerCapture(event.pointerId);
         button.classList.add('active');
         const action = button.dataset.action!;
-        if (action === 'attack') this.touchAttack = true;
+        if (action === 'attack') {
+          if (!this.attackPointers.has(event.pointerId)) {
+            this.attackPointers.add(event.pointerId);
+            this.attackQueue++;
+          }
+        }
         else this.pressed.add(action as Action);
       });
       const release = (event: Event) => {
         event.preventDefault();
         button.classList.remove('active');
-        if (button.dataset.action === 'attack') this.touchAttack = false;
+        if (button.dataset.action === 'attack') this.attackPointers.delete((event as PointerEvent).pointerId);
       };
       this.listen(button, 'pointerup', release);
       this.listen(button, 'pointercancel', release);
@@ -189,7 +201,7 @@ export class Input {
     if (Math.hypot(x, y) < 0.12) { x = 0; y = 0; }
     const input: GameInput = {
       x, y,
-      attack: this.keys.has('KeyJ') || this.heldAttack || this.touchAttack,
+      attack: this.consumeAttack(),
       dodge: this.consume('dodge'),
       dragon: this.consume('dragon'),
       seal: this.consume('seal'),
@@ -215,8 +227,9 @@ export class Input {
   clear(): void {
     this.keys.clear();
     this.pressed.clear();
+    this.attackQueue = 0;
     this.heldAttack = false;
-    this.touchAttack = false;
+    this.attackPointers.clear();
     this.mouseAim = undefined;
     this.stick = { x: 0, y: 0 };
     this.stickPointer = null;
@@ -236,6 +249,13 @@ export class Input {
     const result = this.pressed.has(action);
     this.pressed.delete(action);
     return result;
+  }
+
+  /** One press is one pulse; rapid clicks are retained until separately sampled. */
+  private consumeAttack(): boolean {
+    if (this.attackQueue <= 0) return false;
+    this.attackQueue--;
+    return true;
   }
 
   private keyAction(code: string): Action | null {

@@ -6,6 +6,7 @@ import type { Actor, Outcome } from '../game/model';
 import { Input } from '../systems/Input';
 import { audio } from '../systems/Audio';
 import { WorldView } from './WorldView';
+import { resetSession } from '../exploration/TransitionManager';
 
 type Mode = 'menu' | 'training' | 'intro' | 'boss' | 'ending' | 'epilogue' | 'result';
 interface Preferences { difficulty: Difficulty; demo: boolean; muted: boolean; volume: number }
@@ -36,6 +37,7 @@ export class GameScene extends Phaser.Scene {
   private stepDistance = 0;
   private epilogueTime = 0;
   private gateReadyFor = 0;
+  private readonly resizeHandler = () => this.resizeShell();
   private visibleHandler = () => { if (document.hidden && ['training', 'boss', 'epilogue'].includes(this.mode) && !this.paused) this.togglePause(); };
 
   constructor() { super('Game'); }
@@ -56,8 +58,8 @@ export class GameScene extends Phaser.Scene {
     this.controls = new Input(this);
     this.cine = this.add.graphics().setDepth(7000);
     document.addEventListener('visibilitychange', this.visibleHandler);
-    this.scale.on('resize', () => this.resizeShell());
-    this.events.once('shutdown', () => { this.controls.destroy(); this.view.destroy(); document.removeEventListener('visibilitychange', this.visibleHandler); });
+    this.scale.on('resize', this.resizeHandler);
+    this.events.once('shutdown', () => { this.controls.destroy(); this.view.destroy(); this.scale.off('resize', this.resizeHandler); document.removeEventListener('visibilitychange', this.visibleHandler); });
     this.showMenu();
     this.resizeShell();
     // Opt-in development harness. No test shortcuts are active in a normal game.
@@ -119,7 +121,7 @@ export class GameScene extends Phaser.Scene {
     const ally = { ...this.world.ally, x: 759, y: 433, facing: -Math.PI / 2, state: 'Idle' as const };
     this.cinemaActors = [demon, hero, ally];
     this.ui.innerHTML = `<section class="screen" aria-label="Главное меню">
-      <div class="brand-line"><div class="brand"><span class="brand-mark">⟐</span><span class="eyebrow">АОЕ · ИСТОРИИ ПЕПЛА</span></div><span class="eyebrow quiet">ИГРАБЕЛЬНЫЙ ПРОЛОГ / 01</span></div>
+      <div class="brand-line"><div class="brand"><span class="brand-mark">⟐</span><span class="eyebrow">АОЕ · ИСТОРИИ ПЕПЛА</span></div><button id="castle-start" class="button primary castle-entry">Исследовать замок →</button></div>
       <div class="menu-main"><div class="eyebrow">ДВА РОДА. ОДНА ПОСЛЕДНЯЯ КЛЯТВА.</div><h1>НАСЛЕДИЕ<br><span>ПЕЧАТИ</span></h1><div class="rule"></div>
       <p class="lede">Нас учили ненавидеть друг друга.<br>Теперь лишь доверие удержит тьму.</p>
       <div class="menu-actions"><button id="start" class="button primary">Начать путь <span>→</span></button><button id="controls" class="button ghost">Управление</button><button id="boss-start" class="button ghost">Сразу к печати →</button></div>
@@ -127,6 +129,7 @@ export class GameScene extends Phaser.Scene {
       <aside class="chapter-card"><div class="eyebrow">СЕРДЦЕ СВЯТИЛИЩА</div><h3>То, что заперто,<br>помнит наши имена.</h3><p>Пройдите через руины.<br>Откройте кольцо хранителя.<br>Разорвите Кровавый Завет.</p><div class="eyebrow">⟡ ОДИНОЧНАЯ ИСТОРИЯ</div></aside>
       <footer class="menu-footer"><p>TOP-DOWN ACTION · DARK FANTASY<br>ОРИГИНАЛЬНЫЙ 2D-ПРОТОТИП</p><div class="top-tools"><button class="icon-button" id="sound" aria-label="Переключить звук">${this.prefs.muted ? '♪ ×' : '♪'}</button><button class="icon-button" id="settings" aria-label="Громкость">⚙</button><button class="icon-button" id="fullscreen" aria-label="Полный экран">⛶</button></div><p>МЕЧ СВЯЗЫВАЕТ СУДЬБЫ.<br>ВЫБОР РАЗРЫВАЕТ ЦЕПИ.</p></footer>
     </section><div class="portrait-warning">Поверните телефон горизонтально.<br>Так лучше видны арена и сенсорное управление.</div>`;
+    this.click('castle-start', () => { resetSession(); this.scene.start('CastleCourtyard', { spawn: 'start' }); });
     this.click('start', () => this.startTraining());
     this.click('boss-start', () => this.beginCinema('intro'));
     this.click('controls', () => this.showControls());

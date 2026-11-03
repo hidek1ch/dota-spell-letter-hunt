@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GameScene } from './scenes/GameScene';
+import { CourtyardScene, ArmoryScene } from './exploration/CastleScene';
 import './style.css';
 
 new Phaser.Game({
@@ -13,6 +14,6 @@ new Phaser.Game({
   antialias: false,
   scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
   input: { activePointers: 4, mouse: { preventDefaultWheel: true } },
-  scene: [GameScene],
+  scene: [GameScene, CourtyardScene, ArmoryScene],
   render: { transparent: false, powerPreference: 'high-performance' },
 });

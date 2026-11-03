@@ -50,9 +50,19 @@ with sync_playwright() as p:
     page.keyboard.press('KeyL'); page.evaluate('window.__seal.advance(.8)')
     assert page.evaluate('window.__seal.snapshot().telemetry.sealCasts') == 1
     assert page.evaluate('window.__seal.snapshot().telemetry.damageDealt') > 0
+    page.keyboard.press('Escape'); page.evaluate('window.__seal.advance(.05)')
+    page.get_by_role('button', name='В меню', exact=True).click()
+    page.get_by_role('button', name='Исследовать замок').click()
+    page.wait_for_function('window.__castle && window.__castle.snapshot().active')
+    page.keyboard.down('KeyW'); page.evaluate('window.__castle.advance(2.6)'); page.keyboard.up('KeyW')
+    assert 'оружейную' in page.evaluate('window.__castle.snapshot().prompt')
+    page.keyboard.press('KeyE')
+    page.wait_for_function("window.__castle.snapshot().location === 'CastleArmory' && window.__castle.snapshot().active")
+    page.keyboard.press('KeyM'); page.evaluate('window.__castle.advance(.05)')
+    assert page.evaluate('window.__castle.snapshot().mapOpen')
     assert not errors, errors
     assert not remote_requests, remote_requests
     (root / 'artifacts').mkdir(exist_ok=True)
     page.screenshot(path=str(root / 'artifacts' / 'portable-offline.png'))
-    print(('PASS: file:// launch' if direct_file else 'PASS: standalone in-memory HTML') + ', menu, movement, combo3, dragon, dodge, ring damage; no external assets or console errors.')
+    print(('PASS: file:// launch' if direct_file else 'PASS: standalone in-memory HTML') + ', combat controls, castle doorway and map; no external assets or console errors.')
     browser.close()

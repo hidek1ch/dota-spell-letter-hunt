@@ -11,7 +11,9 @@ export interface GameInput {
   seal: boolean;
 }
 
-type Action = 'dodge' | 'dragon' | 'seal' | 'interact' | 'pause';
+export interface InputOptions { mode?: 'combat' | 'exploration' }
+
+type Action = 'dodge' | 'dragon' | 'seal' | 'interact' | 'map' | 'pause';
 
 /** Keyboard, cursor aim, and real multi-touch controls share the same input state. */
 export class Input {
@@ -29,12 +31,13 @@ export class Input {
   private listeners: (() => void)[] = [];
   private active = true;
 
-  constructor(scene: Phaser.Scene) {
+  constructor(scene: Phaser.Scene, options: InputOptions = {}) {
     this.scene = scene;
     // Scene restarts should not leave old touch controls on screen.
     document.getElementById('touch-controls')?.remove();
     this.root = document.createElement('div');
     this.root.id = 'touch-controls';
+    this.root.dataset.mode = options.mode ?? 'combat';
     this.root.setAttribute('aria-label', 'Сенсорное управление');
     this.root.innerHTML = `
       <div class="touch-stick" aria-label="Движение"><span class="touch-stick-cross">✥</span><i></i></div>
@@ -45,7 +48,11 @@ export class Input {
         <button class="touch-button touch-attack" data-action="attack" aria-label="Удар мечом">†<small>УДАР</small></button>
       </div>
       <button class="touch-interact" data-action="interact" aria-label="Взаимодействовать">◇ <span>Войти / далее</span></button>
+      <button class="touch-map" data-action="map" aria-label="Карта">M<small>КАРТА</small></button>
       <button class="touch-pause" data-action="pause" aria-label="Пауза">II</button>`;
+    if (options.mode === 'exploration') {
+      this.root.querySelector('.touch-interact')!.innerHTML = 'E<span>Взаимодействовать</span>';
+    }
     this.style = document.createElement('style');
     this.style.textContent = `
       #touch-controls{display:none;position:fixed;inset:0;z-index:20;pointer-events:none;touch-action:none;user-select:none;-webkit-user-select:none}
@@ -64,10 +71,17 @@ export class Input {
       #touch-controls .touch-attack{right:0;bottom:0;width:77px;height:77px;font-size:40px}
       #touch-controls .touch-interact{position:absolute;left:50%;transform:translateX(-50%);bottom:max(20px,env(safe-area-inset-bottom));border:1px solid #a4966d94;background:#171e23dc;color:#d2c8a9;padding:10px 14px;pointer-events:auto;font-size:22px}
       #touch-controls .touch-interact span{font:10px system-ui,sans-serif;letter-spacing:1px;vertical-align:middle}
+      #touch-controls .touch-map{display:none;position:absolute;border:1px solid #9d976b99;background:#171e23dc;color:#d8c99f;pointer-events:auto;width:62px;height:58px;font-size:23px}
+      #touch-controls .touch-map small{display:block;font:9px system-ui,sans-serif;letter-spacing:1px;margin-top:3px}
+      #touch-controls .touch-map:active,#touch-controls .touch-map.active,#touch-controls .touch-interact:active,#touch-controls .touch-interact.active{background:#555045e8;border-color:#ffe4a2}
       #touch-controls .touch-pause{position:absolute;right:max(16px,env(safe-area-inset-right));top:max(16px,env(safe-area-inset-top));border:1px solid #a4966d80;background:#10181dbb;color:#ddd1ac;width:38px;height:38px;font-size:20px;pointer-events:auto}
       @media(pointer:coarse),(max-width:900px){#touch-controls{display:block}}
       @media(max-height:450px){#touch-controls .touch-stick{width:94px;height:94px;left:max(18px,env(safe-area-inset-left));bottom:18px}#touch-controls .touch-stick i{left:24px;top:24px}#touch-controls .touch-actions{transform:scale(.82);transform-origin:bottom right;bottom:14px}#touch-controls .touch-interact{bottom:14px;padding:6px 10px}}
       @media(orientation:portrait){#touch-controls .touch-stick{left:18px;bottom:max(24px,env(safe-area-inset-bottom))}#touch-controls .touch-actions{right:12px;transform:scale(.85);transform-origin:bottom right}#touch-controls .touch-interact{bottom:170px}}
+      #touch-controls[data-mode="exploration"] .touch-actions{display:none}
+      #touch-controls[data-mode="exploration"] .touch-interact{left:auto;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));transform:none;width:116px;min-height:82px;padding:10px 6px;border-radius:14px;font-size:32px}
+      #touch-controls[data-mode="exploration"] .touch-interact span{display:block;margin-top:5px;font:10px system-ui,sans-serif;letter-spacing:.1px}
+      #touch-controls[data-mode="exploration"] .touch-map{display:block;right:max(50px,env(safe-area-inset-right));bottom:max(124px,calc(env(safe-area-inset-bottom) + 100px));border-radius:9px}
     `;
     document.head.append(this.style);
     document.body.append(this.root);
@@ -88,7 +102,9 @@ export class Input {
       if (!this.keys.has(event.code)) {
         if (event.code === 'KeyJ' && !event.repeat) this.attackQueue++;
         const action = this.keyAction(event.code);
-        if (action) this.pressed.add(action);
+        // A held interaction must not activate again after a scene transition,
+        // when this fresh Input has not yet seen the original keydown.
+        if (action && !event.repeat) this.pressed.add(action);
       }
       this.keys.add(event.code);
     });
@@ -222,6 +238,7 @@ export class Input {
   }
 
   consumeInteract(): boolean { return this.consume('interact'); }
+  consumeMap(): boolean { return this.consume('map'); }
   consumePause(): boolean { return this.consume('pause'); }
 
   clear(): void {
@@ -263,6 +280,7 @@ export class Input {
     if (code === 'KeyK' || code === 'KeyQ') return 'dragon';
     if (code === 'KeyL' || code === 'KeyR') return 'seal';
     if (code === 'KeyE' || code === 'Enter') return 'interact';
+    if (code === 'KeyM') return 'map';
     return null;
   }
 
